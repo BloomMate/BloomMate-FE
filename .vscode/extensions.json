@@ -1,0 +1,18 @@
+{
+  "recommendations": [
+    "lokalise.i18n-ally",
+    "ritwickdey.liveserver",
+    "streetsidesoftware.code-spell-checker",
+    "dbaeumer.vscode-eslint",
+    "usernamehw.errorlens",
+    "waderyan.gitblame",
+    "donjayamanne.githistory",
+    "cschleiden.vscode-github-actions",
+    "github.vscode-pull-request-github",
+    "gruntfuggly.todo-tree",
+    "wayou.vscode-todo-highlight",
+    "esbenp.prettier-vscode",
+    "christian-kohler.path-intellisense",
+    "ms-vsliveshare.vsliveshare",
+  ]
+}

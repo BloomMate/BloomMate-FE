@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@/atoms": ["./src/atoms"],
+      "@/atoms/*": ["./src/atoms/*"],
+      "@/utils": ["./src/utils"],
+      "@/utils/*": ["./src/utils/*"],
+      "@/layouts": ["./src/layouts"],
+      "@/layouts/*": ["./src/layouts/*"],
+      "@/providers": ["./src/providers"],
+      "@/providers/*": ["./src/providers/*"],
+      "@/hooks": ["./src/hooks"],
+      "@/hooks/*": ["./src/hooks/*"]
+    },
+    "esModuleInterop": true
+  },
+  "extends": "@tsconfig/react-native/tsconfig.json"
+}
