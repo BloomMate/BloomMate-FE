@@ -1,11 +1,34 @@
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { Button } from 'react-native';
+
+import { RootStackParamList } from '../root.navigator';
+
 import { Text } from '@/atoms';
 import { BasicLayout } from '@/layouts';
 
 type LoginScreenProps = {};
 
+export type LoginScreenNavigationProps = StackNavigationProp<
+  RootStackParamList,
+  'LoginScreen'
+>;
+
+export type LoginScreenNavigationRouteProps = RouteProp<
+  RootStackParamList,
+  'LoginScreen'
+>;
+
 export const LoginScreen = ({}: LoginScreenProps) => {
   // TODO : Use MutationIndicator Properly
   // useMutationIndicator([true])
+
+  const navigation = useNavigation<LoginScreenNavigationProps>();
+  const route = useRoute<LoginScreenNavigationRouteProps>();
+
+  const handlePressSignUpButton = () => {
+    navigation.navigate('SignUpScreen');
+  };
 
   return (
     <BasicLayout>
@@ -18,6 +41,7 @@ export const LoginScreen = ({}: LoginScreenProps) => {
       <Text color="error" fontSize="28" fontWeight="400">
         error / 28 size / 500 weight
       </Text>
+      <Button title="회원가입" onPress={handlePressSignUpButton} />
     </BasicLayout>
   );
 };
