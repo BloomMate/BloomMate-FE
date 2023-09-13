@@ -9,14 +9,14 @@ export const LoginScreen = ({}: LoginScreenProps) => {
 
   return (
     <BasicLayout>
-      <Text color="gray-1000" fontSize="14" fontWeight="500">
-        gray-1000 / 14 size / 500 weight
+      <Text variants="bodySmall" color="gray-900"  fontWeight="Light">
+        바디 스몰 / 그레이-900 / 라이트
       </Text>
-      <Text color="gray-800" fontSize="18" fontWeight="500">
-        gray-800 / 18 size / 500 weight
+      <Text variants="titleMedium" color="black" fontWeight="Bold">
+        타이틀 미디움 / 블랙 / 볼드
       </Text>
-      <Text color="error" fontSize="28" fontWeight="400">
-        error / 28 size / 500 weight
+      <Text variants="displaySmall" color="gray-600" fontWeight="Medium">
+        바디라지 / 그레이-600 / 미디움
       </Text>
     </BasicLayout>
   );
