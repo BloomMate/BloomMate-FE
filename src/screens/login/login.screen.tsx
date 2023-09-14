@@ -1,5 +1,6 @@
-import { Text } from '@/atoms';
-import { Icon } from '@/atoms/icon';
+import { Box } from '@mobily/stacks';
+
+import { Text, Icon, Button } from '@/atoms';
 import { BasicLayout } from '@/layouts';
 import { palette } from '@/utils';
 
@@ -13,6 +14,9 @@ export const LoginScreen = ({}: LoginScreenProps) => {
 
   return (
     <BasicLayout>
+      <Box direction="row">
+        <Button onPress={()=>{}} children={'안녕하세요'} mode={'contained'}/>
+      </Box>
       <Icon name="delete" size={30} color={palette['amber-500']} />
       <Text variants="bodySmall" color="gray-900" fontWeight="Light">
         바디 스몰 / 그레이-900 / 라이트
