@@ -1,5 +1,5 @@
 import { Stack } from '@mobily/stacks';
-import { memo, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { useController, useFormContext } from 'react-hook-form';
 import { TextInput } from 'react-native';
 
@@ -20,7 +20,9 @@ export const SignUpPwCheckInputModule = memo<SignUpPwCheckInputModuleProps>(
 
     const passwordValue = watch('PassWord');
     const isDisablePasswordCheckInput = !passwordValue;
-
+    useEffect(() => {
+      this.textInputRef.clear();
+    }, [isDisablePasswordCheckInput]);
     return (
       <Stack space={4}>
         <TextInput
@@ -32,6 +34,7 @@ export const SignUpPwCheckInputModule = memo<SignUpPwCheckInputModuleProps>(
           placeholderTextColor="#AAAAAA"
           secureTextEntry={true}
           editable={!isDisablePasswordCheckInput}
+          ref={ref => (this.textInputRef = ref)}
         />
         <Text fontSize="8" fontWeight="400" color="error">
           {fieldState.error?.message}
