@@ -1,7 +1,11 @@
 import { Text } from '@/atoms';
+import { Icon } from '@/atoms/icon';
 import { BasicLayout } from '@/layouts';
+import { palette } from '@/utils';
 
 type LoginScreenProps = {};
+
+
 
 export const LoginScreen = ({}: LoginScreenProps) => {
   // TODO : Use MutationIndicator Properly
@@ -9,7 +13,8 @@ export const LoginScreen = ({}: LoginScreenProps) => {
 
   return (
     <BasicLayout>
-      <Text variants="bodySmall" color="gray-900"  fontWeight="Light">
+      <Icon name="delete" size={30} color={palette['amber-500']} />
+      <Text variants="bodySmall" color="gray-900" fontWeight="Light">
         바디 스몰 / 그레이-900 / 라이트
       </Text>
       <Text variants="titleMedium" color="black" fontWeight="Bold">
