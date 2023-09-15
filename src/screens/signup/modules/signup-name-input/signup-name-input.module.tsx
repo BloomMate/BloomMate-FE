@@ -19,8 +19,11 @@ export const SignUpNameInputModule = memo<SignUpNameInputModuleProps>(() => {
 
   return (
     <Stack space={4}>
+      <Text fontSize="14" fontWeight="600" color="green">
+        이름
+      </Text>
       <TextInput
-        placeholder="이름을 입력하세요."
+        placeholder="이름을 입력하세요. (실명을 사용해주세요)"
         value={value}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}

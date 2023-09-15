@@ -20,13 +20,20 @@ export const SignUpPwCheckInputModule = memo<SignUpPwCheckInputModuleProps>(
 
     const passwordValue = watch('PassWord');
     const isDisablePasswordCheckInput = !passwordValue;
+
     useEffect(() => {
-      this.textInputRef.clear();
+      if (isDisablePasswordCheckInput) {
+        onChange('');
+      }
     }, [isDisablePasswordCheckInput]);
+
     return (
       <Stack space={4}>
+        <Text fontSize="14" fontWeight="600" color="green">
+          비밀번호 확인
+        </Text>
         <TextInput
-          placeholder="비밀번호를 한번 더 입력하세요."
+          placeholder="비밀번호를 한번 더 입력해주세요."
           value={value}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
@@ -34,7 +41,7 @@ export const SignUpPwCheckInputModule = memo<SignUpPwCheckInputModuleProps>(
           placeholderTextColor="#AAAAAA"
           secureTextEntry={true}
           editable={!isDisablePasswordCheckInput}
-          ref={ref => (this.textInputRef = ref)}
+          style={{ borderColor: 'green' }}
         />
         <Text fontSize="8" fontWeight="400" color="error">
           {fieldState.error?.message}

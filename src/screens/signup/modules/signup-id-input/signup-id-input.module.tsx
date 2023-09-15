@@ -19,8 +19,11 @@ export const SignUpIdInputModule = memo<SignUpIdInputModuleProps>(() => {
 
   return (
     <Stack space={4}>
+      <Text fontSize="14" fontWeight="600" color="green">
+        아이디
+      </Text>
       <TextInput
-        placeholder="ID를 입력하세요."
+        placeholder="아이디를 입력하세요. (5자 이상 20자 이하)"
         value={value}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}

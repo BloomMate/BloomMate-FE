@@ -19,8 +19,11 @@ export const SignUpPwInputModule = memo<SignUpPwInputModuleProps>(() => {
 
   return (
     <Stack space={4}>
+      <Text fontSize="14" fontWeight="600" color="green">
+        비밀번호
+      </Text>
       <TextInput
-        placeholder="PW을 입력하세요."
+        placeholder="비밀번호를 입력하세요. (8자 이상 20자 이하)"
         value={value}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}

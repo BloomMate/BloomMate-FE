@@ -13,6 +13,7 @@ import {
   SignUpPwInputModule,
 } from './modules';
 
+import { Text } from '@/atoms';
 import { BasicLayout } from '@/layouts';
 
 type SignUpScreenProps = {};
@@ -34,6 +35,9 @@ export const SignUpScreen = ({}: SignUpScreenProps) => {
   return (
     <FormProvider {...methods}>
       <BasicLayout>
+        <Text fontSize="24" fontWeight="600" color="green">
+          회원가입
+        </Text>
         <SignUpNameInputModule />
         <SignUpIdInputModule />
         <SignUpPwInputModule />

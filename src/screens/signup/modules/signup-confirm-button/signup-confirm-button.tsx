@@ -21,11 +21,8 @@ export const SignUpConfirmButtonModule = memo<SignUpConfirmButtonModuleProps>(
     const isSignUpPossible = isDirty && isValid;
 
     // SubmitHandler + formType 을 넣어줬기때문에 인수의 타입이 자동으로 잡히는 모습입니다.
-    const showAlert: SubmitHandler<SignUpForm> = ({ Name, ID, PassWord }) => {
-      Alert.alert(
-        '회원가입 성공',
-        `이름: ${Name}\n ID : ${ID}\n Password : ${PassWord}`,
-      );
+    const showAlert: SubmitHandler<SignUpForm> = ({ Name }) => {
+      Alert.alert('회원가입에 성공하였습니다.', `${Name}님 환영합니다!`);
     };
 
     const handlePressSignUpButton = () => {
