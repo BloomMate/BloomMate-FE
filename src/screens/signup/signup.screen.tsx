@@ -1,6 +1,7 @@
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { FormProvider } from 'react-hook-form';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 import { RootStackParamList } from '../root.navigator';
 
@@ -35,14 +36,16 @@ export const SignUpScreen = ({}: SignUpScreenProps) => {
   return (
     <FormProvider {...methods}>
       <BasicLayout>
-        <Text fontSize="24" fontWeight="600" color="green">
-          회원가입
-        </Text>
-        <SignUpNameInputModule />
-        <SignUpIdInputModule />
-        <SignUpPwInputModule />
-        <SignUpPwCheckInputModule />
-        <SignUpConfirmButtonModule />
+        <KeyboardAwareScrollView>
+          <Text fontSize="24" fontWeight="600" color="green">
+            회원가입
+          </Text>
+          <SignUpNameInputModule />
+          <SignUpIdInputModule />
+          <SignUpPwInputModule />
+          <SignUpPwCheckInputModule />
+          <SignUpConfirmButtonModule />
+        </KeyboardAwareScrollView>
       </BasicLayout>
     </FormProvider>
   );
