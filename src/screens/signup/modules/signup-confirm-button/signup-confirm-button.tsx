@@ -3,9 +3,8 @@ import { useNavigation } from '@react-navigation/native';
 import { memo } from 'react';
 import { SubmitHandler, useFormContext } from 'react-hook-form';
 import { Alert, Pressable } from 'react-native';
-import { useRecoilValue } from 'recoil';
 
-import { $passWordState, SignUpForm } from '../../hooks';
+import { SignUpForm } from '../../hooks';
 import { SignUpScreenNavigationProps } from '../../signup.screen';
 
 import { Text } from '@/atoms';
@@ -16,15 +15,11 @@ export const SignUpConfirmButtonModule = memo<SignUpConfirmButtonModuleProps>(
   () => {
     const navigation = useNavigation<SignUpScreenNavigationProps>();
 
-    const { passWord } = useRecoilValue($passWordState);
-
     // 아래의 로직을 custom hook 으로 분리하면 더 깔끔하겠죠?
-    const { formState, handleSubmit, watch } = useFormContext<SignUpForm>();
+    const { formState, handleSubmit } = useFormContext<SignUpForm>();
     const { isDirty, isValid, errors } = formState;
 
-    const isPasswordSame = passWord === watch('PassWord');
-
-    const isSignUpPossible = isDirty && isValid && isPasswordSame;
+    const isSignUpPossible = isDirty && isValid;
 
     // SubmitHandler + formType 을 넣어줬기때문에 인수의 타입이 자동으로 잡히는 모습입니다.
     const showAlert: SubmitHandler<SignUpForm> = ({ Name }) => {

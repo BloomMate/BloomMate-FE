@@ -12,7 +12,6 @@ import {
   SignUpNameInputModule,
   SignUpPwCheckInputModule,
   SignUpPwInputModule,
-  SignUpTestModule,
 } from './modules';
 
 import { Text } from '@/atoms';
@@ -45,7 +44,6 @@ export const SignUpScreen = ({}: SignUpScreenProps) => {
           <SignUpIdInputModule />
           <SignUpPwInputModule />
           <SignUpPwCheckInputModule />
-          <SignUpTestModule />
           <SignUpConfirmButtonModule />
         </KeyboardAwareScrollView>
       </BasicLayout>
