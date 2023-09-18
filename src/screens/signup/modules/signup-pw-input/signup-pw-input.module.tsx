@@ -2,8 +2,9 @@ import { Stack } from '@mobily/stacks';
 import { memo, useState } from 'react';
 import { useController, useFormContext } from 'react-hook-form';
 import { TextInput } from 'react-native';
+import { useSetRecoilState } from 'recoil';
 
-import { SignUpForm } from '../../hooks';
+import { $passWordState, SignUpForm } from '../../hooks';
 
 import { Text } from '@/atoms';
 
@@ -17,6 +18,13 @@ export const SignUpPwInputModule = memo<SignUpPwInputModuleProps>(() => {
     fieldState,
   } = useController({ control, name: 'PassWord' });
 
+  const setPassWordState = useSetRecoilState($passWordState);
+
+  const handleChangeTextInput = (newPassword: string) => {
+    onChange(newPassword);
+    setPassWordState({ passWord: newPassword });
+  };
+
   return (
     <Stack space={4}>
       <Text fontSize="14" fontWeight="600" color="green">
@@ -27,7 +35,7 @@ export const SignUpPwInputModule = memo<SignUpPwInputModuleProps>(() => {
         value={value}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
-        onChangeText={onChange}
+        onChangeText={handleChangeTextInput}
         placeholderTextColor="#AAAAAA"
         secureTextEntry={true}
       />

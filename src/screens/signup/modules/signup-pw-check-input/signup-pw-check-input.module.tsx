@@ -13,6 +13,7 @@ export const SignUpPwCheckInputModule = memo<SignUpPwCheckInputModuleProps>(
   () => {
     const [isFocused, setIsFocused] = useState<boolean>(false);
     const { control, watch } = useFormContext<SignUpForm>();
+
     const {
       field: { onChange, value },
       fieldState,
