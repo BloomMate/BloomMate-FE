@@ -1,6 +1,6 @@
 import { Box } from '@mobily/stacks';
 
-import { Text, Icon, Button } from '@/atoms';
+import { Text, Icon, Button, TextInput } from '@/atoms';
 import { BasicLayout } from '@/layouts';
 import { palette } from '@/utils';
 
@@ -14,8 +14,27 @@ export const LoginScreen = ({}: LoginScreenProps) => {
 
   return (
     <BasicLayout>
-      <Box direction="row">
-        <Button onPress={()=>{}} children={'안녕하세요'} mode={'contained'}/>
+     <Box>
+      <TextInput></TextInput>
+     </Box>
+      <Box direction="row" padding={10}>
+        <Button onPress={() => {}} children={'안녕하세요'} mode={'contained'}  disabled/>
+      </Box>
+      <Box direction="row" padding={10}>
+        <Button
+          onPress={() => {}}
+          children={'안녕하세요'}
+          mode={'outlined'}
+          
+        />
+      </Box>
+      <Box direction="row" padding={40}>
+        <Button
+          onPress={() => {}}
+          children={'뒤로가기'}
+          mode={'text'}
+          
+        />
       </Box>
       <Icon name="delete" size={30} color={palette['amber-500']} />
       <Text variants="bodySmall" color="gray-900" fontWeight="Light">
