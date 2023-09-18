@@ -1,10 +1,17 @@
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import { FormProvider } from 'react-hook-form';
 import { Button } from 'react-native';
 
 import { RootStackParamList } from '../root.navigator';
 
-import { Text } from '@/atoms';
+import { useLoginForm } from './hooks';
+import {
+  LoginConfirmButtonModule,
+  LoginIdInputModule,
+  LoginPasswordInputModule,
+} from './modules';
+
 import { BasicLayout } from '@/layouts';
 
 type LoginScreenProps = {};
@@ -25,23 +32,19 @@ export const LoginScreen = ({}: LoginScreenProps) => {
 
   const navigation = useNavigation<LoginScreenNavigationProps>();
   const route = useRoute<LoginScreenNavigationRouteProps>();
-
+  const methods = useLoginForm();
   const handlePressSignUpButton = () => {
     navigation.navigate('SignUpScreen');
   };
 
   return (
-    <BasicLayout>
-      <Text color="gray-1000" fontSize="14" fontWeight="500">
-        gray-1000 / 14 size / 500 weight
-      </Text>
-      <Text color="gray-800" fontSize="18" fontWeight="500">
-        gray-800 / 18 size / 500 weight
-      </Text>
-      <Text color="error" fontSize="28" fontWeight="400">
-        error / 28 size / 500 weight
-      </Text>
-      <Button title="회원가입" onPress={handlePressSignUpButton} />
-    </BasicLayout>
+    <FormProvider {...methods}>
+      <BasicLayout>
+        <LoginIdInputModule />
+        <LoginPasswordInputModule />
+        <LoginConfirmButtonModule />
+        <Button title="회원가입" onPress={handlePressSignUpButton} />
+      </BasicLayout>
+    </FormProvider>
   );
 };
