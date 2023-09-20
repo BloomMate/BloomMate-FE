@@ -3,7 +3,7 @@
 export const palette = {
   black: '#000000',
   white: '#ffffff',
-  'white-a60': 'rgba(255,255,255,0.60)',
+  modal: 'rgba(255,255,255,0.8)',
   error: '#F44336',
 
   'red-50': '#FFEBEE',
