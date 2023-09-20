@@ -1,8 +1,6 @@
 import axios from 'axios';
 
-// TODO : Fix the baseURL
-
 export const defaultAxios = axios.create({
-  baseURL: 'https://naver.com',
+  baseURL: 'http://3.34.14.96:8000/',
   withCredentials: true,
 });
