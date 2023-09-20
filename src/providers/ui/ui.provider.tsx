@@ -1,5 +1,6 @@
 import { StacksProvider } from '@mobily/stacks';
 import { PropsWithChildren } from 'react';
+import { PaperProvider } from 'react-native-paper';
 import {
   initialWindowMetrics,
   SafeAreaProvider,
@@ -12,12 +13,14 @@ type UIProviderProps = PropsWithChildren<{}>;
 
 export const UIProvider = ({ children }: UIProviderProps) => {
   return (
-    <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-      <StacksProvider spacing={1}>
-        <SafeAreaView style={{ flex: 1, backgroundColor: palette['white'] }}>
-          {children}
-        </SafeAreaView>
-      </StacksProvider>
-    </SafeAreaProvider>
+    <PaperProvider>
+      <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+        <StacksProvider spacing={1}>
+          <SafeAreaView style={{ flex: 1, backgroundColor: palette['white'] }}>
+            {children}
+          </SafeAreaView>
+        </StacksProvider>
+      </SafeAreaProvider>
+    </PaperProvider>
   );
 };
