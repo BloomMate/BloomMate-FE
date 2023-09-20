@@ -1,10 +1,10 @@
 import { Stack } from '@mobily/stacks';
-import { memo } from 'react';
 import {
   TextInputProps as PaperTextInputProps,
   TextInput as PaperTextInput,
 } from 'react-native-paper';
 
+import { getVariantsStyle } from '../text';
 import { Text } from '../text/text.atom';
 
 import { palette } from '@/utils';
@@ -22,32 +22,46 @@ type NonErrorProps = {
 
 type Error = ErrorProps | NonErrorProps;
 
-type TextInputProps = Omit<PaperTextInputProps, 'error'> & Error;
+type Right = {
+    rightIconName?: string;
+    rightIconColor?: string;
+}
 
-export const TextInput = memo(({ error, ...props }: TextInputProps) => {
+type TextInputProps = Omit<PaperTextInputProps, 'error' | 'right'> &
+  Error &
+  Right;
+
+export const TextInput = ({ error, rightIconName, rightIconColor, ...props }: TextInputProps) => {
   
-
+const bodyLargeFontStyle = getVariantsStyle('bodyLarge');
   const renderTextInput = () => {
     return (
       <PaperTextInput
+        style={{ backgroundColor: palette['white'] }}
         theme={{
           fonts: {
             bodyLarge: {
+              ...bodyLargeFontStyle,
               fontFamily: 'GmarketSansTTFMedium',
-              fontSize: 24,
-              lineHeight: 32,
             },
             bodySmall: {
+              ...bodyLargeFontStyle,
               fontFamily: 'GmarketSansTTFLight',
-              fontSize: 14,
-              lineHeight: 20,
             },
           },
+          colors: {
+            onSurfaceVariant: palette['black'],
+            background: palette['white'],
+            primary: palette['green-500'],
+            disabled: palette['gray-500'],
+          },
         }}
-        outlineStyle={{ borderWidth: 0, backgroundColor: palette['gray-100'] }}
-        placeholderTextColor={palette['gray-500']}
-        textColor={palette['gray-900']}
         error={error}
+        right={
+          rightIconName && (
+            <PaperTextInput.Icon icon={rightIconName} color={rightIconColor} />
+          )
+        }
         {...props}
       />
     );
@@ -65,4 +79,4 @@ export const TextInput = memo(({ error, ...props }: TextInputProps) => {
       )}
     </Stack>
   );
-});
+};

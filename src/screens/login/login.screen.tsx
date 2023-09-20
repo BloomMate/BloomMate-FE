@@ -14,27 +14,28 @@ export const LoginScreen = ({}: LoginScreenProps) => {
 
   return (
     <BasicLayout>
-     <Box>
-      <TextInput></TextInput>
-     </Box>
-      <Box direction="row" padding={10}>
-        <Button onPress={() => {}} children={'안녕하세요'} mode={'contained'}  disabled/>
+      <Box padding={10}>
+        <TextInput
+          label="아이디를 입력해주세요"
+          rightIconName='hexagon'
+          rightIconColor='red'
+          error={true}
+          errorMsg='에러났다'
+        />
       </Box>
       <Box direction="row" padding={10}>
         <Button
           onPress={() => {}}
           children={'안녕하세요'}
-          mode={'outlined'}
-          
+          mode={'contained'}
+          disabled
         />
       </Box>
+      <Box direction="row" padding={10}>
+        <Button onPress={() => {}} children={'안녕하세요'} mode={'outlined'} />
+      </Box>
       <Box direction="row" padding={40}>
-        <Button
-          onPress={() => {}}
-          children={'뒤로가기'}
-          mode={'text'}
-          
-        />
+        <Button onPress={() => {}} children={'뒤로가기'} mode={'text'} />
       </Box>
       <Icon name="delete" size={30} color={palette['amber-500']} />
       <Text variants="bodySmall" color="gray-900" fontWeight="Light">
