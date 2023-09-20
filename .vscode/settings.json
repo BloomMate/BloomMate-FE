@@ -1,19 +1,9 @@
 {
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
-    },
-    "editor.formatOnSave": true,
-    "eslint.enable": true,
-    "eslint.validate": [
-      "javascript",
-      "typescript"
-    ],
-    "cSpell.words": [
-      "kakao",
-      "MMKV",
-      "mobily",
-      "naver",
-      "wonka"
-    ]
-  }
-  
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.formatOnSave": true,
+  "eslint.enable": true,
+  "eslint.validate": ["javascript", "typescript"],
+  "cSpell.words": ["kakao", "MMKV", "mobily", "naver", "textinput", "wonka"]
+}
