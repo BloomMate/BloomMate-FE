@@ -24,6 +24,11 @@ export const Modal = ({ children, isVisible }: ModalProps) => {
       animationOut="fadeOut"
       backdropColor={palette['modal']} // 이갓만 색깔 잘 정해서 바꿔
       backdropOpacity={1}
+      style={{
+        margin: 0,
+        paddingHorizontal: 20,
+        borderColor: palette['amber-500'],
+      }}
       useNativeDriver
       statusBarTranslucent
       deviceHeight={maxDeviceHeight}
