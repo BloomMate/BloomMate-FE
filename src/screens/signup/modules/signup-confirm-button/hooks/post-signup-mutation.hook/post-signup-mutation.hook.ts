@@ -14,7 +14,7 @@ type PostSignUpResponseData = {
   password: string;
 };
 
-export const useSendSignupMutation = () => {
+export const usePostSignupMutation = () => {
   return useMutation(async ({ id, pw, name }: PostSignUpRequestProps) => {
     try {
       const { data } = await defaultAxios.post<PostSignUpResponseData>(

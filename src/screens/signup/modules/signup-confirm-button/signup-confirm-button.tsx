@@ -8,7 +8,7 @@ import { Alert } from 'react-native';
 import { SignUpForm } from '../../hooks';
 import { SignUpScreenNavigationProps } from '../../signup.screen';
 
-import { useSendSignupMutation } from './hooks';
+import { usePostSignupMutation } from './hooks';
 
 import { Button } from '@/atoms';
 import { useMutationIndicator } from '@/providers';
@@ -20,7 +20,7 @@ export const SignUpConfirmButtonModule = memo<SignUpConfirmButtonModuleProps>(
     const navigation = useNavigation<SignUpScreenNavigationProps>();
 
     const { keyboardShown } = useKeyboard();
-    const { mutateAsync, isLoading } = useSendSignupMutation();
+    const { mutateAsync, isLoading } = usePostSignupMutation();
 
     useMutationIndicator([isLoading]);
 

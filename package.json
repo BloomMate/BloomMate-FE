@@ -19,6 +19,7 @@
     "@react-native-masked-view/masked-view": "^0.2.9",
     "@react-navigation/native": "^6.1.7",
     "@react-navigation/stack": "^6.3.17",
+    "@types/": "react-native-community/hooks",
     "@types/color": "^3.0.4",
     "@types/lodash": "npm:@types/lodash-es",
     "axios": "^1.5.0",
