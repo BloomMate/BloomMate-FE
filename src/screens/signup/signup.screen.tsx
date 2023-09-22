@@ -1,4 +1,4 @@
-import { Row, Rows, Stack } from '@mobily/stacks';
+import { Stack } from '@mobily/stacks';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { FormProvider } from 'react-hook-form';
@@ -36,20 +36,14 @@ export const SignUpScreen = ({}: SignUpScreenProps) => {
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <FormProvider {...methods}>
         <BasicLayout>
-          <Rows paddingX={24} paddingTop={20}>
-            <Row height="fluid">
-              <Stack space={24}>
-                <SignUpNameInputModule />
-                <SignUpIdInputModule />
-                <SignUpPwInputModule />
-                <SignUpPwCheckInputModule />
-              </Stack>
-            </Row>
-            <Row height="content">
-              <SignUpConfirmButtonModule />
-            </Row>
-          </Rows>
+          <Stack space={24}>
+            <SignUpNameInputModule />
+            <SignUpIdInputModule />
+            <SignUpPwInputModule />
+            <SignUpPwCheckInputModule />
+          </Stack>
         </BasicLayout>
+        <SignUpConfirmButtonModule />
       </FormProvider>
     </ScrollView>
   );

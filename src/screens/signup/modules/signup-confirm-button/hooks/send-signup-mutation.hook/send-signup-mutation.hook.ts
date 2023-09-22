@@ -1,30 +1,35 @@
 import { useMutation } from 'react-query';
 
-import { useMutationIndicator } from '@/providers';
 import { defaultAxios, logHttpErrorMessage } from '@/utils';
 
-type Newperson = {
+type PostSignUpRequestProps = {
+  id: string;
+  pw: string;
+  name: string;
+};
+
+type PostSignUpResponseData = {
   account_id: string;
   user_name: string;
   password: string;
 };
 
 export const useSendSignupMutation = () => {
-  const { isLoading, mutateAsync } = useMutation(
-    async ({ id, pw, name }: { id: string; pw: string; name: string }) => {
-      try {
-        const { data } = await defaultAxios.post('accounts/signup/', {
+  return useMutation(async ({ id, pw, name }: PostSignUpRequestProps) => {
+    try {
+      const { data } = await defaultAxios.post<PostSignUpResponseData>(
+        'accounts/signup/',
+        {
           user_name: name,
           account_id: id,
           password: pw,
-        });
-      } catch (error) {
-        logHttpErrorMessage(error);
-        throw new Error(error as string);
-      }
-    },
-  );
+        },
+      );
 
-  useMutationIndicator([isLoading]);
-  return { mutateAsync };
+      return data;
+    } catch (error) {
+      logHttpErrorMessage(error);
+      throw new Error(error as string);
+    }
+  });
 };
