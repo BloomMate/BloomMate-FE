@@ -13,11 +13,13 @@
     "test": "jest"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.3.1",
     "@mobily/stacks": "^2.2.2",
     "@react-native-community/hooks": "^3.0.0",
     "@react-native-masked-view/masked-view": "^0.2.9",
     "@react-navigation/native": "^6.1.7",
     "@react-navigation/stack": "^6.3.17",
+    "@types/": "react-native-community/hooks",
     "@types/color": "^3.0.4",
     "@types/lodash": "npm:@types/lodash-es",
     "axios": "^1.5.0",
@@ -51,7 +53,8 @@
     "react-query": "^3.39.3",
     "react-query-native-devtools": "^4.0.0",
     "recoil": "^0.7.7",
-    "rooks": "^7.14.1"
+    "rooks": "^7.14.1",
+    "yup": "^1.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

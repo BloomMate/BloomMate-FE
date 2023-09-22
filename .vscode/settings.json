@@ -5,5 +5,14 @@
   "editor.formatOnSave": true,
   "eslint.enable": true,
   "eslint.validate": ["javascript", "typescript"],
-  "cSpell.words": ["kakao", "MMKV", "mobily", "naver", "textinput", "wonka"]
+  "cSpell.words": [
+    "hookform",
+    "kakao",
+    "MMKV",
+    "mobily",
+    "naver",
+    "Pressable",
+    "signup",
+    "wonka"
+  ]
 }
