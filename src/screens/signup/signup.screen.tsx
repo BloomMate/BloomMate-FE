@@ -1,7 +1,7 @@
+import { Row, Rows, Stack } from '@mobily/stacks';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { FormProvider } from 'react-hook-form';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 import { RootStackParamList } from '../root.navigator';
 
@@ -14,8 +14,7 @@ import {
   SignUpPwInputModule,
 } from './modules';
 
-import { Text } from '@/atoms';
-import { BasicLayout } from '@/layouts';
+import { BasicLayout, ScrollView } from '@/layouts';
 
 type SignUpScreenProps = {};
 
@@ -34,19 +33,24 @@ export const SignUpScreen = ({}: SignUpScreenProps) => {
   const methods = useSignUpForm();
 
   return (
-    <FormProvider {...methods}>
-      <BasicLayout>
-        <KeyboardAwareScrollView>
-          <Text fontSize="24" fontWeight="600" color="green">
-            회원가입
-          </Text>
-          <SignUpNameInputModule />
-          <SignUpIdInputModule />
-          <SignUpPwInputModule />
-          <SignUpPwCheckInputModule />
-          <SignUpConfirmButtonModule />
-        </KeyboardAwareScrollView>
-      </BasicLayout>
-    </FormProvider>
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+      <FormProvider {...methods}>
+        <BasicLayout>
+          <Rows paddingX={24} paddingTop={20}>
+            <Row height="fluid">
+              <Stack space={24}>
+                <SignUpNameInputModule />
+                <SignUpIdInputModule />
+                <SignUpPwInputModule />
+                <SignUpPwCheckInputModule />
+              </Stack>
+            </Row>
+            <Row height="content">
+              <SignUpConfirmButtonModule />
+            </Row>
+          </Rows>
+        </BasicLayout>
+      </FormProvider>
+    </ScrollView>
   );
 };

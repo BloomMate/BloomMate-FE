@@ -1,7 +1,7 @@
+import { Row, Rows, Stack } from '@mobily/stacks';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { FormProvider } from 'react-hook-form';
-import { Button } from 'react-native';
 
 import { RootStackParamList } from '../root.navigator';
 
@@ -12,7 +12,8 @@ import {
   LoginPasswordInputModule,
 } from './modules';
 
-import { BasicLayout } from '@/layouts';
+import { Button } from '@/atoms';
+import { BasicLayout, ScrollView } from '@/layouts';
 
 type LoginScreenProps = {};
 
@@ -27,37 +28,36 @@ export type LoginScreenNavigationRouteProps = RouteProp<
 >;
 
 export const LoginScreen = ({}: LoginScreenProps) => {
-  const buttons: SingleButtonProps[] = [
-    {
-      label: '버튼 1',
-      mode: 'contained',
-      disabled: false,
-    },
-    {
-      label: '버튼 2',
-      mode: 'outlined',
-      disabled: true,
-    },
-  ];
-  // TODO : Use MutationIndicator Properly
-  // useMutationIndicator([true])
-  const [isModalVisible, setModalVisible] = useState(false);
-
   const navigation = useNavigation<LoginScreenNavigationProps>();
   const route = useRoute<LoginScreenNavigationRouteProps>();
   const methods = useLoginForm();
+
   const handlePressSignUpButton = () => {
     navigation.navigate('SignUpScreen');
   };
 
   return (
-    <FormProvider {...methods}>
-      <BasicLayout>
-        <LoginIdInputModule />
-        <LoginPasswordInputModule />
-        <LoginConfirmButtonModule />
-        <Button title="회원가입" onPress={handlePressSignUpButton} />
-      </BasicLayout>
-    </FormProvider>
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+      <FormProvider {...methods}>
+        <BasicLayout>
+          <Rows paddingX={24} paddingY={20}>
+            <Row height="fluid">
+              <Stack space={8} paddingX={24} paddingY={32}>
+                <LoginIdInputModule />
+                <LoginPasswordInputModule />
+              </Stack>
+            </Row>
+            <Row height="content">
+              <Stack space={8}>
+                <LoginConfirmButtonModule />
+                <Button mode="outlined" onPress={handlePressSignUpButton}>
+                  회원가입
+                </Button>
+              </Stack>
+            </Row>
+          </Rows>
+        </BasicLayout>
+      </FormProvider>
+    </ScrollView>
   );
 };

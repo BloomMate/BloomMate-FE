@@ -1,15 +1,14 @@
-import { Box } from '@mobily/stacks';
 import { useNavigation } from '@react-navigation/native';
 import { memo } from 'react';
 import { SubmitHandler, useFormContext } from 'react-hook-form';
-import { Alert, Pressable } from 'react-native';
+import { Alert } from 'react-native';
 
 import { SignUpForm } from '../../hooks';
 import { SignUpScreenNavigationProps } from '../../signup.screen';
 
 import { useSendSignupMutation } from './hooks';
 
-import { Text } from '@/atoms';
+import { Button } from '@/atoms';
 
 type SignUpConfirmButtonModuleProps = {};
 
@@ -43,15 +42,12 @@ export const SignUpConfirmButtonModule = memo<SignUpConfirmButtonModuleProps>(
     };
 
     return (
-      <Box alignX="center" direction="row">
-        <Pressable
-          onPress={handlePressSignUpButton}
-          disabled={!isSignUpPossible}>
-          <Text fontSize="14" fontWeight="500" color="green">
-            회원가입
-          </Text>
-        </Pressable>
-      </Box>
+      <Button
+        mode="contained"
+        onPress={handlePressSignUpButton}
+        disabled={!isSignUpPossible}>
+        회원가입
+      </Button>
     );
   },
 );

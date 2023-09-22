@@ -1,15 +1,13 @@
 import { Stack } from '@mobily/stacks';
-import { memo, useState } from 'react';
+import isUndefined from 'lodash/isUndefined';
+import { memo } from 'react';
 import { useFormContext, useController } from 'react-hook-form';
-import { TextInput } from 'react-native';
 
 import { LoginForm } from '../../hooks';
 
-import { Text } from '@/atoms';
+import { TextInput } from '@/atoms';
 
 export const LoginPasswordInputModule = memo(() => {
-  const [isFocused, setIsFocused] = useState<boolean>(false);
-
   const { control } = useFormContext<LoginForm>();
   const {
     field: { onChange, value },
@@ -22,14 +20,10 @@ export const LoginPasswordInputModule = memo(() => {
         placeholder="비밀번호를 입력하세요."
         value={value}
         secureTextEntry
-        onFocus={() => setIsFocused(true)}
-        onBlur={() => setIsFocused(false)}
         onChangeText={onChange}
-        placeholderTextColor="#AAAAAA"
+        error={!isUndefined(fieldState.error?.message)}
+        errorMsg={fieldState.error?.message as string}
       />
-      <Text fontSize="8" fontWeight="400" color="error">
-        {fieldState.error?.message}
-      </Text>
     </Stack>
   );
 });

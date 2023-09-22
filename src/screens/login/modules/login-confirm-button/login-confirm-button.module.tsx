@@ -1,13 +1,12 @@
-import { Box } from '@mobily/stacks';
 import { useNavigation } from '@react-navigation/native';
 import { memo } from 'react';
 import { SubmitHandler, useFormContext } from 'react-hook-form';
-import { Alert, Pressable } from 'react-native';
+import { Alert } from 'react-native';
 
 import { LoginForm } from '../../hooks';
 import { LoginScreenNavigationProps } from '../../login.screen';
 
-import { Text } from '@/atoms';
+import { Button } from '@/atoms';
 
 type LoginConfirmButtonModuleProps = {};
 
@@ -31,13 +30,12 @@ export const LoginConfirmButtonModule = memo<LoginConfirmButtonModuleProps>(
     };
 
     return (
-      <Box alignX="center" direction="row">
-        <Pressable onPress={handlePressLoginButton} disabled={!isLoginPossible}>
-          <Text fontSize="14" fontWeight="500" color="green">
-            로그인
-          </Text>
-        </Pressable>
-      </Box>
+      <Button
+        onPress={handlePressLoginButton}
+        disabled={!isLoginPossible}
+        mode="contained">
+        로그인
+      </Button>
     );
   },
 );
