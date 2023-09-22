@@ -9,6 +9,7 @@ export const BasicLayout = ({ children }: BasicLayoutProps) => {
   return (
     <Box
       flex="fluid"
+      paddingBottom={32}
       style={{
         width: '100%',
         backgroundColor: palette['white'],

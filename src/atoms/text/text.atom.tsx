@@ -1,27 +1,25 @@
 import { Text as RNText, TextProps as RNTextProps } from 'react-native';
 
-import { getColorStyle, getTextAlignStyle, getTextStyle } from './text.util';
+import { getColorStyle, getFontFamilyByFontWeight, getTextAlignStyle, getVariantsStyle } from './text.util';
 
 export type textAligns = 'auto' | 'left' | 'right' | 'center' | 'justify';
-export type fontWeightType = '600' | '500' | '400';
-export type fontSizeType = '8' | '12' | '14' | '16' | '18' | '20' | '24' | '28';
+export type fontWeightType = 'Light' | 'Medium' | 'Bold' ;
 export type fontColorType =
-  | 'gray-1000'
   | 'gray-900'
   | 'gray-800'
   | 'gray-700'
   | 'gray-600'
-  | 'gray-500'
-  | 'gray-400'
-  | 'primary'
   | 'error'
   | 'white'
   | 'black'
-  | 'green';
+
+export type textVariants = 'displayLarge' | 'displayMedium' | 'displaySmall' | 'headlineLarge' | 'headlineMedium' | 
+'headlineSmall' | 'titleLarge' | 'titleMedium' | 'titleSmall' | 'labelLarge' | 'labelMedium' | 'labelSmall' | 'bodyLarge' | 
+'bodyMedium' | 'bodySmall'
 
 type TextProps = RNTextProps & {
+  variants: textVariants;
   fontWeight: fontWeightType;
-  fontSize: fontSizeType;
   color: fontColorType;
   textAlignment?: textAligns;
 };
@@ -29,19 +27,20 @@ type TextProps = RNTextProps & {
 export const Text = ({
   children,
   fontWeight,
-  fontSize,
+  variants,
   color,
   textAlignment,
   style,
   ...props
 }: TextProps) => {
-  const categoryStyle = getTextStyle(fontWeight, fontSize);
+  const fontFamily = getFontFamilyByFontWeight(fontWeight);
+  const variantsStyle = getVariantsStyle(variants)
   const colorStyle = getColorStyle(color);
   const textAlignmentStyle = getTextAlignStyle(textAlignment);
 
   return (
     <RNText
-      style={[categoryStyle, colorStyle, textAlignmentStyle, style]}
+      style={[fontFamily,variantsStyle, colorStyle, textAlignmentStyle, style]}
       {...props}>
       {children}
     </RNText>

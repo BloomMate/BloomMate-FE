@@ -27,8 +27,21 @@ export type LoginScreenNavigationRouteProps = RouteProp<
 >;
 
 export const LoginScreen = ({}: LoginScreenProps) => {
+  const buttons: SingleButtonProps[] = [
+    {
+      label: '버튼 1',
+      mode: 'contained',
+      disabled: false,
+    },
+    {
+      label: '버튼 2',
+      mode: 'outlined',
+      disabled: true,
+    },
+  ];
   // TODO : Use MutationIndicator Properly
   // useMutationIndicator([true])
+  const [isModalVisible, setModalVisible] = useState(false);
 
   const navigation = useNavigation<LoginScreenNavigationProps>();
   const route = useRoute<LoginScreenNavigationRouteProps>();

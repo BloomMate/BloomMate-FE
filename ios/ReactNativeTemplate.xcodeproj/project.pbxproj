@@ -14,6 +14,13 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-ReactNativeTemplate-ReactNativeTemplateTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-ReactNativeTemplate-ReactNativeTemplateTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		A664E176F05146B5B94D90C1 /* GmarketSansTTFBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB71A63D63B541A28361FF7C /* GmarketSansTTFBold.ttf */; };
+		851A6DC68A9D4FC4B31C722D /* GmarketSansTTFLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 40CED9EB78604DD18039BCF1 /* GmarketSansTTFLight.ttf */; };
+		6191DCCB5BB1477E93D9755E /* GmarketSansTTFMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9CACEF90DB4745D4B952D7EB /* GmarketSansTTFMedium.ttf */; };
+		B51E48F2CB654C92BAAB6C4D /* 인천교육소통.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F17600D6E0D0412195A5340F /* 인천교육소통.ttf */; };
+		47EC2B429F0F46EC8188C429 /* 인천교육시민.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 62D6051938BF476290C13C78 /* 인천교육시민.ttf */; };
+		625D7D5CA16B4DFFA75465E7 /* 인천교육자람.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B5F4E82536340609BBD13F9 /* 인천교육자람.ttf */; };
+		BE2814D78F614AF6B776B1D6 /* 인천교육힘찬.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DEE1F7270DB84FB18DAAD3A4 /* 인천교육힘찬.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +51,13 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ReactNativeTemplate/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-ReactNativeTemplate-ReactNativeTemplateTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactNativeTemplate-ReactNativeTemplateTests.release.xcconfig"; path = "Target Support Files/Pods-ReactNativeTemplate-ReactNativeTemplateTests/Pods-ReactNativeTemplate-ReactNativeTemplateTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		AB71A63D63B541A28361FF7C /* GmarketSansTTFBold.ttf */ = {isa = PBXFileReference; name = "GmarketSansTTFBold.ttf"; path = "../src/atoms/fonts/GmarketSansTTFBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		40CED9EB78604DD18039BCF1 /* GmarketSansTTFLight.ttf */ = {isa = PBXFileReference; name = "GmarketSansTTFLight.ttf"; path = "../src/atoms/fonts/GmarketSansTTFLight.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		9CACEF90DB4745D4B952D7EB /* GmarketSansTTFMedium.ttf */ = {isa = PBXFileReference; name = "GmarketSansTTFMedium.ttf"; path = "../src/atoms/fonts/GmarketSansTTFMedium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F17600D6E0D0412195A5340F /* 인천교육소통.ttf */ = {isa = PBXFileReference; name = "인천교육소통.ttf"; path = "../src/atoms/fonts/인천교육소통.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		62D6051938BF476290C13C78 /* 인천교육시민.ttf */ = {isa = PBXFileReference; name = "인천교육시민.ttf"; path = "../src/atoms/fonts/인천교육시민.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		5B5F4E82536340609BBD13F9 /* 인천교육자람.ttf */ = {isa = PBXFileReference; name = "인천교육자람.ttf"; path = "../src/atoms/fonts/인천교육자람.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		DEE1F7270DB84FB18DAAD3A4 /* 인천교육힘찬.ttf */ = {isa = PBXFileReference; name = "인천교육힘찬.ttf"; path = "../src/atoms/fonts/인천교육힘찬.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +136,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				D00541E1F25F430FA0ABA222 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -147,6 +162,21 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		D00541E1F25F430FA0ABA222 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				AB71A63D63B541A28361FF7C /* GmarketSansTTFBold.ttf */,
+				40CED9EB78604DD18039BCF1 /* GmarketSansTTFLight.ttf */,
+				9CACEF90DB4745D4B952D7EB /* GmarketSansTTFMedium.ttf */,
+				F17600D6E0D0412195A5340F /* 인천교육소통.ttf */,
+				62D6051938BF476290C13C78 /* 인천교육시민.ttf */,
+				5B5F4E82536340609BBD13F9 /* 인천교육자람.ttf */,
+				DEE1F7270DB84FB18DAAD3A4 /* 인천교육힘찬.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -244,6 +274,13 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				A664E176F05146B5B94D90C1 /* GmarketSansTTFBold.ttf in Resources */,
+				851A6DC68A9D4FC4B31C722D /* GmarketSansTTFLight.ttf in Resources */,
+				6191DCCB5BB1477E93D9755E /* GmarketSansTTFMedium.ttf in Resources */,
+				B51E48F2CB654C92BAAB6C4D /* 인천교육소통.ttf in Resources */,
+				47EC2B429F0F46EC8188C429 /* 인천교육시민.ttf in Resources */,
+				625D7D5CA16B4DFFA75465E7 /* 인천교육자람.ttf in Resources */,
+				BE2814D78F614AF6B776B1D6 /* 인천교육힘찬.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
