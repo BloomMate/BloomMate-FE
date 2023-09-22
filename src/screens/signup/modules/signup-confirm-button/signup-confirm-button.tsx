@@ -7,6 +7,8 @@ import { Alert, Pressable } from 'react-native';
 import { SignUpForm } from '../../hooks';
 import { SignUpScreenNavigationProps } from '../../signup.screen';
 
+import { useSendSignupMutation } from './hooks';
+
 import { Text } from '@/atoms';
 
 type SignUpConfirmButtonModuleProps = {};
@@ -20,14 +22,24 @@ export const SignUpConfirmButtonModule = memo<SignUpConfirmButtonModuleProps>(
     const { isDirty, isValid, errors } = formState;
 
     const isSignUpPossible = isDirty && isValid;
-
+    const { mutateAsync } = useSendSignupMutation();
     // SubmitHandler + formType 을 넣어줬기때문에 인수의 타입이 자동으로 잡히는 모습입니다.
     const showAlert: SubmitHandler<SignUpForm> = ({ Name }) => {
       Alert.alert('회원가입에 성공하였습니다.', `${Name}님 환영합니다!`);
     };
 
+    const addNewPerson: SubmitHandler<SignUpForm> = async ({
+      ID: id,
+      PassWord: pw,
+      Name: name,
+    }) => {
+      await mutateAsync({ id, pw, name });
+    };
+
     const handlePressSignUpButton = () => {
+      console.log('눌림');
       handleSubmit(showAlert)();
+      handleSubmit(addNewPerson)();
     };
 
     return (
