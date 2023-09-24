@@ -42,7 +42,7 @@ export const LoginScreen = ({}: LoginScreenProps) => {
         <BasicLayout>
           <Rows paddingX={24} paddingY={20}>
             <Row height="fluid">
-              <Stack space={8} paddingX={24} paddingY={32}>
+              <Stack space={24} paddingX={24} paddingY={32}>
                 <LoginIdInputModule />
                 <LoginPasswordInputModule />
               </Stack>

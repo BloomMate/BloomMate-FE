@@ -17,6 +17,7 @@ export const LoginPasswordInputModule = memo(() => {
   return (
     <Stack space={4}>
       <TextInput
+        label="비밀번호를 입력하세요"
         placeholder="비밀번호를 입력하세요."
         value={value}
         secureTextEntry

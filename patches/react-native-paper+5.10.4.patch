@@ -1,0 +1,13 @@
+diff --git a/node_modules/react-native-paper/src/components/TextInput/constants.tsx b/node_modules/react-native-paper/src/components/TextInput/constants.tsx
+index 63e080a..c1225d2 100644
+--- a/node_modules/react-native-paper/src/components/TextInput/constants.tsx
++++ b/node_modules/react-native-paper/src/components/TextInput/constants.tsx
+@@ -26,7 +26,7 @@ export const MD2_LABEL_PADDING_TOP = 30;
+ export const MD3_LABEL_PADDING_TOP = 26;
+ 
+ export const MD2_LABEL_PADDING_HORIZONTAL = 12;
+-export const MD3_LABEL_PADDING_HORIZONTAL = 16;
++export const MD3_LABEL_PADDING_HORIZONTAL = 0;
+ 
+ export const MD2_FLAT_INPUT_OFFSET = 8;
+ export const MD3_FLAT_INPUT_OFFSET = 16;
