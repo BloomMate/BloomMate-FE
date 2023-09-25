@@ -32,15 +32,18 @@ type TextInputProps = Omit<PaperTextInputProps, 'error' | 'right' | 'mode'> &
 export const TextInput = ({
   error,
   rightIconName,
-  rightIconColor,
   ...props
 }: TextInputProps) => {
   const bodyLargeFontStyle = getVariantsStyle('bodyLarge');
+  const bodySmallFontStyle = getVariantsStyle('bodySmall');
   const renderTextInput = () => {
     return (
       <PaperTextInput
-        mode="flat"
-        style={{ backgroundColor: palette['white'] }}
+        mode="outlined"
+        style={{
+          backgroundColor: palette['white'],
+          margin: 10,
+        }}
         theme={{
           fonts: {
             bodyLarge: {
@@ -48,11 +51,12 @@ export const TextInput = ({
               fontFamily: 'GmarketSansTTFMedium',
             },
             bodySmall: {
-              ...bodyLargeFontStyle,
+              ...bodySmallFontStyle,
               fontFamily: 'GmarketSansTTFLight',
             },
           },
           colors: {
+            onSurface: palette['black'],
             onSurfaceVariant: palette['black'],
             background: palette['white'],
             primary: palette['green-500'],
@@ -61,11 +65,7 @@ export const TextInput = ({
         }}
         placeholderTextColor={palette['gray-400']}
         error={error}
-        right={
-          rightIconName && (
-            <PaperTextInput.Icon icon={rightIconName} color={rightIconColor} />
-          )
-        }
+        right={rightIconName && <PaperTextInput.Icon icon={rightIconName} />}
         {...props}
       />
     );
@@ -77,7 +77,7 @@ export const TextInput = ({
     <Stack space={8} style={{ minHeight: 80 }}>
       {renderTextInput()}
       {error === true && (
-        <Text color="error" fontWeight="Medium" variants="bodySmall">
+        <Text color="error" fontWeight="Medium" variants="bodySmall" style={{}}>
           {props.errorMsg}
         </Text>
       )}
