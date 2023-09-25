@@ -42,7 +42,6 @@ export const TextInput = ({
         mode="outlined"
         style={{
           backgroundColor: palette['white'],
-          margin: 10,
         }}
         theme={{
           fonts: {
@@ -61,6 +60,7 @@ export const TextInput = ({
             background: palette['white'],
             primary: palette['green-500'],
             disabled: palette['gray-500'],
+            error: palette['error'],
           },
         }}
         placeholderTextColor={palette['gray-400']}
@@ -74,7 +74,7 @@ export const TextInput = ({
   props = props as ErrorProps;
 
   return (
-    <Stack space={8} style={{ minHeight: 80 }}>
+    <Stack space={8} style={{}}>
       {renderTextInput()}
       {error === true && (
         <Text color="error" fontWeight="Medium" variants="bodySmall" style={{}}>

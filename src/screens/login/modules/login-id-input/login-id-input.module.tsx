@@ -26,6 +26,7 @@ export const LoginIdInputModule = memo<LoginIdInputModuleProps>(() => {
         rightIconName="close"
         error={!isUndefined(fieldState.error)}
         errorMsg={fieldState.error?.message as string}
+        autoCapitalize="none"
       />
     </Stack>
   );

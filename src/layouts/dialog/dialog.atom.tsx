@@ -53,16 +53,12 @@ export const Dialog = memo<DialogProps>(
           <Columns space={12}>
             {okayButton && (
               <Column>
-                <Button {...okayButton} style={{}}>
-                  {okayButton.label}
-                </Button>
+                <Button {...okayButton}>{okayButton.label}</Button>
               </Column>
             )}
             {cancelButton && (
               <Column>
-                <Button {...cancelButton} style={{}}>
-                  {cancelButton.label}
-                </Button>
+                <Button {...cancelButton}>{cancelButton.label}</Button>
               </Column>
             )}
           </Columns>
