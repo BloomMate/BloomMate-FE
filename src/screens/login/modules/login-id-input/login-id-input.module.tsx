@@ -23,6 +23,7 @@ export const LoginIdInputModule = memo<LoginIdInputModuleProps>(() => {
         label="id"
         placeholder="아이디를 입력해주세요"
         onChangeText={onChange}
+        rightIconName="close"
         error={!isUndefined(fieldState.error)}
         errorMsg={fieldState.error?.message as string}
       />

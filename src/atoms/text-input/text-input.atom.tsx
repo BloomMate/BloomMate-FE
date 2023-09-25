@@ -9,8 +9,6 @@ import { Text } from '../text/text.atom';
 
 import { palette } from '@/utils';
 
-
-
 type ErrorProps = {
   error: true;
   errorMsg: string;
@@ -23,21 +21,29 @@ type NonErrorProps = {
 type Error = ErrorProps | NonErrorProps;
 
 type Right = {
-    rightIconName?: string;
-    rightIconColor?: string;
-}
+  rightIconName?: string;
+  rightIconColor?: string;
+};
 
-type TextInputProps = Omit<PaperTextInputProps, 'error' | 'right'> &
+type TextInputProps = Omit<PaperTextInputProps, 'error' | 'right' | 'mode'> &
   Error &
   Right;
 
-export const TextInput = ({ error, rightIconName, rightIconColor, ...props }: TextInputProps) => {
-  
-const bodyLargeFontStyle = getVariantsStyle('bodyLarge');
+export const TextInput = ({
+  error,
+  rightIconName,
+  ...props
+}: TextInputProps) => {
+  const bodyLargeFontStyle = getVariantsStyle('bodyLarge');
+  const bodySmallFontStyle = getVariantsStyle('bodySmall');
   const renderTextInput = () => {
     return (
       <PaperTextInput
-        style={{ backgroundColor: palette['white'] }}
+        mode="outlined"
+        style={{
+          backgroundColor: palette['white'],
+          margin: 10,
+        }}
         theme={{
           fonts: {
             bodyLarge: {
@@ -45,23 +51,21 @@ const bodyLargeFontStyle = getVariantsStyle('bodyLarge');
               fontFamily: 'GmarketSansTTFMedium',
             },
             bodySmall: {
-              ...bodyLargeFontStyle,
+              ...bodySmallFontStyle,
               fontFamily: 'GmarketSansTTFLight',
             },
           },
           colors: {
+            onSurface: palette['black'],
             onSurfaceVariant: palette['black'],
             background: palette['white'],
             primary: palette['green-500'],
             disabled: palette['gray-500'],
           },
         }}
+        placeholderTextColor={palette['gray-400']}
         error={error}
-        right={
-          rightIconName && (
-            <PaperTextInput.Icon icon={rightIconName} color={rightIconColor} />
-          )
-        }
+        right={rightIconName && <PaperTextInput.Icon icon={rightIconName} />}
         {...props}
       />
     );
@@ -70,10 +74,10 @@ const bodyLargeFontStyle = getVariantsStyle('bodyLarge');
   props = props as ErrorProps;
 
   return (
-    <Stack space={8}>
+    <Stack space={8} style={{ minHeight: 80 }}>
       {renderTextInput()}
       {error === true && (
-        <Text color="error" fontWeight="Bold" variants={'bodyLarge'}>
+        <Text color="error" fontWeight="Medium" variants="bodySmall" style={{}}>
           {props.errorMsg}
         </Text>
       )}
