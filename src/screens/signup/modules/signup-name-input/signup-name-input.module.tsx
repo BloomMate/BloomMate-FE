@@ -2,8 +2,10 @@ import { Stack } from '@mobily/stacks';
 import { isUndefined } from 'lodash';
 import { memo } from 'react';
 import { useController, useFormContext } from 'react-hook-form';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 import { SignUpForm } from '../../hooks';
+import { $signUpState } from '../../signup.state';
 
 import { TextInput } from '@/atoms';
 
@@ -15,6 +17,8 @@ export const SignUpNameInputModule = memo<SignUpNameInputModuleProps>(() => {
     field: { onChange, value },
     fieldState,
   } = useController({ control, name: 'Name' });
+  const { screenStep } = useRecoilValue($signUpState);
+  const setSignUpState = useSetRecoilState($signUpState);
 
   return (
     <Stack space={4}>

@@ -2,17 +2,21 @@ import { Stack } from '@mobily/stacks';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { FormProvider } from 'react-hook-form';
+import { useRecoilValue } from 'recoil';
 
 import { RootStackParamList } from '../root.navigator';
 
 import { useSignUpForm } from './hooks';
 import {
-  SignUpConfirmButtonModule,
+  SignUpBackModule,
+  SignUpCopyModule,
   SignUpIdInputModule,
   SignUpNameInputModule,
+  SignUpNextModule,
   SignUpPwCheckInputModule,
   SignUpPwInputModule,
 } from './modules';
+import { $signUpState } from './signup.state';
 
 import { BasicLayout, ScrollView } from '@/layouts';
 
@@ -28,6 +32,7 @@ export type SignUpScreenNavigationRouteProps = RouteProp<
   'SignUpScreen'
 >;
 export const SignUpScreen = ({}: SignUpScreenProps) => {
+  const { screenStep } = useRecoilValue($signUpState);
   const navigation = useNavigation<SignUpScreenNavigationProps>();
   const route = useRoute<SignUpScreenNavigationRouteProps>();
   const methods = useSignUpForm();
@@ -36,14 +41,16 @@ export const SignUpScreen = ({}: SignUpScreenProps) => {
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <FormProvider {...methods}>
         <BasicLayout>
+          <SignUpBackModule />
+          <SignUpCopyModule />
           <Stack space={24}>
-            <SignUpNameInputModule />
-            <SignUpIdInputModule />
-            <SignUpPwInputModule />
-            <SignUpPwCheckInputModule />
+            {screenStep === 'NAME_INPUT' && <SignUpNameInputModule />}
+            {screenStep === 'ID_INPUT' && <SignUpIdInputModule />}
+            {screenStep === 'PW_INPUT' && <SignUpPwInputModule />}
+            {screenStep === 'PW_INPUT' && <SignUpPwCheckInputModule />}
           </Stack>
+          <SignUpNextModule />
         </BasicLayout>
-        <SignUpConfirmButtonModule />
       </FormProvider>
     </ScrollView>
   );
