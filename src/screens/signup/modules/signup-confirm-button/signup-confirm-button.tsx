@@ -3,7 +3,6 @@ import { useKeyboard } from '@react-native-community/hooks';
 import { useNavigation } from '@react-navigation/native';
 import { memo } from 'react';
 import { SubmitHandler, useFormContext } from 'react-hook-form';
-import { Alert } from 'react-native';
 
 import { SignUpForm } from '../../hooks';
 import { SignUpScreenNavigationProps } from '../../signup.screen';
@@ -32,9 +31,12 @@ export const SignUpConfirmButtonModule = memo<SignUpConfirmButtonModuleProps>(
       ID: id,
       PassWord: pw,
       Name: name,
+      TIIUN: tiiun,
+      GardenSize: gardensize,
+      Address: address,
     }) => {
-      await mutateAsync({ id, pw, name });
-      Alert.alert('회원가입에 성공하였습니다.', `${name}님 환영합니다!`);
+      await mutateAsync({ id, pw, name, tiiun, gardensize, address });
+      navigation.navigate('LoginScreen');
     };
 
     const handlePressSignUpButton = () => {

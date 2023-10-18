@@ -7,6 +7,9 @@ export type SignUpForm = {
   ID: string;
   PassWord: string;
   PassWordCheck: string;
+  TIIUN: string;
+  GardenSize: number;
+  Address: string;
 };
 
 const SignUpSchemaFormSchema: yup.ObjectSchema<SignUpForm> = yup
@@ -31,6 +34,9 @@ const SignUpSchemaFormSchema: yup.ObjectSchema<SignUpForm> = yup
       .string()
       .required('비밀번호를 한번 더 입력해주세요')
       .oneOf([yup.ref('PassWord')], '비밀번호가 일치하지 않습니다.'),
+    TIIUN: yup.string().required('틔운 제품키를 입력해주세요'),
+    GardenSize: yup.number().required('하나를 선택해주세요.'),
+    Address: yup.string().required('주소를 입력해주세요.'),
   });
 
 export const useSignUpForm = () => {
@@ -40,6 +46,9 @@ export const useSignUpForm = () => {
       ID: undefined,
       PassWord: undefined,
       PassWordCheck: undefined,
+      TIIUN: undefined,
+      GardenSize: NaN,
+      Address: undefined,
     },
     resolver: yupResolver(SignUpSchemaFormSchema),
     reValidateMode: 'onChange',

@@ -8,13 +8,18 @@ import { RootStackParamList } from '../root.navigator';
 
 import { useSignUpForm } from './hooks';
 import {
+  SignUpAddressModule,
   SignUpBackModule,
+  SignUpConfirmButtonModule,
   SignUpCopyModule,
   SignUpIdInputModule,
   SignUpNameInputModule,
   SignUpNextModule,
+  SignUpProgressBarModule,
   SignUpPwCheckInputModule,
   SignUpPwInputModule,
+  SignUpTiiunModule,
+  SignUpTurfModule,
 } from './modules';
 import { $signUpState } from './signup.state';
 
@@ -42,14 +47,22 @@ export const SignUpScreen = ({}: SignUpScreenProps) => {
       <FormProvider {...methods}>
         <BasicLayout>
           <SignUpBackModule />
+          <SignUpProgressBarModule />
           <SignUpCopyModule />
           <Stack space={24}>
             {screenStep === 'NAME_INPUT' && <SignUpNameInputModule />}
             {screenStep === 'ID_INPUT' && <SignUpIdInputModule />}
             {screenStep === 'PW_INPUT' && <SignUpPwInputModule />}
             {screenStep === 'PW_INPUT' && <SignUpPwCheckInputModule />}
+            {screenStep === 'TIIUN_INPUT' && <SignUpTiiunModule />}
+            {screenStep === 'TURF_INPUT' && <SignUpTurfModule />}
+            {screenStep === 'ADDRESS_INPUT' && <SignUpAddressModule />}
           </Stack>
-          <SignUpNextModule />
+          {screenStep === 'ADDRESS_INPUT' ? (
+            <SignUpConfirmButtonModule />
+          ) : (
+            <SignUpNextModule />
+          )}
         </BasicLayout>
       </FormProvider>
     </ScrollView>
