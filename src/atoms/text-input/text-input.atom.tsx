@@ -55,12 +55,21 @@ export const TextInput = ({
             },
           },
           colors: {
+<<<<<<< HEAD
             onSurface: palette['gray-900'],
             onSurfaceVariant: palette['gray-900'],
             primary: palette['teal-800'],
             error: palette['error'],
             outline: palette['gray-900'],
             disabled: palette['gray-400'],
+=======
+            onSurface: palette['black'],
+            onSurfaceVariant: palette['black'],
+            background: palette['white'],
+            primary: palette['green-500'],
+            disabled: palette['gray-500'],
+            error: palette['error'],
+>>>>>>> 2631a026ca2ecf8456efd55e92b00bce5a0ef97f
           },
         }}
         placeholderTextColor={palette['gray-400']}
@@ -81,7 +90,7 @@ export const TextInput = ({
   props = props as ErrorProps;
 
   return (
-    <Stack space={8} style={{ minHeight: 80 }}>
+    <Stack space={8} style={{}}>
       {renderTextInput()}
       {error === true && (
         <Text color="error" fontWeight="Medium" variants="bodySmall" style={{}}>
