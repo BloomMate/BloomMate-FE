@@ -7,11 +7,7 @@ import { useRecoilValue } from 'recoil';
 import { RootStackParamList } from '../root.navigator';
 
 import { useSignUpForm } from './hooks';
-import {
-  SignUpBackModule,
-  SignUpFooterModule,
-  SignUpProgressBarModule,
-} from './modules';
+import { SignUpFooterModule, SignUpHeaderModule } from './modules';
 import { $signUpState } from './signup.state';
 
 import { BasicLayout, ScrollView } from '@/layouts';
@@ -34,20 +30,19 @@ export const SignUpScreen = ({}: SignUpScreenProps) => {
   const methods = useSignUpForm();
 
   return (
-    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-      <FormProvider {...methods}>
+    <FormProvider {...methods}>
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <BasicLayout>
           <Rows>
             <Row height="fluid">
-              <SignUpBackModule />
-              <SignUpProgressBarModule />
+              <SignUpHeaderModule />
             </Row>
             <Row height="content">
               <SignUpFooterModule />
             </Row>
           </Rows>
         </BasicLayout>
-      </FormProvider>
-    </ScrollView>
+      </ScrollView>
+    </FormProvider>
   );
 };

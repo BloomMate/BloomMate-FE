@@ -9,6 +9,8 @@ export const BasicLayout = ({ children }: BasicLayoutProps) => {
   return (
     <Box
       flex="fluid"
+      paddingX={24}
+      paddingTop={12}
       paddingBottom={32}
       style={{
         width: '100%',
