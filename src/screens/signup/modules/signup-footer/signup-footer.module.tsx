@@ -10,14 +10,15 @@ type SignUpFooterModuleProps = {};
 
 export const SignUpFooterModule = memo<SignUpFooterModuleProps>(() => {
   const [{ screenStep }, setSignUpState] = useRecoilState($signUpState);
-  const currentScreenStepIndex = signUpSteps.findIndex(screenStep);
+  const currentScreenStepIndex = signUpSteps.indexOf(screenStep);
 
-  const copy =
-    currentScreenStepIndex === signUpSteps.length() - 1 ? '회원가입' : '다음';
+  const isLastStep = currentScreenStepIndex === signUpSteps.length - 1;
+
+  const copy = isLastStep ? '회원가입' : '다음';
 
   return (
     <Box>
-      <Button mode="contained">회원가입</Button>
+      <Button mode="contained">{copy}</Button>
     </Box>
   );
 });
