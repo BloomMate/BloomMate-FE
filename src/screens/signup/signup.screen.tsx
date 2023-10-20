@@ -1,4 +1,4 @@
-import { Row, Rows } from '@mobily/stacks';
+import { Row, Rows, Stack } from '@mobily/stacks';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { FormProvider } from 'react-hook-form';
@@ -7,7 +7,11 @@ import { useRecoilValue } from 'recoil';
 import { RootStackParamList } from '../root.navigator';
 
 import { useSignUpForm } from './hooks';
-import { SignUpFooterModule, SignUpHeaderModule } from './modules';
+import {
+  SignUpContentModule,
+  SignUpFooterModule,
+  SignUpHeaderModule,
+} from './modules';
 import { $signUpState } from './signup.state';
 
 import { BasicLayout, ScrollView } from '@/layouts';
@@ -35,7 +39,10 @@ export const SignUpScreen = ({}: SignUpScreenProps) => {
         <BasicLayout>
           <Rows>
             <Row height="fluid">
-              <SignUpHeaderModule />
+              <Stack space={20}>
+                <SignUpHeaderModule />
+                <SignUpContentModule />
+              </Stack>
             </Row>
             <Row height="content">
               <SignUpFooterModule />
