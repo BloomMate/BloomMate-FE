@@ -1,4 +1,4 @@
-import { Stack } from '@mobily/stacks';
+import { Row, Rows } from '@mobily/stacks';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { FormProvider } from 'react-hook-form';
@@ -8,18 +8,9 @@ import { RootStackParamList } from '../root.navigator';
 
 import { useSignUpForm } from './hooks';
 import {
-  SignUpAddressModule,
   SignUpBackModule,
-  SignUpConfirmButtonModule,
-  SignUpCopyModule,
-  SignUpIdInputModule,
-  SignUpNameInputModule,
-  SignUpNextModule,
+  SignUpFooterModule,
   SignUpProgressBarModule,
-  SignUpPwCheckInputModule,
-  SignUpPwInputModule,
-  SignUpTiiunModule,
-  SignUpTurfModule,
 } from './modules';
 import { $signUpState } from './signup.state';
 
@@ -46,23 +37,15 @@ export const SignUpScreen = ({}: SignUpScreenProps) => {
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <FormProvider {...methods}>
         <BasicLayout>
-          <SignUpBackModule />
-          <SignUpProgressBarModule />
-          <SignUpCopyModule />
-          <Stack space={24}>
-            {screenStep === 'NAME_INPUT' && <SignUpNameInputModule />}
-            {screenStep === 'ID_INPUT' && <SignUpIdInputModule />}
-            {screenStep === 'PW_INPUT' && <SignUpPwInputModule />}
-            {screenStep === 'PW_INPUT' && <SignUpPwCheckInputModule />}
-            {screenStep === 'TIIUN_INPUT' && <SignUpTiiunModule />}
-            {screenStep === 'TURF_INPUT' && <SignUpTurfModule />}
-            {screenStep === 'ADDRESS_INPUT' && <SignUpAddressModule />}
-          </Stack>
-          {screenStep === 'ADDRESS_INPUT' ? (
-            <SignUpConfirmButtonModule />
-          ) : (
-            <SignUpNextModule />
-          )}
+          <Rows>
+            <Row height="fluid">
+              <SignUpBackModule />
+              <SignUpProgressBarModule />
+            </Row>
+            <Row height="content">
+              <SignUpFooterModule />
+            </Row>
+          </Rows>
         </BasicLayout>
       </FormProvider>
     </ScrollView>
