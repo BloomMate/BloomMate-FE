@@ -1,4 +1,4 @@
-import { atom } from 'recoil';
+import { atom, selector } from 'recoil';
 
 export enum ESignUpStep {
   'NAME_INPUT' = 'NAME_INPUT',
@@ -26,5 +26,15 @@ export const $signUpState = atom<SignUpState>({
   key: 'signUpState',
   default: {
     screenStep: signUpSteps[0],
+  },
+});
+
+export const $currentScreenStepIndexSelector = selector({
+  key: 'currentScreenStepIndex',
+  get: ({ get }) => {
+    const { screenStep } = get($signUpState);
+    const currentScreenStepIndex = signUpSteps.indexOf(screenStep);
+
+    return currentScreenStepIndex;
   },
 });
