@@ -42,7 +42,6 @@ export const TextInput = ({
         mode="outlined"
         style={{
           backgroundColor: palette['white'],
-          margin: 10,
         }}
         theme={{
           fonts: {
@@ -56,16 +55,24 @@ export const TextInput = ({
             },
           },
           colors: {
-            onSurface: palette['black'],
-            onSurfaceVariant: palette['black'],
-            background: palette['white'],
-            primary: palette['green-500'],
-            disabled: palette['gray-500'],
+            onSurface: palette['gray-900'],
+            onSurfaceVariant: palette['gray-900'],
+            primary: palette['teal-800'],
+            error: palette['error'],
+            outline: palette['gray-900'],
+            disabled: palette['gray-400'],
           },
         }}
         placeholderTextColor={palette['gray-400']}
         error={error}
-        right={rightIconName && <PaperTextInput.Icon icon={rightIconName} />}
+        right={
+          rightIconName && (
+            <PaperTextInput.Icon
+              color={palette['gray-400']}
+              icon={rightIconName}
+            />
+          )
+        }
         {...props}
       />
     );

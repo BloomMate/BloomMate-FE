@@ -24,7 +24,7 @@ export const Dialog = memo<DialogProps>(
           paddingX={10}
           style={{
             backgroundColor: palette['white'],
-            borderWidth: 3,
+            borderWidth: 2,
             borderColor: palette['green-500'],
             borderRadius: 8,
             alignItems: 'center',
@@ -38,13 +38,13 @@ export const Dialog = memo<DialogProps>(
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-            <Text color="gray-900" fontWeight="Bold" variants="headlineLarge">
+            <Text color="gray-900" fontWeight="Medium" variants="headlineLarge">
               {title}
             </Text>
             {content && (
               <Text
                 color="gray-800"
-                fontWeight="Medium"
+                fontWeight="Light"
                 variants={'headlineSmall'}>
                 {content}
               </Text>

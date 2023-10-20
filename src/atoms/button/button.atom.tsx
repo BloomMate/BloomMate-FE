@@ -6,20 +6,16 @@ import { getVariantsStyle } from '../text';
 
 import { palette } from '@/utils';
 
-
 export type ButtonProps = Omit<ComponentProps<typeof PaperButton>, 'mode'> & {
   mode: 'outlined' | 'contained' | 'text';
 };
 
-export const Button = ({
-  children,
-  mode,
-  ...props
-}: ButtonProps) => {
-    const textColor = mode === 'contained' ? palette['white'] : palette['green-600']
+export const Button = ({ children, mode, ...props }: ButtonProps) => {
+  const textColor =
+    mode === 'contained' ? palette['white'] : palette['green-600'];
 
-    const labelLargeFontStyle = getVariantsStyle('labelLarge');
-    const rippleColor = color(textColor).alpha(0.33).rgb().string();
+  const labelLargeFontStyle = getVariantsStyle('labelLarge');
+  const rippleColor = color(textColor).alpha(0.33).rgb().string();
 
   return (
     <PaperButton
@@ -33,12 +29,11 @@ export const Button = ({
           },
         },
         colors: {
-          primary: palette['green-600'],
+          primary: palette['teal-800'],
           onPrimary: palette['white'],
           surfaceDisabled: palette['gray-300'],
           onSurfaceDisabled: palette['gray-500'],
-          outline: palette['green-600'],
-          
+          outline: palette['green-800'],
         },
         roundness: 1,
       }}

@@ -16,7 +16,7 @@ type CTASectionProps = {
 
 export const CTASection = ({
   buttons,
-  direction = 'row',
+  direction = 'col',
   style,
 }: CTASectionProps) => {
   const { keyboardShown } = useKeyboard();
@@ -30,7 +30,7 @@ export const CTASection = ({
             style={[
               mode === 'contained' &&
                 !disabled && {
-                  borderColor: palette['green-500'],
+                  borderColor: palette['teal-800'],
                   borderWidth: 1,
                   borderRadius: 6,
                   backgroundColor: palette['white'],

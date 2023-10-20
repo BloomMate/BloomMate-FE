@@ -13,7 +13,7 @@ import {
 } from './modules';
 
 import { Button } from '@/atoms';
-import { BasicLayout, ScrollView } from '@/layouts';
+import { BasicLayout, Dialog, ScrollView, SingleButtonProps } from '@/layouts';
 
 type LoginScreenProps = {};
 
@@ -35,11 +35,35 @@ export const LoginScreen = ({}: LoginScreenProps) => {
   const handlePressSignUpButton = () => {
     navigation.navigate('SignUpScreen');
   };
+  const buttons: SingleButtonProps[] = [
+    {
+      label: '버튼 1',
+      mode: 'contained',
+      disabled: false,
+    },
+    {
+      label: '버튼 2',
+      mode: 'outlined',
+      disabled: true,
+    },
+  ];
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <FormProvider {...methods}>
         <BasicLayout>
+          {/* <CTASection direction="row" buttons={buttons} /> */}
+          <Dialog
+            title="title"
+            content="content"
+            dialogVisible={false}
+            okayButton={{ label: 'ok', mode: 'contained', onPress: () => {} }}
+            cancelButton={{
+              label: 'cancel',
+              mode: 'outlined',
+              onPress: () => {},
+            }}
+          />
           <Rows paddingX={24} paddingY={20}>
             <Row height="fluid">
               <Stack space={24} paddingX={24} paddingY={32}>
