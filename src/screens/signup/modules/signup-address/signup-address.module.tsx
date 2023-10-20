@@ -1,11 +1,12 @@
+import Postcode from '@actbase/react-daum-postcode';
 import { Stack } from '@mobily/stacks';
-import isUndefined from 'lodash/isUndefined';
 import { memo } from 'react';
 import { useController, useFormContext } from 'react-hook-form';
+import { Alert } from 'react-native';
 
 import { SignUpForm } from '../../hooks';
 
-import { TextInput } from '@/atoms';
+import { Button } from '@/atoms';
 
 type SignUpAddressModuleProps = {};
 
@@ -18,16 +19,22 @@ export const SignUpAddressModule = memo<SignUpAddressModuleProps>(() => {
     fieldState,
   } = useController({ control, name: 'Address' });
 
+  const handlePressAddressInputButton = () => {
+    return (
+      <Postcode
+        onSelected={data => JSON.stringify(data.address)}
+        onError={error => Alert.alert('먕')}
+        style={{ width: '100%', height: '100%' }}
+        jsOptions={{ animation: true }}
+      />
+    );
+  };
+
   return (
     <Stack space={4}>
-      <TextInput
-        placeholder="주소를 입력하세요."
-        label="주소"
-        value={value}
-        onChangeText={onChange}
-        error={!isUndefined(fieldState.error)}
-        errorMsg={fieldState.error?.message as string}
-      />
+      <Button mode="text" onPress={handlePressAddressInputButton}>
+        주소 입력하기
+      </Button>
     </Stack>
   );
 });
