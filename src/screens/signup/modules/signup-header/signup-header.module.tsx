@@ -1,4 +1,5 @@
 import { Stack } from '@mobily/stacks';
+import { useBackHandler } from '@react-native-community/hooks';
 import { useNavigation } from '@react-navigation/native';
 import { memo } from 'react';
 import { ProgressBar } from 'react-native-paper';
@@ -23,19 +24,25 @@ export const SignUpHeaderModule = memo<SignUpHeaderModuleProps>(() => {
     $currentScreenStepIndexSelector,
   );
 
-  const isFirstStep = currentScreenStepIndex === 0;
-
-  const handlePressButton = () => {
-    if (isFirstStep) {
-      navigation.goBack();
-    } else {
+  const handlePressBack = () => {
+    if (!isFirstStep) {
       setSignUpState({ screenStep: signUpSteps[currentScreenStepIndex - 1] });
+    } else {
+      navigation.goBack();
     }
+
+    return true;
   };
+
+  useBackHandler(() => {
+    return handlePressBack();
+  });
+
+  const isFirstStep = currentScreenStepIndex === 0;
 
   return (
     <Stack space={12}>
-      <Icon name="chevron-left" onPress={handlePressButton} size={24} />
+      <Icon name="chevron-left" onPress={handlePressBack} size={24} />
       <ProgressBar
         progress={(currentScreenStepIndex + 1) / signUpSteps.length}
         color={palette['green-600']}
