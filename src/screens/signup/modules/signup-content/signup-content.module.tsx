@@ -4,7 +4,11 @@ import { useRecoilValue } from 'recoil';
 
 import { $signUpState } from '../../signup.state';
 
-import { SignUpContentInfoComponent } from './components';
+import {
+  SignUpContentIdComponent,
+  SignUpContentInfoComponent,
+  SignUpContentNameComponent,
+} from './components';
 import { getInfoByScreenStep } from './signup-content.util';
 
 type SignUpContentModuleProps = {};
@@ -16,6 +20,8 @@ export const SignUpContentModule = memo<SignUpContentModuleProps>(() => {
   return (
     <Stack space={24}>
       <SignUpContentInfoComponent info={info} />
+      <SignUpContentNameComponent screenStep={screenStep} />
+      <SignUpContentIdComponent screenStep={screenStep} />
     </Stack>
   );
 });
