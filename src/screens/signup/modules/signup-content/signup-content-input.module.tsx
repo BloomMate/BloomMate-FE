@@ -72,3 +72,21 @@ export const SignUpPasswordInputModule = () => {
     </Stack>
   );
 };
+
+export const SignUpTiiunInputModule = () => {
+  const { screenStep } = useRecoilValue($signUpState);
+
+  const { control } = useFormContext<SignUpForm>();
+  const { field, fieldState } = useController({
+    control,
+    name: ESignUpStep.TIIUN_INPUT,
+  });
+
+  return (
+    <SignUpContentInputComponent
+      screenStep={screenStep}
+      field={field}
+      fieldState={fieldState}
+    />
+  );
+};

@@ -9,6 +9,7 @@ import {
   SignUpIdInputModule,
   SignUpNameInputModule,
   SignUpPasswordInputModule,
+  SignUpTiiunInputModule,
 } from './signup-content-input.module';
 import { getInfoByScreenStep } from './signup-content.util';
 
@@ -26,6 +27,8 @@ export const SignUpContentModule = memo<SignUpContentModuleProps>(() => {
         return <SignUpIdInputModule />;
       case ESignUpStep.PW_INPUT:
         return <SignUpPasswordInputModule />;
+      case ESignUpStep.TIIUN_INPUT:
+        return <SignUpTiiunInputModule />;
       // 나머지 부탁해!
       default:
         return null;

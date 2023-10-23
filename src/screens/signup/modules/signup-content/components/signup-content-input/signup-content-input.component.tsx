@@ -35,6 +35,7 @@ export const SignUpContentInputComponent =
           onChangeText={onChange}
           error={!isUndefined(fieldState.error)}
           errorMsg={fieldState.error?.message as string}
+          secureTextEntry={isPasswordCheck}
         />
       );
     },
