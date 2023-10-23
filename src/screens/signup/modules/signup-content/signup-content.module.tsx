@@ -5,9 +5,12 @@ import { useRecoilValue } from 'recoil';
 import { $signUpState, ESignUpStep } from '../../signup.state';
 
 import { SignUpContentInfoComponent } from './components';
+import {
+  SignUpIdInputModule,
+  SignUpNameInputModule,
+  SignUpPasswordInputModule,
+} from './signup-content-input.module';
 import { getInfoByScreenStep } from './signup-content.util';
-import { SignUpIdInputModule } from './signup-id-input.module';
-import { SignUpNameInputModule } from './signup-name-input.module';
 
 type SignUpContentModuleProps = {};
 
@@ -21,6 +24,9 @@ export const SignUpContentModule = memo<SignUpContentModuleProps>(() => {
         return <SignUpNameInputModule />;
       case ESignUpStep.ID_INPUT:
         return <SignUpIdInputModule />;
+      case ESignUpStep.PW_INPUT:
+        return <SignUpPasswordInputModule />;
+      // 나머지 부탁해!
       default:
         return null;
     }

@@ -35,7 +35,7 @@ const SignUpSchemaFormSchema: yup.ObjectSchema<SignUpForm> = yup
     [ESignUpStep.PW_CHECK_INPUT]: yup
       .string()
       .required('비밀번호를 한번 더 입력해주세요')
-      .oneOf([yup.ref('PassWord')], '비밀번호가 일치하지 않습니다.'),
+      .oneOf([yup.ref(ESignUpStep.PW_INPUT)], '비밀번호가 일치하지 않습니다.'),
     [ESignUpStep.TIIUN_INPUT]: yup
       .string()
       .required('틔운 제품키를 입력해주세요'),
