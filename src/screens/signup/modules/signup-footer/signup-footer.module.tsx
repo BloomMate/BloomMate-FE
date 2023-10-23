@@ -1,7 +1,9 @@
 import { Box } from '@mobily/stacks';
 import { memo } from 'react';
+import { useFormContext } from 'react-hook-form';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
+import { SignUpForm } from '../../hooks';
 import {
   $currentScreenStepIndexSelector,
   $signUpState,
@@ -19,6 +21,15 @@ export const SignUpFooterModule = memo<SignUpFooterModuleProps>(() => {
     $currentScreenStepIndexSelector,
   );
 
+  const { formState, handleSubmit } = useFormContext<SignUpForm>();
+  const { isDirty, isValid, errors, dirtyFields } = formState;
+  const isSignUpPossible = isDirty && isValid;
+  const isCurrentStepValid = () => {
+    const fieldName = signUpSteps[currentScreenStepIndex];
+
+    return !errors[fieldName] && dirtyFields[fieldName];
+  };
+
   const isLastStep = currentScreenStepIndex === signUpSteps.length - 1;
 
   const copy = isLastStep ? '회원가입' : '다음';
@@ -29,7 +40,10 @@ export const SignUpFooterModule = memo<SignUpFooterModuleProps>(() => {
 
   return (
     <Box>
-      <Button mode="contained" onPress={handlePressButton}>
+      <Button
+        mode="contained"
+        onPress={handlePressButton}
+        disabled={!isCurrentStepValid()}>
         {copy}
       </Button>
     </Box>

@@ -41,7 +41,7 @@ export const SignUpContentModule = memo<SignUpContentModuleProps>(() => {
     }
     if (twoTextInputScreenStep.includes(screenStep)) {
       return (
-        <>
+        <Stack space={24}>
           <SignUpContentInputComponent
             screenStep={screenStep}
             field={field}
@@ -51,8 +51,9 @@ export const SignUpContentModule = memo<SignUpContentModuleProps>(() => {
             screenStep={screenStep}
             field={passwordCheckField}
             fieldState={passwordCheckFieldState}
+            isPasswordCheck
           />
-        </>
+        </Stack>
       );
     }
     if (searchModalInputScreenStep.includes(screenStep)) {
@@ -69,8 +70,6 @@ export const SignUpContentModule = memo<SignUpContentModuleProps>(() => {
     <Stack space={24}>
       <SignUpContentInfoComponent info={info} />
       {renderInputs()}
-      {/* <SignUpContentNameComponent screenStep={screenStep} />
-      <SignUpContentIdComponent screenStep={screenStep} /> */}
     </Stack>
   );
 });
