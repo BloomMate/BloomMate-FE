@@ -22,6 +22,7 @@ export const SignUpContentInputComponent =
   memo<SignUpContentInputComponentProps>(
     ({ screenStep, field, fieldState, isPasswordCheck = false }) => {
       const { onChange, value } = field;
+
       const { placeholder, label } = isPasswordCheck
         ? { placeholder: '비밀번호를 확인해주세요', label: '비밀번호 확인' }
         : mapLabelByScreenStep[screenStep] || {};

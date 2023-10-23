@@ -69,8 +69,6 @@ export const SignUpContentModule = memo<SignUpContentModuleProps>(() => {
     <Stack space={24}>
       <SignUpContentInfoComponent info={info} />
       {renderInputs()}
-      {/* <SignUpContentNameComponent screenStep={screenStep} />
-      <SignUpContentIdComponent screenStep={screenStep} /> */}
     </Stack>
   );
 });
