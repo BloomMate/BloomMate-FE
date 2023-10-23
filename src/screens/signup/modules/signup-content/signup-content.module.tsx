@@ -1,21 +1,15 @@
 import { Stack } from '@mobily/stacks';
 import { memo } from 'react';
-import { useController, useFormContext } from 'react-hook-form';
 import { useRecoilValue } from 'recoil';
 
-import { SignUpForm } from '../../hooks';
 import { $signUpState, ESignUpStep } from '../../signup.state';
 
+import { SignUpContentInfoComponent } from './components';
 import {
-  SignUpContentInfoComponent,
-  SignUpContentInputComponent,
-} from './components';
-import {
-  oneTextInputScreenStep,
-  searchModalInputScreenStep,
-  toggleButtonInputScreenStep,
-  twoTextInputScreenStep,
-} from './signup-content.const';
+  SignUpIdInputModule,
+  SignUpNameInputModule,
+  SignUpPasswordInputModule,
+} from './signup-content-input.module';
 import { getInfoByScreenStep } from './signup-content.util';
 
 type SignUpContentModuleProps = {};
@@ -23,54 +17,25 @@ type SignUpContentModuleProps = {};
 export const SignUpContentModule = memo<SignUpContentModuleProps>(() => {
   const { screenStep } = useRecoilValue($signUpState);
   const info = getInfoByScreenStep(screenStep);
-  const { control } = useFormContext<SignUpForm>();
-  const { field, fieldState } = useController({ control, name: screenStep });
-
-  const { field: passwordCheckField, fieldState: passwordCheckFieldState } =
-    useController({ control, name: ESignUpStep.PW_CHECK_INPUT });
 
   const renderInputs = () => {
-    if (oneTextInputScreenStep.includes(screenStep)) {
-      return (
-        <SignUpContentInputComponent
-          screenStep={screenStep}
-          field={field}
-          fieldState={fieldState}
-        />
-      );
+    switch (screenStep) {
+      case ESignUpStep.NAME_INPUT:
+        return <SignUpNameInputModule />;
+      case ESignUpStep.ID_INPUT:
+        return <SignUpIdInputModule />;
+      case ESignUpStep.PW_INPUT:
+        return <SignUpPasswordInputModule />;
+      // 나머지 부탁해!
+      default:
+        return null;
     }
-    if (twoTextInputScreenStep.includes(screenStep)) {
-      return (
-        <>
-          <SignUpContentInputComponent
-            screenStep={screenStep}
-            field={field}
-            fieldState={fieldState}
-          />
-          <SignUpContentInputComponent
-            screenStep={screenStep}
-            field={passwordCheckField}
-            fieldState={passwordCheckFieldState}
-          />
-        </>
-      );
-    }
-    if (searchModalInputScreenStep.includes(screenStep)) {
-      return null;
-    }
-    if (toggleButtonInputScreenStep.includes(screenStep)) {
-      return null;
-    }
-
-    return null;
   };
 
   return (
     <Stack space={24}>
       <SignUpContentInfoComponent info={info} />
       {renderInputs()}
-      {/* <SignUpContentNameComponent screenStep={screenStep} />
-      <SignUpContentIdComponent screenStep={screenStep} /> */}
     </Stack>
   );
 });
