@@ -23,7 +23,7 @@ export const SignUpTurfModule = () => {
   };
 
   return (
-    <Stack space={24}>
+    <Stack space={24} align={'center'}>
       <Pressable onPress={() => handlePressTurfButton(0)}>
         {({ pressed }) =>
           selected === 0 ? (
@@ -35,18 +35,33 @@ export const SignUpTurfModule = () => {
                   borderRadius: 12,
                   borderWidth: 1,
                   backgroundColor: 'green',
+                  justifyContent: 'center',
                 },
               ]}>
-              <Text variants="labelLarge" fontWeight="Medium" color="white">
+              <Text
+                variants="labelLarge"
+                fontWeight="Medium"
+                color="white"
+                textAlignment="center">
                 3평
               </Text>
             </Box>
           ) : (
             <Box
               style={[
-                { height: 60, width: 310, borderRadius: 12, borderWidth: 1 },
+                {
+                  height: 60,
+                  width: 310,
+                  borderRadius: 12,
+                  borderWidth: 1,
+                  justifyContent: 'center',
+                },
               ]}>
-              <Text variants="labelLarge" fontWeight="Medium" color="gray-700">
+              <Text
+                variants="labelLarge"
+                fontWeight="Medium"
+                color="gray-700"
+                textAlignment="center">
                 3평
               </Text>
             </Box>
@@ -64,18 +79,33 @@ export const SignUpTurfModule = () => {
                   borderRadius: 12,
                   borderWidth: 1,
                   backgroundColor: 'green',
+                  justifyContent: 'center',
                 },
               ]}>
-              <Text variants="labelLarge" fontWeight="Medium" color="white">
+              <Text
+                variants="labelLarge"
+                fontWeight="Medium"
+                color="white"
+                textAlignment="center">
                 5평
               </Text>
             </Box>
           ) : (
             <Box
               style={[
-                { height: 60, width: 310, borderRadius: 12, borderWidth: 1 },
+                {
+                  height: 60,
+                  width: 310,
+                  borderRadius: 12,
+                  borderWidth: 1,
+                  justifyContent: 'center',
+                },
               ]}>
-              <Text variants="labelLarge" fontWeight="Medium" color="gray-700">
+              <Text
+                variants="labelLarge"
+                fontWeight="Medium"
+                color="gray-700"
+                textAlignment="center">
                 5평
               </Text>
             </Box>
@@ -93,18 +123,33 @@ export const SignUpTurfModule = () => {
                   borderRadius: 12,
                   borderWidth: 1,
                   backgroundColor: 'green',
+                  justifyContent: 'center',
                 },
               ]}>
-              <Text variants="labelLarge" fontWeight="Medium" color="white">
+              <Text
+                variants="labelLarge"
+                fontWeight="Medium"
+                color="white"
+                textAlignment="center">
                 7평
               </Text>
             </Box>
           ) : (
             <Box
               style={[
-                { height: 60, width: 310, borderRadius: 12, borderWidth: 1 },
+                {
+                  height: 60,
+                  width: 310,
+                  borderRadius: 12,
+                  borderWidth: 1,
+                  justifyContent: 'center',
+                },
               ]}>
-              <Text variants="labelLarge" fontWeight="Medium" color="gray-700">
+              <Text
+                variants="labelLarge"
+                fontWeight="Medium"
+                color="gray-700"
+                textAlignment="center">
                 7평
               </Text>
             </Box>
