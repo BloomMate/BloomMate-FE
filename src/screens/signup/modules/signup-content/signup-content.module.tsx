@@ -9,6 +9,7 @@ import { $signUpState, ESignUpStep } from '../../signup.state';
 import {
   SignUpContentInfoComponent,
   SignUpContentInputComponent,
+  SignUpContentTogglebuttonComponent,
 } from './components';
 import {
   oneTextInputScreenStep,
@@ -23,11 +24,18 @@ type SignUpContentModuleProps = {};
 export const SignUpContentModule = memo<SignUpContentModuleProps>(() => {
   const { screenStep } = useRecoilValue($signUpState);
   const info = getInfoByScreenStep(screenStep);
-  const { control } = useFormContext<SignUpForm>();
+  const { control, watch } = useFormContext<SignUpForm>();
   const { field, fieldState } = useController({ control, name: screenStep });
+
+  console.log(screenStep, watch());
 
   const { field: passwordCheckField, fieldState: passwordCheckFieldState } =
     useController({ control, name: ESignUpStep.PW_CHECK_INPUT });
+
+  const { field: turfField, fieldState: turfFieldState } = useController({
+    control,
+    name: ESignUpStep.TURF_INPUT,
+  });
 
   const renderInputs = () => {
     if (oneTextInputScreenStep.includes(screenStep)) {
@@ -60,7 +68,13 @@ export const SignUpContentModule = memo<SignUpContentModuleProps>(() => {
       return null;
     }
     if (toggleButtonInputScreenStep.includes(screenStep)) {
-      return null;
+      return (
+        <SignUpContentTogglebuttonComponent
+          screenStep={screenStep}
+          field={turfField}
+          fieldState={turfFieldState}
+        />
+      );
     }
 
     return null;
