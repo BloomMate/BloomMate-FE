@@ -11,6 +11,7 @@ import {
   SignUpPasswordInputModule,
   SignUpTiiunInputModule,
 } from './signup-content-input.module';
+import { SignUpTurfModule } from './signup-content-toggle.module';
 import { getInfoByScreenStep } from './signup-content.util';
 
 type SignUpContentModuleProps = {};
@@ -18,11 +19,6 @@ type SignUpContentModuleProps = {};
 export const SignUpContentModule = memo<SignUpContentModuleProps>(() => {
   const { screenStep } = useRecoilValue($signUpState);
   const info = getInfoByScreenStep(screenStep);
-
-  const { field: turfField, fieldState: turfFieldState } = useController({
-    control,
-    name: ESignUpStep.TURF_INPUT,
-  });
 
   const renderInputs = () => {
     switch (screenStep) {
@@ -34,6 +30,8 @@ export const SignUpContentModule = memo<SignUpContentModuleProps>(() => {
         return <SignUpPasswordInputModule />;
       case ESignUpStep.TIIUN_INPUT:
         return <SignUpTiiunInputModule />;
+      case ESignUpStep.TURF_INPUT:
+        return <SignUpTurfModule />;
       // 나머지 부탁해!
       default:
         return null;
