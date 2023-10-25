@@ -1,22 +1,16 @@
 import { Stack } from '@mobily/stacks';
 import { memo } from 'react';
-import { useController, useFormContext } from 'react-hook-form';
 import { useRecoilValue } from 'recoil';
 
-import { SignUpForm } from '../../hooks';
 import { $signUpState, ESignUpStep } from '../../signup.state';
 
+import { SignUpContentInfoComponent } from './components';
 import {
-  SignUpContentInfoComponent,
-  SignUpContentInputComponent,
-  SignUpContentTogglebuttonComponent,
-} from './components';
-import {
-  oneTextInputScreenStep,
-  searchModalInputScreenStep,
-  toggleButtonInputScreenStep,
-  twoTextInputScreenStep,
-} from './signup-content.const';
+  SignUpIdInputModule,
+  SignUpNameInputModule,
+  SignUpPasswordInputModule,
+  SignUpTiiunInputModule,
+} from './signup-content-input.module';
 import { getInfoByScreenStep } from './signup-content.util';
 
 type SignUpContentModuleProps = {};
@@ -24,13 +18,6 @@ type SignUpContentModuleProps = {};
 export const SignUpContentModule = memo<SignUpContentModuleProps>(() => {
   const { screenStep } = useRecoilValue($signUpState);
   const info = getInfoByScreenStep(screenStep);
-  const { control, watch } = useFormContext<SignUpForm>();
-  const { field, fieldState } = useController({ control, name: screenStep });
-
-  console.log(screenStep, watch());
-
-  const { field: passwordCheckField, fieldState: passwordCheckFieldState } =
-    useController({ control, name: ESignUpStep.PW_CHECK_INPUT });
 
   const { field: turfField, fieldState: turfFieldState } = useController({
     control,
@@ -38,46 +25,19 @@ export const SignUpContentModule = memo<SignUpContentModuleProps>(() => {
   });
 
   const renderInputs = () => {
-    if (oneTextInputScreenStep.includes(screenStep)) {
-      return (
-        <SignUpContentInputComponent
-          screenStep={screenStep}
-          field={field}
-          fieldState={fieldState}
-        />
-      );
+    switch (screenStep) {
+      case ESignUpStep.NAME_INPUT:
+        return <SignUpNameInputModule />;
+      case ESignUpStep.ID_INPUT:
+        return <SignUpIdInputModule />;
+      case ESignUpStep.PW_INPUT:
+        return <SignUpPasswordInputModule />;
+      case ESignUpStep.TIIUN_INPUT:
+        return <SignUpTiiunInputModule />;
+      // 나머지 부탁해!
+      default:
+        return null;
     }
-    if (twoTextInputScreenStep.includes(screenStep)) {
-      return (
-        <Stack space={24}>
-          <SignUpContentInputComponent
-            screenStep={screenStep}
-            field={field}
-            fieldState={fieldState}
-          />
-          <SignUpContentInputComponent
-            screenStep={screenStep}
-            field={passwordCheckField}
-            fieldState={passwordCheckFieldState}
-            isPasswordCheck
-          />
-        </Stack>
-      );
-    }
-    if (searchModalInputScreenStep.includes(screenStep)) {
-      return null;
-    }
-    if (toggleButtonInputScreenStep.includes(screenStep)) {
-      return (
-        <SignUpContentTogglebuttonComponent
-          screenStep={screenStep}
-          field={turfField}
-          fieldState={turfFieldState}
-        />
-      );
-    }
-
-    return null;
   };
 
   return (
