@@ -23,4 +23,8 @@ export const mapLabelByScreenStep: Partial<
     label: '아이디',
     placeholder: '아이디를 입력해주세요',
   },
+  [ESignUpStep.ADDRESS_INPUT]: {
+    label: '주소',
+    placeholder: '주소를 입력해주세요',
+  },
 };

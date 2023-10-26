@@ -1,4 +1,4 @@
-import { Stack } from '@mobily/stacks';
+import { Box, Column, Columns, Rows, Stack } from '@mobily/stacks';
 import { useState } from 'react';
 import { useFormContext, useController } from 'react-hook-form';
 import { useRecoilValue } from 'recoil';
@@ -10,8 +10,7 @@ import {
   SignUpContentInputComponent,
   SignUpContentModalComponent,
 } from './components';
-
-import { Icon } from '@/atoms';
+import { Icon, Modal } from '@/atoms';
 
 export const SignUpNameInputModule = () => {
   const { screenStep } = useRecoilValue($signUpState);
@@ -99,16 +98,45 @@ export const SignUpTiiunInputModule = () => {
 
 export const SignUpAddressInputModule = () => {
   const { screenStep } = useRecoilValue($signUpState);
-  const [modal, setModal] = useState(false);
+  const [isModal, setModal] = useState(false);
   const { control } = useFormContext<SignUpForm>();
   const { field, fieldState } = useController({
     control,
     name: ESignUpStep.ADDRESS_INPUT,
   });
-  const handlePressModalOpenButton = () => {
-    setModal(true);
-    modal ? <SignUpContentModalComponent /> : {};
-  };
 
-  return <Icon name="search" onPress={handlePressModalOpenButton} size={24} />;
+  return (
+    <>
+      <Modal isVisible={isModal}>
+        <SignUpContentModalComponent setModal={setModal} />
+      </Modal>
+      <Columns alignY={'center'}>
+        <Column width="4/5">
+          <SignUpContentInputComponent
+            screenStep={screenStep}
+            field={field}
+            fieldState={fieldState}
+          />
+        </Column>
+        <Column width="1/5" style={{ alignItems: 'center' }}>
+          <Box
+            style={{
+              backgroundColor: 'white',
+              borderRadius: 20,
+              justifyContent: 'center',
+              alignItems: 'center',
+              height: 50,
+              width: 50,
+            }}>
+            <Icon
+              name="search"
+              onPress={() => setModal(true)}
+              size={36}
+              color={'green'}
+            />
+          </Box>
+        </Column>
+      </Columns>
+    </>
+  );
 };
