@@ -42,6 +42,7 @@ export const TextInput = ({
         mode="outlined"
         style={{
           backgroundColor: palette['white'],
+          borderRadius: 8,
         }}
         theme={{
           fonts: {
@@ -57,7 +58,7 @@ export const TextInput = ({
           colors: {
             onSurface: palette['gray-900'],
             onSurfaceVariant: palette['gray-900'],
-            primary: palette['teal-800'],
+            primary: palette['primary'],
             error: palette['error'],
             outline: palette['gray-900'],
             disabled: palette['gray-400'],

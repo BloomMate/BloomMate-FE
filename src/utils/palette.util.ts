@@ -3,8 +3,9 @@
 export const palette = {
   black: '#000000',
   white: '#ffffff',
-  modal: 'rgba(255,255,255,0.8)',
-  error: '#F44336',
+  primary: '#00695C',
+  modal: 'rgba(0,0,0,0.4)',
+  error: '#E53935',
 
   'red-50': '#FFEBEE',
   'red-100': '#FFCDD2',
