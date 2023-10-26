@@ -43,7 +43,7 @@ export const SignUpFooterModule = memo<SignUpFooterModuleProps>(() => {
       <Button
         mode="contained"
         onPress={handlePressButton}
-        disabled={!isCurrentStepValid()}>
+        disabled={isLastStep ? isSignUpPossible : !isCurrentStepValid()}>
         {copy}
       </Button>
     </Box>

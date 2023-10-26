@@ -14,9 +14,8 @@ export const SignUpTurfModule = () => {
     control,
     name: ESignUpStep.TURF_INPUT,
   });
-  const { onChange } = field;
-  const [selected, setSelected] = useState(NaN);
-
+  const { onChange, value } = field;
+  const [selected, setSelected] = useState(value);
   const handlePressTurfButton = (testID: number) => {
     setSelected(testID);
     onChange(testID);
@@ -43,7 +42,7 @@ export const SignUpTurfModule = () => {
                 fontWeight="Medium"
                 color="white"
                 textAlignment="center">
-                3평
+                소형
               </Text>
             </Box>
           ) : (
@@ -62,7 +61,7 @@ export const SignUpTurfModule = () => {
                 fontWeight="Medium"
                 color="gray-700"
                 textAlignment="center">
-                3평
+                소형
               </Text>
             </Box>
           )
@@ -87,7 +86,7 @@ export const SignUpTurfModule = () => {
                 fontWeight="Medium"
                 color="white"
                 textAlignment="center">
-                5평
+                중형
               </Text>
             </Box>
           ) : (
@@ -106,7 +105,7 @@ export const SignUpTurfModule = () => {
                 fontWeight="Medium"
                 color="gray-700"
                 textAlignment="center">
-                5평
+                중형
               </Text>
             </Box>
           )
@@ -131,7 +130,7 @@ export const SignUpTurfModule = () => {
                 fontWeight="Medium"
                 color="white"
                 textAlignment="center">
-                7평
+                대형
               </Text>
             </Box>
           ) : (
@@ -150,7 +149,7 @@ export const SignUpTurfModule = () => {
                 fontWeight="Medium"
                 color="gray-700"
                 textAlignment="center">
-                7평
+                대형
               </Text>
             </Box>
           )
