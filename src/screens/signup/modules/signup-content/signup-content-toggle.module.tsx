@@ -33,14 +33,14 @@ export const SignUpTurfModule = () => {
                   width: 310,
                   borderRadius: 12,
                   borderWidth: 1,
-                  backgroundColor: 'green',
+                  backgroundColor: '#B2DFDB',
                   justifyContent: 'center',
                 },
               ]}>
               <Text
                 variants="labelLarge"
                 fontWeight="Medium"
-                color="white"
+                color="gray-700"
                 textAlignment="center">
                 소형
               </Text>
@@ -77,14 +77,14 @@ export const SignUpTurfModule = () => {
                   width: 310,
                   borderRadius: 12,
                   borderWidth: 1,
-                  backgroundColor: 'green',
+                  backgroundColor: '#B2DFDB',
                   justifyContent: 'center',
                 },
               ]}>
               <Text
                 variants="labelLarge"
                 fontWeight="Medium"
-                color="white"
+                color="gray-700"
                 textAlignment="center">
                 중형
               </Text>
@@ -121,14 +121,14 @@ export const SignUpTurfModule = () => {
                   width: 310,
                   borderRadius: 12,
                   borderWidth: 1,
-                  backgroundColor: 'green',
+                  backgroundColor: '#B2DFDB',
                   justifyContent: 'center',
                 },
               ]}>
               <Text
                 variants="labelLarge"
                 fontWeight="Medium"
-                color="white"
+                color="gray-700"
                 textAlignment="center">
                 대형
               </Text>
