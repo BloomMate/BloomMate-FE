@@ -11,7 +11,7 @@ export const Divider = ({ heavy = false }: DividerProps) => {
     <Box
       style={[
         { height: 1, backgroundColor: palette['gray-400'] },
-        heavy ? { height: 5, backgroundColor: palette['teal-800'] } : null,
+        heavy ? { height: 5, backgroundColor: palette['primary'] } : null,
       ]}
     />
   );

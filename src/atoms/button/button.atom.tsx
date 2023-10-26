@@ -12,7 +12,7 @@ export type ButtonProps = Omit<ComponentProps<typeof PaperButton>, 'mode'> & {
 
 export const Button = ({ children, mode, ...props }: ButtonProps) => {
   const textColor =
-    mode === 'contained' ? palette['white'] : palette['green-600'];
+    mode === 'contained' ? palette['white'] : palette['primary'];
 
   const labelLargeFontStyle = getVariantsStyle('labelLarge');
   const rippleColor = color(textColor).alpha(0.33).rgb().string();
@@ -29,13 +29,13 @@ export const Button = ({ children, mode, ...props }: ButtonProps) => {
           },
         },
         colors: {
-          primary: palette['teal-800'],
+          primary: palette['primary'],
           onPrimary: palette['white'],
           surfaceDisabled: palette['gray-300'],
           onSurfaceDisabled: palette['gray-500'],
-          outline: palette['green-800'],
+          outline: palette['primary'],
         },
-        roundness: 1,
+        roundness: 2,
       }}
       {...props}>
       {children}
