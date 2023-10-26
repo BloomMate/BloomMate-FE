@@ -1,11 +1,17 @@
 import { Stack } from '@mobily/stacks';
+import { useState } from 'react';
 import { useFormContext, useController } from 'react-hook-form';
 import { useRecoilValue } from 'recoil';
 
 import { SignUpForm } from '../../hooks';
 import { $signUpState, ESignUpStep } from '../../signup.state';
 
-import { SignUpContentInputComponent } from './components';
+import {
+  SignUpContentInputComponent,
+  SignUpContentModalComponent,
+} from './components';
+
+import { Icon } from '@/atoms';
 
 export const SignUpNameInputModule = () => {
   const { screenStep } = useRecoilValue($signUpState);
@@ -89,4 +95,20 @@ export const SignUpTiiunInputModule = () => {
       fieldState={fieldState}
     />
   );
+};
+
+export const SignUpAddressInputModule = () => {
+  const { screenStep } = useRecoilValue($signUpState);
+  const [modal, setModal] = useState(false);
+  const { control } = useFormContext<SignUpForm>();
+  const { field, fieldState } = useController({
+    control,
+    name: ESignUpStep.ADDRESS_INPUT,
+  });
+  const handlePressModalOpenButton = () => {
+    setModal(true);
+    modal ? <SignUpContentModalComponent /> : {};
+  };
+
+  return <Icon name="search" onPress={handlePressModalOpenButton} size={24} />;
 };

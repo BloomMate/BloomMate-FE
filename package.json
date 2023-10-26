@@ -13,7 +13,6 @@
     "test": "jest"
   },
   "dependencies": {
-    "@actbase/react-daum-postcode": "^1.0.4",
     "@hookform/resolvers": "^3.3.1",
     "@mobily/stacks": "^2.2.2",
     "@react-native-community/hooks": "^3.0.0",
@@ -51,7 +50,7 @@
     "react-native-screens": "^3.25.0",
     "react-native-shimmer-placeholder": "^2.0.9",
     "react-native-vector-icons": "^10.0.0",
-    "react-native-webview": "^13.6.2",
+    "react-native-webview": "11.26.1",
     "react-query": "^3.39.3",
     "react-query-native-devtools": "^4.0.0",
     "recoil": "^0.7.7",

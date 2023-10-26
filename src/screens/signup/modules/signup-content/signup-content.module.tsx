@@ -4,7 +4,10 @@ import { useRecoilValue } from 'recoil';
 
 import { $signUpState, ESignUpStep } from '../../signup.state';
 
-import { SignUpContentInfoComponent } from './components';
+import {
+  SignUpContentInfoComponent,
+  SignUpContentModalComponent,
+} from './components';
 import {
   SignUpIdInputModule,
   SignUpNameInputModule,
@@ -32,7 +35,9 @@ export const SignUpContentModule = memo<SignUpContentModuleProps>(() => {
         return <SignUpTiiunInputModule />;
       case ESignUpStep.TURF_INPUT:
         return <SignUpTurfModule />;
-      // TODO: 주소 모달 만들기
+      // TODO: 주소 모달 만들기, @actbase/postcode 설치해서 하려고 하는데 자꾸 build failed 뜨네요 진짜 미치겠당 ^_^
+      case ESignUpStep.ADDRESS_INPUT:
+        return <SignUpContentModalComponent />;
       default:
         return null;
     }
