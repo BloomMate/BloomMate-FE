@@ -14,10 +14,7 @@ export const LandingSignUpModule = memo<LandingSignUpModuleProps>(() => {
   };
 
   return (
-    <Button
-      mode="contained"
-      onPress={handlePressSignUpButton}
-      style={{ height: 48 }}>
+    <Button mode="contained" onPress={handlePressSignUpButton}>
       회원가입
     </Button>
   );

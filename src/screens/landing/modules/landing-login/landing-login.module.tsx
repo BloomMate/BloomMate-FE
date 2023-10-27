@@ -4,6 +4,7 @@ import { memo } from 'react';
 import { LandingScreenNavigationProps } from '../../landing.screen';
 
 import { Button } from '@/atoms';
+import { palette } from '@/utils';
 
 type LandingLoginModuleProps = {};
 
@@ -17,7 +18,7 @@ export const LandingLoginModule = memo<LandingLoginModuleProps>(() => {
     <Button
       mode="outlined"
       onPress={handlePressLoginButton}
-      style={{ height: 48 }}>
+      style={{ backgroundColor: palette['white'] }}>
       로그인
     </Button>
   );

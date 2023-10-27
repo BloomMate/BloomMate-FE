@@ -1,7 +1,7 @@
 import { Row, Rows, Stack } from '@mobily/stacks';
 import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { Image } from 'react-native';
+import { Image, Platform } from 'react-native';
 
 import { RootStackParamList } from '../root.navigator';
 
@@ -11,8 +11,6 @@ import {
   LandingSignUpModule,
   LandingTextModule,
 } from './modules';
-
-import { BasicLayout, ScrollView } from '@/layouts';
 
 type LandingScreenProps = {};
 
@@ -27,7 +25,7 @@ export type LandingScreenNavigationRouteProps = RouteProp<
 >;
 export const LandingScreen = ({}: LandingScreenProps) => {
   return (
-    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+    <>
       <Image
         source={bgImageURL}
         style={{
@@ -36,23 +34,29 @@ export const LandingScreen = ({}: LandingScreenProps) => {
           height: '100%',
           zIndex: -1,
         }}
+        blurRadius={Platform.OS === 'android' ? 4 : 5}
       />
-      <BasicLayout>
-        <Rows>
-          <Row height="fluid" style={{ justifyContent: 'center' }}>
-            <Stack space={80} align={'center'}>
-              <Image source={logoImageURL} style={{ width: 290, height: 56 }} />
-              <LandingTextModule />
-            </Stack>
-          </Row>
-          <Row height="content">
-            <Stack space={16}>
-              <LandingSignUpModule />
-              <LandingLoginModule />
-            </Stack>
-          </Row>
-        </Rows>
-      </BasicLayout>
-    </ScrollView>
+      <Rows
+        paddingX={32}
+        paddingY={32}
+        style={{ backgroundColor: 'rgba(255, 255, 255, 0.6)' }}>
+        <Row height="fluid" style={{ justifyContent: 'center' }}>
+          <Stack space={80} align={'center'}>
+            <Image
+              source={logoImageURL}
+              style={{ width: 290, height: 56 }}
+              resizeMode="contain"
+            />
+            <LandingTextModule />
+          </Stack>
+        </Row>
+        <Row height="content">
+          <Stack space={16}>
+            <LandingSignUpModule />
+            <LandingLoginModule />
+          </Stack>
+        </Row>
+      </Rows>
+    </>
   );
 };
