@@ -41,7 +41,7 @@ export const SignUpContentModule = memo<SignUpContentModuleProps>(() => {
   };
 
   return (
-    <Stack space={24}>
+    <Stack space={32}>
       <SignUpContentInfoComponent info={info} />
       {renderInputs()}
     </Stack>

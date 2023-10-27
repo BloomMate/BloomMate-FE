@@ -9,7 +9,7 @@ type SignUpContentInfoComponentProps = {
 export const SignUpContentInfoComponent = memo<SignUpContentInfoComponentProps>(
   ({ info }) => {
     return (
-      <Text variants="bodyLarge" fontWeight="Medium" color="black">
+      <Text variants="titleLarge" fontWeight="Medium" color="black">
         {info}
       </Text>
     );
