@@ -19,7 +19,14 @@ module.exports = {
     'import/order': [
       1,
       {
-        groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          'parent',
+          'sibling',
+          'index',
+        ],
         'newlines-between': 'always',
         alphabetize: {
           order: 'asc',

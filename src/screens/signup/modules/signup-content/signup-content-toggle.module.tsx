@@ -8,7 +8,7 @@ import { SignUpContentToggleButtonComponent } from './components';
 
 export const SignUpTurfModule = () => {
   const { control } = useFormContext<SignUpForm>();
-  const { field, fieldState } = useController({
+  const { field } = useController({
     control,
     name: ESignUpStep.TURF_INPUT,
   });

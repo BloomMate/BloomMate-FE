@@ -1,5 +1,5 @@
 import { Row, Rows, Stack } from '@mobily/stacks';
-import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { FormProvider } from 'react-hook-form';
 
@@ -28,8 +28,6 @@ export type LoginScreenNavigationRouteProps = RouteProp<
 >;
 
 export const LoginScreen = ({}: LoginScreenProps) => {
-  const navigation = useNavigation<LoginScreenNavigationProps>();
-  const route = useRoute<LoginScreenNavigationRouteProps>();
   const methods = useLoginForm();
 
   return (

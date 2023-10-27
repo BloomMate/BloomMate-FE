@@ -101,10 +101,9 @@ export const SignUpTiiunInputModule = () => {
 };
 
 export const SignUpAddressInputModule = () => {
-  const { screenStep } = useRecoilValue($signUpState);
   const [isModal, setModal] = useState(false);
   const { control } = useFormContext<SignUpForm>();
-  const { field, fieldState } = useController({
+  const { field } = useController({
     control,
     name: ESignUpStep.ADDRESS_INPUT,
   });

@@ -24,7 +24,7 @@ export const SignUpContentToggleButtonComponent =
 
       return (
         <Pressable style={{ width: '100%' }} onPress={handlePressToggleButton}>
-          {({ pressed }) => (
+          {({}) => (
             <Box
               style={[
                 {

@@ -1,9 +1,7 @@
-import { useNavigation } from '@react-navigation/native';
 import { memo } from 'react';
 import { SubmitHandler, useFormContext } from 'react-hook-form';
 
 import { LoginForm } from '../../hooks';
-import { LoginScreenNavigationProps } from '../../login.screen';
 
 import { usePostLoginMutation } from './hooks';
 
@@ -14,10 +12,8 @@ type LoginConfirmButtonModuleProps = {};
 
 export const LoginConfirmButtonModule = memo<LoginConfirmButtonModuleProps>(
   () => {
-    const navigation = useNavigation<LoginScreenNavigationProps>();
-
     const { formState, handleSubmit } = useFormContext<LoginForm>();
-    const { isDirty, isValid, errors } = formState;
+    const { isDirty, isValid } = formState;
     const { mutateAsync, isLoading } = usePostLoginMutation();
     useMutationIndicator([isLoading]);
 
