@@ -36,6 +36,7 @@ export const SignUpTurfModule = () => {
                   borderRadius: 12,
                   borderWidth: 1,
                   backgroundColor: palette['teal-100'],
+                  borderColor: palette['gray-700'],
                   justifyContent: 'center',
                 },
               ]}>
@@ -81,6 +82,7 @@ export const SignUpTurfModule = () => {
                   borderRadius: 12,
                   borderWidth: 1,
                   backgroundColor: palette['teal-100'],
+                  borderColor: palette['gray-700'],
                   justifyContent: 'center',
                 },
               ]}>
@@ -126,6 +128,7 @@ export const SignUpTurfModule = () => {
                   borderRadius: 12,
                   borderWidth: 1,
                   backgroundColor: palette['teal-100'],
+                  borderColor: palette['gray-700'],
                   justifyContent: 'center',
                 },
               ]}>
