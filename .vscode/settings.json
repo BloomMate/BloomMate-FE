@@ -6,6 +6,7 @@
   "eslint.enable": true,
   "eslint.validate": ["javascript", "typescript"],
   "cSpell.words": [
+    "gardensize",
     "Gmarket",
     "hookform",
     "kakao",
@@ -15,6 +16,8 @@
     "Pressable",
     "signup",
     "Textinput",
+    "TIIUN",
+    "Togglebutton",
     "wonka"
   ]
 }

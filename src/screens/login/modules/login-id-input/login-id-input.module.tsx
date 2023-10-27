@@ -5,7 +5,7 @@ import { useController, useFormContext } from 'react-hook-form';
 
 import { LoginForm } from '../../hooks';
 
-import { Suspender, TextInput } from '@/atoms';
+import { TextInput } from '@/atoms';
 import { LoadingPage } from '@/layouts';
 import { withSuspense } from '@/utils';
 
@@ -17,8 +17,6 @@ const LoginIdInputModule = memo<LoginIdInputModuleProps>(() => {
     field: { onChange, value },
     fieldState,
   } = useController({ control, name: 'ID' });
-
-  return <Suspender />;
 
   return (
     <Stack space={4}>

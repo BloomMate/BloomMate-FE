@@ -1,18 +1,18 @@
-import { Stack } from '@mobily/stacks';
+import { Row, Rows, Stack } from '@mobily/stacks';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { FormProvider } from 'react-hook-form';
+import { useRecoilValue } from 'recoil';
 
 import { RootStackParamList } from '../root.navigator';
 
 import { useSignUpForm } from './hooks';
 import {
-  SignUpConfirmButtonModule,
-  SignUpIdInputModule,
-  SignUpNameInputModule,
-  SignUpPwCheckInputModule,
-  SignUpPwInputModule,
+  SignUpContentModule,
+  SignUpFooterModule,
+  SignUpHeaderModule,
 } from './modules';
+import { $signUpState } from './signup.state';
 
 import { BasicLayout, ScrollView } from '@/layouts';
 
@@ -28,23 +28,28 @@ export type SignUpScreenNavigationRouteProps = RouteProp<
   'SignUpScreen'
 >;
 export const SignUpScreen = ({}: SignUpScreenProps) => {
+  const { screenStep } = useRecoilValue($signUpState);
   const navigation = useNavigation<SignUpScreenNavigationProps>();
   const route = useRoute<SignUpScreenNavigationRouteProps>();
   const methods = useSignUpForm();
 
   return (
-    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-      <FormProvider {...methods}>
+    <FormProvider {...methods}>
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <BasicLayout>
-          <Stack space={24}>
-            <SignUpNameInputModule />
-            <SignUpIdInputModule />
-            <SignUpPwInputModule />
-            <SignUpPwCheckInputModule />
-          </Stack>
+          <Rows>
+            <Row height="fluid">
+              <Stack space={20}>
+                <SignUpHeaderModule />
+                <SignUpContentModule />
+              </Stack>
+            </Row>
+            <Row height="content">
+              <SignUpFooterModule />
+            </Row>
+          </Rows>
         </BasicLayout>
-        <SignUpConfirmButtonModule />
-      </FormProvider>
-    </ScrollView>
+      </ScrollView>
+    </FormProvider>
   );
 };
