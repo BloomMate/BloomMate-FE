@@ -34,7 +34,7 @@ export const SignUpTurfModule = () => {
                 borderWidth: 1,
                 borderColor: palette['gray-700'],
               },
-              value === 1 && { backgroundColor: palette['teal-100'] },
+              value === 0 && { backgroundColor: palette['teal-100'] },
             ]}
             alignX="center"
             alignY="center">
