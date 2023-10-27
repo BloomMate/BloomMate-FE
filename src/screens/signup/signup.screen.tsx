@@ -39,7 +39,7 @@ export const SignUpScreen = ({}: SignUpScreenProps) => {
         <BasicLayout>
           <Rows>
             <Row height="fluid">
-              <Stack space={20}>
+              <Stack space={32}>
                 <SignUpHeaderModule />
                 <SignUpContentModule />
               </Stack>

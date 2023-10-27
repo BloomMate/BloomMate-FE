@@ -68,6 +68,7 @@ export const SignUpPasswordInputModule = () => {
         screenStep={screenStep}
         field={field}
         fieldState={fieldState}
+        isPasswordCheck
       />
       <SignUpContentInputComponent
         screenStep={screenStep}

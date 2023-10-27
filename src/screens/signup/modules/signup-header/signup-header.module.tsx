@@ -41,11 +41,16 @@ export const SignUpHeaderModule = memo<SignUpHeaderModuleProps>(() => {
   const isFirstStep = currentScreenStepIndex === 0;
 
   return (
-    <Stack space={12}>
-      <Icon name="chevron-left" onPress={handlePressBack} size={24} />
+    <Stack space={32} paddingTop={32}>
+      <Icon
+        name="arrow-back-ios"
+        onPress={handlePressBack}
+        size={24}
+        color={palette['gray-900']}
+      />
       <ProgressBar
         progress={(currentScreenStepIndex + 1) / signUpSteps.length}
-        color={palette['green-600']}
+        color={palette['primary']}
       />
     </Stack>
   );
