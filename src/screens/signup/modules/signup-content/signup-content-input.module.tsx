@@ -1,4 +1,4 @@
-import { Box, Column, Columns, Rows, Stack } from '@mobily/stacks';
+import { Box, Column, Columns, Stack } from '@mobily/stacks';
 import { useState } from 'react';
 import { useFormContext, useController } from 'react-hook-form';
 import { useRecoilValue } from 'recoil';
@@ -10,6 +10,7 @@ import {
   SignUpContentInputComponent,
   SignUpContentModalComponent,
 } from './components';
+
 import { Icon, Modal } from '@/atoms';
 
 export const SignUpNameInputModule = () => {
