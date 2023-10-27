@@ -29,7 +29,7 @@ export const SignUpContentModalComponent =
 
     return (
       <Postcode
-        style={{ width: 320, height: 320 }}
+        style={{ width: 320, height: 520 }}
         jsOptions={{ animation: true }}
         onError={() => console.log('error')}
         onSelected={data => {

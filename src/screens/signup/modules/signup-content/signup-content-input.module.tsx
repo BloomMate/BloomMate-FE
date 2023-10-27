@@ -13,6 +13,7 @@ import {
 } from './components';
 
 import { Icon, Modal } from '@/atoms';
+import { palette } from '@/utils';
 
 export const SignUpNameInputModule = () => {
   const { screenStep } = useRecoilValue($signUpState);
@@ -114,28 +115,27 @@ export const SignUpAddressInputModule = () => {
         <SignUpContentModalComponent setModal={setModal} />
       </Modal>
       <TouchableOpacity onPress={() => setModal(true)}>
-        <Columns alignY={'center'}>
-          <Column width="4/5">
-            <SignUpContentInputComponent
-              screenStep={screenStep}
-              field={field}
-              fieldState={fieldState}
-            />
-          </Column>
-          <Column width="1/5" style={{ alignItems: 'center' }}>
-            <Box
-              style={{
-                backgroundColor: 'white',
-                borderRadius: 20,
-                justifyContent: 'center',
-                alignItems: 'center',
-                height: 50,
-                width: 50,
-              }}>
-              <Icon name="search" size={36} color={'green'} />
-            </Box>
-          </Column>
-        </Columns>
+        <Box style={{ borderColor: palette['gray-900'], borderWidth: 1 }}>
+          <Columns>
+            <Column width={'fluid'}>
+              <Box
+                style={{ backgroundColor: palette['white'] }}
+                flex="fluid"></Box>
+            </Column>
+            <Column width="content">
+              <Box
+                style={{
+                  backgroundColor: palette['teal-800'],
+                  padding: 10,
+                  width: 44,
+                  height: 44,
+                }}
+                flex="content">
+                <Icon name="search" size={24} color={palette['white']} />
+              </Box>
+            </Column>
+          </Columns>
+        </Box>
       </TouchableOpacity>
     </>
   );
