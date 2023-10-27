@@ -131,31 +131,7 @@ export const getVariantsStyle = (variant: textVariants): TextStyle => {
 };
 
 export const getColorStyle = (color: fontColorType): TextStyle => {
-  switch (color) {
-    case 'black':
-      return { color: palette['black'] };
-
-    case 'white':
-      return { color: palette['white'] };
-
-    case 'gray-900':
-      return { color: palette['gray-900'] };
-
-    case 'gray-800':
-      return { color: palette['gray-800'] };
-
-    case 'gray-700':
-      return { color: palette['gray-700'] };
-
-    case 'gray-600':
-      return { color: palette['gray-600'] };
-
-    case 'error':
-      return { color: palette['error'] };
-
-    default:
-      return { color: palette['gray-800'] };
-  }
+  return { color: palette[color] };
 };
 
 export const getTextAlignStyle = (

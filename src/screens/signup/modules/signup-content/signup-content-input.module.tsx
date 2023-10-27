@@ -12,7 +12,7 @@ import {
   SignUpContentModalComponent,
 } from './components';
 
-import { Icon, Modal } from '@/atoms';
+import { Icon, Modal, Text } from '@/atoms';
 import { palette } from '@/utils';
 
 export const SignUpNameInputModule = () => {
@@ -108,6 +108,7 @@ export const SignUpAddressInputModule = () => {
     control,
     name: ESignUpStep.ADDRESS_INPUT,
   });
+  const { value } = field;
 
   return (
     <>
@@ -115,20 +116,39 @@ export const SignUpAddressInputModule = () => {
         <SignUpContentModalComponent setModal={setModal} />
       </Modal>
       <TouchableOpacity onPress={() => setModal(true)}>
-        <Box style={{ borderColor: palette['gray-900'], borderWidth: 1 }}>
+        <Box
+          style={{
+            borderColor: palette['gray-900'],
+            borderWidth: 1,
+            borderRadius: 8,
+          }}>
           <Columns>
             <Column width={'fluid'}>
-              <Box
-                style={{ backgroundColor: palette['white'] }}
-                flex="fluid"></Box>
+              <Box paddingY={10} flex="fluid" alignX="center" alignY="center">
+                {value ? (
+                  <Text
+                    fontWeight="Medium"
+                    variants="labelLarge"
+                    color="gray-900">
+                    {value}
+                  </Text>
+                ) : (
+                  <Text
+                    fontWeight="Medium"
+                    variants="labelLarge"
+                    color="gray-400">
+                    주소 검색하기
+                  </Text>
+                )}
+              </Box>
             </Column>
             <Column width="content">
               <Box
                 style={{
                   backgroundColor: palette['teal-800'],
                   padding: 10,
-                  width: 44,
-                  height: 44,
+                  borderTopRightRadius: 7,
+                  borderBottomRightRadius: 7,
                 }}
                 flex="content">
                 <Icon name="search" size={24} color={palette['white']} />
