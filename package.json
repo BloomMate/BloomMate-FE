@@ -39,6 +39,7 @@
     "react-native": "0.72.4",
     "react-native-devtools": "^0.0.1",
     "react-native-error-boundary": "^1.2.3",
+    "react-native-fix-image": "^2.1.0",
     "react-native-flipper": "^0.212.0",
     "react-native-gesture-handler": "^2.12.1",
     "react-native-keyboard-aware-scroll-view": "^0.9.5",
