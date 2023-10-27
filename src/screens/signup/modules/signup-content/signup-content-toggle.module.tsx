@@ -1,167 +1,33 @@
-import { Box, Stack } from '@mobily/stacks';
-import { useState } from 'react';
+import { Stack } from '@mobily/stacks';
 import { useFormContext, useController } from 'react-hook-form';
-import { Pressable } from 'react-native';
 
 import { SignUpForm } from '../../hooks';
 import { ESignUpStep } from '../../signup.state';
 
-import { Text } from '@/atoms';
-import { palette } from '@/utils';
+import { SignUpContentToggleButtonComponent } from './components';
 
 export const SignUpTurfModule = () => {
   const { control } = useFormContext<SignUpForm>();
-  const { field, fieldState } = useController({
+  const { field } = useController({
     control,
     name: ESignUpStep.TURF_INPUT,
   });
   const { onChange, value } = field;
-  const [selected, setSelected] = useState(value);
+
   const handlePressTurfButton = (testID: number) => {
-    setSelected(testID);
     onChange(testID);
   };
 
   return (
     <Stack space={24} align="center">
-      <Pressable
-        style={{ width: '100%' }}
-        onPress={() => handlePressTurfButton(0)}>
-        {({ pressed }) =>
-          selected === 0 ? (
-            <Box
-              style={[
-                {
-                  height: 60,
-                  borderRadius: 12,
-                  borderWidth: 1,
-                  backgroundColor: palette['teal-100'],
-                  borderColor: palette['gray-700'],
-                  justifyContent: 'center',
-                },
-              ]}>
-              <Text
-                variants="labelLarge"
-                fontWeight="Medium"
-                color="gray-700"
-                textAlignment="center">
-                소형
-              </Text>
-            </Box>
-          ) : (
-            <Box
-              style={[
-                {
-                  height: 60,
-                  borderRadius: 12,
-                  borderWidth: 1,
-                  borderColor: palette['gray-700'],
-                  justifyContent: 'center',
-                },
-              ]}>
-              <Text
-                variants="labelLarge"
-                fontWeight="Medium"
-                color="gray-700"
-                textAlignment="center">
-                소형
-              </Text>
-            </Box>
-          )
-        }
-      </Pressable>
-      <Pressable
-        style={{ width: '100%' }}
-        onPress={() => handlePressTurfButton(1)}>
-        {({ pressed }) =>
-          selected === 1 ? (
-            <Box
-              style={[
-                {
-                  height: 60,
-                  borderRadius: 12,
-                  borderWidth: 1,
-                  backgroundColor: palette['teal-100'],
-                  borderColor: palette['gray-700'],
-                  justifyContent: 'center',
-                },
-              ]}>
-              <Text
-                variants="labelLarge"
-                fontWeight="Medium"
-                color="gray-700"
-                textAlignment="center">
-                중형
-              </Text>
-            </Box>
-          ) : (
-            <Box
-              style={[
-                {
-                  height: 60,
-                  borderRadius: 12,
-                  borderWidth: 1,
-                  borderColor: palette['gray-700'],
-                  justifyContent: 'center',
-                },
-              ]}>
-              <Text
-                variants="labelLarge"
-                fontWeight="Medium"
-                color="gray-700"
-                textAlignment="center">
-                중형
-              </Text>
-            </Box>
-          )
-        }
-      </Pressable>
-      <Pressable
-        style={{ width: '100%' }}
-        onPress={() => handlePressTurfButton(2)}>
-        {({ pressed }) =>
-          selected === 2 ? (
-            <Box
-              style={[
-                {
-                  height: 60,
-                  borderRadius: 12,
-                  borderWidth: 1,
-                  backgroundColor: palette['teal-100'],
-                  borderColor: palette['gray-700'],
-                  justifyContent: 'center',
-                },
-              ]}>
-              <Text
-                variants="labelLarge"
-                fontWeight="Medium"
-                color="gray-700"
-                textAlignment="center">
-                대형
-              </Text>
-            </Box>
-          ) : (
-            <Box
-              style={[
-                {
-                  height: 60,
-                  borderRadius: 12,
-                  borderWidth: 1,
-                  borderColor: palette['gray-700'],
-                  justifyContent: 'center',
-                },
-              ]}>
-              <Text
-                variants="labelLarge"
-                fontWeight="Medium"
-                color="gray-700"
-                textAlignment="center">
-                대형
-              </Text>
-            </Box>
-          )
-        }
-      </Pressable>
+      {[0, 1, 2].map(v => (
+        <SignUpContentToggleButtonComponent
+          key={v}
+          value={v as 0 | 1 | 2}
+          onPress={() => handlePressTurfButton(v)}
+          selected={v === value}
+        />
+      ))}
     </Stack>
   );
 };

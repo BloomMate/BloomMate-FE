@@ -24,11 +24,19 @@ const SignUpSchemaFormSchema: yup.ObjectSchema<SignUpForm> = yup
       .max(5, '본명을 사용해주세요.'),
     [ESignUpStep.ID_INPUT]: yup
       .string()
-      .required('id를 입력해주세요')
+      .matches(
+        /^[a-zA-Z0-9]{5,19}$/,
+        '아이디는 영문자 및 숫자만 사용 가능합니다.',
+      )
+      .required('아이디를 입력해주세요')
       .min(5, '5자 이상으로 입력해주세요')
       .max(20, '20자 이내로 입력해주세요'),
     [ESignUpStep.PW_INPUT]: yup
       .string()
+      .matches(
+        /^[a-zA-Z0-9]{8,19}$/,
+        '비밀번호는 영문자 및 숫자만 사용 가능합니다.',
+      )
       .required('비밀번호를 입력해주세요')
       .min(8, '8자 이상으로 입력해주세요')
       .max(20, '20자 이내로 입력해주세요'),

@@ -1,6 +1,7 @@
 import { Box, Column, Columns, Stack } from '@mobily/stacks';
 import { useState } from 'react';
 import { useFormContext, useController } from 'react-hook-form';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useRecoilValue } from 'recoil';
 
 import { SignUpForm } from '../../hooks';
@@ -11,7 +12,8 @@ import {
   SignUpContentModalComponent,
 } from './components';
 
-import { Icon, Modal } from '@/atoms';
+import { Icon, Modal, Text } from '@/atoms';
+import { palette } from '@/utils';
 
 export const SignUpNameInputModule = () => {
   const { screenStep } = useRecoilValue($signUpState);
@@ -99,46 +101,61 @@ export const SignUpTiiunInputModule = () => {
 };
 
 export const SignUpAddressInputModule = () => {
-  const { screenStep } = useRecoilValue($signUpState);
   const [isModal, setModal] = useState(false);
   const { control } = useFormContext<SignUpForm>();
-  const { field, fieldState } = useController({
+  const { field } = useController({
     control,
     name: ESignUpStep.ADDRESS_INPUT,
   });
+  const { value } = field;
 
   return (
     <>
       <Modal isVisible={isModal}>
         <SignUpContentModalComponent setModal={setModal} />
       </Modal>
-      <Columns alignY={'center'}>
-        <Column width="4/5">
-          <SignUpContentInputComponent
-            screenStep={screenStep}
-            field={field}
-            fieldState={fieldState}
-          />
-        </Column>
-        <Column width="1/5" style={{ alignItems: 'center' }}>
-          <Box
-            style={{
-              backgroundColor: 'white',
-              borderRadius: 20,
-              justifyContent: 'center',
-              alignItems: 'center',
-              height: 50,
-              width: 50,
-            }}>
-            <Icon
-              name="search"
-              onPress={() => setModal(true)}
-              size={36}
-              color={'green'}
-            />
-          </Box>
-        </Column>
-      </Columns>
+      <TouchableOpacity onPress={() => setModal(true)}>
+        <Box
+          style={{
+            borderColor: palette['gray-900'],
+            borderWidth: 1,
+            borderRadius: 8,
+          }}>
+          <Columns>
+            <Column width={'fluid'}>
+              <Box paddingY={10} flex="fluid" alignX="center" alignY="center">
+                {value ? (
+                  <Text
+                    fontWeight="Medium"
+                    variants="labelLarge"
+                    color="gray-900">
+                    {value}
+                  </Text>
+                ) : (
+                  <Text
+                    fontWeight="Medium"
+                    variants="labelLarge"
+                    color="gray-400">
+                    주소 검색하기
+                  </Text>
+                )}
+              </Box>
+            </Column>
+            <Column width="content">
+              <Box
+                style={{
+                  backgroundColor: palette['teal-800'],
+                  padding: 10,
+                  borderTopRightRadius: 7,
+                  borderBottomRightRadius: 7,
+                }}
+                flex="content">
+                <Icon name="search" size={24} color={palette['white']} />
+              </Box>
+            </Column>
+          </Columns>
+        </Box>
+      </TouchableOpacity>
     </>
   );
 };

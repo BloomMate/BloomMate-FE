@@ -9,6 +9,7 @@ import { SignUpScreenNavigationProps } from '../../signup.screen';
 import {
   $currentScreenStepIndexSelector,
   $signUpState,
+  ESignUpStep,
   signUpSteps,
 } from '../../signup.state';
 
@@ -48,6 +49,18 @@ export const SignUpFooterModule = memo<SignUpFooterModuleProps>(() => {
 
   const isSignUpPossible = isDirty && isValid;
   const isCurrentStepValid = () => {
+    if (currentScreenStepIndex === 2) {
+      const fieldName = signUpSteps[currentScreenStepIndex];
+      const passwordCheckSame = errors[ESignUpStep.PW_CHECK_INPUT];
+      const passwordCheckDirty = dirtyFields[ESignUpStep.PW_CHECK_INPUT];
+
+      return (
+        !passwordCheckSame &&
+        !errors[fieldName] &&
+        dirtyFields[fieldName] &&
+        passwordCheckDirty
+      );
+    }
     const fieldName = signUpSteps[currentScreenStepIndex];
 
     return !errors[fieldName] && dirtyFields[fieldName];

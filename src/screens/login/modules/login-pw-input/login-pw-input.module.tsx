@@ -17,12 +17,11 @@ export const LoginPasswordInputModule = memo(() => {
   return (
     <Stack space={4}>
       <TextInput
-        label="password"
+        label="비밀번호"
         placeholder="비밀번호를 입력하세요."
         value={value}
         secureTextEntry
         onChangeText={onChange}
-        rightIconName="close"
         error={!isUndefined(fieldState.error?.message)}
         errorMsg={fieldState.error?.message as string}
       />

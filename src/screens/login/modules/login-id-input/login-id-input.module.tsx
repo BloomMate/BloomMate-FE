@@ -1,4 +1,3 @@
-import { Stack } from '@mobily/stacks';
 import { isUndefined } from 'lodash';
 import { memo } from 'react';
 import { useController, useFormContext } from 'react-hook-form';
@@ -19,18 +18,15 @@ const LoginIdInputModule = memo<LoginIdInputModuleProps>(() => {
   } = useController({ control, name: 'ID' });
 
   return (
-    <Stack space={4}>
-      <TextInput
-        value={value}
-        label="id"
-        placeholder="아이디를 입력해주세요"
-        onChangeText={onChange}
-        rightIconName="close"
-        error={!isUndefined(fieldState.error)}
-        errorMsg={fieldState.error?.message as string}
-        autoCapitalize="none"
-      />
-    </Stack>
+    <TextInput
+      value={value}
+      label="아이디"
+      placeholder="아이디를 입력해주세요"
+      onChangeText={onChange}
+      error={!isUndefined(fieldState.error)}
+      errorMsg={fieldState.error?.message as string}
+      autoCapitalize="none"
+    />
   );
 });
 

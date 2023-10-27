@@ -1,21 +1,41 @@
 import { Text as RNText, TextProps as RNTextProps } from 'react-native';
 
-import { getColorStyle, getFontFamilyByFontWeight, getTextAlignStyle, getVariantsStyle } from './text.util';
+import {
+  getColorStyle,
+  getFontFamilyByFontWeight,
+  getTextAlignStyle,
+  getVariantsStyle,
+} from './text.util';
 
 export type textAligns = 'auto' | 'left' | 'right' | 'center' | 'justify';
-export type fontWeightType = 'Light' | 'Medium' | 'Bold' ;
+export type fontWeightType = 'Light' | 'Medium' | 'Bold';
 export type fontColorType =
   | 'gray-900'
   | 'gray-800'
   | 'gray-700'
   | 'gray-600'
+  | 'gray-500'
+  | 'gray-400'
   | 'error'
   | 'white'
-  | 'black'
+  | 'black';
 
-export type textVariants = 'displayLarge' | 'displayMedium' | 'displaySmall' | 'headlineLarge' | 'headlineMedium' | 
-'headlineSmall' | 'titleLarge' | 'titleMedium' | 'titleSmall' | 'labelLarge' | 'labelMedium' | 'labelSmall' | 'bodyLarge' | 
-'bodyMedium' | 'bodySmall'
+export type textVariants =
+  | 'displayLarge'
+  | 'displayMedium'
+  | 'displaySmall'
+  | 'headlineLarge'
+  | 'headlineMedium'
+  | 'headlineSmall'
+  | 'titleLarge'
+  | 'titleMedium'
+  | 'titleSmall'
+  | 'labelLarge'
+  | 'labelMedium'
+  | 'labelSmall'
+  | 'bodyLarge'
+  | 'bodyMedium'
+  | 'bodySmall';
 
 type TextProps = RNTextProps & {
   variants: textVariants;
@@ -34,13 +54,13 @@ export const Text = ({
   ...props
 }: TextProps) => {
   const fontFamily = getFontFamilyByFontWeight(fontWeight);
-  const variantsStyle = getVariantsStyle(variants)
+  const variantsStyle = getVariantsStyle(variants);
   const colorStyle = getColorStyle(color);
   const textAlignmentStyle = getTextAlignStyle(textAlignment);
 
   return (
     <RNText
-      style={[fontFamily,variantsStyle, colorStyle, textAlignmentStyle, style]}
+      style={[fontFamily, variantsStyle, colorStyle, textAlignmentStyle, style]}
       {...props}>
       {children}
     </RNText>

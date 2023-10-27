@@ -32,7 +32,7 @@ export const SignUpScreen = ({}: SignUpScreenProps) => {
     <FormProvider {...methods}>
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <BasicLayout>
-          <Rows>
+          <Rows space={32}>
             <Row height="fluid">
               <Stack space={32}>
                 <SignUpHeaderModule />
