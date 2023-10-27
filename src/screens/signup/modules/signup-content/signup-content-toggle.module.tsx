@@ -7,6 +7,7 @@ import { SignUpForm } from '../../hooks';
 import { ESignUpStep } from '../../signup.state';
 
 import { Text } from '@/atoms';
+import { palette } from '@/utils';
 
 export const SignUpTurfModule = () => {
   const { control } = useFormContext<SignUpForm>();
@@ -22,18 +23,20 @@ export const SignUpTurfModule = () => {
   };
 
   return (
-    <Stack space={24} align={'center'}>
-      <Pressable onPress={() => handlePressTurfButton(0)}>
+    <Stack space={24} align="center">
+      <Pressable
+        style={{ width: '100%' }}
+        onPress={() => handlePressTurfButton(0)}>
         {({ pressed }) =>
           selected === 0 ? (
             <Box
               style={[
                 {
                   height: 60,
-                  width: 310,
                   borderRadius: 12,
                   borderWidth: 1,
-                  backgroundColor: '#B2DFDB',
+                  backgroundColor: palette['teal-100'],
+                  borderColor: palette['gray-700'],
                   justifyContent: 'center',
                 },
               ]}>
@@ -50,9 +53,9 @@ export const SignUpTurfModule = () => {
               style={[
                 {
                   height: 60,
-                  width: 310,
                   borderRadius: 12,
                   borderWidth: 1,
+                  borderColor: palette['gray-700'],
                   justifyContent: 'center',
                 },
               ]}>
@@ -67,17 +70,19 @@ export const SignUpTurfModule = () => {
           )
         }
       </Pressable>
-      <Pressable onPress={() => handlePressTurfButton(1)}>
+      <Pressable
+        style={{ width: '100%' }}
+        onPress={() => handlePressTurfButton(1)}>
         {({ pressed }) =>
           selected === 1 ? (
             <Box
               style={[
                 {
                   height: 60,
-                  width: 310,
                   borderRadius: 12,
                   borderWidth: 1,
-                  backgroundColor: '#B2DFDB',
+                  backgroundColor: palette['teal-100'],
+                  borderColor: palette['gray-700'],
                   justifyContent: 'center',
                 },
               ]}>
@@ -94,9 +99,9 @@ export const SignUpTurfModule = () => {
               style={[
                 {
                   height: 60,
-                  width: 310,
                   borderRadius: 12,
                   borderWidth: 1,
+                  borderColor: palette['gray-700'],
                   justifyContent: 'center',
                 },
               ]}>
@@ -111,17 +116,19 @@ export const SignUpTurfModule = () => {
           )
         }
       </Pressable>
-      <Pressable onPress={() => handlePressTurfButton(2)}>
+      <Pressable
+        style={{ width: '100%' }}
+        onPress={() => handlePressTurfButton(2)}>
         {({ pressed }) =>
           selected === 2 ? (
             <Box
               style={[
                 {
                   height: 60,
-                  width: 310,
                   borderRadius: 12,
                   borderWidth: 1,
-                  backgroundColor: '#B2DFDB',
+                  backgroundColor: palette['teal-100'],
+                  borderColor: palette['gray-700'],
                   justifyContent: 'center',
                 },
               ]}>
@@ -138,9 +145,9 @@ export const SignUpTurfModule = () => {
               style={[
                 {
                   height: 60,
-                  width: 310,
                   borderRadius: 12,
                   borderWidth: 1,
+                  borderColor: palette['gray-700'],
                   justifyContent: 'center',
                 },
               ]}>
