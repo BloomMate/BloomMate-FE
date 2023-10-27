@@ -1,6 +1,7 @@
 import { Box, Column, Columns, Stack } from '@mobily/stacks';
 import { useState } from 'react';
 import { useFormContext, useController } from 'react-hook-form';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useRecoilValue } from 'recoil';
 
 import { SignUpForm } from '../../hooks';
@@ -112,33 +113,30 @@ export const SignUpAddressInputModule = () => {
       <Modal isVisible={isModal}>
         <SignUpContentModalComponent setModal={setModal} />
       </Modal>
-      <Columns alignY={'center'}>
-        <Column width="4/5">
-          <SignUpContentInputComponent
-            screenStep={screenStep}
-            field={field}
-            fieldState={fieldState}
-          />
-        </Column>
-        <Column width="1/5" style={{ alignItems: 'center' }}>
-          <Box
-            style={{
-              backgroundColor: 'white',
-              borderRadius: 20,
-              justifyContent: 'center',
-              alignItems: 'center',
-              height: 50,
-              width: 50,
-            }}>
-            <Icon
-              name="search"
-              onPress={() => setModal(true)}
-              size={36}
-              color={'green'}
+      <TouchableOpacity onPress={() => setModal(true)}>
+        <Columns alignY={'center'}>
+          <Column width="4/5">
+            <SignUpContentInputComponent
+              screenStep={screenStep}
+              field={field}
+              fieldState={fieldState}
             />
-          </Box>
-        </Column>
-      </Columns>
+          </Column>
+          <Column width="1/5" style={{ alignItems: 'center' }}>
+            <Box
+              style={{
+                backgroundColor: 'white',
+                borderRadius: 20,
+                justifyContent: 'center',
+                alignItems: 'center',
+                height: 50,
+                width: 50,
+              }}>
+              <Icon name="search" size={36} color={'green'} />
+            </Box>
+          </Column>
+        </Columns>
+      </TouchableOpacity>
     </>
   );
 };

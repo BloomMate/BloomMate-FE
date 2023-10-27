@@ -10,10 +10,10 @@ import {
   LoginConfirmButtonModule,
   WithSuspenseLoginIdInputModule,
   LoginPasswordInputModule,
+  LoginHeaderModule,
 } from './modules';
 
-import { Button } from '@/atoms';
-import { BasicLayout, Dialog, ScrollView, SingleButtonProps } from '@/layouts';
+import { BasicLayout, ScrollView } from '@/layouts';
 
 type LoginScreenProps = {};
 
@@ -32,51 +32,23 @@ export const LoginScreen = ({}: LoginScreenProps) => {
   const route = useRoute<LoginScreenNavigationRouteProps>();
   const methods = useLoginForm();
 
-  const handlePressSignUpButton = () => {
-    navigation.navigate('SignUpScreen');
-  };
-  const buttons: SingleButtonProps[] = [
-    {
-      label: '버튼 1',
-      mode: 'contained',
-      disabled: false,
-    },
-    {
-      label: '버튼 2',
-      mode: 'outlined',
-      disabled: true,
-    },
-  ];
-
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <FormProvider {...methods}>
         <BasicLayout>
-          {/* <CTASection direction="row" buttons={buttons} /> */}
-          <Dialog
-            title="title"
-            content="content"
-            dialogVisible={false}
-            okayButton={{ label: 'ok', mode: 'contained', onPress: () => {} }}
-            cancelButton={{
-              label: 'cancel',
-              mode: 'outlined',
-              onPress: () => {},
-            }}
-          />
-          <Rows paddingX={24} paddingY={20}>
+          <Rows>
             <Row height="fluid">
-              <Stack space={24}>
-                <WithSuspenseLoginIdInputModule />
-                <LoginPasswordInputModule />
+              <Stack space={32}>
+                <LoginHeaderModule />
+                <Stack space={20}>
+                  <WithSuspenseLoginIdInputModule />
+                  <LoginPasswordInputModule />
+                </Stack>
               </Stack>
             </Row>
             <Row height="content">
               <Stack space={8}>
                 <LoginConfirmButtonModule />
-                <Button mode="outlined" onPress={handlePressSignUpButton}>
-                  회원가입
-                </Button>
               </Stack>
             </Row>
           </Rows>
