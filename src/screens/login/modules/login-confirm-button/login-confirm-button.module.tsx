@@ -1,12 +1,14 @@
 import { useNavigation } from '@react-navigation/native';
 import { memo } from 'react';
 import { SubmitHandler, useFormContext } from 'react-hook-form';
-import { Alert } from 'react-native';
 
 import { LoginForm } from '../../hooks';
 import { LoginScreenNavigationProps } from '../../login.screen';
 
+import { usePostLoginMutation } from './hooks';
+
 import { Button } from '@/atoms';
+import { useMutationIndicator } from '@/providers';
 
 type LoginConfirmButtonModuleProps = {};
 
@@ -16,15 +18,19 @@ export const LoginConfirmButtonModule = memo<LoginConfirmButtonModuleProps>(
 
     const { formState, handleSubmit } = useFormContext<LoginForm>();
     const { isDirty, isValid, errors } = formState;
+    const { mutateAsync, isLoading } = usePostLoginMutation();
+    useMutationIndicator([isLoading]);
 
     const isLoginPossible = isDirty && isValid;
-
-    const showAlert: SubmitHandler<LoginForm> = ({ ID }) => {
-      Alert.alert('로그인에 성공하였습니다.', `${ID}님 환영합니다!`);
+    const userLogin: SubmitHandler<LoginForm> = async ({
+      ID: id,
+      PassWord: pw,
+    }) => {
+      await mutateAsync({ id, pw });
     };
 
     const handlePressLoginButton = () => {
-      handleSubmit(showAlert)();
+      handleSubmit(userLogin)();
     };
 
     return (
