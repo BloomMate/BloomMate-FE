@@ -21,6 +21,7 @@ export const Button = ({ children, mode, ...props }: ButtonProps) => {
     <PaperButton
       mode={mode}
       rippleColor={rippleColor}
+      style={{ height: 48 }}
       theme={{
         fonts: {
           labelLarge: {

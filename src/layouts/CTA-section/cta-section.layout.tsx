@@ -23,16 +23,16 @@ export const CTASection = ({
 
   if (direction === 'row') {
     return (
-      <Columns space={10}>
+      <Columns space={4}>
         {buttons.map(({ mode, label, disabled, ...buttonProps }, index) => (
           <Column
             key={index}
             style={[
               mode === 'contained' &&
                 !disabled && {
-                  borderColor: palette['teal-800'],
+                  borderColor: palette['primary'],
                   borderWidth: 1,
-                  borderRadius: 6,
+                  borderRadius: 8,
                   backgroundColor: palette['white'],
                 },
             ]}>
