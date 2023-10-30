@@ -116,7 +116,7 @@ export const SignUpAddressInputModule = () => {
     name: ESignUpStep.ADDRESS_INPUT,
   });
   const { value } = field;
-  //TODO: 사진 꽉 차게(aspectRatio, resizeMode), Stack으로 바꾸기
+  //TODO: 사진 패딩 잡히게
 
   return (
     <>
@@ -168,8 +168,8 @@ export const SignUpAddressInputModule = () => {
         {value && (
           <Image
             source={require('./const/SmartCottage.jpg')}
-            style={{ aspectRatio: '311/210' }}
-            resizeMode="cover"
+            style={{ aspectRatio: 311 / 210 }}
+            resizeMode="contain"
           />
         )}
       </Stack>
