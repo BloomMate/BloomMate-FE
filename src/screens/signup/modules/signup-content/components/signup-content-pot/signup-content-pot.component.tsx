@@ -1,4 +1,4 @@
-import { Column, Columns, Stack } from '@mobily/stacks';
+import { Stack } from '@mobily/stacks';
 import { memo } from 'react';
 import { Image } from 'react-native';
 
@@ -22,21 +22,22 @@ export const SignUpContentPotComponent = memo<SignUpContentPotComponentProps>(
 
       for (let i = 0; i < numberOfPots; i++) {
         images.push(
-          <Column key={i} width="content">
-            <Image source={require('./Image/gardenSizeIcon.png')} />
-          </Column>,
+          <Image key={i} source={require('./Image/gardenSizeIcon.png')} />,
         );
       }
 
       return images;
     };
-    //TODO: Stack direction: row 로 바꾸기
 
     return (
       <Stack space={32}>
-        <Columns space={16} alignX="center">
+        <Stack
+          space={16}
+          horizontal
+          align="center"
+          style={{ width: '100%', justifyContent: 'center' }}>
           {renderImages()}
-        </Columns>
+        </Stack>
         <Text
           variants="labelMedium"
           fontWeight="Medium"
