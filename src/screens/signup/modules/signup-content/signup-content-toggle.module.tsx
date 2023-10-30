@@ -4,7 +4,10 @@ import { useFormContext, useController } from 'react-hook-form';
 import { SignUpForm } from '../../hooks';
 import { ESignUpStep } from '../../signup.state';
 
-import { SignUpContentToggleButtonComponent } from './components';
+import {
+  SignUpContentPotComponent,
+  SignUpContentToggleButtonComponent,
+} from './components';
 
 export const SignUpTurfModule = () => {
   const { control } = useFormContext<SignUpForm>();
@@ -19,15 +22,18 @@ export const SignUpTurfModule = () => {
   };
 
   return (
-    <Stack space={24} align="center">
-      {[0, 1, 2].map(v => (
-        <SignUpContentToggleButtonComponent
-          key={v}
-          value={v as 0 | 1 | 2}
-          onPress={() => handlePressTurfButton(v)}
-          selected={v === value}
-        />
-      ))}
+    <Stack space={32}>
+      <Stack space={20} align="center">
+        {[0, 1, 2].map(v => (
+          <SignUpContentToggleButtonComponent
+            key={v}
+            value={v as 0 | 1 | 2}
+            onPress={() => handlePressTurfButton(v)}
+            selected={v === value}
+          />
+        ))}
+      </Stack>
+      <SignUpContentPotComponent value={value as 0 | 1 | 2} />
     </Stack>
   );
 };
