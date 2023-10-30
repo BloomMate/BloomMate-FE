@@ -30,6 +30,7 @@ export const SignUpContentPotComponent = memo<SignUpContentPotComponentProps>(
 
       return images;
     };
+    //TODO: Stack direction: row 로 바꾸기
 
     return (
       <Stack space={32}>
