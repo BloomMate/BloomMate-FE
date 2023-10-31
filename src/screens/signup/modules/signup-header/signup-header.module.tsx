@@ -48,9 +48,11 @@ export const SignUpHeaderModule = memo<SignUpHeaderModuleProps>(() => {
         size={24}
         color={palette['gray-900']}
       />
+
       <ProgressBar
         progress={(currentScreenStepIndex + 1) / signUpSteps.length}
         color={palette['primary']}
+        style={{ backgroundColor: palette['gray-300'], borderRadius: 4 }}
       />
     </Stack>
   );
