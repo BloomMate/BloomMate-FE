@@ -40,10 +40,10 @@ export const TextInput = ({
     return (
       <PaperTextInput
         mode="outlined"
+        contentStyle={{ height: 48 }}
         style={{
           backgroundColor: palette['white'],
           borderRadius: 8,
-          height: 48,
         }}
         theme={{
           fonts: {
