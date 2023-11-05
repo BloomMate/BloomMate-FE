@@ -15,6 +15,7 @@ export const LoginConfirmButtonModule = memo<LoginConfirmButtonModuleProps>(
     const { formState, handleSubmit } = useFormContext<LoginForm>();
     const { isDirty, isValid } = formState;
     const { mutateAsync, isLoading } = usePostLoginMutation();
+
     useMutationIndicator([isLoading]);
 
     const isLoginPossible = isDirty && isValid;
@@ -23,6 +24,8 @@ export const LoginConfirmButtonModule = memo<LoginConfirmButtonModuleProps>(
       PassWord: pw,
     }) => {
       await mutateAsync({ id, pw });
+
+      console.log('성공!');
     };
 
     const handlePressLoginButton = () => {
