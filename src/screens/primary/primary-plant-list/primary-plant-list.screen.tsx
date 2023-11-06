@@ -58,19 +58,30 @@ export const PrimaryPlantListScreen = ({}: PrimaryPlantListScreenProps) => {
           tabBarLabelStyle: {
             fontFamily: 'GmarketSansTTFBold',
             ...getVariantsStyle('bodySmall'),
+            marginBottom: 16,
+          },
+          tabBarIndicatorContainerStyle: {
+            position: 'absolute',
+            top: 32,
+            height: 2,
+            backgroundColor: palette['gray-400'],
           },
           tabBarIndicatorStyle: {
             height: 2,
             backgroundColor: palette['primary'],
           },
+          tabBarContentContainerStyle: {},
           tabBarItemStyle: {
             flex: 1,
-            paddingVertical: 8,
+            paddingVertical: 0,
+            justifyContent: 'center',
+            alignItems: 'center',
           },
           tabBarStyle: {
             elevation: 0,
             backgroundColor: palette['gray-100'],
             width: deviceWidth - 48,
+            height: 32,
           },
           tabBarAllowFontScaling: false,
           swipeEnabled: false,
