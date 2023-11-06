@@ -1,11 +1,10 @@
 import { Row, Rows, Stack } from '@mobily/stacks';
 import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { Image, Platform } from 'react-native';
+import { Image } from 'react-native';
 
 import { RootStackParamList } from '../root.navigator';
 
-import { bgImageURL, logoImageURL } from './const';
 import {
   LandingLoginModule,
   LandingSignUpModule,
@@ -26,16 +25,6 @@ export type LandingScreenNavigationRouteProps = RouteProp<
 export const LandingScreen = ({}: LandingScreenProps) => {
   return (
     <>
-      <Image
-        source={bgImageURL}
-        style={{
-          position: 'absolute',
-          width: '100%',
-          height: '100%',
-          zIndex: -1,
-        }}
-        blurRadius={Platform.OS === 'android' ? 4 : 5}
-      />
       <Rows
         paddingX={32}
         paddingY={32}
@@ -43,8 +32,13 @@ export const LandingScreen = ({}: LandingScreenProps) => {
         <Row height="fluid" style={{ justifyContent: 'center' }}>
           <Stack space={80} align={'center'}>
             <Image
-              source={logoImageURL}
-              style={{ width: 290, height: 56 }}
+              source={require('./const/Image/LogoImage.png')}
+              style={{ height: 56 }}
+              resizeMode="contain"
+            />
+            <Image
+              source={require('./const/Image/LandingImage.jpg')}
+              style={{ width: 148, height: 120 }}
               resizeMode="contain"
             />
             <LandingTextModule />
