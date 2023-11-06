@@ -11,7 +11,11 @@ import {
   PrimaryNavigatorProps,
 } from '../primary.navigator';
 
-import { Text } from '@/atoms';
+import {
+  PrimaryPlantCurrentListModule,
+  PrimaryPlantHarvestedListModule,
+} from './modules';
+
 import { BasicLayout, ModalHeaderLayout } from '@/layouts';
 
 export type PrimaryPlantListScreenNavigatorProp = CompositeNavigationProp<
@@ -26,7 +30,12 @@ export type PrimaryPlantListScreenRouteProp = RouteProp<
 
 type PrimaryPlantListScreenProps = {};
 
-const Tab = createMaterialTopTabNavigator();
+export type PrimaryPlantListScreenTabParamList = {
+  PrimaryPlantCurrentList: undefined;
+  PrimaryPlantHarvestedList: undefined;
+};
+
+const Tab = createMaterialTopTabNavigator<PrimaryPlantListScreenTabParamList>();
 
 export const PrimaryPlantListScreen = ({}: PrimaryPlantListScreenProps) => {
   const navigation = useNavigation<PrimaryPlantListScreenNavigatorProp>();
@@ -39,20 +48,12 @@ export const PrimaryPlantListScreen = ({}: PrimaryPlantListScreenProps) => {
       />
       <Tab.Navigator>
         <Tab.Screen
-          name="Home"
-          component={() => (
-            <Text variants="displayLarge" fontWeight="Light" color="gray-600">
-              Home
-            </Text>
-          )}
+          name="PrimaryPlantCurrentList"
+          component={PrimaryPlantCurrentListModule}
         />
         <Tab.Screen
-          name="Settings"
-          component={() => (
-            <Text variants="displayLarge" fontWeight="Light" color="gray-600">
-              Settings
-            </Text>
-          )}
+          name="PrimaryPlantHarvestedList"
+          component={PrimaryPlantHarvestedListModule}
         />
       </Tab.Navigator>
     </BasicLayout>
