@@ -2019,6 +2019,11 @@
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.5.tgz#5f19d2b85a98e9558036f6a3cacc8819420f05cf"
   integrity sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==
 
+"@types/react-native-dotenv@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@types/react-native-dotenv/-/react-native-dotenv-0.2.1.tgz#5924c0fdedf550d53af4354badae932a7c9e9a31"
+  integrity sha512-jMJddBkr2LLwGTE/vmpis3hJL/Q7//IfqmYoAr1a6ls8NCRadyxNgKpyAbAHr+OTP8hAqGDuI8qxtlNDqgFgHw==
+
 "@types/react-native-vector-icons@^6.4.14":
   version "6.4.14"
   resolved "https://registry.yarnpkg.com/@types/react-native-vector-icons/-/react-native-vector-icons-6.4.14.tgz#085868a3d73a1db4bd49d6ce308c88b3a39cd96c"
@@ -3167,6 +3172,11 @@ doctrine@^3.0.0:
   integrity sha512-yS+Q5i3hBf7GBkd4KG8a7eBNNWNGLTaEwwYWUijIYM7zrlYDM0BFXHjjPWlWZ1Rg7UaddZeIDmi9jF3HmqiQ2w==
   dependencies:
     esutils "^2.0.2"
+
+dotenv@^16.3.1:
+  version "16.3.1"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.3.1.tgz#369034de7d7e5b120972693352a3bf112172cc3e"
+  integrity sha512-IPzF4w4/Rd94bA9imS68tZBaYyBWSCE47V1RGuMrB94iyTOIEwRmVL2x/4An+6mETpLrKJ5hQkB8W4kFAadeIQ==
 
 ee-first@1.1.1:
   version "1.1.1"
@@ -6455,6 +6465,13 @@ react-native-devtools@^0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/react-native-devtools/-/react-native-devtools-0.0.1.tgz#4316c0edfada0df73a896cfe6e27ea79fefdce07"
   integrity sha512-Sjix7jymQMchC4G77vsgWPf0/Utpu0TPC+sfJdCWX1+vr7jgNYCB4XErfYbITbI/1GtUtFV/8005orj9hMwpow==
+
+react-native-dotenv@^3.4.9:
+  version "3.4.9"
+  resolved "https://registry.yarnpkg.com/react-native-dotenv/-/react-native-dotenv-3.4.9.tgz#621c5b0c1d0c5c7f569bfe5a1d804bec7885c010"
+  integrity sha512-dbyd+mcy7SUzxEgmt33TRf1FGcNe6swJhXmB0unKkI49F7+pidog9kPtjxMLTAfmKA8gcN2XHQSKltGfGbGCLQ==
+  dependencies:
+    dotenv "^16.3.1"
 
 react-native-error-boundary@^1.2.3:
   version "1.2.3"
