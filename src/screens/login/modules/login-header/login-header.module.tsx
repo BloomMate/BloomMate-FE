@@ -4,8 +4,8 @@ import { memo } from 'react';
 
 import { LoginScreenNavigationProps } from '../../login.screen';
 
-import { Icon, Text } from '@/atoms';
-import { palette } from '@/utils';
+import { Text } from '@/atoms';
+import { ModalHeaderLayout } from '@/layouts';
 
 type LoginHeaderModuleProps = {};
 
@@ -17,11 +17,9 @@ export const LoginHeaderModule = memo<LoginHeaderModuleProps>(() => {
 
   return (
     <Stack space={32}>
-      <Icon
-        name="arrow-back-ios"
-        onPress={handlePressBack}
-        size={24}
-        color={palette['gray-900']}
+      <ModalHeaderLayout
+        left={{ type: 'icon' }}
+        onPressExit={handlePressBack}
       />
       <Text fontWeight="Medium" variants="titleLarge" color="gray-900">
         로그인
