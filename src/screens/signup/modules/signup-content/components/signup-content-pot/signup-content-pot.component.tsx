@@ -22,7 +22,7 @@ export const SignUpContentPotComponent = memo<SignUpContentPotComponentProps>(
 
       for (let i = 0; i < numberOfPots; i++) {
         images.push(
-          <Image key={i} source={require('./Image/gardenSizeIcon.png')} />,
+          <Image key={i} source={require('./Image/flower_pot.png')} />,
         );
       }
 
