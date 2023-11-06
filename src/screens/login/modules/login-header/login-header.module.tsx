@@ -16,7 +16,7 @@ export const LoginHeaderModule = memo<LoginHeaderModuleProps>(() => {
   };
 
   return (
-    <Stack space={32} paddingTop={32}>
+    <Stack space={32}>
       <Icon
         name="arrow-back-ios"
         onPress={handlePressBack}

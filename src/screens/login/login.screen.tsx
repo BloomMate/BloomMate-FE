@@ -33,7 +33,7 @@ export const LoginScreen = ({}: LoginScreenProps) => {
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <FormProvider {...methods}>
-        <BasicLayout>
+        <BasicLayout backgroundColor="white">
           <Rows>
             <Row height="fluid">
               <Stack space={32}>

@@ -1,4 +1,3 @@
-import { API_URL } from '@env';
 import dayjs from 'dayjs';
 import 'dayjs/locale/ko';
 import isToday from 'dayjs/plugin/isToday';
@@ -18,7 +17,6 @@ if (__DEV__) {
 }
 
 export const App = () => {
-  console.log(API_URL);
   dayjs.extend(isToday);
   dayjs.locale('ko');
 

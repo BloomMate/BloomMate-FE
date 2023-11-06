@@ -41,7 +41,7 @@ export const SignUpHeaderModule = memo<SignUpHeaderModuleProps>(() => {
   const isFirstStep = currentScreenStepIndex === 0;
 
   return (
-    <Stack space={32} paddingTop={32}>
+    <Stack space={32}>
       <Icon
         name="arrow-back-ios"
         onPress={handlePressBack}
