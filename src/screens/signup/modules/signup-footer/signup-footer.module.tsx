@@ -1,4 +1,3 @@
-import { Box } from '@mobily/stacks';
 import { useNavigation } from '@react-navigation/native';
 import { memo } from 'react';
 import { SubmitHandler, useFormContext } from 'react-hook-form';
@@ -49,21 +48,21 @@ export const SignUpFooterModule = memo<SignUpFooterModuleProps>(() => {
 
   const isSignUpPossible = isDirty && isValid;
   const isCurrentStepValid = () => {
+    const currentFieldName = signUpSteps[currentScreenStepIndex];
+
     if (currentScreenStepIndex === 2) {
-      const fieldName = signUpSteps[currentScreenStepIndex];
       const passwordCheckSame = errors[ESignUpStep.PW_CHECK_INPUT];
       const passwordCheckDirty = dirtyFields[ESignUpStep.PW_CHECK_INPUT];
 
       return (
         !passwordCheckSame &&
-        !errors[fieldName] &&
-        dirtyFields[fieldName] &&
+        !errors[currentFieldName] &&
+        dirtyFields[currentFieldName] &&
         passwordCheckDirty
       );
     }
-    const fieldName = signUpSteps[currentScreenStepIndex];
 
-    return !errors[fieldName] && dirtyFields[fieldName];
+    return !errors[currentFieldName] && dirtyFields[currentFieldName];
   };
 
   const isLastStep = currentScreenStepIndex === signUpSteps.length - 1;
@@ -79,13 +78,11 @@ export const SignUpFooterModule = memo<SignUpFooterModuleProps>(() => {
   };
 
   return (
-    <Box>
-      <Button
-        mode="contained"
-        onPress={handlePressButton}
-        disabled={isLastStep ? !isSignUpPossible : !isCurrentStepValid()}>
-        {copy}
-      </Button>
-    </Box>
+    <Button
+      mode="contained"
+      onPress={handlePressButton}
+      disabled={isLastStep ? !isSignUpPossible : !isCurrentStepValid()}>
+      {copy}
+    </Button>
   );
 });

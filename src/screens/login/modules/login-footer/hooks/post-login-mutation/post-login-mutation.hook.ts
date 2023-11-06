@@ -27,7 +27,7 @@ export const usePostLoginMutation = () => {
           password: pw,
         },
       );
-      console.log(data);
+
       return data;
     } catch (error) {
       logHttpErrorMessage(error);
