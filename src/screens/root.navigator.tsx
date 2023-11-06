@@ -7,7 +7,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import { LandingScreen } from './landing';
 import { LoginScreen } from './login';
-import { PrimaryNavigatorParamLists } from './primary';
+import { PrimaryNavigator, PrimaryNavigatorParamLists } from './primary';
 import { SignUpScreen } from './signup';
 
 export type RootStackParamList = {
@@ -34,6 +34,7 @@ export const RootNavigator = ({}: RootNavigatorProps) => {
         <Stack.Screen name="LandingScreen" component={LandingScreen} />
         <Stack.Screen name="LoginScreen" component={LoginScreen} />
         <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
+        <Stack.Screen name="PrimaryStack" component={PrimaryNavigator} />
       </Stack.Navigator>
     </NavigationContainer>
   );

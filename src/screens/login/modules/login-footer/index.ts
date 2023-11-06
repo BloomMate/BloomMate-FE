@@ -1,1 +1,1 @@
-export * from './login-confirm-button.module';
+export * from './login-footer.module';

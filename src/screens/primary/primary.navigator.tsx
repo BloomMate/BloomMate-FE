@@ -39,7 +39,8 @@ export const PrimaryNavigator = () => {
         tabBarActiveTintColor: palette['primary'],
         tabBarInactiveTintColor: palette['primary'],
         headerShown: false,
-      }}>
+      }}
+      initialRouteName="PrimaryPlantListScreen">
       <Tab.Screen
         name="PrimaryPlantListScreen"
         component={PrimaryPlantListScreen}
