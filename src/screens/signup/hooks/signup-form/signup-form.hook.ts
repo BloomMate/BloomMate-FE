@@ -46,6 +46,8 @@ const SignUpSchemaFormSchema: yup.ObjectSchema<SignUpForm> = yup
       .oneOf([yup.ref(ESignUpStep.PW_INPUT)], '비밀번호가 일치하지 않습니다.'),
     [ESignUpStep.TIIUN_INPUT]: yup
       .string()
+      .matches(/^tiiun.*/, '틔운 제품키는 tiiun으로 시작하는 문자열입니다.')
+      .length(8, '틔운 제품키는 8글자입니다.')
       .required('틔운 제품키를 입력해주세요'),
     [ESignUpStep.TURF_INPUT]: yup.number().required('하나를 선택해주세요.'),
     [ESignUpStep.ADDRESS_INPUT]: yup.string().required('주소를 입력해주세요.'),
@@ -59,7 +61,7 @@ export const useSignUpForm = () => {
       [ESignUpStep.PW_INPUT]: undefined,
       [ESignUpStep.PW_CHECK_INPUT]: undefined,
       [ESignUpStep.TIIUN_INPUT]: undefined,
-      [ESignUpStep.TURF_INPUT]: NaN,
+      [ESignUpStep.TURF_INPUT]: undefined,
       [ESignUpStep.ADDRESS_INPUT]: undefined,
     },
     resolver: yupResolver(SignUpSchemaFormSchema),

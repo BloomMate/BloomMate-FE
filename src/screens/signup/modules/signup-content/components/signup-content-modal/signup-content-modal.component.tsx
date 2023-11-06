@@ -6,12 +6,15 @@ import { useController, useFormContext } from 'react-hook-form';
 import { SignUpForm } from '../../../../hooks/signup-form';
 import { ESignUpStep } from '../../../../signup.state';
 
+import { Modal } from '@/atoms';
+
 type SignUpContentModalComponentProps = {
+  isModal: boolean;
   setModal: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const SignUpContentModalComponent =
-  memo<SignUpContentModalComponentProps>(({ setModal }) => {
+  memo<SignUpContentModalComponentProps>(({ isModal, setModal }) => {
     const { control } = useFormContext<SignUpForm>();
     const { field } = useController({
       control,
@@ -21,18 +24,20 @@ export const SignUpContentModalComponent =
     const handleClickAddress = (data: OnCompleteParams) => {
       const userAddress = data.address;
       onChange(userAddress);
+      setModal(false);
     };
-    const closeModal = setModal;
+    const isVisible = isModal;
 
     return (
-      <Postcode
-        style={{ width: 320, height: 520 }}
-        jsOptions={{ animation: true }}
-        onError={() => console.log('error')}
-        onSelected={data => {
-          handleClickAddress(data);
-          closeModal(false);
-        }}
-      />
+      <Modal isVisible={isVisible}>
+        <Postcode
+          style={{ aspectRatio: 32 / 52 }}
+          jsOptions={{ animation: true }}
+          onError={() => console.log('error')}
+          onSelected={data => {
+            handleClickAddress(data);
+          }}
+        />
+      </Modal>
     );
   });

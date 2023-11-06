@@ -3,18 +3,23 @@ import { PropsWithChildren } from 'react';
 
 import { palette } from '@/utils';
 
-type BasicLayoutProps = PropsWithChildren<{}>;
+type BasicLayoutProps = PropsWithChildren<{
+  backgroundColor: 'white' | 'gray-100';
+}>;
 
-export const BasicLayout = ({ children }: BasicLayoutProps) => {
+export const BasicLayout = ({
+  children,
+  backgroundColor,
+}: BasicLayoutProps) => {
   return (
     <Box
       flex="fluid"
       paddingX={24}
-      paddingTop={12}
+      paddingTop={32}
       paddingBottom={32}
       style={{
         width: '100%',
-        backgroundColor: palette['white'],
+        backgroundColor: palette[backgroundColor],
       }}>
       {children}
     </Box>

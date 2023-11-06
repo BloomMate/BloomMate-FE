@@ -12,7 +12,8 @@
       "@/hooks": ["./src/hooks"],
       "@/hooks/*": ["./src/hooks/*"]
     },
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "typeRoots": ["./src/types"]
   },
   "extends": "@tsconfig/react-native/tsconfig.json"
 }
