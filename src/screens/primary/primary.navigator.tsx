@@ -8,6 +8,7 @@ import { PrimaryCommunityScreen } from './primary-community';
 import { PrimaryMyPageScreen } from './primary-my-page';
 import { PrimaryPlantListScreen } from './primary-plant-list';
 
+import { Icon } from '@/atoms';
 import { palette } from '@/utils';
 
 export type PrimaryNavigatorParamLists = {
@@ -32,29 +33,45 @@ export const PrimaryNavigator = () => {
     <Tab.Navigator
       screenOptions={{
         tabBarStyle: {
-          height: 80,
-          paddingBottom: 20,
+          height: 76,
+          paddingBottom: 16,
+          paddingTop: 16,
           backgroundColor: palette['white'],
         },
         tabBarActiveTintColor: palette['primary'],
-        tabBarInactiveTintColor: palette['primary'],
+        tabBarInactiveTintColor: palette['gray-400'],
         headerShown: false,
       }}
       initialRouteName="PrimaryPlantListScreen">
       <Tab.Screen
         name="PrimaryPlantListScreen"
         component={PrimaryPlantListScreen}
-        options={{ tabBarLabel: '식물리스트' }}
+        options={{
+          tabBarLabel: '',
+          tabBarIcon: ({ color }) => {
+            return <Icon color={color} size={28} name="list" />;
+          },
+        }}
       />
       <Tab.Screen
         name="PrimaryCommunityScreen"
         component={PrimaryCommunityScreen}
-        options={{ tabBarLabel: '커뮤니티' }}
+        options={{
+          tabBarLabel: '',
+          tabBarIcon: ({ color }) => {
+            return <Icon color={color} size={28} name="article" />;
+          },
+        }}
       />
       <Tab.Screen
         name="PrimaryMyPageScreen"
         component={PrimaryMyPageScreen}
-        options={{ tabBarLabel: '마이페이지' }}
+        options={{
+          tabBarLabel: '',
+          tabBarIcon: ({ color }) => {
+            return <Icon color={color} size={28} name="person-outline" />;
+          },
+        }}
       />
     </Tab.Navigator>
   );
