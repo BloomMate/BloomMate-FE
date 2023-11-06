@@ -74,9 +74,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.reactnativetemplate"
+    namespace "com.example.bloommate"
     defaultConfig {
-        applicationId "com.reactnativetemplate"
+        applicationId "com.example.bloommate"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

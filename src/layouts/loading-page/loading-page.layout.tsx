@@ -11,7 +11,7 @@ export const LoadingPage = ({}: LoadingPageProps) => {
       alignX="center"
       alignY="center"
       flex="fluid"
-      style={{ backgroundColor: palette['white'], width: '100%' }}>
+      style={{ backgroundColor: palette['modal'], width: '100%' }}>
       <ActivityIndicator animating={true} size="large" />
     </Box>
   );
