@@ -7,7 +7,7 @@ import { RootStackParamList } from '../root.navigator';
 
 import { useLoginForm } from './hooks';
 import {
-  LoginConfirmButtonModule,
+  LoginFooterModule,
   WithSuspenseLoginIdInputModule,
   LoginPasswordInputModule,
   LoginHeaderModule,
@@ -46,7 +46,7 @@ export const LoginScreen = ({}: LoginScreenProps) => {
             </Row>
             <Row height="content">
               <Stack space={8}>
-                <LoginConfirmButtonModule />
+                <LoginFooterModule />
               </Stack>
             </Row>
           </Rows>
