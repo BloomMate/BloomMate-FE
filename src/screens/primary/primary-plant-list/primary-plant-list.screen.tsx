@@ -1,5 +1,10 @@
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
-import { CompositeNavigationProp, RouteProp } from '@react-navigation/native';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import {
+  CompositeNavigationProp,
+  RouteProp,
+  useNavigation,
+} from '@react-navigation/native';
 
 import {
   PrimaryNavigatorParamLists,
@@ -7,6 +12,7 @@ import {
 } from '../primary.navigator';
 
 import { Text } from '@/atoms';
+import { BasicLayout, ModalHeaderLayout } from '@/layouts';
 
 export type PrimaryPlantListScreenNavigatorProp = CompositeNavigationProp<
   PrimaryNavigatorProps,
@@ -20,10 +26,35 @@ export type PrimaryPlantListScreenRouteProp = RouteProp<
 
 type PrimaryPlantListScreenProps = {};
 
+const Tab = createMaterialTopTabNavigator();
+
 export const PrimaryPlantListScreen = ({}: PrimaryPlantListScreenProps) => {
+  const navigation = useNavigation<PrimaryPlantListScreenNavigatorProp>();
+
   return (
-    <Text fontWeight="Medium" variants="bodyLarge" color="black">
-      식물 리스트
-    </Text>
+    <BasicLayout backgroundColor="gray-100">
+      <ModalHeaderLayout
+        left={{ type: 'string', title: '식물 리스트' }}
+        onPressExit={() => navigation.goBack()}
+      />
+      <Tab.Navigator>
+        <Tab.Screen
+          name="Home"
+          component={() => (
+            <Text variants="displayLarge" fontWeight="Light" color="gray-600">
+              Home
+            </Text>
+          )}
+        />
+        <Tab.Screen
+          name="Settings"
+          component={() => (
+            <Text variants="displayLarge" fontWeight="Light" color="gray-600">
+              Settings
+            </Text>
+          )}
+        />
+      </Tab.Navigator>
+    </BasicLayout>
   );
 };
