@@ -44,7 +44,7 @@ export const SignUpFooterModule = memo<SignUpFooterModuleProps>(() => {
     ADDRESS_INPUT: address,
   }) => {
     await mutateAsync({ id, pw, name, tiiun, gardensize, address });
-    navigation.navigate('LoginScreen');
+    navigation.replace('LoginScreen');
   };
 
   const isSignUpPossible = isDirty && isValid;
