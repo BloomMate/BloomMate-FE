@@ -3,7 +3,7 @@ import { Text, fontColorType } from '@/atoms';
 type PrimaryPlantListTabLabelProps = {
   label: string;
   focused: boolean;
-  color: fontColorType;
+  color: string;
 };
 
 export const PrimaryPlantListTabLabel = ({

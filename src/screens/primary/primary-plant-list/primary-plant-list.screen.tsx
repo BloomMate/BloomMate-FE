@@ -18,8 +18,7 @@ import {
 } from './modules';
 import { MATERIAL_TOP_TAB_NAVIGATOR_SCREEN_OPTIONS } from './primary-plant-list.const';
 
-import { fontColorType } from '@/atoms';
-import { BasicLayout, ModalHeaderLayout } from '@/layouts';
+import { BasicLayout, ModalHeader } from '@/layouts';
 
 export type PrimaryPlantListScreenNavigatorProp = CompositeNavigationProp<
   PrimaryNavigatorProps,
@@ -45,7 +44,7 @@ export const PrimaryPlantListScreen = ({}: PrimaryPlantListScreenProps) => {
 
   return (
     <BasicLayout backgroundColor="gray-100" tabBar>
-      <ModalHeaderLayout
+      <ModalHeader
         left={{ type: 'string', title: '식물 리스트' }}
         onPressExit={() => navigation.goBack()}
       />
@@ -55,26 +54,18 @@ export const PrimaryPlantListScreen = ({}: PrimaryPlantListScreenProps) => {
         screenOptions={MATERIAL_TOP_TAB_NAVIGATOR_SCREEN_OPTIONS}>
         <Tab.Screen
           name="PrimaryPlantCurrentList"
-          options={({ route }) => ({
-            tabBarLabel: ({ focused, color }) => (
-              <PrimaryPlantListTabLabel
-                focused={focused}
-                color={color as fontColorType}
-                label="성장중"
-              />
+          options={() => ({
+            tabBarLabel: props => (
+              <PrimaryPlantListTabLabel {...props} label="성장중" />
             ),
           })}
           component={PrimaryPlantCurrentListModule}
         />
         <Tab.Screen
           name="PrimaryPlantHarvestedList"
-          options={({ route }) => ({
-            tabBarLabel: ({ focused, color }) => (
-              <PrimaryPlantListTabLabel
-                focused={focused}
-                color={color as fontColorType}
-                label="수확 완료"
-              />
+          options={() => ({
+            tabBarLabel: props => (
+              <PrimaryPlantListTabLabel {...props} label="수확완료" />
             ),
           })}
           component={PrimaryPlantHarvestedListModule}
