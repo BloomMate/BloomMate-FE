@@ -1,4 +1,3 @@
-import { useWindowDimensions } from '@mobily/stacks';
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import {
@@ -12,14 +11,15 @@ import {
   PrimaryNavigatorProps,
 } from '../primary.navigator';
 
+import { PrimaryPlantListTabLabel } from './components';
 import {
   PrimaryPlantCurrentListModule,
   PrimaryPlantHarvestedListModule,
 } from './modules';
+import { MATERIAL_TOP_TAB_NAVIGATOR_SCREEN_OPTIONS } from './primary-plant-list.const';
 
-import { getVariantsStyle } from '@/atoms';
+import { fontColorType } from '@/atoms';
 import { BasicLayout, ModalHeaderLayout } from '@/layouts';
-import { palette } from '@/utils';
 
 export type PrimaryPlantListScreenNavigatorProp = CompositeNavigationProp<
   PrimaryNavigatorProps,
@@ -42,7 +42,6 @@ const Tab = createMaterialTopTabNavigator<PrimaryPlantListScreenTabParamList>();
 
 export const PrimaryPlantListScreen = ({}: PrimaryPlantListScreenProps) => {
   const navigation = useNavigation<PrimaryPlantListScreenNavigatorProp>();
-  const { width: deviceWidth } = useWindowDimensions();
 
   return (
     <BasicLayout backgroundColor="gray-100" tabBar>
@@ -51,49 +50,33 @@ export const PrimaryPlantListScreen = ({}: PrimaryPlantListScreenProps) => {
         onPressExit={() => navigation.goBack()}
       />
       <Tab.Navigator
+        style={{ marginTop: 24 }}
         initialRouteName="PrimaryPlantCurrentList"
-        screenOptions={{
-          tabBarActiveTintColor: palette['primary'],
-          tabBarInactiveTintColor: palette['gray-400'],
-          tabBarLabelStyle: {
-            fontFamily: 'GmarketSansTTFBold',
-            ...getVariantsStyle('bodySmall'),
-            marginBottom: 16,
-          },
-          tabBarIndicatorContainerStyle: {
-            position: 'absolute',
-            top: 32,
-            height: 2,
-            backgroundColor: palette['gray-400'],
-          },
-          tabBarIndicatorStyle: {
-            height: 2,
-            backgroundColor: palette['primary'],
-          },
-          tabBarContentContainerStyle: {},
-          tabBarItemStyle: {
-            flex: 1,
-            paddingVertical: 0,
-            justifyContent: 'center',
-            alignItems: 'center',
-          },
-          tabBarStyle: {
-            elevation: 0,
-            backgroundColor: palette['gray-100'],
-            width: deviceWidth - 48,
-            height: 32,
-          },
-          tabBarAllowFontScaling: false,
-          swipeEnabled: false,
-        }}>
+        screenOptions={MATERIAL_TOP_TAB_NAVIGATOR_SCREEN_OPTIONS}>
         <Tab.Screen
           name="PrimaryPlantCurrentList"
-          options={{ tabBarLabel: '성장중' }}
+          options={({ route }) => ({
+            tabBarLabel: ({ focused, color }) => (
+              <PrimaryPlantListTabLabel
+                focused={focused}
+                color={color as fontColorType}
+                label="성장중"
+              />
+            ),
+          })}
           component={PrimaryPlantCurrentListModule}
         />
         <Tab.Screen
           name="PrimaryPlantHarvestedList"
-          options={{ tabBarLabel: '수확 완료' }}
+          options={({ route }) => ({
+            tabBarLabel: ({ focused, color }) => (
+              <PrimaryPlantListTabLabel
+                focused={focused}
+                color={color as fontColorType}
+                label="수확 완료"
+              />
+            ),
+          })}
           component={PrimaryPlantHarvestedListModule}
         />
       </Tab.Navigator>
