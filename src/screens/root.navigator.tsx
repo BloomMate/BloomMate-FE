@@ -15,6 +15,7 @@ export type RootStackParamList = {
   SignUpScreen: undefined;
   LandingScreen: undefined;
   PrimaryStack: NavigatorScreenParams<PrimaryNavigatorParamLists>;
+  PlantAddScreen: undefined;
 };
 
 type RootNavigatorProps = {};
