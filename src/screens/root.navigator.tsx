@@ -21,6 +21,8 @@ type RootNavigatorProps = {};
 
 const Stack = createStackNavigator<RootStackParamList>();
 
+//TODO: 아래에서 튀어나오는 거 확인
+
 export const RootNavigator = ({}: RootNavigatorProps) => {
   return (
     <NavigationContainer
