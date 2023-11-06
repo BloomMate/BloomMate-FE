@@ -5,7 +5,7 @@ import { memo } from 'react';
 import { LoginScreenNavigationProps } from '../../login.screen';
 
 import { Text } from '@/atoms';
-import { ModalHeaderLayout } from '@/layouts';
+import { ModalHeader } from '@/layouts';
 
 type LoginHeaderModuleProps = {};
 
@@ -17,10 +17,7 @@ export const LoginHeaderModule = memo<LoginHeaderModuleProps>(() => {
 
   return (
     <Stack space={32}>
-      <ModalHeaderLayout
-        left={{ type: 'icon' }}
-        onPressExit={handlePressBack}
-      />
+      <ModalHeader left={{ type: 'icon' }} onPressExit={handlePressBack} />
       <Text fontWeight="Medium" variants="titleLarge" color="gray-900">
         로그인
       </Text>

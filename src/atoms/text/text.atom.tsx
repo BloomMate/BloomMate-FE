@@ -18,7 +18,8 @@ export type fontColorType =
   | 'gray-400'
   | 'error'
   | 'white'
-  | 'black';
+  | 'black'
+  | 'primary';
 
 export type textVariants =
   | 'displayLarge'
