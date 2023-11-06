@@ -116,7 +116,6 @@ export const SignUpAddressInputModule = () => {
     name: ESignUpStep.ADDRESS_INPUT,
   });
   const { value } = field;
-  //TODO: 사진 패딩 잡히게
 
   return (
     <>
@@ -131,7 +130,11 @@ export const SignUpAddressInputModule = () => {
             }}>
             <Columns>
               <Column width={'fluid'}>
-                <Box paddingY={10} flex="fluid" alignX="center" alignY="center">
+                <Box
+                  paddingY={12.25}
+                  flex="fluid"
+                  alignX="center"
+                  alignY="center">
                   {value ? (
                     <Text
                       fontWeight="Medium"
@@ -164,11 +167,10 @@ export const SignUpAddressInputModule = () => {
             </Columns>
           </Box>
         </TouchableOpacity>
-
         {value && (
           <Image
             source={require('./const/SmartCottage.jpg')}
-            style={{ aspectRatio: 311 / 210 }}
+            style={{ width: '100%' }}
             resizeMode="contain"
           />
         )}
