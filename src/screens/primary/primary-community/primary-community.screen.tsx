@@ -1,9 +1,5 @@
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
-import {
-  CompositeNavigationProp,
-  RouteProp,
-  useNavigation,
-} from '@react-navigation/native';
+import { CompositeNavigationProp, RouteProp } from '@react-navigation/native';
 
 import {
   PrimaryNavigatorParamLists,
@@ -25,8 +21,6 @@ export type PrimaryCommunityScreenRouteProp = RouteProp<
 type PrimaryCommunityScreenProps = {};
 
 export const PrimaryCommunityScreen = ({}: PrimaryCommunityScreenProps) => {
-  const navigation = useNavigation<PrimaryCommunityScreenNavigatorProp>();
-
   return (
     <Text fontWeight="Medium" variants="bodyLarge" color="black">
       식집사 커뮤니티
