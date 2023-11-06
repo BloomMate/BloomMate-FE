@@ -14,7 +14,7 @@ export type ButtonProps = Omit<
   'mode' | 'icon'
 > & {
   mode: 'outlined' | 'contained' | 'text';
-  icon: string;
+  icon?: string;
 };
 
 export const Button = ({
