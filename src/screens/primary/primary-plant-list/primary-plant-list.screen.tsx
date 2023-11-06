@@ -1,12 +1,24 @@
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
-import { CompositeNavigationProp, RouteProp } from '@react-navigation/native';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import {
+  CompositeNavigationProp,
+  RouteProp,
+  useNavigation,
+} from '@react-navigation/native';
 
 import {
   PrimaryNavigatorParamLists,
   PrimaryNavigatorProps,
 } from '../primary.navigator';
 
-import { Text } from '@/atoms';
+import { PrimaryPlantListTabLabel } from './components';
+import {
+  PrimaryPlantCurrentListScreen,
+  PrimaryPlantHarvestedListScreen,
+} from './screen';
+import { MATERIAL_TOP_TAB_NAVIGATOR_SCREEN_OPTIONS } from './primary-plant-list.const';
+
+import { BasicLayout, ModalHeader } from '@/layouts';
 
 export type PrimaryPlantListScreenNavigatorProp = CompositeNavigationProp<
   PrimaryNavigatorProps,
@@ -20,10 +32,45 @@ export type PrimaryPlantListScreenRouteProp = RouteProp<
 
 type PrimaryPlantListScreenProps = {};
 
+export type PrimaryPlantListScreenTabParamList = {
+  PrimaryPlantCurrentList: undefined;
+  PrimaryPlantHarvestedList: undefined;
+};
+
+const Tab = createMaterialTopTabNavigator<PrimaryPlantListScreenTabParamList>();
+
 export const PrimaryPlantListScreen = ({}: PrimaryPlantListScreenProps) => {
+  const navigation = useNavigation<PrimaryPlantListScreenNavigatorProp>();
+
   return (
-    <Text fontWeight="Medium" variants="bodyLarge" color="black">
-      식물 리스트
-    </Text>
+    <BasicLayout backgroundColor="gray-100" tabBar>
+      <ModalHeader
+        left={{ type: 'string', title: '식물 리스트' }}
+        onPressExit={() => navigation.goBack()}
+      />
+      <Tab.Navigator
+        style={{ marginTop: 24 }}
+        initialRouteName="PrimaryPlantCurrentList"
+        screenOptions={MATERIAL_TOP_TAB_NAVIGATOR_SCREEN_OPTIONS}>
+        <Tab.Screen
+          name="PrimaryPlantCurrentList"
+          options={() => ({
+            tabBarLabel: props => (
+              <PrimaryPlantListTabLabel {...props} label="성장중" />
+            ),
+          })}
+          component={PrimaryPlantCurrentListScreen}
+        />
+        <Tab.Screen
+          name="PrimaryPlantHarvestedList"
+          options={() => ({
+            tabBarLabel: props => (
+              <PrimaryPlantListTabLabel {...props} label="수확완료" />
+            ),
+          })}
+          component={PrimaryPlantHarvestedListScreen}
+        />
+      </Tab.Navigator>
+    </BasicLayout>
   );
 };

@@ -11,7 +11,7 @@ import {
   signUpSteps,
 } from '../../signup.state';
 
-import { ModalHeaderLayout } from '@/layouts';
+import { ModalHeader } from '@/layouts';
 import { palette } from '@/utils';
 
 type SignUpHeaderModuleProps = {};
@@ -35,10 +35,7 @@ export const SignUpHeaderModule = memo<SignUpHeaderModuleProps>(() => {
 
   return (
     <Stack space={32}>
-      <ModalHeaderLayout
-        left={{ type: 'icon' }}
-        onPressExit={handlePressBack}
-      />
+      <ModalHeader left={{ type: 'icon' }} onPressExit={handlePressBack} />
       <ProgressBar
         progress={(currentScreenStepIndex + 1) / signUpSteps.length}
         color={palette['primary']}
