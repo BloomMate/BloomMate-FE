@@ -1,6 +1,6 @@
-import { Box } from '@mobily/stacks';
+import { Box, Stack } from '@mobily/stacks';
 
-import { Text } from '@/atoms';
+import { Button, Text } from '@/atoms';
 import { palette } from '@/utils';
 
 type PrimaryPlantCurrentListModuleProps = {};
@@ -9,11 +9,22 @@ export const PrimaryPlantCurrentListModule =
   ({}: PrimaryPlantCurrentListModuleProps) => {
     return (
       <Box
+        alignX="center"
+        alignY="center"
         paddingTop={24}
         style={{ backgroundColor: palette['gray-100'], height: '100%' }}>
-        <Text variants="displayLarge" fontWeight="Light" color="gray-900">
-          재배중인 식물
-        </Text>
+        <Stack space={32}>
+          <Text
+            variants="labelLarge"
+            fontWeight="Medium"
+            color="gray-900"
+            textAlignment="center">
+            {'등록된 식물이 없어요.\n첫 식물을 등록해주세요!'}
+          </Text>
+          <Button mode="contained" onPress={() => {}}>
+            식물 등록
+          </Button>
+        </Stack>
       </Box>
     );
   };
