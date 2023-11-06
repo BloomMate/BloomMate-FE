@@ -13,9 +13,9 @@ import {
 
 import { PrimaryPlantListTabLabel } from './components';
 import {
-  PrimaryPlantCurrentListModule,
-  PrimaryPlantHarvestedListModule,
-} from './modules';
+  PrimaryPlantCurrentListScreen,
+  PrimaryPlantHarvestedListScreen,
+} from './screen';
 import { MATERIAL_TOP_TAB_NAVIGATOR_SCREEN_OPTIONS } from './primary-plant-list.const';
 
 import { BasicLayout, ModalHeader } from '@/layouts';
@@ -59,7 +59,7 @@ export const PrimaryPlantListScreen = ({}: PrimaryPlantListScreenProps) => {
               <PrimaryPlantListTabLabel {...props} label="성장중" />
             ),
           })}
-          component={PrimaryPlantCurrentListModule}
+          component={PrimaryPlantCurrentListScreen}
         />
         <Tab.Screen
           name="PrimaryPlantHarvestedList"
@@ -68,7 +68,7 @@ export const PrimaryPlantListScreen = ({}: PrimaryPlantListScreenProps) => {
               <PrimaryPlantListTabLabel {...props} label="수확완료" />
             ),
           })}
-          component={PrimaryPlantHarvestedListModule}
+          component={PrimaryPlantHarvestedListScreen}
         />
       </Tab.Navigator>
     </BasicLayout>

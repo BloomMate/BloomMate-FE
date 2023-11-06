@@ -3,10 +3,10 @@ import { Box, Stack } from '@mobily/stacks';
 import { Button, Text } from '@/atoms';
 import { palette } from '@/utils';
 
-type PrimaryPlantCurrentListModuleProps = {};
+type PrimaryPlantCurrentListScreenProps = {};
 
-export const PrimaryPlantCurrentListModule =
-  ({}: PrimaryPlantCurrentListModuleProps) => {
+export const PrimaryPlantCurrentListScreen =
+  ({}: PrimaryPlantCurrentListScreenProps) => {
     return (
       <Box
         alignX="center"

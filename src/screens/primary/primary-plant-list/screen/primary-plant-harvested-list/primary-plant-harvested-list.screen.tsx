@@ -4,10 +4,10 @@ import { memo } from 'react';
 import { Text } from '@/atoms';
 import { palette } from '@/utils';
 
-type PrimaryPlantHarvestedListModuleProps = {};
+type PrimaryPlantHarvestedListScreenProps = {};
 
-export const PrimaryPlantHarvestedListModule =
-  memo<PrimaryPlantHarvestedListModuleProps>(() => {
+export const PrimaryPlantHarvestedListScreen =
+  memo<PrimaryPlantHarvestedListScreenProps>(() => {
     return (
       <Box
         paddingTop={24}
