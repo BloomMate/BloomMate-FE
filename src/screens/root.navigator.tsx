@@ -7,6 +7,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import { LandingScreen } from './landing';
 import { LoginScreen } from './login';
+import { MyPageScreen } from './mypage';
 import { PrimaryNavigator, PrimaryNavigatorParamLists } from './primary';
 import { SignUpScreen } from './signup';
 
@@ -15,6 +16,7 @@ export type RootStackParamList = {
   SignUpScreen: undefined;
   LandingScreen: undefined;
   PrimaryStack: NavigatorScreenParams<PrimaryNavigatorParamLists>;
+  MyPageScreen: undefined;
 };
 
 type RootNavigatorProps = {};
@@ -31,12 +33,13 @@ export const RootNavigator = ({}: RootNavigatorProps) => {
         colors: { ...DefaultTheme.colors, background: 'white' },
       }}>
       <Stack.Navigator
-        initialRouteName="LandingScreen"
+        initialRouteName="MyPageScreen"
         screenOptions={{ headerShown: false }}>
         <Stack.Screen name="LandingScreen" component={LandingScreen} />
         <Stack.Screen name="LoginScreen" component={LoginScreen} />
         <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
         <Stack.Screen name="PrimaryStack" component={PrimaryNavigator} />
+        <Stack.Screen name="MyPageScreen" component={MyPageScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
