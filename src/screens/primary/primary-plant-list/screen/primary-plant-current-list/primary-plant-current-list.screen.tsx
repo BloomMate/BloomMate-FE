@@ -1,6 +1,9 @@
 import { Box } from '@mobily/stacks';
 
-import { PrimaryPlantCurrentListExistModule } from './modules';
+import {
+  PrimaryPlantCurrentListExistModule,
+  PrimaryPlantCurrentListFloatingModule,
+} from './modules';
 
 import { palette } from '@/utils';
 
@@ -16,6 +19,7 @@ export const PrimaryPlantCurrentListScreen =
         {/** 2개를 계속 해서 테스트 할 것 */}
         {/* <PrimaryPlantCurrentListEmptyModule /> */}
         <PrimaryPlantCurrentListExistModule />
+        <PrimaryPlantCurrentListFloatingModule isEmptyList={false} />
       </Box>
     );
   };
