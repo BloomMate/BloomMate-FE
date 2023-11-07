@@ -15,13 +15,23 @@ type PlantListItemComponentProps = {
   imageURL: string;
   name: string;
   planted_at: string;
+  harvested_at: string | null;
   type: string;
   harvested: boolean;
   growth_level: 'germination' | 'growth' | 'harvest';
 };
 
 export const PlantListItemComponent = memo<PlantListItemComponentProps>(
-  ({ id, imageURL, name, planted_at, type, harvested, growth_level }) => {
+  ({
+    id,
+    imageURL,
+    name,
+    planted_at,
+    type,
+    harvested,
+    harvested_at,
+    growth_level,
+  }) => {
     const navigation = useNavigation<PrimaryPlantListScreenNavigatorProp>();
 
     const handlePressChatButton = () => {
