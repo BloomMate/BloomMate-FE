@@ -1,11 +1,10 @@
 import { Box, Stack } from '@mobily/stacks';
 import { memo } from 'react';
 import { FlatList, TouchableOpacity } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 
 import { PlantListItemComponent } from './components';
 
-import { Icon, Text } from '@/atoms';
+import { Icon, PointLinearGradient, Text } from '@/atoms';
 import { palette } from '@/utils';
 
 type PrimaryPlantCurrentListExistModuleProps = {};
@@ -67,8 +66,7 @@ export const PrimaryPlantCurrentListExistModule =
           </Text>
           <Box style={{ elevation: 4, borderRadius: 50 }}>
             <TouchableOpacity>
-              <LinearGradient
-                colors={gradientColors}
+              <PointLinearGradient
                 style={{
                   justifyContent: 'center',
                   alignItems: 'center',
@@ -76,7 +74,7 @@ export const PrimaryPlantCurrentListExistModule =
                   borderRadius: 50,
                 }}>
                 <Icon name="add" size={24} color={palette['primary']} />
-              </LinearGradient>
+              </PointLinearGradient>
             </TouchableOpacity>
           </Box>
         </Stack>

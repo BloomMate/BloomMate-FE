@@ -5,3 +5,4 @@ export * from './text-input';
 export * from './modal';
 export * from './divider';
 export * from './suspender';
+export * from './point-linear-gradient';
