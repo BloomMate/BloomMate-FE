@@ -3,6 +3,7 @@ import 'dayjs/locale/ko';
 import isToday from 'dayjs/plugin/isToday';
 import { initializeMMKVFlipper } from 'react-native-mmkv-flipper-plugin';
 
+import { Toast } from './atoms';
 import {
   MutationIndicatorProvider,
   QueryClientProvider,
@@ -26,6 +27,7 @@ export const App = () => {
         <UIProvider>
           <MutationIndicatorProvider>
             <RootNavigator />
+            <Toast />
           </MutationIndicatorProvider>
         </UIProvider>
       </RecoilProvider>

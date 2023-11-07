@@ -58,6 +58,7 @@
     "react-native-screens": "^3.25.0",
     "react-native-shimmer-placeholder": "^2.0.9",
     "react-native-tab-view": "^3.5.2",
+    "react-native-toast-message": "^2.1.7",
     "react-native-vector-icons": "^10.0.0",
     "react-native-webview": "11.26.1",
     "react-query": "^3.39.3",

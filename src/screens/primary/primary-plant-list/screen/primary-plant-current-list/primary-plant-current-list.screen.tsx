@@ -19,7 +19,10 @@ export const PrimaryPlantCurrentListScreen =
         {/** 2개를 계속 해서 테스트 할 것 */}
         {/* <PrimaryPlantCurrentListEmptyModule /> */}
         <PrimaryPlantCurrentListExistModule />
-        <PrimaryPlantCurrentListFloatingModule isEmptyList={false} />
+        <PrimaryPlantCurrentListFloatingModule
+          isEmptyList={false}
+          isFullList={false}
+        />
       </Box>
     );
   };
