@@ -10,7 +10,9 @@
       "@/providers": ["./src/providers"],
       "@/providers/*": ["./src/providers/*"],
       "@/hooks": ["./src/hooks"],
-      "@/hooks/*": ["./src/hooks/*"]
+      "@/hooks/*": ["./src/hooks/*"],
+      "@/dummy-data": ["./src/dummy-data"],
+      "@/dummy-data/*": ["./src/dummy-data/*"],
     },
     "esModuleInterop": true,
     "typeRoots": ["./src/types"]

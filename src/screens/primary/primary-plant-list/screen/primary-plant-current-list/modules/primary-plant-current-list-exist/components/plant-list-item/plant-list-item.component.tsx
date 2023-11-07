@@ -1,24 +1,51 @@
 import { Box, Columns, Column, Stack } from '@mobily/stacks';
+import { useNavigation } from '@react-navigation/native';
 import { memo } from 'react';
 import { Image, TouchableOpacity } from 'react-native';
+
+import { PrimaryPlantListScreenNavigatorProp } from '../../../../../../primary-plant-list.screen';
+
+import { getPlantListItemCopyByGrowthLevel } from './plant-list-item.util';
 
 import { Icon, Text } from '@/atoms';
 import { palette, calculateDaysDifference } from '@/utils';
 
 type PlantListItemComponentProps = {
+  id: string;
   imageURL: string;
   name: string;
   planted_at: string;
+  harvested_at: string | null;
   type: string;
   harvested: boolean;
+  growth_level: 'germination' | 'growth' | 'harvest';
 };
 
 export const PlantListItemComponent = memo<PlantListItemComponentProps>(
-  ({ imageURL, name, planted_at, type, harvested }) => {
+  ({
+    id,
+    imageURL,
+    name,
+    planted_at,
+    type,
+    harvested,
+    harvested_at,
+    growth_level,
+  }) => {
+    const navigation = useNavigation<PrimaryPlantListScreenNavigatorProp>();
+
+    const handlePressDetailButton = () => {
+      navigation.navigate('PlantDetailScreen', { id });
+    };
+
+    const handlePressChatButton = () => {
+      navigation.navigate('PlantChatScreen', { id });
+    };
+
     return (
       <Box
         style={{
-          elevation: 3,
+          elevation: 4,
           backgroundColor: palette['white'],
           borderBottomLeftRadius: 12,
           borderBottomEndRadius: 12,
@@ -44,7 +71,7 @@ export const PlantListItemComponent = memo<PlantListItemComponentProps>(
                 </Text>
               </Stack>
               <Text variants="labelSmall" fontWeight="Medium" color="primary">
-                발아기입니다. 틔운 텃밭이 매일 물을 주고 있어요!
+                {getPlantListItemCopyByGrowthLevel(growth_level)}
               </Text>
             </Stack>
           </Column>
@@ -52,7 +79,7 @@ export const PlantListItemComponent = memo<PlantListItemComponentProps>(
         <Columns>
           <Column width="fluid">
             <TouchableOpacity
-              onPress={() => {}}
+              onPress={handlePressChatButton}
               style={{
                 width: '100%',
                 paddingVertical: 10,
@@ -73,7 +100,7 @@ export const PlantListItemComponent = memo<PlantListItemComponentProps>(
           </Column>
           <Column width="fluid">
             <TouchableOpacity
-              onPress={() => {}}
+              onPress={handlePressDetailButton}
               style={{
                 width: '100%',
                 paddingVertical: 10,

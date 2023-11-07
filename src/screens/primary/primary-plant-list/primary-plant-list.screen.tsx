@@ -12,11 +12,11 @@ import {
 } from '../primary.navigator';
 
 import { PrimaryPlantListTabLabel } from './components';
+import { MATERIAL_TOP_TAB_NAVIGATOR_SCREEN_OPTIONS } from './primary-plant-list.const';
 import {
   PrimaryPlantCurrentListScreen,
   PrimaryPlantHarvestedListScreen,
 } from './screen';
-import { MATERIAL_TOP_TAB_NAVIGATOR_SCREEN_OPTIONS } from './primary-plant-list.const';
 
 import { BasicLayout, ModalHeader } from '@/layouts';
 
