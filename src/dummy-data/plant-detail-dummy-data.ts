@@ -32,7 +32,7 @@ export const PLANT_DETAIL_DUMMY_DATA: {
     plant_illuminance: '실외 직사광',
     plant_bloom_season: '봄',
     plant_watering_cycle: '2-3일 간격',
-    plant_difficulty: '즁하',
+    plant_difficulty: '중하',
     plant_caution: '수확기에는 물을 적게 주어야 함',
     germination_period_start: 1,
     germination_period_end: 60,

@@ -81,7 +81,7 @@ export const PrimaryMyPageScreen = ({}: PrimaryMyPageScreenProps) => {
               />
             </Stack>
 
-            <Stack style={{ justifyContent: 'space-between' }} horizontal>
+            <Box alignX={'between'} direction={'row'}>
               <Text
                 style={{ flex: 1 }}
                 variants={'bodyMedium'}
@@ -94,7 +94,7 @@ export const PrimaryMyPageScreen = ({}: PrimaryMyPageScreenProps) => {
                 color={palette['gray-700']}
                 name={'arrow-forward-ios'}
               />
-            </Stack>
+            </Box>
             <Stack style={{ justifyContent: 'space-between' }} horizontal>
               <Text
                 style={{ flex: 1 }}
