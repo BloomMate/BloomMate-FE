@@ -1,6 +1,9 @@
 import { Box, Columns, Column, Stack } from '@mobily/stacks';
+import { useNavigation } from '@react-navigation/native';
 import { memo } from 'react';
 import { Image, TouchableOpacity } from 'react-native';
+
+import { PrimaryPlantListScreenNavigatorProp } from '../../../../../../primary-plant-list.screen';
 
 import { getPlantListItemCopyByGrowthLevel } from './plant-list-item.util';
 
@@ -8,6 +11,7 @@ import { Icon, Text } from '@/atoms';
 import { palette, calculateDaysDifference } from '@/utils';
 
 type PlantListItemComponentProps = {
+  id: string;
   imageURL: string;
   name: string;
   planted_at: string;
@@ -17,7 +21,13 @@ type PlantListItemComponentProps = {
 };
 
 export const PlantListItemComponent = memo<PlantListItemComponentProps>(
-  ({ imageURL, name, planted_at, type, harvested, growth_level }) => {
+  ({ id, imageURL, name, planted_at, type, harvested, growth_level }) => {
+    const navigation = useNavigation<PrimaryPlantListScreenNavigatorProp>();
+
+    const handlePressChatButton = () => {
+      navigation.navigate('PlantChatScreen', { id });
+    };
+
     return (
       <Box
         style={{
@@ -55,7 +65,7 @@ export const PlantListItemComponent = memo<PlantListItemComponentProps>(
         <Columns>
           <Column width="fluid">
             <TouchableOpacity
-              onPress={() => {}}
+              onPress={handlePressChatButton}
               style={{
                 width: '100%',
                 paddingVertical: 10,
