@@ -5,10 +5,11 @@ import {
 } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { DetailsScreen } from './details';
 import { LandingScreen } from './landing';
 import { LoginScreen } from './login';
-import { MyPageScreen } from './mypage';
+import { PlantChatScreen } from './plant-chat';
+import { PlantDetailScreen } from './plant-detail';
+import { PlantDiagnosisIntroScreen } from './plant-diagnosis-intro';
 import { PrimaryNavigator, PrimaryNavigatorParamLists } from './primary';
 import { SignUpScreen } from './signup';
 
@@ -16,9 +17,10 @@ export type RootStackParamList = {
   LoginScreen: undefined;
   SignUpScreen: undefined;
   LandingScreen: undefined;
+  PlantChatScreen: { id: string };
+  PlantDetailScreen: { id: string };
+  PlantDiagnosisIntroScreen: { id: string };
   PrimaryStack: NavigatorScreenParams<PrimaryNavigatorParamLists>;
-  MyPageScreen: undefined;
-  DetailsScreen: undefined;
 };
 
 type RootNavigatorProps = {};
@@ -35,14 +37,18 @@ export const RootNavigator = ({}: RootNavigatorProps) => {
         colors: { ...DefaultTheme.colors, background: 'white' },
       }}>
       <Stack.Navigator
-        initialRouteName="DetailsScreen"
+        initialRouteName="LandingScreen"
         screenOptions={{ headerShown: false }}>
         <Stack.Screen name="LandingScreen" component={LandingScreen} />
         <Stack.Screen name="LoginScreen" component={LoginScreen} />
         <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
+        <Stack.Screen name="PlantChatScreen" component={PlantChatScreen} />
+        <Stack.Screen name="PlantDetailScreen" component={PlantDetailScreen} />
+        <Stack.Screen
+          name="PlantDiagnosisIntroScreen"
+          component={PlantDiagnosisIntroScreen}
+        />
         <Stack.Screen name="PrimaryStack" component={PrimaryNavigator} />
-        <Stack.Screen name="MyPageScreen" component={MyPageScreen} />
-        <Stack.Screen name="DetailsScreen" component={DetailsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

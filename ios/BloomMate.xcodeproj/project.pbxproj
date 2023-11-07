@@ -29,20 +29,20 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = "BloomMate";
+			remoteInfo = BloomMate;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00E356EE1AD99517003FC87E /* BloomMateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BloomMateTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* BloomMateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BloomMateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* BloomMateTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BloomMateTests.m"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* BloomMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BloomMate.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = "BloomMate/AppDelegate.h"; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = "BloomMate/AppDelegate.mm"; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "BloomMate/Images.xcassets"; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "BloomMate/Info.plist"; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "BloomMate/main.m"; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* BloomMateTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BloomMateTests.m; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* BloomMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BloomMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = BloomMate/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = BloomMate/AppDelegate.mm; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = BloomMate/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = BloomMate/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = BloomMate/main.m; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-BloomMate-BloomMateTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BloomMate-BloomMateTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B4392A12AC88292D35C810B /* Pods-BloomMate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BloomMate.debug.xcconfig"; path = "Target Support Files/Pods-BloomMate/Pods-BloomMate.debug.xcconfig"; sourceTree = "<group>"; };
 		40CED9EB78604DD18039BCF1 /* GmarketSansTTFLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = GmarketSansTTFLight.ttf; path = ../src/atoms/fonts/GmarketSansTTFLight.ttf; sourceTree = "<group>"; };
@@ -51,7 +51,7 @@
 		5B7EB9410499542E8C5724F5 /* Pods-BloomMate-BloomMateTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BloomMate-BloomMateTests.debug.xcconfig"; path = "Target Support Files/Pods-BloomMate-BloomMateTests/Pods-BloomMate-BloomMateTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-BloomMate.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BloomMate.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		62D6051938BF476290C13C78 /* 인천교육시민.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "인천교육시민.ttf"; path = "../src/atoms/fonts/인천교육시민.ttf"; sourceTree = "<group>"; };
-		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = "BloomMate/LaunchScreen.storyboard"; sourceTree = "<group>"; };
+		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = BloomMate/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-BloomMate-BloomMateTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BloomMate-BloomMateTests.release.xcconfig"; path = "Target Support Files/Pods-BloomMate-BloomMateTests/Pods-BloomMate-BloomMateTests.release.xcconfig"; sourceTree = "<group>"; };
 		9CACEF90DB4745D4B952D7EB /* GmarketSansTTFMedium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = GmarketSansTTFMedium.ttf; path = ../src/atoms/fonts/GmarketSansTTFMedium.ttf; sourceTree = "<group>"; };
 		AB71A63D63B541A28361FF7C /* GmarketSansTTFBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = GmarketSansTTFBold.ttf; path = ../src/atoms/fonts/GmarketSansTTFBold.ttf; sourceTree = "<group>"; };
@@ -86,7 +86,7 @@
 				00E356F21AD99517003FC87E /* BloomMateTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = "BloomMateTests";
+			path = BloomMateTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -107,7 +107,7 @@
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = "BloomMate";
+			name = BloomMate;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
@@ -197,8 +197,7 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = "BloomMateTests";
-			productname = "BloomMateTests";
+			name = BloomMateTests;
 			productReference = 00E356EE1AD99517003FC87E /* BloomMateTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -219,8 +218,8 @@
 			);
 			dependencies = (
 			);
-			name = "BloomMate";
-			productName = "BloomMate";
+			name = BloomMate;
+			productName = BloomMate;
 			productReference = 13B07F961A680F5B00A75B9A /* BloomMate.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -474,7 +473,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "BloomMateTests/Info.plist";
+				INFOPLIST_FILE = BloomMateTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -486,7 +485,7 @@
 					"-lc++",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.example.bloommate";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.bloommate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BloomMate.app/BloomMate";
 			};
@@ -498,7 +497,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				INFOPLIST_FILE = "BloomMateTests/Info.plist";
+				INFOPLIST_FILE = BloomMateTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -510,7 +509,7 @@
 					"-lc++",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.example.bloommate";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.bloommate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BloomMate.app/BloomMate";
 			};
@@ -524,8 +523,8 @@
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = "BloomMate/Info.plist";
-             INFOPLIST_KEY_CFBundleDisplayName = "BloomMate";
+				INFOPLIST_FILE = BloomMate/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BloomMate;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -536,8 +535,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.example.bloommate";
-				PRODUCT_NAME = "BloomMate";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.bloommate;
+				PRODUCT_NAME = BloomMate;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -551,8 +550,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = "BloomMate/Info.plist";
-             INFOPLIST_KEY_CFBundleDisplayName = "BloomMate";
+				INFOPLIST_FILE = BloomMate/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BloomMate;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -563,8 +562,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.example.bloommate";
-				PRODUCT_NAME = "BloomMate";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.bloommate;
+				PRODUCT_NAME = BloomMate;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
