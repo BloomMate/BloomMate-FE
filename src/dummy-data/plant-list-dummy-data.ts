@@ -4,7 +4,7 @@ export const PLANT_LIST_DUMMY_DATA: {
   name: string;
   planted_at: string;
   harvested_at: string | null;
-  type: string;
+  type: 'tomato' | 'potato' | 'strawberry' | 'corn';
   harvested: boolean;
   growth_level: 'germination' | 'growth' | 'harvest';
 }[] = [
