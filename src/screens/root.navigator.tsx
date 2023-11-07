@@ -9,6 +9,7 @@ import { LandingScreen } from './landing';
 import { LoginScreen } from './login';
 import { PlantChatScreen } from './plant-chat';
 import { PlantDetailScreen } from './plant-detail';
+import { PlantDiagnosisIntroScreen } from './plant-diagnosis-intro';
 import { PrimaryNavigator, PrimaryNavigatorParamLists } from './primary';
 import { SignUpScreen } from './signup';
 
@@ -18,6 +19,7 @@ export type RootStackParamList = {
   LandingScreen: undefined;
   PlantChatScreen: { id: string };
   PlantDetailScreen: { id: string };
+  PlantDiagnosisIntroScreen: { id: string };
   PrimaryStack: NavigatorScreenParams<PrimaryNavigatorParamLists>;
 };
 
@@ -42,6 +44,10 @@ export const RootNavigator = ({}: RootNavigatorProps) => {
         <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
         <Stack.Screen name="PlantChatScreen" component={PlantChatScreen} />
         <Stack.Screen name="PlantDetailScreen" component={PlantDetailScreen} />
+        <Stack.Screen
+          name="PlantDiagnosisIntroScreen"
+          component={PlantDiagnosisIntroScreen}
+        />
         <Stack.Screen name="PrimaryStack" component={PrimaryNavigator} />
       </Stack.Navigator>
     </NavigationContainer>
