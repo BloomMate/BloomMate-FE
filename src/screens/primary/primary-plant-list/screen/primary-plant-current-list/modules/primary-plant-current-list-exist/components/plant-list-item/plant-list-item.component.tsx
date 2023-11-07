@@ -41,7 +41,7 @@ export const PlantListItemComponent = memo<PlantListItemComponentProps>(
     return (
       <Box
         style={{
-          elevation: 3,
+          elevation: 4,
           backgroundColor: palette['white'],
           borderBottomLeftRadius: 12,
           borderBottomEndRadius: 12,

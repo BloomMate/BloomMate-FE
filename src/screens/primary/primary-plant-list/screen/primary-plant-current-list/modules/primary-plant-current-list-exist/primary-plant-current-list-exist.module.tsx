@@ -93,13 +93,11 @@ export const PrimaryPlantCurrentListExistModule =
     const currentPlantList = DUMMY_DATA.filter(v => v.harvested === false);
 
     return (
-      <>
-        <FlatList
-          data={currentPlantList}
-          ItemSeparatorComponent={() => <Box style={{ height: 20 }} />}
-          renderItem={({ item }) => <PlantListItemComponent {...item} />}
-          ListFooterComponent={<Box style={{ height: 40 }} />}
-        />
-      </>
+      <FlatList
+        data={currentPlantList}
+        ItemSeparatorComponent={() => <Box style={{ height: 20 }} />}
+        renderItem={({ item }) => <PlantListItemComponent {...item} />}
+        ListFooterComponent={<Box style={{ height: 40 }} />}
+      />
     );
   });
