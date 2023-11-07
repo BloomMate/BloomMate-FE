@@ -34,6 +34,10 @@ export const PlantListItemComponent = memo<PlantListItemComponentProps>(
   }) => {
     const navigation = useNavigation<PrimaryPlantListScreenNavigatorProp>();
 
+    const handlePressDetailButton = () => {
+      navigation.navigate('PlantDetailScreen', { id });
+    };
+
     const handlePressChatButton = () => {
       navigation.navigate('PlantChatScreen', { id });
     };
@@ -96,7 +100,7 @@ export const PlantListItemComponent = memo<PlantListItemComponentProps>(
           </Column>
           <Column width="fluid">
             <TouchableOpacity
-              onPress={() => {}}
+              onPress={handlePressDetailButton}
               style={{
                 width: '100%',
                 paddingVertical: 10,
