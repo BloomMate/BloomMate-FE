@@ -8,12 +8,11 @@ import { palette } from '@/utils';
 
 type HarvestedPlantListItemComponentProps = {
   id: string;
-  imageURL: string;
-  name: string;
+  plant_picture_url: string;
+  plant_nickname: string;
   planted_at: string;
   harvested_at: string | null;
-  type: string;
-  harvested: boolean;
+  is_harvested: boolean;
   growth_level: 'germination' | 'growth' | 'harvest';
 };
 
@@ -21,11 +20,10 @@ export const HarvestedPlantListItem =
   memo<HarvestedPlantListItemComponentProps>(
     ({
       id,
-      imageURL,
-      name,
+      plant_picture_url,
+      plant_nickname,
       planted_at,
-      type,
-      harvested,
+      is_harvested,
       harvested_at,
       growth_level,
     }) => {
@@ -43,14 +41,14 @@ export const HarvestedPlantListItem =
           <Column width="content" padding={10}>
             <Image
               style={{ borderRadius: 80, width: 80, height: 80 }}
-              source={{ uri: imageURL }}
+              source={{ uri: plant_picture_url }}
               resizeMode="contain"
             />
           </Column>
           <Column width="fluid" paddingY={16} paddingLeft={12}>
             <Stack space={16}>
               <Text variants="bodyMedium" fontWeight="Medium" color="black">
-                {name}
+                {plant_nickname}
               </Text>
               <Text variants="labelSmall" fontWeight="Medium" color="black">
                 {`${dayjs(planted_at).format('YYYY-MM-DD')} ~ ${dayjs(
