@@ -12,23 +12,21 @@ import { palette, calculateDaysDifference } from '@/utils';
 
 type PlantListItemComponentProps = {
   id: string;
-  imageURL: string;
-  name: string;
+  plant_picture_url: string;
+  plant_nickname: string;
   planted_at: string;
   harvested_at: string | null;
-  type: string;
-  harvested: boolean;
+  is_harvested: boolean;
   growth_level: 'germination' | 'growth' | 'harvest';
 };
 
 export const PlantListItemComponent = memo<PlantListItemComponentProps>(
   ({
     id,
-    imageURL,
-    name,
+    plant_picture_url,
+    plant_nickname,
     planted_at,
-    type,
-    harvested,
+    is_harvested,
     harvested_at,
     growth_level,
   }) => {
@@ -56,7 +54,7 @@ export const PlantListItemComponent = memo<PlantListItemComponentProps>(
           <Column width="content" padding={10}>
             <Image
               style={{ borderRadius: 80, width: 80, height: 80 }}
-              source={{ uri: imageURL }}
+              source={{ uri: plant_picture_url }}
               resizeMode="contain"
             />
           </Column>
@@ -64,7 +62,7 @@ export const PlantListItemComponent = memo<PlantListItemComponentProps>(
             <Stack space={16}>
               <Stack horizontal space={8} align="center">
                 <Text variants="bodyMedium" color="black" fontWeight="Medium">
-                  {name}
+                  {plant_nickname}
                 </Text>
                 <Text variants="bodySmall" color="gray-700" fontWeight="Light">
                   {`함께한 지 ${calculateDaysDifference(planted_at)}일째`}
