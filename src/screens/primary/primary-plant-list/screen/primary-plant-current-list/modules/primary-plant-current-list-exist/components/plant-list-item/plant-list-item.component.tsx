@@ -2,6 +2,8 @@ import { Box, Columns, Column, Stack } from '@mobily/stacks';
 import { memo } from 'react';
 import { Image, TouchableOpacity } from 'react-native';
 
+import { getPlantListItemCopyByGrowthLevel } from './plant-list-item.util';
+
 import { Icon, Text } from '@/atoms';
 import { palette, calculateDaysDifference } from '@/utils';
 
@@ -11,10 +13,11 @@ type PlantListItemComponentProps = {
   planted_at: string;
   type: string;
   harvested: boolean;
+  growth_level: 'germination' | 'growth' | 'harvest';
 };
 
 export const PlantListItemComponent = memo<PlantListItemComponentProps>(
-  ({ imageURL, name, planted_at, type, harvested }) => {
+  ({ imageURL, name, planted_at, type, harvested, growth_level }) => {
     return (
       <Box
         style={{
@@ -44,7 +47,7 @@ export const PlantListItemComponent = memo<PlantListItemComponentProps>(
                 </Text>
               </Stack>
               <Text variants="labelSmall" fontWeight="Medium" color="primary">
-                발아기입니다. 틔운 텃밭이 매일 물을 주고 있어요!
+                {getPlantListItemCopyByGrowthLevel(growth_level)}
               </Text>
             </Stack>
           </Column>

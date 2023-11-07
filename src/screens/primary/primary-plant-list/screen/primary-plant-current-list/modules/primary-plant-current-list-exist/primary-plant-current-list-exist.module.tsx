@@ -6,13 +6,21 @@ import { PlantListItemComponent } from './components';
 
 type PrimaryPlantCurrentListExistModuleProps = {};
 
-const DUMMY_DATA = [
+const DUMMY_DATA: {
+  imageURL: string;
+  name: string;
+  planted_at: string;
+  type: string;
+  harvested: boolean;
+  growth_level: 'germination' | 'growth' | 'harvest';
+}[] = [
   {
     imageURL: 'https://picsum.photos/100/100',
     name: '토토로',
     planted_at: '2023-10-26T23:22:02.385081+09:00',
     type: 'tomato',
     harvested: false,
+    growth_level: 'germination',
   },
   {
     imageURL: 'https://picsum.photos/100/100',
@@ -20,6 +28,7 @@ const DUMMY_DATA = [
     planted_at: '2023-10-21T23:22:02.385081+09:00',
     type: 'potato',
     harvested: false,
+    growth_level: 'growth',
   },
   {
     imageURL: 'https://picsum.photos/100/100',
@@ -27,6 +36,7 @@ const DUMMY_DATA = [
     planted_at: '2023-10-22T23:22:02.385081+09:00',
     type: 'strawberry',
     harvested: false,
+    growth_level: 'harvest',
   },
   {
     imageURL: 'https://picsum.photos/100/100',
@@ -34,6 +44,7 @@ const DUMMY_DATA = [
     planted_at: '2023-10-28T23:22:02.385081+09:00',
     type: 'corn',
     harvested: false,
+    growth_level: 'growth',
   },
 ];
 
