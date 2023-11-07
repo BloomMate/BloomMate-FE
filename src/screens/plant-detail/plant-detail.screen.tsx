@@ -1,14 +1,16 @@
 import { Box, Stack } from '@mobily/stacks';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { View } from 'react-native';
+import dayjs from 'dayjs';
+import { isUndefined } from 'lodash';
+import { Image, View } from 'react-native';
 
 import { RootStackParamList } from '../root.navigator';
 
 import { Button, Icon, Text } from '@/atoms';
-import { PLANT_LIST_DUMMY_DATA } from '@/dummy-data';
+import { PLANT_DETAIL_DUMMY_DATA } from '@/dummy-data/plant-detail-dummy-data';
 import { BasicLayout, ModalHeader, ScrollView } from '@/layouts';
-import { palette } from '@/utils';
+import { calculateDaysDifference, palette } from '@/utils';
 
 type PlantDetailScreenProps = {};
 
@@ -22,29 +24,10 @@ export type PlantDetailScreenNavigationRouteProps = RouteProp<
   'PlantDetailScreen'
 >;
 
-const plantDetailsByType = {
-  tomato: [
-    { title: '품종', content: '토마토' },
-    { title: '적정 온도', content: '18~27도' },
-    { title: '적정 습도', content: '60~80%' },
-    { title: '적정 조도', content: '실외직사광' },
-    { title: '개화 시기', content: '여름' },
-    { title: '급수 주기', content: '2~3일 간격' },
-    { title: '난이도', content: '하' },
-    { title: '주의사항', content: '싹이 틀 때까지 매일 물을 줘야함' },
-  ],
-  potato: [],
-  // 'potato'에 대한 디테일을 추가하려면 여기에 추가하세요.
-};
-
-const getDetailsByType = (type: 'tomato' | 'potato') => {
-  return plantDetailsByType[type];
-};
-
 const DetailItem = ({
   detail,
 }: {
-  detail: { title: string; content: string };
+  detail: { title: string; content: string | undefined };
 }) => (
   <Stack horizontal>
     <Text
@@ -70,8 +53,58 @@ export const PlantDetailScreen = ({}: PlantDetailScreenProps) => {
     // navigation.navigate('PlantDiagnosisIntroScreen', { id });
     console.log('button clicked');
   };
-  const plantDetails = getDetailsByType('tomato');
-  const currentPlant = PLANT_LIST_DUMMY_DATA.find(v => v.id === id);
+
+  const currentPlant = PLANT_DETAIL_DUMMY_DATA.find(v => v.id === id);
+
+  if (isUndefined(currentPlant)) {
+    return null;
+  }
+
+  const {
+    planted_at,
+    plant_picture_url,
+    plant_nickname,
+    plant_name,
+    plant_temperature,
+    plant_humidity,
+    plant_illuminance,
+    plant_bloom_season,
+    plant_watering_cycle,
+    plant_difficulty,
+    plant_caution,
+    germination_period_start,
+    germination_period_end,
+    growth_period_start,
+    growth_period_end,
+    harvest_period_start,
+    harvest_period_end,
+  } = currentPlant;
+
+  const plantDetails = [
+    { title: '품종', content: plant_name },
+    { title: '적정 온도', content: plant_temperature },
+    { title: '적정 습도', content: plant_humidity },
+    { title: '적정 조도', content: plant_illuminance },
+    { title: '개화 시기', content: plant_bloom_season },
+    { title: '급수 주기', content: plant_watering_cycle },
+    { title: '난이도', content: plant_difficulty },
+    { title: '주의사항', content: plant_caution },
+  ];
+
+  const totalPeriod = harvest_period_end - germination_period_start;
+  const growthLevelPercentage =
+    (calculateDaysDifference(planted_at) / totalPeriod) * 100;
+  const growthPeriod = growth_period_end - growth_period_start + 1;
+  const harvestPeriod = harvest_period_end - harvest_period_start + 1;
+  const getBoxColor = (percentage: number) => {
+    if (percentage < 30) {
+      return palette['primary'];
+    } else if (percentage >= 30 && percentage < 70) {
+      return palette['primary'];
+    } else {
+      return palette['primary'];
+    }
+  };
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
@@ -90,7 +123,7 @@ export const PlantDetailScreen = ({}: PlantDetailScreenProps) => {
                 variants={'titleLarge'}
                 fontWeight={'Medium'}
                 color={'gray-900'}>
-                토토로
+                {plant_nickname}
               </Text>
               <View
                 style={{
@@ -98,7 +131,13 @@ export const PlantDetailScreen = ({}: PlantDetailScreenProps) => {
                   height: 180,
                   backgroundColor: palette['white'],
                   elevation: 4,
-                }}></View>
+                }}>
+                <Image
+                  source={{ uri: plant_picture_url }}
+                  style={{ width: '100%', height: '100%', borderRadius: 8 }}
+                  resizeMode="cover"
+                />
+              </View>
             </Stack>
           </Stack>
           <Stack space={12}>
@@ -139,13 +178,17 @@ export const PlantDetailScreen = ({}: PlantDetailScreenProps) => {
                       variants={'bodySmall'}
                       fontWeight={'Medium'}
                       color={'gray-900'}>
-                      138일차
+                      {calculateDaysDifference(planted_at)} 일차
                     </Text>
                     <Text
                       variants={'bodySmall'}
                       fontWeight={'Light'}
                       color={'gray-900'}>
-                      수확 예상 시기 : 8.1 ~ 8.6
+                      {`수확 예상 시기 : ${dayjs(planted_at)
+                        .add(harvest_period_start, 'd')
+                        .format('MM.DD')} ~  ${dayjs(planted_at)
+                        .add(harvest_period_end, 'd')
+                        .format('MM.DD')}`}
                     </Text>
                   </Stack>
                   <Text
@@ -179,7 +222,7 @@ export const PlantDetailScreen = ({}: PlantDetailScreenProps) => {
                           variants={'bodySmall'}
                           fontWeight={'Light'}
                           color={'gray-900'}>
-                          약 20일
+                          {germination_period_end}일
                         </Text>
                       </Stack>
                     </Box>
@@ -189,14 +232,14 @@ export const PlantDetailScreen = ({}: PlantDetailScreenProps) => {
                           variants={'bodySmall'}
                           fontWeight={'Medium'}
                           color={'gray-900'}>
-                          발아기
+                          성장기
                         </Text>
 
                         <Text
                           variants={'bodySmall'}
                           fontWeight={'Light'}
                           color={'gray-900'}>
-                          약 20일
+                          {growthPeriod}일
                         </Text>
                       </Stack>
                     </Box>
@@ -206,27 +249,62 @@ export const PlantDetailScreen = ({}: PlantDetailScreenProps) => {
                           variants={'bodySmall'}
                           fontWeight={'Medium'}
                           color={'gray-900'}>
-                          발아기
+                          수확기
                         </Text>
 
                         <Text
                           variants={'bodySmall'}
                           fontWeight={'Light'}
                           color={'gray-900'}>
-                          약 20일
+                          {harvestPeriod}일
                         </Text>
                       </Stack>
                     </Box>
                   </Box>
                 </Stack>
                 <Stack paddingX={15.5}>
-                  <Box
-                    style={{
-                      width: 'auto',
-                      height: 12,
-                      backgroundColor: palette['primary'],
-                      borderRadius: 8,
-                    }}></Box>
+                  <Box style={{ position: 'relative' }}>
+                    <Box
+                      style={[
+                        {
+                          width: 0,
+                          height: 0,
+                          backgroundColor: 'transparent',
+                          borderStyle: 'solid',
+                          borderTopWidth: 0,
+                          borderRightWidth: 12,
+                          borderBottomWidth: 20.4,
+                          borderLeftWidth: 12,
+                          borderTopColor: 'transparent',
+                          borderRightColor: 'transparent',
+                          borderBottomColor: palette['primary'],
+                          borderLeftColor: 'transparent',
+                          transform: [{ rotateX: '180deg' }],
+                          position: 'relative',
+                          left: `${growthLevelPercentage}%`,
+                          marginLeft: -12,
+                        },
+                      ]}
+                    />
+
+                    <Box
+                      style={{
+                        backgroundColor: palette['gray-300'],
+                        height: 12,
+                        borderRadius: 8,
+                      }}>
+                      <Box
+                        style={{
+                          width: `${growthLevelPercentage}%`,
+                          height: 12,
+                          backgroundColor: getBoxColor(growthLevelPercentage),
+                          borderTopLeftRadius: 8,
+                          borderBottomLeftRadius: 8,
+                          // marginBottom: 12,
+                        }}
+                      />
+                    </Box>
+                  </Box>
                 </Stack>
               </Stack>
             </Stack>
