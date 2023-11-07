@@ -11,7 +11,7 @@ type PrimaryPlantHarvestedListExistModuleProps = {};
 export const PrimaryPlantHarvestedListExistModule =
   memo<PrimaryPlantHarvestedListExistModuleProps>(() => {
     const harvestedPlantList = PLANT_LIST_DUMMY_DATA.filter(
-      v => v.harvested === true,
+      v => v.is_harvested === true,
     );
 
     return (
