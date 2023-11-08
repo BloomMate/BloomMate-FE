@@ -7,6 +7,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import { LandingScreen } from './landing';
 import { LoginScreen } from './login';
+import { PlantChatScreen } from './plant-chat';
+import { PlantDetailScreen } from './plant-detail';
+import { PlantDiagnosisIntroScreen } from './plant-diagnosis-intro';
 import { PrimaryNavigator, PrimaryNavigatorParamLists } from './primary';
 import { SignUpScreen } from './signup';
 
@@ -14,6 +17,9 @@ export type RootStackParamList = {
   LoginScreen: undefined;
   SignUpScreen: undefined;
   LandingScreen: undefined;
+  PlantChatScreen: { id: string };
+  PlantDetailScreen: { id: string };
+  PlantDiagnosisIntroScreen: { id: string };
   PrimaryStack: NavigatorScreenParams<PrimaryNavigatorParamLists>;
   PlantAddScreen: undefined;
 };
@@ -37,6 +43,12 @@ export const RootNavigator = ({}: RootNavigatorProps) => {
         <Stack.Screen name="LandingScreen" component={LandingScreen} />
         <Stack.Screen name="LoginScreen" component={LoginScreen} />
         <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
+        <Stack.Screen name="PlantChatScreen" component={PlantChatScreen} />
+        <Stack.Screen name="PlantDetailScreen" component={PlantDetailScreen} />
+        <Stack.Screen
+          name="PlantDiagnosisIntroScreen"
+          component={PlantDiagnosisIntroScreen}
+        />
         <Stack.Screen name="PrimaryStack" component={PrimaryNavigator} />
       </Stack.Navigator>
     </NavigationContainer>

@@ -40,6 +40,7 @@ module.exports = {
           '@/layouts': './src/layouts',
           '@/providers': './src/providers',
           '@/hooks': './src/hooks',
+          '@/dummy-data': './src/dummy-data',
         },
       },
     ],

@@ -35,5 +35,5 @@ export const MATERIAL_TOP_TAB_NAVIGATOR_SCREEN_OPTIONS: MaterialTopTabNavigation
       height: 32,
     },
     tabBarAllowFontScaling: false,
-    swipeEnabled: true,
+    swipeEnabled: false,
   };
