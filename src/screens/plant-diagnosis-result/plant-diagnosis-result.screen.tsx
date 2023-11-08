@@ -1,8 +1,9 @@
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { Image } from 'react-native';
 
 import { RootStackParamList } from '../root.navigator';
+
+import { PlantDiagnosisResultHeaderModule } from './modules/plant-diagnosis-result-header/plant-diagnosis-result-header.module';
 
 import { BasicLayout } from '@/layouts';
 
@@ -26,10 +27,7 @@ export const PlantDiagnosisResultScreen =
 
     return (
       <BasicLayout backgroundColor="gray-100">
-        <Image
-          source={{ uri: photo_url }}
-          style={{ width: 100, height: 100 }}
-        />
+        <PlantDiagnosisResultHeaderModule />
       </BasicLayout>
     );
   };
