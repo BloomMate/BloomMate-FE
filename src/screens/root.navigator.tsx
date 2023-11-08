@@ -7,6 +7,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import { LandingScreen } from './landing';
 import { LoginScreen } from './login';
+import { PlantAddScreen } from './plant-add';
 import { PlantChatScreen } from './plant-chat';
 import { PlantDetailScreen } from './plant-detail';
 import { PlantDiagnosisIntroScreen } from './plant-diagnosis-intro';
@@ -38,7 +39,7 @@ export const RootNavigator = ({}: RootNavigatorProps) => {
         colors: { ...DefaultTheme.colors, background: 'white' },
       }}>
       <Stack.Navigator
-        initialRouteName="LandingScreen"
+        initialRouteName="PlantAddScreen"
         screenOptions={{ headerShown: false }}>
         <Stack.Screen name="LandingScreen" component={LandingScreen} />
         <Stack.Screen name="LoginScreen" component={LoginScreen} />
@@ -49,6 +50,7 @@ export const RootNavigator = ({}: RootNavigatorProps) => {
           name="PlantDiagnosisIntroScreen"
           component={PlantDiagnosisIntroScreen}
         />
+        <Stack.Screen name="PlantAddScreen" component={PlantAddScreen} />
         <Stack.Screen name="PrimaryStack" component={PrimaryNavigator} />
       </Stack.Navigator>
     </NavigationContainer>

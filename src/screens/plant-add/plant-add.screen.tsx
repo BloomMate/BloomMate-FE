@@ -5,6 +5,11 @@ import { FormProvider } from 'react-hook-form';
 import { RootStackParamList } from '../root.navigator';
 
 import { usePlantAddForm } from './hooks';
+import {
+  PlantAddFooterModule,
+  PlantAddHeaderModule,
+  PlantAddContentModule,
+} from './modules';
 
 import { BasicLayout, ScrollView } from '@/layouts';
 
@@ -25,7 +30,11 @@ export const PlantAddScreen = ({}: PlantAddScreenProps) => {
   return (
     <FormProvider {...methods}>
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-        <BasicLayout backgroundColor="white"></BasicLayout>
+        <BasicLayout backgroundColor="white">
+          <PlantAddHeaderModule />
+          <PlantAddContentModule />
+          <PlantAddFooterModule />
+        </BasicLayout>
       </ScrollView>
     </FormProvider>
   );
