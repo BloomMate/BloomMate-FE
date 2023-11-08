@@ -39,5 +39,5 @@ export const PlantDiagnosisResultFooterModule =
       { label: '돌아가기', mode: 'contained', onPress: handlePressBackButton },
     ];
 
-    return <CTASection buttons={buttons} />;
+    return <CTASection buttons={buttons} direction="row" />;
   });

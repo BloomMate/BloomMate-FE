@@ -4,6 +4,8 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../root.navigator';
 
 import {
+  PlantDiagnosisResultFooterModule,
+  PlantDiagnosisResultGPTModule,
   PlantDiagnosisResultHeaderModule,
   PlantDiagnosisResultInfoModule,
 } from './modules';
@@ -28,6 +30,8 @@ export const PlantDiagnosisResultScreen =
       <BasicLayout backgroundColor="gray-100">
         <PlantDiagnosisResultHeaderModule />
         <PlantDiagnosisResultInfoModule />
+        <PlantDiagnosisResultGPTModule />
+        <PlantDiagnosisResultFooterModule />
       </BasicLayout>
     );
   };

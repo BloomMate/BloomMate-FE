@@ -2,6 +2,7 @@ export const PLANT_DIAGNOSIS_HEALTHY_DETAIL_DUMMY_DATA: {
   id: string;
   plant_id: string;
   plant_nickname: string;
+  plant_name: '토마토' | '옥수수' | '감자' | '딸기';
   growth_level: 'germination' | 'growth' | 'harvest';
   plant_disease_name: string;
   plant_disease_symptom?: string;
@@ -10,6 +11,7 @@ export const PLANT_DIAGNOSIS_HEALTHY_DETAIL_DUMMY_DATA: {
   id: '1',
   plant_id: '2',
   plant_nickname: '멋쟁이감자',
+  plant_name: '감자',
   growth_level: 'growth',
   plant_disease_name: 'Potato Healthy',
 };
@@ -18,6 +20,7 @@ export const PLANT_DIAGNOSIS_DISEASE_HEALTHY_DETAIL_DUMMY_DATA: {
   id: string;
   plant_id: string;
   plant_nickname: string;
+  plant_name: '토마토' | '옥수수' | '감자' | '딸기';
   growth_level: 'germination' | 'growth' | 'harvest';
   plant_disease_name: string;
   plant_disease_symptom?: string;
@@ -26,6 +29,7 @@ export const PLANT_DIAGNOSIS_DISEASE_HEALTHY_DETAIL_DUMMY_DATA: {
   id: '1',
   plant_id: '2',
   plant_nickname: '멋쟁이감자',
+  plant_name: '감자',
   growth_level: 'growth',
   plant_disease_name: 'Potato late blight',
   plant_disease_symptom: '짙은 갈색으로 끝이 둥그렇게 말리거나 쪼그라듦',
