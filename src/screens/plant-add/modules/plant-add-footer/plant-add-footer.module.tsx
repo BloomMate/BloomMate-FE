@@ -35,23 +35,24 @@ export const PlantAddFooterModule = memo<PlantAddFooterModuleProps>(() => {
       });
     }
   };
-
-  const button1: SingleButtonProps = {
-    mode: 'outlined',
-    label: '재촬영',
-    onPress: () =>
-      setPlantAddState({
-        screenStep: plantAddSteps[currentScreenStepIndex - 1],
-      }),
-  };
-  const button2: SingleButtonProps = {
-    mode: 'contained',
-    label: '확인',
-    onPress: () => handlePressButton(),
-  };
+  const buttons: SingleButtonProps[] = [
+    {
+      label: '재촬영',
+      mode: 'outlined',
+      onPress: () =>
+        setPlantAddState({
+          screenStep: plantAddSteps[currentScreenStepIndex - 1],
+        }),
+    },
+    {
+      label: '확인',
+      mode: 'contained',
+      onPress: handlePressButton,
+    },
+  ];
 
   return isPictureCompleteStep ? (
-    <CTASection buttons={[button1, button2]} direction="row" />
+    <CTASection buttons={buttons} direction="row" />
   ) : (
     <Button mode="contained" onPress={handlePressButton}>
       {copy}

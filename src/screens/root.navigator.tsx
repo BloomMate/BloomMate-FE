@@ -41,7 +41,7 @@ export const RootNavigator = ({}: RootNavigatorProps) => {
         colors: { ...DefaultTheme.colors, background: 'white' },
       }}>
       <Stack.Navigator
-        initialRouteName="PlantAddScreen"
+        initialRouteName="PrimaryStack"
         screenOptions={{ headerShown: false }}>
         <Stack.Screen name="LandingScreen" component={LandingScreen} />
         <Stack.Screen name="LoginScreen" component={LoginScreen} />

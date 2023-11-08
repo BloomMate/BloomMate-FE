@@ -1,5 +1,8 @@
 import { Box, Stack } from '@mobily/stacks';
+import { useNavigation } from '@react-navigation/native';
 import { memo } from 'react';
+
+import { PrimaryPlantListScreenNavigatorProp } from '../../../../primary-plant-list.screen';
 
 import { Button, Text } from '@/atoms';
 
@@ -7,7 +10,10 @@ type PrimaryPlantCurrentListEmptyModuleProps = {};
 
 export const PrimaryPlantCurrentListEmptyModule =
   memo<PrimaryPlantCurrentListEmptyModuleProps>(() => {
-    const handleAddPlantButton = () => {};
+    const navigation = useNavigation<PrimaryPlantListScreenNavigatorProp>();
+    const handleAddPlantButton = () => {
+      navigation.navigate('PlantAddScreen');
+    };
 
     return (
       <Box alignX="center" alignY="center" style={{ height: '100%' }}>
