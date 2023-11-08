@@ -3,9 +3,10 @@ import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import dayjs from 'dayjs';
 import { isUndefined } from 'lodash';
-import { Image, View } from 'react-native';
 
 import { RootStackParamList } from '../root.navigator';
+
+import { PlantDetailPictureModule } from './modules/plant-detail-picture';
 
 import { Button, Icon, Text } from '@/atoms';
 import { PLANT_DETAIL_DUMMY_DATA } from '@/dummy-data/plant-detail-dummy-data';
@@ -118,27 +119,7 @@ export const PlantDetailScreen = ({}: PlantDetailScreenProps) => {
           paddingY={32}
           style={{ backgroundColor: palette['gray-100'], flex: 1 }}>
           <Stack space={48}>
-            <Stack space={8}>
-              <Text
-                variants={'titleLarge'}
-                fontWeight={'Medium'}
-                color={'gray-900'}>
-                {plant_nickname}
-              </Text>
-              <View
-                style={{
-                  borderRadius: 8,
-                  height: 180,
-                  backgroundColor: palette['white'],
-                  elevation: 4,
-                }}>
-                <Image
-                  source={{ uri: plant_picture_url }}
-                  style={{ width: '100%', height: '100%', borderRadius: 8 }}
-                  resizeMode="cover"
-                />
-              </View>
-            </Stack>
+            <PlantDetailPictureModule />
           </Stack>
           <Stack space={12}>
             <Stack space={4} horizontal>
