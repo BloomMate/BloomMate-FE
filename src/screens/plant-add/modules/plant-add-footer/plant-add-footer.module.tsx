@@ -24,6 +24,7 @@ export const PlantAddFooterModule = memo<PlantAddFooterModuleProps>(() => {
 
   const isLastStep = currentScreenStepIndex === plantAddSteps.length - 1;
   const isPictureCompleteStep = currentScreenStepIndex === 1;
+  const isPictureStep = currentScreenStepIndex === 0;
   const copy = isLastStep ? '식물 등록하기' : '계속하기';
 
   const handlePressButton = () => {
@@ -50,6 +51,10 @@ export const PlantAddFooterModule = memo<PlantAddFooterModuleProps>(() => {
       onPress: handlePressButton,
     },
   ];
+
+  if (isPictureStep) {
+    return null;
+  }
 
   return isPictureCompleteStep ? (
     <CTASection buttons={buttons} direction="row" />

@@ -1,4 +1,4 @@
-import { Box } from '@mobily/stacks';
+import { Box, Stack } from '@mobily/stacks';
 import { memo } from 'react';
 import { useRecoilValue } from 'recoil';
 
@@ -16,16 +16,18 @@ type PlantAddContentModuleProps = {};
 export const PlantAddContentModule = memo<PlantAddContentModuleProps>(() => {
   const { screenStep } = useRecoilValue($plantAddState);
   const info = getInfoByScreenStep(screenStep);
-  const isPhoto = screenStep === 'PICTURE' || 'PICTURE_COMPLETE';
+  const isPhoto = screenStep === 'PICTURE' || screenStep === 'PICTURE_COMPLETE';
 
   return (
     <Box flex="fluid">
-      <PlantAddContentInfoComponent info={info} />
-      {isPhoto ? (
-        <PlantAddContentPhotoComponent />
-      ) : (
-        <PlantAddContentInputComponent screenStep={screenStep} />
-      )}
+      <Stack space={32} paddingTop={32}>
+        <PlantAddContentInfoComponent info={info} />
+        {isPhoto ? (
+          <PlantAddContentPhotoComponent />
+        ) : (
+          <PlantAddContentInputComponent screenStep={screenStep} />
+        )}
+      </Stack>
     </Box>
   );
 });
