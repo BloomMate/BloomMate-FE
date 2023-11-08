@@ -1,9 +1,12 @@
-import { RouteProp, useRoute } from '@react-navigation/native';
+import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 
 import { RootStackParamList } from '../root.navigator';
 
-import { PlantDiagnosisResultHeaderModule } from './modules/plant-diagnosis-result-header/plant-diagnosis-result-header.module';
+import {
+  PlantDiagnosisResultHeaderModule,
+  PlantDiagnosisResultInfoModule,
+} from './modules';
 
 import { BasicLayout } from '@/layouts';
 
@@ -21,13 +24,10 @@ export type PlantDiagnosisResultScreenNavigationRouteProps = RouteProp<
 
 export const PlantDiagnosisResultScreen =
   ({}: PlantDiagnosisResultScreenProps) => {
-    const {
-      params: { photo_url },
-    } = useRoute<PlantDiagnosisResultScreenNavigationRouteProps>();
-
     return (
       <BasicLayout backgroundColor="gray-100">
         <PlantDiagnosisResultHeaderModule />
+        <PlantDiagnosisResultInfoModule />
       </BasicLayout>
     );
   };
