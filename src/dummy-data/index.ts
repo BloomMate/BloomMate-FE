@@ -5,3 +5,4 @@ export * from './question-detail-dummy-data';
 export * from './question-list-dummy-data';
 export * from './user-detail-dummy-data';
 export * from './plant-diagnosis-detail-dummy-data';
+export * from './plant-diagnosis-list-dummy-data';
