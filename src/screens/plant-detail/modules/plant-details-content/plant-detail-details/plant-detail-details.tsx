@@ -6,7 +6,7 @@ import React, { memo } from 'react';
 import {
   PlantDetailScreenNavigationProps,
   PlantDetailScreenNavigationRouteProps,
-} from '../../plant-detail.screen';
+} from '../../../plant-detail.screen';
 
 import { Icon, Text } from '@/atoms';
 import { PLANT_DETAIL_DUMMY_DATA } from '@/dummy-data';
@@ -27,9 +27,6 @@ export const PlantDetailDetailsModule = memo<PlantDetailDetailsModule>(() => {
   }
 
   const {
-    planted_at,
-    plant_picture_url,
-    plant_nickname,
     plant_name,
     plant_temperature,
     plant_humidity,
@@ -38,12 +35,6 @@ export const PlantDetailDetailsModule = memo<PlantDetailDetailsModule>(() => {
     plant_watering_cycle,
     plant_difficulty,
     plant_caution,
-    germination_period_start,
-    germination_period_end,
-    growth_period_start,
-    growth_period_end,
-    harvest_period_start,
-    harvest_period_end,
   } = currentPlant;
 
   const plantDetails = [

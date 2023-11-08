@@ -7,7 +7,7 @@ import { Image, View } from 'react-native';
 import {
   PlantDetailScreenNavigationProps,
   PlantDetailScreenNavigationRouteProps,
-} from '../../plant-detail.screen';
+} from '../../../plant-detail.screen';
 
 import { Text } from '@/atoms';
 import { PLANT_DETAIL_DUMMY_DATA } from '@/dummy-data';
