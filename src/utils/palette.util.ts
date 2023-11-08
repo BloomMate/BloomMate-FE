@@ -1,6 +1,7 @@
 // TODO : Customize the palette
 
 export const palette = {
+  transparent: 'transparent',
   black: '#000000',
   white: '#ffffff',
   primary: '#00695C',
