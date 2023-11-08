@@ -3,7 +3,11 @@ import { StackNavigationProp } from '@react-navigation/stack';
 
 import { RootStackParamList } from '../root.navigator';
 
-import { PlantDiagnosisIntroHeaderModule } from './modules';
+import {
+  PlantDiagnosisIntroContentModule,
+  PlantDiagnosisIntroFooterModule,
+  PlantDiagnosisIntroHeaderModule,
+} from './modules';
 
 import { PointLinearGradient } from '@/atoms';
 import { BasicLayout } from '@/layouts';
@@ -30,6 +34,8 @@ export const PlantDiagnosisIntroScreen =
       <PointLinearGradient style={{ width: '100%', height: '100%' }}>
         <BasicLayout backgroundColor="transparent">
           <PlantDiagnosisIntroHeaderModule />
+          <PlantDiagnosisIntroContentModule />
+          <PlantDiagnosisIntroFooterModule />
         </BasicLayout>
       </PointLinearGradient>
     );
