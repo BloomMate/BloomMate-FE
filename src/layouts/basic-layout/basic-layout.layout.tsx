@@ -4,7 +4,7 @@ import { PropsWithChildren } from 'react';
 import { palette } from '@/utils';
 
 type BasicLayoutProps = PropsWithChildren<{
-  backgroundColor: 'white' | 'gray-100';
+  backgroundColor: 'white' | 'gray-100' | 'transparent';
   tabBar?: boolean;
 }>;
 

@@ -32,7 +32,7 @@ export const CTASection = ({
                 !disabled && {
                   borderColor: palette['primary'],
                   borderWidth: 1,
-                  borderRadius: 8,
+                  borderRadius: 11,
                   backgroundColor: palette['white'],
                 },
             ]}>
