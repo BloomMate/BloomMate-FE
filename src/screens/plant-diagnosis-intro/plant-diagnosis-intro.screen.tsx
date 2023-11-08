@@ -1,10 +1,16 @@
-import { Box } from '@mobily/stacks';
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 
 import { RootStackParamList } from '../root.navigator';
 
-import { PointLinearGradient, Text } from '@/atoms';
+import {
+  PlantDiagnosisIntroContentModule,
+  PlantDiagnosisIntroFooterModule,
+  PlantDiagnosisIntroHeaderModule,
+} from './modules';
+
+import { PointLinearGradient } from '@/atoms';
+import { BasicLayout } from '@/layouts';
 
 type PlantDiagnosisIntroScreenProps = {};
 
@@ -26,11 +32,11 @@ export const PlantDiagnosisIntroScreen =
 
     return (
       <PointLinearGradient style={{ width: '100%', height: '100%' }}>
-        <Box paddingX={24} paddingY={24}>
-          <Text variants="displaySmall" fontWeight="Medium" color="gray-700">
-            식물 진단하기
-          </Text>
-        </Box>
+        <BasicLayout backgroundColor="transparent">
+          <PlantDiagnosisIntroHeaderModule />
+          <PlantDiagnosisIntroContentModule />
+          <PlantDiagnosisIntroFooterModule />
+        </BasicLayout>
       </PointLinearGradient>
     );
   };

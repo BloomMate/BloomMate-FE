@@ -50,8 +50,7 @@ export const PlantDetailScreen = ({}: PlantDetailScreenProps) => {
   } = useRoute<PlantDetailScreenNavigationRouteProps>();
 
   const handlePressDiagnosisButton = () => {
-    // navigation.navigate('PlantDiagnosisIntroScreen', { id });
-    console.log('button clicked');
+    navigation.navigate('PlantDiagnosisIntroScreen', { id });
   };
 
   const currentPlant = PLANT_DETAIL_DUMMY_DATA.find(v => v.id === id);
