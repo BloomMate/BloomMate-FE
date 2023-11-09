@@ -21,6 +21,22 @@ export type PrimaryMyPageScreenRouteProp = RouteProp<
 >;
 
 type PrimaryMyPageContentModuleProps = {};
+type InfoItemProps = {
+  text: string;
+};
+
+const InfoItem = ({ text }: InfoItemProps) => (
+  <Stack style={{ justifyContent: 'space-between' }} horizontal>
+    <Text
+      style={{ flex: 1 }}
+      variants={'bodyMedium'}
+      fontWeight={'Medium'}
+      color={'gray-700'}>
+      {text}
+    </Text>
+    <Icon size={20} color={palette['gray-700']} name={'arrow-forward-ios'} />
+  </Stack>
+);
 
 export const PrimaryMyPageContentModule =
   ({}: PrimaryMyPageContentModuleProps) => {
@@ -60,49 +76,9 @@ export const PrimaryMyPageContentModule =
             </Stack>
 
             <Stack space={16}>
-              <Stack style={{ justifyContent: 'space-between' }} horizontal>
-                <Text
-                  style={{ flex: 1 }}
-                  variants={'bodyMedium'}
-                  fontWeight={'Medium'}
-                  color={'gray-700'}>
-                  로그아웃
-                </Text>
-                <Icon
-                  size={20}
-                  color={palette['gray-700']}
-                  name={'arrow-forward-ios'}
-                />
-              </Stack>
-
-              <Box alignX={'between'} direction={'row'}>
-                <Text
-                  style={{ flex: 1 }}
-                  variants={'bodyMedium'}
-                  fontWeight={'Medium'}
-                  color={'gray-700'}>
-                  회원정보 확인
-                </Text>
-                <Icon
-                  size={20}
-                  color={palette['gray-700']}
-                  name={'arrow-forward-ios'}
-                />
-              </Box>
-              <Stack style={{ justifyContent: 'space-between' }} horizontal>
-                <Text
-                  style={{ flex: 1 }}
-                  variants={'bodyMedium'}
-                  fontWeight={'Medium'}
-                  color={'gray-700'}>
-                  About BloomMate
-                </Text>
-                <Icon
-                  size={20}
-                  color={palette['gray-700']}
-                  name={'arrow-forward-ios'}
-                />
-              </Stack>
+              <InfoItem text="로그아웃" />
+              <InfoItem text="회원정보 확인" />
+              <InfoItem text="About BloomMate" />
             </Stack>
           </Stack>
         </Stack>
