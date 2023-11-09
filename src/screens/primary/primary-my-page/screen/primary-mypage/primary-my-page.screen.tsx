@@ -1,13 +1,19 @@
 import { Stack } from '@mobily/stacks';
+import { useNavigation } from '@react-navigation/native';
 
-import { PrimaryMyPageContentModule } from './module/mypage-content';
-import { PrimaryMyPageHeaderModule } from './module/mypage-header';
+import {
+  PrimaryMyPageContentModule,
+  PrimaryMyPageScreenNavigatorProp,
+} from './module/primary-mypage-content';
+import { PrimaryMyPageHeaderModule } from './module/primary-mypage-header';
 
 import { palette } from '@/utils';
 
 type PrimaryMyPageScreenProps = {};
 
 export const PrimaryMyPageScreen = ({}: PrimaryMyPageScreenProps) => {
+  const navigation = useNavigation<PrimaryMyPageScreenNavigatorProp>();
+
   return (
     <Stack
       paddingX={24}
@@ -15,7 +21,7 @@ export const PrimaryMyPageScreen = ({}: PrimaryMyPageScreenProps) => {
       style={{ backgroundColor: palette['gray-100'], flex: 1 }}
       space={48}>
       <PrimaryMyPageHeaderModule />
-      <PrimaryMyPageContentModule />
+      <PrimaryMyPageContentModule navigation={navigation} />
     </Stack>
   );
 };
