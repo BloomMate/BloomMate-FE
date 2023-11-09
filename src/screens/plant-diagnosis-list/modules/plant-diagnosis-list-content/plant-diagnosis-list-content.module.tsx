@@ -1,7 +1,7 @@
 import { Box } from '@mobily/stacks';
 import { FlatList } from 'react-native';
 
-import { EmptyList } from './components';
+import { DiagnosisItem, EmptyList } from './components';
 
 import { Text } from '@/atoms';
 import { PLANT_DIAGNOSIS_LIST_DUMMY_DATA } from '@/dummy-data';
@@ -15,7 +15,7 @@ export const PlantDiagnosisListContentModule =
     return (
       <FlatList
         contentContainerStyle={{ flexGrow: 1 }}
-        data={[]}
+        data={diagnosisList}
         ItemSeparatorComponent={() => <Box style={{ height: 20 }} />}
         ListHeaderComponent={() => (
           <Box paddingY={32}>
@@ -24,7 +24,7 @@ export const PlantDiagnosisListContentModule =
             </Text>
           </Box>
         )}
-        renderItem={({}) => <></>}
+        renderItem={({ item }) => <DiagnosisItem {...item} />}
         ListEmptyComponent={<EmptyList />}
         ListFooterComponent={<Box style={{ height: 40 }} />}
       />
