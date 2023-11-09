@@ -14,7 +14,8 @@ export const PlantDiagnosisListContentModule =
 
     return (
       <FlatList
-        data={diagnosisList}
+        contentContainerStyle={{ flexGrow: 1 }}
+        data={[]}
         ItemSeparatorComponent={() => <Box style={{ height: 20 }} />}
         ListHeaderComponent={() => (
           <Box paddingY={32}>
