@@ -24,6 +24,7 @@ export type RootStackParamList = {
   PlantDiagnosisIntroScreen: { id: string };
   PlantDiagnosisResultScreen: { id: string; photo_url: string };
   PlantDiagnosisListScreen: { id: string };
+  PlantDiagnosisLogScreen: { diagnosis_id: string };
   PrimaryStack: NavigatorScreenParams<PrimaryNavigatorParamLists>;
 };
 
