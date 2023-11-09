@@ -2,7 +2,7 @@ import { Box } from '@mobily/stacks';
 import { memo } from 'react';
 import { FlatList } from 'react-native';
 
-import { PlantListEmpty, PlantListItemComponent } from './components';
+import { PlantListEmpty, PlantListItem } from './components';
 
 import { PLANT_LIST_DUMMY_DATA } from '@/dummy-data';
 
@@ -19,7 +19,7 @@ export const PrimaryPlantCurrentListContentModule =
         data={currentPlantList}
         ListEmptyComponent={<PlantListEmpty />}
         ItemSeparatorComponent={() => <Box style={{ height: 20 }} />}
-        renderItem={({ item }) => <PlantListItemComponent {...item} />}
+        renderItem={({ item }) => <PlantListItem {...item} />}
         ListFooterComponent={<Box style={{ height: 40 }} />}
       />
     );

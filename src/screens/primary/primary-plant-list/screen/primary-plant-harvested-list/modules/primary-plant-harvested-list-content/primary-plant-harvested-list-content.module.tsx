@@ -2,14 +2,14 @@ import { Box } from '@mobily/stacks';
 import { memo } from 'react';
 import { FlatList } from 'react-native';
 
-import { HarvestedPlantListItem } from './components';
+import { HarvestedPlantListEmpty, HarvestedPlantListItem } from './components';
 
 import { PLANT_LIST_DUMMY_DATA } from '@/dummy-data';
 
-type PrimaryPlantHarvestedListExistModuleProps = {};
+type PrimaryPlantHarvestedListContentModuleProps = {};
 
-export const PrimaryPlantHarvestedListExistModule =
-  memo<PrimaryPlantHarvestedListExistModuleProps>(() => {
+export const PrimaryPlantHarvestedListContentModule =
+  memo<PrimaryPlantHarvestedListContentModuleProps>(() => {
     const harvestedPlantList = PLANT_LIST_DUMMY_DATA.filter(
       v => v.is_harvested === true,
     );
@@ -17,6 +17,7 @@ export const PrimaryPlantHarvestedListExistModule =
     return (
       <FlatList
         data={harvestedPlantList}
+        ListEmptyComponent={<HarvestedPlantListEmpty />}
         ItemSeparatorComponent={() => <Box style={{ height: 20 }} />}
         renderItem={({ item }) => <HarvestedPlantListItem {...item} />}
         ListFooterComponent={<Box style={{ height: 40 }} />}

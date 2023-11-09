@@ -10,7 +10,7 @@ import { getPlantListItemCopyByGrowthLevel } from './plant-list-item.util';
 import { Icon, Text } from '@/atoms';
 import { palette, calculateDaysDifference } from '@/utils';
 
-type PlantListItemComponentProps = {
+type PlantListItemProps = {
   id: string;
   plant_picture_url: string;
   plant_nickname: string;
@@ -20,7 +20,7 @@ type PlantListItemComponentProps = {
   growth_level: 'germination' | 'growth' | 'harvest';
 };
 
-export const PlantListItemComponent = memo<PlantListItemComponentProps>(
+export const PlantListItem = memo<PlantListItemProps>(
   ({
     id,
     plant_picture_url,
