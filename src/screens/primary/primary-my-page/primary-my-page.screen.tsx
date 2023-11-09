@@ -7,6 +7,8 @@ import {
   PrimaryNavigatorProps,
 } from '../primary.navigator';
 
+import { PrimaryMyPageHeaderModule } from './module/mypage-header';
+
 import { Icon, Text } from '@/atoms';
 import { palette } from '@/utils';
 
@@ -29,9 +31,7 @@ export const PrimaryMyPageScreen = ({}: PrimaryMyPageScreenProps) => {
       paddingY={32}
       style={{ backgroundColor: palette['gray-100'], flex: 1 }}
       space={48}>
-      <Text fontWeight="Medium" variants="titleLarge" color="gray-900">
-        마이 페이지
-      </Text>
+      <PrimaryMyPageHeaderModule />
       <Stack space={64}>
         <Stack horizontal space={8} style={{ alignItems: 'center' }}>
           <Box
