@@ -16,6 +16,7 @@ export const PrimaryPlantCurrentListContentModule =
 
     return (
       <FlatList
+        contentContainerStyle={{ flexGrow: 1 }}
         data={currentPlantList}
         ListEmptyComponent={<PlantListEmpty />}
         ItemSeparatorComponent={() => <Box style={{ height: 20 }} />}

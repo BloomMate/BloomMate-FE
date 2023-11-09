@@ -16,6 +16,7 @@ export const PrimaryPlantHarvestedListContentModule =
 
     return (
       <FlatList
+        contentContainerStyle={{ flexGrow: 1 }}
         data={harvestedPlantList}
         ListEmptyComponent={<HarvestedPlantListEmpty />}
         ItemSeparatorComponent={() => <Box style={{ height: 20 }} />}
