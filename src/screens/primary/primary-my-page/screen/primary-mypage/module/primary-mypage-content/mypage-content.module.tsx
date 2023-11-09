@@ -1,19 +1,16 @@
 import { Box, Stack } from '@mobily/stacks';
-import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
-import { CompositeNavigationProp, RouteProp } from '@react-navigation/native';
+import { RouteProp } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 import { TouchableOpacity } from 'react-native';
 
-import {
-  PrimaryNavigatorProps,
-  PrimaryNavigatorParamLists,
-} from '../../../../../primary.navigator';
+import { PrimaryNavigatorParamLists } from '../../../../../primary.navigator';
 
 import { Icon, Text } from '@/atoms';
 import { palette } from '@/utils';
 
-export type PrimaryMyPageScreenNavigatorProp = CompositeNavigationProp<
-  PrimaryNavigatorProps,
-  BottomTabNavigationProp<PrimaryNavigatorParamLists, 'PrimaryMyPageScreen'>
+export type PrimaryMyPageScreenNavigatorProp = StackNavigationProp<
+  PrimaryNavigatorParamLists,
+  'PrimaryMyPageScreen'
 >;
 
 export type PrimaryMyPageScreenRouteProp = RouteProp<

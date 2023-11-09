@@ -1,19 +1,16 @@
 import { Stack } from '@mobily/stacks';
-import { Text } from 'react-native';
 
-import { palette } from '@/utils';
+import { Text } from '@/atoms';
 
 type MyPageInformationScreenProps = {};
 
 export const PrimaryMyPageInformationScreen =
   ({}: MyPageInformationScreenProps) => {
     return (
-      <Stack
-        paddingX={24}
-        paddingY={32}
-        style={{ backgroundColor: palette['gray-100'], flex: 1 }}
-        space={48}>
-        <Text>df</Text>
+      <Stack>
+        <Text variants={'displayLarge'} fontWeight={'Light'} color={'gray-900'}>
+          안녕하세요
+        </Text>
       </Stack>
     );
   };
