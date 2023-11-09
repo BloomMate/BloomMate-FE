@@ -3,6 +3,7 @@ import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import { CompositeNavigationProp, RouteProp } from '@react-navigation/native';
 
 import {
+  PrimaryNavigator,
   PrimaryNavigatorParamLists,
   PrimaryNavigatorProps,
 } from '../primary.navigator';
@@ -32,6 +33,7 @@ export const PrimaryMyPageScreen = ({}: PrimaryMyPageScreenProps) => {
       style={{ backgroundColor: palette['gray-100'], flex: 1 }}
       space={48}>
       <PrimaryMyPageHeaderModule />
+      <PrimaryNavigator />
       <Stack space={64}>
         <Stack horizontal space={8} style={{ alignItems: 'center' }}>
           <Box
