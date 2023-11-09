@@ -3,6 +3,13 @@ import { StackNavigationProp } from '@react-navigation/stack';
 
 import { RootStackParamList } from '../root.navigator';
 
+import {
+  PlantDiagnosisListContentModule,
+  PlantDiagnosisListHeaderModule,
+} from './modules';
+
+import { BasicLayout } from '@/layouts';
+
 type PlantDiagnosisListScreenProps = {};
 
 export type PlantDiagnosisListScreenNavigationProps = StackNavigationProp<
@@ -16,5 +23,10 @@ export type PlantDiagnosisListScreenNavigationRouteProps = RouteProp<
 >;
 
 export const PlantDiagnosisListScreen = ({}: PlantDiagnosisListScreenProps) => {
-  return null;
+  return (
+    <BasicLayout backgroundColor="gray-100">
+      <PlantDiagnosisListHeaderModule />
+      <PlantDiagnosisListContentModule />
+    </BasicLayout>
+  );
 };
