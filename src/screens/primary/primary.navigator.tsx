@@ -5,7 +5,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../root.navigator';
 
 import { PrimaryCommunityScreen } from './primary-community';
-import { PrimaryMyPageScreen } from './primary-my-page';
+import { PrimaryMyPageScreen } from './primary-my-page/screen/primary-mypage';
 import { PrimaryPlantListScreen } from './primary-plant-list';
 
 import { palette } from '@/utils';

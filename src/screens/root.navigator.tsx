@@ -24,7 +24,9 @@ export type RootStackParamList = {
   PlantDiagnosisIntroScreen: { id: string };
   PlantDiagnosisResultScreen: { id: string; photo_url: string };
   PlantDiagnosisListScreen: { id: string };
-  PrimaryStack: NavigatorScreenParams<PrimaryNavigatorParamLists>;
+  PrimaryStack: NavigatorScreenParams<
+    PrimaryNavigatorParamLists & { PrimaryMypageInformationScreen: undefined }
+  >;
 };
 
 type RootNavigatorProps = {};
@@ -48,6 +50,7 @@ export const RootNavigator = ({}: RootNavigatorProps) => {
         <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
         <Stack.Screen name="PlantChatScreen" component={PlantChatScreen} />
         <Stack.Screen name="PlantDetailScreen" component={PlantDetailScreen} />
+
         <Stack.Screen
           name="PlantDiagnosisIntroScreen"
           component={PlantDiagnosisIntroScreen}
@@ -61,6 +64,11 @@ export const RootNavigator = ({}: RootNavigatorProps) => {
           component={PlantDiagnosisListScreen}
         />
         <Stack.Screen name="PrimaryStack" component={PrimaryNavigator} />
+        <Stack.Screen
+          name="PrimaryStack"
+          component={PrimaryNavigator}
+          initialParams={{ PrimaryMypageInformationScreen: undefined }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
