@@ -2,7 +2,7 @@ import { Box } from '@mobily/stacks';
 
 import { Text } from '@/atoms';
 
-export const EmptyList = () => (
+export const DiagnosisListEmpty = () => (
   <Box flex="fluid" alignY="center">
     <Text
       variants="labelLarge"

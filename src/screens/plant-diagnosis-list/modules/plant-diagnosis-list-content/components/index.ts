@@ -1,2 +1,2 @@
-export * from './diagnosis-item';
-export * from './empty-list';
+export * from './diagnosis-list-item';
+export * from './diagnosis-list-empty';

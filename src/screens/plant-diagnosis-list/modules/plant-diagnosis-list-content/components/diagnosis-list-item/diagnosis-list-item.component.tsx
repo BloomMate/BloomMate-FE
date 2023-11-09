@@ -10,7 +10,7 @@ import {
   isPlantSickByPlantDiseaseName,
 } from '@/utils';
 
-type DiagnosisItemProps = {
+type DiagnosisListItemProps = {
   id: string;
   created_at: string;
   diagnose_photo_url: string;
@@ -18,7 +18,7 @@ type DiagnosisItemProps = {
   plant_disease_name: string;
 };
 
-export const DiagnosisItem = memo<DiagnosisItemProps>(
+export const DiagnosisListItem = memo<DiagnosisListItemProps>(
   ({
     id,
     created_at,
