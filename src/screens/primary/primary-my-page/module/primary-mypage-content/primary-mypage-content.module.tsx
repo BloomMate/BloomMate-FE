@@ -1,33 +1,14 @@
 import { Box, Stack } from '@mobily/stacks';
 import { useNavigation } from '@react-navigation/native';
-import { TouchableOpacity } from 'react-native';
 
 import { PrimaryMyPageScreenNavigatorProp } from '../../primary-my-page.screen';
 
-import { Icon, Text } from '@/atoms';
+import { InfoItem } from './components';
+
+import { Text } from '@/atoms';
 import { palette } from '@/utils';
 
 type PrimaryMyPageContentModuleProps = {};
-
-type InfoItemProps = {
-  text: string;
-  onPress: () => void;
-};
-
-const InfoItem = ({ text, onPress }: InfoItemProps) => (
-  <TouchableOpacity onPress={onPress}>
-    <Stack style={{ justifyContent: 'space-between' }} horizontal>
-      <Text
-        style={{ flex: 1 }}
-        variants={'bodyMedium'}
-        fontWeight={'Medium'}
-        color={'gray-700'}>
-        {text}
-      </Text>
-      <Icon size={20} color={palette['gray-700']} name={'arrow-forward-ios'} />
-    </Stack>
-  </TouchableOpacity>
-);
 
 export const PrimaryMyPageContentModule =
   ({}: PrimaryMyPageContentModuleProps) => {
