@@ -14,19 +14,23 @@ type PostLoginResponseData = {
   tiiun_number: string;
   garden_size: string;
   address: string;
-  token: object;
+  token: {
+    access: string;
+  };
 };
 
 export const usePostLoginMutation = () => {
   return useMutation(async ({ id, pw }: PostLoginRequestProps) => {
     try {
       const { data } = await defaultAxios.post<PostLoginResponseData>(
-        'accounts/login/',
+        'accounts/login',
         {
           account_id: id,
           password: pw,
         },
       );
+
+      defaultAxios.defaults.headers.Authorization = `Bearer ${data.token.access}`;
 
       return data;
     } catch (error) {

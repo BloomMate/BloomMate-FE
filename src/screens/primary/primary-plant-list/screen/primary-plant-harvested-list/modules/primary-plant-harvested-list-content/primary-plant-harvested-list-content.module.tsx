@@ -4,15 +4,15 @@ import { FlatList } from 'react-native';
 
 import { HarvestedPlantListEmpty, HarvestedPlantListItem } from './components';
 
-import { PLANT_LIST_DUMMY_DATA } from '@/dummy-data';
+import { useGetPlantListQuery } from '@/hooks';
 
 type PrimaryPlantHarvestedListContentModuleProps = {};
 
 export const PrimaryPlantHarvestedListContentModule =
   memo<PrimaryPlantHarvestedListContentModuleProps>(() => {
-    const harvestedPlantList = PLANT_LIST_DUMMY_DATA.filter(
-      v => v.is_harvested === true,
-    );
+    const { data } = useGetPlantListQuery();
+
+    const harvestedPlantList = data?.DATA.filter(v => v.is_harvested === true);
 
     return (
       <FlatList

@@ -32,7 +32,7 @@ export const usePostSignupMutation = () => {
     }: PostSignUpRequestProps) => {
       try {
         const { data } = await defaultAxios.post<PostSignUpResponseData>(
-          'accounts/signup/',
+          'accounts/signup',
           {
             user_name: name,
             account_id: id,

@@ -8,28 +8,13 @@ import { PrimaryPlantListScreenNavigatorProp } from '../../../../../../primary-p
 import { getPlantListItemCopyByGrowthLevel } from './plant-list-item.util';
 
 import { Icon, Text } from '@/atoms';
+import { PlantListResponse } from '@/hooks';
 import { palette, calculateDaysDifference } from '@/utils';
 
-type PlantListItemProps = {
-  id: string;
-  plant_picture_url: string;
-  plant_nickname: string;
-  planted_at: string;
-  harvested_at: string | null;
-  is_harvested: boolean;
-  growth_level: 'germination' | 'growth' | 'harvest';
-};
+type PlantListItemProps = PlantListResponse['DATA'][0] & {};
 
 export const PlantListItem = memo<PlantListItemProps>(
-  ({
-    id,
-    plant_picture_url,
-    plant_nickname,
-    planted_at,
-    is_harvested,
-    harvested_at,
-    growth_level,
-  }) => {
+  ({ id, plant_picture_url, plant_nickname, planted_at, growth_level }) => {
     const navigation = useNavigation<PrimaryPlantListScreenNavigatorProp>();
 
     const handlePressDetailButton = () => {
@@ -45,6 +30,10 @@ export const PlantListItem = memo<PlantListItemProps>(
         style={{
           elevation: 4,
           backgroundColor: palette['white'],
+          borderTopEndRadius: 8,
+          borderTopLeftRadius: 8,
+          borderTopRightRadius: 8,
+          borderTopStartRadius: 8,
           borderBottomLeftRadius: 12,
           borderBottomEndRadius: 12,
           borderBottomRightRadius: 12,

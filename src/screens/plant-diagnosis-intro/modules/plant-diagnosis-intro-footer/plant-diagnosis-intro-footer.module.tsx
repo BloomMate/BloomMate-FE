@@ -15,7 +15,7 @@ export const PlantDiagnosisIntroFooterModule =
       useNavigation<PlantDiagnosisIntroScreenNavigationProps>();
 
     const handlePressDiagnosisRecordButton = () => {
-      navigation.navigate('PlantDiagnosisListScreen', { id: '1' });
+      navigation.navigate('PlantDiagnosisListScreen', { id: 1 });
     };
 
     const handlePressDiagnosis = async () => {
@@ -30,7 +30,7 @@ export const PlantDiagnosisIntroFooterModule =
 
       navigation.navigate('PlantDiagnosisResultScreen', {
         photo_url: result.assets[0].uri as string,
-        id: '1',
+        id: 1,
       });
     };
 

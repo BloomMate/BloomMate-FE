@@ -17,16 +17,18 @@ import { PrimaryNavigator, PrimaryNavigatorParamLists } from './primary';
 import { SignUpScreen } from './signup';
 import { UserInfoScreen } from './user-info';
 
+import { LoadingPage } from '@/layouts';
+
 export type RootStackParamList = {
   LoginScreen: undefined;
   SignUpScreen: undefined;
   LandingScreen: undefined;
-  PlantChatScreen: { id: string };
-  PlantDetailScreen: { id: string };
-  PlantDiagnosisIntroScreen: { id: string };
-  PlantDiagnosisResultScreen: { id: string; photo_url: string };
-  PlantDiagnosisListScreen: { id: string };
-  PlantDiagnosisLogScreen: { diagnosis_id: string };
+  PlantChatScreen: { id: number };
+  PlantDetailScreen: { id: number };
+  PlantDiagnosisIntroScreen: { id: number };
+  PlantDiagnosisResultScreen: { id: number; photo_url: string };
+  PlantDiagnosisListScreen: { id: number };
+  PlantDiagnosisLogScreen: { diagnosis_id: number };
   UserInfoScreen: undefined;
   PrimaryStack: NavigatorScreenParams<PrimaryNavigatorParamLists>;
   PlantAddScreen: undefined;
@@ -44,7 +46,8 @@ export const RootNavigator = ({}: RootNavigatorProps) => {
       theme={{
         ...DefaultTheme,
         colors: { ...DefaultTheme.colors, background: 'white' },
-      }}>
+      }}
+      fallback={<LoadingPage />}>
       <Stack.Navigator
         initialRouteName="PrimaryStack"
         screenOptions={{ headerShown: false }}>

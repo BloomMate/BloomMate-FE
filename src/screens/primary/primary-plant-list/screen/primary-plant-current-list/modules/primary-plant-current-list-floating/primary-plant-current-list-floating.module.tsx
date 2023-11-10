@@ -1,5 +1,7 @@
 import { Box, Stack } from '@mobily/stacks';
 import { useNavigation } from '@react-navigation/native';
+import { isUndefined } from 'lodash';
+import isEmpty from 'lodash/isEmpty';
 import { memo } from 'react';
 import { TouchableOpacity } from 'react-native';
 import Toast from 'react-native-toast-message';
@@ -7,21 +9,27 @@ import Toast from 'react-native-toast-message';
 import { PrimaryPlantListScreenNavigatorProp } from '../../../../primary-plant-list.screen';
 
 import { Icon, PointLinearGradient, Text } from '@/atoms';
-import { palette } from '@/utils';
+import { useGetPlantListQuery } from '@/hooks';
+import { isFullListByGardenSizeAndNumberOfPlant, palette } from '@/utils';
 
 // TODO : props 삭제 예정
-type PrimaryPlantCurrentListFloatingModuleProps = {
-  isEmptyList: boolean;
-  isFullList: boolean;
-};
+type PrimaryPlantCurrentListFloatingModuleProps = {};
 
 export const PrimaryPlantCurrentListFloatingModule = memo(
-  ({ isEmptyList, isFullList }: PrimaryPlantCurrentListFloatingModuleProps) => {
+  ({}: PrimaryPlantCurrentListFloatingModuleProps) => {
+    const { data } = useGetPlantListQuery();
     const navigation = useNavigation<PrimaryPlantListScreenNavigatorProp>();
 
-    if (isEmptyList) {
+    if (isEmpty(data?.DATA) || isUndefined(data)) {
       return null;
     }
+
+    const { garden_size, DATA } = data;
+
+    const isFullList = isFullListByGardenSizeAndNumberOfPlant(
+      garden_size,
+      DATA.length,
+    );
 
     const handlePressButton = () => {
       if (isFullList) {
