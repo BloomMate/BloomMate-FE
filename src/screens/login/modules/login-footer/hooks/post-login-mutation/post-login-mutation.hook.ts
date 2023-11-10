@@ -14,7 +14,9 @@ type PostLoginResponseData = {
   tiiun_number: string;
   garden_size: string;
   address: string;
-  token: object;
+  token: {
+    access: string;
+  };
 };
 
 export const usePostLoginMutation = () => {
@@ -27,6 +29,8 @@ export const usePostLoginMutation = () => {
           password: pw,
         },
       );
+
+      defaultAxios.defaults.headers.Authorization = `Bearer ${data.token.access}`;
 
       return data;
     } catch (error) {

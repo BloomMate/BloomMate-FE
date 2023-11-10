@@ -1,7 +1,7 @@
 // id : 2, 4, 5, 7
 
 export const PLANT_DETAIL_DUMMY_DATA: {
-  id: string;
+  id: number;
   plant_picture_url: string;
   plant_nickname: string;
   planted_at: string;
@@ -22,7 +22,7 @@ export const PLANT_DETAIL_DUMMY_DATA: {
   growth_level: 'germination' | 'growth' | 'harvest';
 }[] = [
   {
-    id: '2',
+    id: 2,
     plant_picture_url: 'https://picsum.photos/200/100',
     plant_nickname: '멋쟁이감자',
     planted_at: '2023-09-21T23:22:02.385081+09:00',
@@ -43,7 +43,7 @@ export const PLANT_DETAIL_DUMMY_DATA: {
     growth_level: 'growth',
   },
   {
-    id: '4',
+    id: 4,
     plant_picture_url: 'https://picsum.photos/200/100',
     plant_nickname: '왕옥수수',
     planted_at: '2023-08-10T23:22:02.385081+09:00',
@@ -64,7 +64,7 @@ export const PLANT_DETAIL_DUMMY_DATA: {
     growth_level: 'harvest',
   },
   {
-    id: '5',
+    id: 5,
     plant_picture_url: 'https://picsum.photos/200/100',
     plant_nickname: '화난토마토',
     planted_at: '2023-10-20T23:22:02.385081+09:00',
@@ -85,7 +85,7 @@ export const PLANT_DETAIL_DUMMY_DATA: {
     growth_level: 'germination',
   },
   {
-    id: '7',
+    id: 7,
     plant_picture_url: 'https://picsum.photos/200/100',
     plant_nickname: '딸기공주',
     planted_at: '2023-08-10T23:22:02.385081+09:00',

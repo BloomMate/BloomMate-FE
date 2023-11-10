@@ -16,7 +16,7 @@ import { palette } from '@/utils';
 type PlantDiagnosisLogContentModuleProps = {};
 
 export const PlantDiagnosisLogContentModule =
-  memo<PlantDiagnosisLogContentModuleProps>(() => {
+  memo<PlantDiagnosisLogContentModuleProps>(({}) => {
     const {
       params: { diagnosis_id },
     } = useRoute<PlantDiagnosisLogScreenNavigationRouteProps>();
