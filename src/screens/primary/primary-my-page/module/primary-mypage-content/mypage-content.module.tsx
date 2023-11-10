@@ -3,7 +3,7 @@ import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { TouchableOpacity } from 'react-native';
 
-import { PrimaryNavigatorParamLists } from '../../../../../primary.navigator';
+import { PrimaryNavigatorParamLists } from '../../../primary.navigator';
 
 import { Icon, Text } from '@/atoms';
 import { palette } from '@/utils';

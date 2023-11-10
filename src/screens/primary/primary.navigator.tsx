@@ -5,7 +5,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../root.navigator';
 
 import { PrimaryCommunityScreen } from './primary-community';
-import { PrimaryMypageNavigator } from './primary-my-page/primary-mypage-navigator';
+import { PrimaryMyPageScreen } from './primary-my-page';
 import { PrimaryPlantListScreen } from './primary-plant-list';
 
 import { palette } from '@/utils';
@@ -54,7 +54,7 @@ export const PrimaryNavigator = () => {
       />
       <Tab.Screen
         name="PrimaryMyPageScreen"
-        component={PrimaryMypageNavigator}
+        component={PrimaryMyPageScreen}
         options={{ tabBarLabel: '마이페이지' }}
       />
     </Tab.Navigator>

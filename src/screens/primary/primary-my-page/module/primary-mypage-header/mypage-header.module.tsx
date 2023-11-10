@@ -5,7 +5,7 @@ import { CompositeNavigationProp, RouteProp } from '@react-navigation/native';
 import {
   PrimaryNavigatorProps,
   PrimaryNavigatorParamLists,
-} from '../../../../../primary.navigator';
+} from '../../../primary.navigator';
 
 import { Text } from '@/atoms';
 
