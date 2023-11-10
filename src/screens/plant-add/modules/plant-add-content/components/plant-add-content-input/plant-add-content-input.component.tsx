@@ -18,10 +18,12 @@ export const PlantAddContentInputComponent =
       mapLabelByScreenStep[screenStep] || {};
 
     return (
-      <TextInput
-        placeholder={placeholder}
-        label={label}
-        rightIconName={rightIconName}
-      />
+      <>
+        <TextInput
+          placeholder={placeholder}
+          label={label}
+          rightIconName={rightIconName}
+        />
+      </>
     );
   });

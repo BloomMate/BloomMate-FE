@@ -10,19 +10,29 @@ type UploadPhotoResponseData = {
 
 //TODO: 제대로 고치기
 export const useUploadPhotoMutation = async (file: string) => {
-  console.log(file);
-  const data = new FormData();
-  data.append('file', file);
-  data.append('upload_preset', 'BloomMate');
-  const cloudName = CLOUDINARY_NAME;
-  console.log(data);
-  const res = await fetch(
-    `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
-    {
-      method: 'POST',
-      body: data,
-    },
-  );
-  console.log(res.json());
-  return res.json();
+  try {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('upload_preset', 'BloomMate');
+    formData.append('public_id', false);
+    formData.append('api_key', 577356477427416);
+    const cloudName = CLOUDINARY_NAME;
+    console.log(formData);
+    const response = await fetch(
+      `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+      {
+        method: 'POST',
+        body: formData,
+      },
+    );
+
+    if (response.ok) {
+      const jsonResponse = await response.json();
+      console.log('Upload successful:', jsonResponse);
+    } else {
+      console.error('Upload failed:', response.statusText);
+    }
+  } catch (error) {
+    console.error('Error during upload:', error);
+  }
 };

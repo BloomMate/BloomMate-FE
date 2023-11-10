@@ -1,3 +1,4 @@
+import { CLOUDINARY_NAME } from '@env';
 import { Box } from '@mobily/stacks';
 import { useNavigation } from '@react-navigation/native';
 import isUndefined from 'lodash/isUndefined';
@@ -12,8 +13,6 @@ import {
   $plantAddState,
   plantAddSteps,
 } from '../../../../plant-add.state';
-
-import { useUploadPhotoMutation } from './hooks';
 
 import { Icon, PointLinearGradient } from '@/atoms';
 import { palette } from '@/utils';
@@ -44,11 +43,35 @@ export const PlantAddContentPhotoComponent =
       }
 
       const photo_url = result.assets[0].uri as string;
+      try {
+        const formData = new FormData();
+        formData.append('file', photo_url);
+        formData.append('upload_preset', 'BloomMate');
+        formData.append('public_id', false);
+        formData.append('api_key', 577356477427416);
+        const cloudName = CLOUDINARY_NAME;
+        const response = await fetch(
+          `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+          {
+            method: 'POST',
+            body: formData,
+          },
+        );
+
+        if (response.ok) {
+          const jsonResponse = await response.json();
+          console.log('Upload successful:', jsonResponse);
+        } else {
+          console.error('Upload failed:', response.statusText);
+        }
+      } catch (error) {
+        console.error('Error during upload:', error);
+      }
+
       setPhoto(photo_url);
       setPlantAddState({
         screenStep: plantAddSteps[currentScreenStepIndex + 1],
       });
-      useUploadPhotoMutation(photo_url);
     };
 
     return !isPictureCompleteStep ? (
