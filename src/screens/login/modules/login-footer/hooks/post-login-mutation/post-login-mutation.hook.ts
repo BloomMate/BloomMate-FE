@@ -21,7 +21,7 @@ export const usePostLoginMutation = () => {
   return useMutation(async ({ id, pw }: PostLoginRequestProps) => {
     try {
       const { data } = await defaultAxios.post<PostLoginResponseData>(
-        'accounts/login/',
+        'accounts/login',
         {
           account_id: id,
           password: pw,
