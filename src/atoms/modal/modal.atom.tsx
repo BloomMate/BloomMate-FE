@@ -7,9 +7,14 @@ import { palette } from '@/utils';
 
 type ModalProps = PropsWithChildren<{
   isVisible: boolean;
+  isBottomSheet?: boolean;
 }>;
 
-export const Modal = ({ children, isVisible }: ModalProps) => {
+export const Modal = ({
+  children,
+  isVisible,
+  isBottomSheet = false,
+}: ModalProps) => {
   const { width } = useWindowDimensions();
 
   const maxDeviceHeight = Math.max(
@@ -20,15 +25,20 @@ export const Modal = ({ children, isVisible }: ModalProps) => {
   return (
     <RNModal
       isVisible={isVisible}
-      animationIn="fadeIn"
-      animationOut="fadeOut"
+      animationIn={isBottomSheet ? 'slideInUp' : 'fadeIn'}
+      animationOut={isBottomSheet ? 'slideOutDown' : 'fadeOut'}
       backdropColor={palette['modal']} // 이갓만 색깔 잘 정해서 바꿔
       backdropOpacity={1}
-      style={{
-        margin: 0,
-        paddingHorizontal: 20,
-        borderColor: palette['amber-500'],
-      }}
+      style={[
+        {
+          margin: 0,
+          paddingHorizontal: isBottomSheet ? 0 : 20,
+          borderColor: palette['amber-500'],
+        },
+        isBottomSheet && {
+          justifyContent: 'flex-end',
+        },
+      ]}
       useNativeDriver
       statusBarTranslucent
       deviceHeight={maxDeviceHeight}
