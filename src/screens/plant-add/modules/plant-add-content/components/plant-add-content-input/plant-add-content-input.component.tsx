@@ -78,6 +78,7 @@ export const PlantAddVarietyInputComponent =
         />
         <TouchableOpacity onPress={() => setModal(!isModal)}>
           <TextInput
+            disabled
             placeholder={placeholder}
             label={label}
             rightIconName={rightIconName}
@@ -110,6 +111,7 @@ export const PlantAddDateInputComponent =
         />
         <TouchableOpacity onPress={() => setModal(!isModal)}>
           <TextInput
+            disabled
             placeholder={placeholder}
             label={label}
             value={value}
