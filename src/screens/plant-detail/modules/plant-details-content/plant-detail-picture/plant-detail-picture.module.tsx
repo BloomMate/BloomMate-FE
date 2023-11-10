@@ -1,33 +1,28 @@
 import { Stack } from '@mobily/stacks';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useRoute } from '@react-navigation/native';
 import { isUndefined } from 'lodash';
 import { memo } from 'react';
 import { Image, View } from 'react-native';
 
-import {
-  PlantDetailScreenNavigationProps,
-  PlantDetailScreenNavigationRouteProps,
-} from '../../../plant-detail.screen';
+import { PlantDetailScreenNavigationRouteProps } from '../../../plant-detail.screen';
 
 import { Text } from '@/atoms';
-import { PLANT_DETAIL_DUMMY_DATA } from '@/dummy-data';
+import { useGetPlantDetailQuery } from '@/hooks';
 import { palette } from '@/utils';
 
 type PlantDetailPictureModule = {};
 
 export const PlantDetailPictureModule = memo<PlantDetailPictureModule>(() => {
-  const navigation = useNavigation<PlantDetailScreenNavigationProps>();
   const {
     params: { id },
   } = useRoute<PlantDetailScreenNavigationRouteProps>();
+  const { data } = useGetPlantDetailQuery({ plant_id: id });
 
-  const currentPlant = PLANT_DETAIL_DUMMY_DATA.find(v => v.id === id);
-
-  if (isUndefined(currentPlant)) {
+  if (isUndefined(data)) {
     return null;
   }
 
-  const { plant_picture_url, plant_nickname } = currentPlant;
+  const { plant_picture_url, plant_nickname } = data;
 
   return (
     <Stack space={8}>

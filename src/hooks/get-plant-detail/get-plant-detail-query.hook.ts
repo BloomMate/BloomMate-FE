@@ -29,5 +29,5 @@ export type PlantDetailRequestParams = {
 export const useGetPlantDetailQuery = ({
   plant_id,
 }: PlantDetailRequestParams) => {
-  return useQuery<PlantDetailResponse>(['/plant_detail', { plant_id }]);
+  return useQuery<PlantDetailResponse>(['plants/plant_detail', { plant_id }]);
 };
