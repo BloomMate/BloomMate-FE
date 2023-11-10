@@ -11,18 +11,10 @@ import { Icon, Text } from '@/atoms';
 import { PlantListResponse } from '@/hooks';
 import { palette, calculateDaysDifference } from '@/utils';
 
-type PlantListItemProps = PlantListResponse['DATA'][0];
+type PlantListItemProps = PlantListResponse['DATA'][0] & {};
 
 export const PlantListItem = memo<PlantListItemProps>(
-  ({
-    id,
-    plant_picture_url,
-    plant_nickname,
-    planted_at,
-    is_harvested,
-    harvested_at,
-    growth_level,
-  }) => {
+  ({ id, plant_picture_url, plant_nickname, planted_at, growth_level }) => {
     const navigation = useNavigation<PrimaryPlantListScreenNavigatorProp>();
 
     const handlePressDetailButton = () => {

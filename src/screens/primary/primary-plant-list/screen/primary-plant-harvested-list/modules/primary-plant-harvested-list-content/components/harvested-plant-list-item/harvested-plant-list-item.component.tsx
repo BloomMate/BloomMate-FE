@@ -4,29 +4,14 @@ import { memo } from 'react';
 import { Image } from 'react-native';
 
 import { Text } from '@/atoms';
+import { PlantListResponse } from '@/hooks';
 import { palette } from '@/utils';
 
-type HarvestedPlantListItemComponentProps = {
-  id: string;
-  plant_picture_url: string;
-  plant_nickname: string;
-  planted_at: string;
-  harvested_at: string | null;
-  is_harvested: boolean;
-  growth_level: 'germination' | 'growth' | 'harvest';
-};
+type HarvestedPlantListItemComponentProps = PlantListResponse['DATA'][0] & {};
 
 export const HarvestedPlantListItem =
   memo<HarvestedPlantListItemComponentProps>(
-    ({
-      id,
-      plant_picture_url,
-      plant_nickname,
-      planted_at,
-      is_harvested,
-      harvested_at,
-      growth_level,
-    }) => {
+    ({ id, plant_picture_url, plant_nickname, planted_at, harvested_at }) => {
       return (
         <Columns
           style={{
