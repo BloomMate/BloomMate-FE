@@ -26,7 +26,7 @@ export const PlantDiagnosisResultFooterModule =
 
       navigation.replace('PlantDiagnosisResultScreen', {
         photo_url: result.assets[0].uri as string,
-        id: '1',
+        id: 1,
       });
     };
 

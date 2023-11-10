@@ -8,17 +8,10 @@ import { PrimaryPlantListScreenNavigatorProp } from '../../../../../../primary-p
 import { getPlantListItemCopyByGrowthLevel } from './plant-list-item.util';
 
 import { Icon, Text } from '@/atoms';
+import { PlantListResponse } from '@/hooks';
 import { palette, calculateDaysDifference } from '@/utils';
 
-type PlantListItemProps = {
-  id: string;
-  plant_picture_url: string;
-  plant_nickname: string;
-  planted_at: string;
-  harvested_at: string | null;
-  is_harvested: boolean;
-  growth_level: 'germination' | 'growth' | 'harvest';
-};
+type PlantListItemProps = PlantListResponse['DATA'][0];
 
 export const PlantListItem = memo<PlantListItemProps>(
   ({

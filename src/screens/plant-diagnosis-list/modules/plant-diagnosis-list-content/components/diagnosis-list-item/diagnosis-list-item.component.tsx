@@ -11,7 +11,7 @@ import {
 } from '@/utils';
 
 type DiagnosisListItemProps = {
-  diagnosis_id: string;
+  diagnosis_id: number;
   created_at: string;
   diagnose_photo_url: string;
   growth_level: 'germination' | 'growth' | 'harvest';
