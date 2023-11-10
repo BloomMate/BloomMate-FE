@@ -18,6 +18,7 @@ type PlantAddContentModuleProps = {};
 export const PlantAddContentModule = memo<PlantAddContentModuleProps>(() => {
   const { screenStep } = useRecoilValue($plantAddState);
   const info = getInfoByScreenStep(screenStep);
+
   const isPhoto = screenStep === 'PICTURE' || screenStep === 'PICTURE_COMPLETE';
   const renderInputs = () => {
     switch (screenStep) {

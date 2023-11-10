@@ -1,7 +1,11 @@
 import { Box, Stack } from '@mobily/stacks';
-import { memo, useState } from 'react';
+import { memo } from 'react';
+import { useController, useFormContext } from 'react-hook-form';
 import { TouchableOpacity } from 'react-native';
-import { Calendar, LocaleConfig } from 'react-native-calendars';
+import { Calendar, DateData, LocaleConfig } from 'react-native-calendars';
+
+import { PlantAddForm } from '../../../../hooks';
+import { ESignUpStep } from '../../../../plant-add.state';
 
 import { Modal, Text } from '@/atoms';
 import { palette } from '@/utils';
@@ -13,10 +17,17 @@ type PlantAddContentModalComponentProps = {
 
 export const PlantAddContentVarietyModalComponent =
   memo<PlantAddContentModalComponentProps>(({ isModal, setModal }) => {
-    const handleClickModal = () => {
+    const handleClickButton = (v: number) => {
+      onChange(v);
       setModal(false);
     };
     const isVisible = isModal;
+    const { control } = useFormContext<PlantAddForm>();
+    const { field } = useController({
+      control,
+      name: ESignUpStep.VARIETY,
+    });
+    const { onChange } = field;
 
     return (
       <Modal isVisible={isVisible} isBottomSheet={true}>
@@ -35,6 +46,7 @@ export const PlantAddContentVarietyModalComponent =
             </Text>
 
             <TouchableOpacity
+              onPress={() => handleClickButton(0)}
               style={{ backgroundColor: palette['gray-100'], padding: 8 }}>
               <Text fontWeight="Medium" color="gray-700" variants="titleMedium">
                 🍓 딸기
@@ -42,19 +54,21 @@ export const PlantAddContentVarietyModalComponent =
             </TouchableOpacity>
             <TouchableOpacity
               style={{ backgroundColor: palette['gray-100'], padding: 8 }}
-              onPress={handleClickModal}>
+              onPress={() => handleClickButton(1)}>
               <Text fontWeight="Medium" color="gray-700" variants="titleMedium">
                 🌽 옥수수
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
-              style={{ backgroundColor: palette['gray-100'], padding: 8 }}>
+              style={{ backgroundColor: palette['gray-100'], padding: 8 }}
+              onPress={() => handleClickButton(2)}>
               <Text fontWeight="Medium" color="gray-700" variants="titleMedium">
                 🥔 감자
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
-              style={{ backgroundColor: palette['gray-100'], padding: 8 }}>
+              style={{ backgroundColor: palette['gray-100'], padding: 8 }}
+              onPress={() => handleClickButton(3)}>
               <Text fontWeight="Medium" color="gray-700" variants="titleMedium">
                 🍅 토마토
               </Text>
@@ -66,14 +80,18 @@ export const PlantAddContentVarietyModalComponent =
   });
 export const PlantAddContentDateModalComponent =
   memo<PlantAddContentModalComponentProps>(({ isModal, setModal }) => {
-    const handleClickModal = () => {
-      setModal(false);
-    };
+    const { control } = useFormContext<PlantAddForm>();
+    const { field } = useController({
+      control,
+      name: ESignUpStep.DATE_INPUT,
+    });
+    const { onChange, value } = field;
     const isVisible = isModal;
-    const [selectedDate, setSelectedDate] = useState('');
+    const selectedDate = value;
 
-    const handleDatePress = day => {
-      setSelectedDate(day.dateString);
+    const handleDatePress = (day: DateData) => {
+      onChange(day.dateString);
+      setModal(false);
     };
 
     LocaleConfig.locales['kr'] = {

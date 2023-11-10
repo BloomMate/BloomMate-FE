@@ -1,6 +1,9 @@
+import isUndefined from 'lodash/isUndefined';
 import { memo, useState } from 'react';
+import { useController, useFormContext } from 'react-hook-form';
 import { TouchableOpacity } from 'react-native';
 
+import { PlantAddForm } from '../../../../hooks';
 import { ESignUpStep } from '../../../../plant-add.state';
 import {
   PlantAddContentDateModalComponent,
@@ -19,6 +22,12 @@ type PlantAddContentInputComponentProps = {
 
 export const PlantAddContentInputComponent =
   memo<PlantAddContentInputComponentProps>(({ screenStep }) => {
+    const { control } = useFormContext<PlantAddForm>();
+    const { field, fieldState } = useController({
+      control,
+      name: ESignUpStep.ALIAS_INPUT,
+    });
+    const { onChange, value } = field;
     const { placeholder, label, rightIconName } =
       mapLabelByScreenStep[screenStep] || {};
 
@@ -26,6 +35,10 @@ export const PlantAddContentInputComponent =
       <TextInput
         placeholder={placeholder}
         label={label}
+        value={value as string}
+        onChangeText={onChange}
+        error={!isUndefined(fieldState.error)}
+        errorMsg={fieldState.error?.message as string}
         rightIconName={rightIconName}
       />
     );
@@ -36,6 +49,26 @@ export const PlantAddVarietyInputComponent =
     const { placeholder, label, rightIconName } =
       mapLabelByScreenStep[screenStep] || {};
     const [isModal, setModal] = useState(false);
+    const { control } = useFormContext<PlantAddForm>();
+    const { field, fieldState } = useController({
+      control,
+      name: ESignUpStep.VARIETY,
+    });
+    const { onChange, value } = field;
+    const selectedVariety = () => {
+      switch (value) {
+        case 0:
+          return '🍓 딸기';
+        case 1:
+          return '🌽 옥수수';
+        case 2:
+          return '🥔 감자';
+        case 3:
+          return '🍅 토마토';
+        default:
+          return undefined;
+      }
+    };
 
     return (
       <>
@@ -48,6 +81,9 @@ export const PlantAddVarietyInputComponent =
             placeholder={placeholder}
             label={label}
             rightIconName={rightIconName}
+            value={selectedVariety()}
+            error={!isUndefined(fieldState.error)}
+            errorMsg={fieldState.error?.message as string}
           />
         </TouchableOpacity>
       </>
@@ -59,6 +95,12 @@ export const PlantAddDateInputComponent =
     const { placeholder, label, rightIconName } =
       mapLabelByScreenStep[screenStep] || {};
     const [isModal, setModal] = useState(false);
+    const { control } = useFormContext<PlantAddForm>();
+    const { field, fieldState } = useController({
+      control,
+      name: ESignUpStep.DATE_INPUT,
+    });
+    const { value } = field;
 
     return (
       <>
@@ -70,7 +112,10 @@ export const PlantAddDateInputComponent =
           <TextInput
             placeholder={placeholder}
             label={label}
+            value={value}
             rightIconName={rightIconName}
+            error={!isUndefined(fieldState.error)}
+            errorMsg={fieldState.error?.message as string}
           />
         </TouchableOpacity>
       </>
