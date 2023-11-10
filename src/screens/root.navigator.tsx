@@ -49,7 +49,7 @@ export const RootNavigator = ({}: RootNavigatorProps) => {
       }}
       fallback={<LoadingPage />}>
       <Stack.Navigator
-        initialRouteName="PrimaryStack"
+        initialRouteName="LandingScreen"
         screenOptions={{ headerShown: false }}>
         <Stack.Screen name="LandingScreen" component={LandingScreen} />
         <Stack.Screen name="LoginScreen" component={LoginScreen} />

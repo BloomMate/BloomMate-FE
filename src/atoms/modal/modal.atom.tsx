@@ -7,9 +7,14 @@ import { palette } from '@/utils';
 
 type ModalProps = PropsWithChildren<{
   isVisible: boolean;
+  isBottomSheet?: boolean;
 }>;
 
-export const Modal = ({ children, isVisible }: ModalProps) => {
+export const Modal = ({
+  children,
+  isVisible,
+  isBottomSheet = false,
+}: ModalProps) => {
   const { width } = useWindowDimensions();
 
   const maxDeviceHeight = Math.max(
