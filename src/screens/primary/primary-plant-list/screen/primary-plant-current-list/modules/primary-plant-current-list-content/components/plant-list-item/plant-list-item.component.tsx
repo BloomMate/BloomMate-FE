@@ -30,6 +30,10 @@ export const PlantListItem = memo<PlantListItemProps>(
         style={{
           elevation: 4,
           backgroundColor: palette['white'],
+          borderTopEndRadius: 8,
+          borderTopLeftRadius: 8,
+          borderTopRightRadius: 8,
+          borderTopStartRadius: 8,
           borderBottomLeftRadius: 12,
           borderBottomEndRadius: 12,
           borderBottomRightRadius: 12,
