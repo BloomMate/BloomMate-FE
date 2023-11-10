@@ -11,7 +11,7 @@ import {
 } from '@/utils';
 
 type DiagnosisListItemProps = {
-  id: string;
+  diagnosis_id: string;
   created_at: string;
   diagnose_photo_url: string;
   growth_level: 'germination' | 'growth' | 'harvest';
@@ -20,7 +20,7 @@ type DiagnosisListItemProps = {
 
 export const DiagnosisListItem = memo<DiagnosisListItemProps>(
   ({
-    id,
+    diagnosis_id,
     created_at,
     diagnose_photo_url,
     growth_level,

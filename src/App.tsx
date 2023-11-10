@@ -1,3 +1,5 @@
+import 'react-native-reanimated';
+import 'react-native-gesture-handler';
 import dayjs from 'dayjs';
 import 'dayjs/locale/ko';
 import isToday from 'dayjs/plugin/isToday';

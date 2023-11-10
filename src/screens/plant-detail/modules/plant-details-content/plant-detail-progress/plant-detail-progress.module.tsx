@@ -1,6 +1,7 @@
 import { Box, Stack } from '@mobily/stacks';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { isUndefined } from 'lodash';
+import { MotiView } from 'moti';
 import { memo } from 'react';
 
 import {
@@ -40,6 +41,7 @@ export const PlantDetailProgressModule = memo<PlantDetailProgressModule>(() => {
   const totalPeriod = harvest_period_end - germination_period_start;
   const growthLevelPercentage =
     (calculateDaysDifference(planted_at) / totalPeriod) * 100;
+
   const growthPeriod = growth_period_end - growth_period_start + 1;
   const harvestPeriod = harvest_period_end - harvest_period_start + 1;
   const getBoxColor = (percentage: number) => {
@@ -118,29 +120,28 @@ export const PlantDetailProgressModule = memo<PlantDetailProgressModule>(() => {
           </Box>
           <Stack paddingX={15.5}>
             <Box style={{ position: 'relative' }}>
-              <Box
-                style={[
-                  {
-                    width: 0,
-                    height: 0,
-                    backgroundColor: 'transparent',
-                    borderStyle: 'solid',
-                    borderTopWidth: 0,
-                    borderRightWidth: 12,
-                    borderBottomWidth: 20.4,
-                    borderLeftWidth: 12,
-                    borderTopColor: 'transparent',
-                    borderRightColor: 'transparent',
-                    borderBottomColor: palette['primary'],
-                    borderLeftColor: 'transparent',
-                    transform: [{ rotateX: '180deg' }],
-                    position: 'relative',
-                    left: `${growthLevelPercentage}%`,
-                    marginLeft: -12,
-                  },
-                ]}
+              <MotiView
+                style={{
+                  width: 0,
+                  height: 0,
+                  backgroundColor: 'transparent',
+                  borderStyle: 'solid',
+                  borderTopWidth: 0,
+                  borderRightWidth: 12,
+                  borderBottomWidth: 20.4,
+                  borderLeftWidth: 12,
+                  borderTopColor: 'transparent',
+                  borderRightColor: 'transparent',
+                  borderBottomColor: palette['primary'],
+                  borderLeftColor: 'transparent',
+                  transform: [{ rotateX: '180deg' }],
+                  position: 'relative',
+                  marginLeft: -12,
+                }}
+                from={{ left: '0%' }}
+                animate={{ left: `${growthLevelPercentage}%` }}
+                transition={{ type: 'timing', duration: 1000 }}
               />
-
               <Box
                 style={{
                   backgroundColor: palette['gray-300'],
@@ -154,7 +155,6 @@ export const PlantDetailProgressModule = memo<PlantDetailProgressModule>(() => {
                     backgroundColor: getBoxColor(growthLevelPercentage),
                     borderTopLeftRadius: 8,
                     borderBottomLeftRadius: 8,
-                    // marginBottom: 12,
                   }}
                 />
               </Box>
