@@ -1,1 +1,1 @@
-export * from './mypage-content.module';
+export * from './primary-mypage-content.module';

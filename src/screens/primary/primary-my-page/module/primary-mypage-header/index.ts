@@ -1,1 +1,1 @@
-export * from './mypage-header.module';
+export * from './primary-mypage-header.module';

@@ -14,7 +14,6 @@ export type PrimaryNavigatorParamLists = {
   PrimaryPlantListScreen: undefined;
   PrimaryCommunityScreen: undefined;
   PrimaryMyPageScreen: undefined;
-  PrimaryMyPageInformationScreen: undefined;
 };
 
 const Tab = createBottomTabNavigator<PrimaryNavigatorParamLists>();
