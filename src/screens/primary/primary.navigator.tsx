@@ -66,7 +66,12 @@ export const PrimaryNavigator = () => {
       <Tab.Screen
         name="PrimaryMyPageScreen"
         component={PrimaryMyPageScreen}
-        options={{ tabBarLabel: '마이페이지' }}
+        options={{
+          tabBarLabel: '',
+          tabBarIcon: ({ color }) => {
+            return <Icon color={color} size={28} name="person-outline" />;
+          },
+        }}
       />
     </Tab.Navigator>
   );
