@@ -1,4 +1,4 @@
-import { CLOUDINARY_KEY, CLOUDINARY_NAME } from '@env';
+import { CLOUDINARY_NAME } from '@env';
 import { Box } from '@mobily/stacks';
 import { useNavigation } from '@react-navigation/native';
 import isUndefined from 'lodash/isUndefined';
@@ -42,15 +42,21 @@ export const PlantAddContentPhotoComponent =
         return;
       }
 
-      const photo_url = result.assets[0].uri as string;
+      const { uri, fileName, type } = result.assets[0];
+
+      const source = {
+        uri,
+        type,
+        name: fileName,
+      };
       try {
         const formData = new FormData();
         const cloudName = CLOUDINARY_NAME;
-        const apiKey = CLOUDINARY_KEY;
-        formData.append('file', photo_url);
+
+        formData.append('file', source);
         formData.append('upload_preset', 'BloomMate');
-        formData.append('public_id', false);
-        formData.append('api_key', Number(apiKey));
+        formData.append('cloud_name', cloudName);
+
         const response = await fetch(
           `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
           {
@@ -69,7 +75,7 @@ export const PlantAddContentPhotoComponent =
         console.error('Error during upload:', error);
       }
 
-      setPhoto(photo_url);
+      setPhoto(uri as string);
       setPlantAddState({
         screenStep: plantAddSteps[currentScreenStepIndex + 1],
       });
