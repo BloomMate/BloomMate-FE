@@ -49,6 +49,7 @@ export const RootNavigator = ({}: RootNavigatorProps) => {
         <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
         <Stack.Screen name="PlantChatScreen" component={PlantChatScreen} />
         <Stack.Screen name="PlantDetailScreen" component={PlantDetailScreen} />
+
         <Stack.Screen
           name="PlantDiagnosisIntroScreen"
           component={PlantDiagnosisIntroScreen}
