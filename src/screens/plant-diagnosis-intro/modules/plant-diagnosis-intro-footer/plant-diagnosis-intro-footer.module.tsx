@@ -14,6 +14,10 @@ export const PlantDiagnosisIntroFooterModule =
     const navigation =
       useNavigation<PlantDiagnosisIntroScreenNavigationProps>();
 
+    const handlePressDiagnosisRecordButton = () => {
+      navigation.navigate('PlantDiagnosisListScreen', { id: '1' });
+    };
+
     const handlePressDiagnosis = async () => {
       const result = await launchCamera({
         mediaType: 'photo',
@@ -31,7 +35,11 @@ export const PlantDiagnosisIntroFooterModule =
     };
 
     const buttons: SingleButtonProps[] = [
-      { label: '진단 기록', mode: 'outlined', onPress: () => {} },
+      {
+        label: '진단 기록',
+        mode: 'outlined',
+        onPress: handlePressDiagnosisRecordButton,
+      },
       {
         label: '진단하기',
         mode: 'contained',

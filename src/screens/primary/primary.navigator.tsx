@@ -5,7 +5,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../root.navigator';
 
 import { PrimaryCommunityScreen } from './primary-community';
-import { PrimaryMyPageScreen } from './primary-my-page';
+import { PrimaryMypageNavigator } from './primary-my-page/primary-mypage-navigator';
 import { PrimaryPlantListScreen } from './primary-plant-list';
 
 import { Icon } from '@/atoms';
@@ -15,6 +15,7 @@ export type PrimaryNavigatorParamLists = {
   PrimaryPlantListScreen: undefined;
   PrimaryCommunityScreen: undefined;
   PrimaryMyPageScreen: undefined;
+  PrimaryMyPageInformationScreen: undefined;
 };
 
 const Tab = createBottomTabNavigator<PrimaryNavigatorParamLists>();
@@ -65,7 +66,7 @@ export const PrimaryNavigator = () => {
       />
       <Tab.Screen
         name="PrimaryMyPageScreen"
-        component={PrimaryMyPageScreen}
+        component={PrimaryMypageNavigator}
         options={{
           tabBarLabel: '',
           tabBarIcon: ({ color }) => {

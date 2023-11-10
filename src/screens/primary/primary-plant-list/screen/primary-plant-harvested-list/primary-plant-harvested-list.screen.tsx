@@ -1,7 +1,7 @@
 import { Box } from '@mobily/stacks';
 import { memo } from 'react';
 
-import { PrimaryPlantHarvestedListExistModule } from './modules';
+import { PrimaryPlantHarvestedListContentModule } from './modules';
 
 import { palette } from '@/utils';
 
@@ -14,9 +14,7 @@ export const PrimaryPlantHarvestedListScreen =
         paddingTop={24}
         paddingBottom={52}
         style={{ backgroundColor: palette['gray-100'], height: '100%' }}>
-        {/** 2개를 계속 해서 테스트 할 것 */}
-        {/* <PrimaryPlantHarvestedListEmptyModule /> */}
-        <PrimaryPlantHarvestedListExistModule />
+        <PrimaryPlantHarvestedListContentModule />
       </Box>
     );
   });

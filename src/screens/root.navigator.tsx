@@ -11,6 +11,7 @@ import { PlantAddScreen } from './plant-add';
 import { PlantChatScreen } from './plant-chat';
 import { PlantDetailScreen } from './plant-detail';
 import { PlantDiagnosisIntroScreen } from './plant-diagnosis-intro';
+import { PlantDiagnosisListScreen } from './plant-diagnosis-list';
 import { PlantDiagnosisResultScreen } from './plant-diagnosis-result';
 import { PrimaryNavigator, PrimaryNavigatorParamLists } from './primary';
 import { SignUpScreen } from './signup';
@@ -23,6 +24,7 @@ export type RootStackParamList = {
   PlantDetailScreen: { id: string };
   PlantDiagnosisIntroScreen: { id: string };
   PlantDiagnosisResultScreen: { id: string; photo_url: string };
+  PlantDiagnosisListScreen: { id: string };
   PrimaryStack: NavigatorScreenParams<PrimaryNavigatorParamLists>;
   PlantAddScreen: undefined;
 };
@@ -48,6 +50,7 @@ export const RootNavigator = ({}: RootNavigatorProps) => {
         <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
         <Stack.Screen name="PlantChatScreen" component={PlantChatScreen} />
         <Stack.Screen name="PlantDetailScreen" component={PlantDetailScreen} />
+
         <Stack.Screen
           name="PlantDiagnosisIntroScreen"
           component={PlantDiagnosisIntroScreen}
@@ -56,6 +59,10 @@ export const RootNavigator = ({}: RootNavigatorProps) => {
         <Stack.Screen
           name="PlantDiagnosisResultScreen"
           component={PlantDiagnosisResultScreen}
+        />
+        <Stack.Screen
+          name="PlantDiagnosisListScreen"
+          component={PlantDiagnosisListScreen}
         />
         <Stack.Screen name="PrimaryStack" component={PrimaryNavigator} />
       </Stack.Navigator>
