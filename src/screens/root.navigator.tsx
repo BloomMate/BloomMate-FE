@@ -7,6 +7,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import { LandingScreen } from './landing';
 import { LoginScreen } from './login';
+import { PlantAddScreen } from './plant-add';
 import { PlantChatScreen } from './plant-chat';
 import { PlantDetailScreen } from './plant-detail';
 import { PlantDiagnosisIntroScreen } from './plant-diagnosis-intro';
@@ -30,6 +31,7 @@ export type RootStackParamList = {
   PlantDiagnosisLogScreen: { diagnosis_id: number };
   UserInfoScreen: undefined;
   PrimaryStack: NavigatorScreenParams<PrimaryNavigatorParamLists>;
+  PlantAddScreen: undefined;
 };
 
 type RootNavigatorProps = {};
@@ -47,7 +49,7 @@ export const RootNavigator = ({}: RootNavigatorProps) => {
       }}
       fallback={<LoadingPage />}>
       <Stack.Navigator
-        initialRouteName="LandingScreen"
+        initialRouteName="PrimaryStack"
         screenOptions={{ headerShown: false }}>
         <Stack.Screen name="LandingScreen" component={LandingScreen} />
         <Stack.Screen name="LoginScreen" component={LoginScreen} />
@@ -59,6 +61,7 @@ export const RootNavigator = ({}: RootNavigatorProps) => {
           name="PlantDiagnosisIntroScreen"
           component={PlantDiagnosisIntroScreen}
         />
+        <Stack.Screen name="PlantAddScreen" component={PlantAddScreen} />
         <Stack.Screen
           name="PlantDiagnosisResultScreen"
           component={PlantDiagnosisResultScreen}

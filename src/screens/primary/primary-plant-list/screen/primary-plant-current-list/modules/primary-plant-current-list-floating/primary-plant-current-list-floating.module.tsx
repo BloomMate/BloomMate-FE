@@ -1,9 +1,12 @@
 import { Box, Stack } from '@mobily/stacks';
+import { useNavigation } from '@react-navigation/native';
 import { isUndefined } from 'lodash';
 import isEmpty from 'lodash/isEmpty';
 import { memo } from 'react';
 import { TouchableOpacity } from 'react-native';
 import Toast from 'react-native-toast-message';
+
+import { PrimaryPlantListScreenNavigatorProp } from '../../../../primary-plant-list.screen';
 
 import { Icon, PointLinearGradient, Text } from '@/atoms';
 import { useGetPlantListQuery } from '@/hooks';
@@ -15,6 +18,7 @@ type PrimaryPlantCurrentListFloatingModuleProps = {};
 export const PrimaryPlantCurrentListFloatingModule = memo(
   ({}: PrimaryPlantCurrentListFloatingModuleProps) => {
     const { data } = useGetPlantListQuery();
+    const navigation = useNavigation<PrimaryPlantListScreenNavigatorProp>();
 
     if (isEmpty(data?.DATA) || isUndefined(data)) {
       return null;
@@ -35,8 +39,9 @@ export const PrimaryPlantCurrentListFloatingModule = memo(
           text2: '5',
           topOffset: 64,
         });
+      } else {
+        navigation.navigate('PlantAddScreen');
       }
-      // TODO : Plant ADD 로 넘어가는 버튼 마련
     };
 
     return (
