@@ -12,7 +12,7 @@ export type PlantListResponse = {
     is_harvested: boolean;
     growth_level: 'germination' | 'growth' | 'harvest';
   }[];
-  garden_size: '1' | '2' | '3';
+  garden_size: '0' | '1' | '2';
 };
 
 export const useGetPlantListQuery = () => {
