@@ -1,16 +1,19 @@
-import { CLOUDINARY_KEY, CLOUDINARY_NAME } from '@env';
+import { CLOUDINARY_NAME } from '@env';
 import { Box } from '@mobily/stacks';
 import { useNavigation } from '@react-navigation/native';
 import isUndefined from 'lodash/isUndefined';
-import { memo, useState } from 'react';
+import { memo } from 'react';
+import { useController, useFormContext } from 'react-hook-form';
 import { Image, TouchableOpacity } from 'react-native';
 import { launchCamera } from 'react-native-image-picker';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
+import { PlantAddForm } from '../../../../hooks';
 import { PlantAddScreenNavigationProps } from '../../../../plant-add.screen';
 import {
   $currentScreenStepIndexSelector,
   $plantAddState,
+  ESignUpStep,
   plantAddSteps,
 } from '../../../../plant-add.state';
 
@@ -25,13 +28,18 @@ type PlantAddContentPhotoComponentProps = {};
 export const PlantAddContentPhotoComponent =
   memo<PlantAddContentPhotoComponentProps>(() => {
     const navigation = useNavigation<PlantAddScreenNavigationProps>();
-    const [photo, setPhoto] = useState('');
-    const setPlantAddState = useSetRecoilState($plantAddState);
+    const { control } = useFormContext<PlantAddForm>();
     const currentScreenStepIndex = useRecoilValue(
       $currentScreenStepIndexSelector,
     );
-
     const isPictureCompleteStep = currentScreenStepIndex === 1;
+    const { field, fieldState } = useController({
+      control,
+      name: ESignUpStep.PICTURE,
+    });
+    const { onChange, value } = field;
+    const setPlantAddState = useSetRecoilState($plantAddState);
+
     const handlePressPictureButton = async () => {
       const result = await launchCamera({
         mediaType: 'photo',
@@ -42,15 +50,21 @@ export const PlantAddContentPhotoComponent =
         return;
       }
 
-      const photo_url = result.assets[0].uri as string;
+      const { uri, fileName, type } = result.assets[0];
+
+      const source = {
+        uri,
+        type,
+        name: fileName,
+      };
       try {
         const formData = new FormData();
         const cloudName = CLOUDINARY_NAME;
-        const apiKey = CLOUDINARY_KEY;
-        formData.append('file', photo_url);
+
+        formData.append('file', source);
         formData.append('upload_preset', 'BloomMate');
-        formData.append('public_id', false);
-        formData.append('api_key', Number(apiKey));
+        formData.append('cloud_name', cloudName);
+
         const response = await fetch(
           `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
           {
@@ -62,14 +76,13 @@ export const PlantAddContentPhotoComponent =
         if (response.ok) {
           const jsonResponse = await response.json();
           console.log('Upload successful:', jsonResponse);
+          onChange(jsonResponse.url);
         } else {
           console.error('Upload failed:', response.statusText);
         }
       } catch (error) {
         console.error('Error during upload:', error);
       }
-
-      setPhoto(photo_url);
       setPlantAddState({
         screenStep: plantAddSteps[currentScreenStepIndex + 1],
       });
@@ -92,6 +105,6 @@ export const PlantAddContentPhotoComponent =
         </TouchableOpacity>
       </Box>
     ) : (
-      <Image source={{ uri: photo }} style={{ height: 200, borderRadius: 8 }} />
+      <Image source={{ uri: value }} style={{ height: 200, borderRadius: 8 }} />
     );
   });

@@ -17,7 +17,7 @@ const PlantAddSchemaFormSchema: yup.ObjectSchema<PlantAddForm> = yup
     [ESignUpStep.PICTURE]: yup.string().required('사진을 등록해주세요.'),
     [ESignUpStep.PICTURE_COMPLETE]: yup
       .string()
-      .required('사진을 등록해주세요.'),
+      .required('사진을 등록해주세요'),
     [ESignUpStep.VARIETY]: yup.number().required('품종을 선택해주세요.'),
     [ESignUpStep.ALIAS_INPUT]: yup
       .string()

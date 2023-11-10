@@ -1,7 +1,9 @@
 import { useNavigation } from '@react-navigation/native';
 import { memo } from 'react';
+import { useFormContext } from 'react-hook-form';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
+import { PlantAddForm } from '../../hooks';
 import { PlantAddScreenNavigationProps } from '../../plant-add.screen';
 import {
   $currentScreenStepIndexSelector,
@@ -17,11 +19,20 @@ type PlantAddFooterModuleProps = {};
 export const PlantAddFooterModule = memo<PlantAddFooterModuleProps>(() => {
   const navigation = useNavigation<PlantAddScreenNavigationProps>();
   const setPlantAddState = useSetRecoilState($plantAddState);
+  const { formState, handleSubmit } = useFormContext<PlantAddForm>();
+
+  const { isDirty, isValid, errors, dirtyFields } = formState;
 
   const currentScreenStepIndex = useRecoilValue(
     $currentScreenStepIndexSelector,
   );
+  const isPlantAddPossible = isDirty && isValid;
 
+  const isCurrentStepValid = () => {
+    const currentFieldName = plantAddSteps[currentScreenStepIndex];
+
+    return !errors[currentFieldName] && dirtyFields[currentFieldName];
+  };
   const isLastStep = currentScreenStepIndex === plantAddSteps.length - 1;
   const isPictureCompleteStep = currentScreenStepIndex === 1;
   const isPictureStep = currentScreenStepIndex === 0;
@@ -59,7 +70,10 @@ export const PlantAddFooterModule = memo<PlantAddFooterModuleProps>(() => {
   return isPictureCompleteStep ? (
     <CTASection buttons={buttons} direction="row" />
   ) : (
-    <Button mode="contained" onPress={handlePressButton}>
+    <Button
+      mode="contained"
+      onPress={handlePressButton}
+      disabled={isLastStep ? !isPlantAddPossible : !isCurrentStepValid()}>
       {copy}
     </Button>
   );
