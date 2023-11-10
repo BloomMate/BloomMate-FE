@@ -3,7 +3,10 @@ import { StackNavigationProp } from '@react-navigation/stack';
 
 import { RootStackParamList } from '../root.navigator';
 
-import { PlantDiagnosisLogHeader } from './modules';
+import {
+  PlantDiagnosisLogContentModule,
+  PlantDiagnosisLogHeader,
+} from './modules';
 
 import { BasicLayout } from '@/layouts';
 
@@ -19,10 +22,11 @@ export type PlantDiagnosisLogScreenNavigationRouteProps = RouteProp<
   'PlantDiagnosisLogScreen'
 >;
 
-export const PlantDiagnosisLogScreen = () => {
+export const PlantDiagnosisLogScreen = ({}: PlantDiagnosisLogScreenProps) => {
   return (
     <BasicLayout backgroundColor="gray-100">
       <PlantDiagnosisLogHeader />
+      <PlantDiagnosisLogContentModule />
     </BasicLayout>
   );
 };
