@@ -13,6 +13,8 @@ import {
   plantAddSteps,
 } from '../../../../plant-add.state';
 
+import { useUploadPhotoMutation } from './hooks';
+
 import { Icon, PointLinearGradient } from '@/atoms';
 import { palette } from '@/utils';
 
@@ -29,6 +31,7 @@ export const PlantAddContentPhotoComponent =
     const currentScreenStepIndex = useRecoilValue(
       $currentScreenStepIndexSelector,
     );
+
     const isPictureCompleteStep = currentScreenStepIndex === 1;
     const handlePressPictureButton = async () => {
       const result = await launchCamera({
@@ -39,11 +42,13 @@ export const PlantAddContentPhotoComponent =
       if (isUndefined(result.assets) || result.didCancel) {
         return;
       }
+
       const photo_url = result.assets[0].uri as string;
       setPhoto(photo_url);
       setPlantAddState({
         screenStep: plantAddSteps[currentScreenStepIndex + 1],
       });
+      useUploadPhotoMutation(photo_url);
     };
 
     return !isPictureCompleteStep ? (
