@@ -72,16 +72,17 @@ export const PlantAddContentPhotoComponent =
         if (response.ok) {
           const jsonResponse = await response.json();
           console.log('Upload successful:', jsonResponse);
-          onChange(jsonResponse.url);
+          field.value = jsonResponse.url as string;
+          onChange(jsonResponse.url as string);
+          setPlantAddState({
+            screenStep: plantAddSteps[currentScreenStepIndex + 1],
+          });
         } else {
           console.error('Upload failed:', response.statusText);
         }
       } catch (error) {
         console.error('Error during upload:', error);
       }
-      setPlantAddState({
-        screenStep: plantAddSteps[currentScreenStepIndex + 1],
-      });
     };
 
     return (
