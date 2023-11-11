@@ -1,33 +1,28 @@
 import { Stack } from '@mobily/stacks';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useRoute } from '@react-navigation/native';
 import dayjs from 'dayjs';
 import { isUndefined } from 'lodash';
 import { memo } from 'react';
 
-import {
-  PlantDetailScreenNavigationProps,
-  PlantDetailScreenNavigationRouteProps,
-} from '../../../plant-detail.screen';
+import { PlantDetailScreenNavigationRouteProps } from '../../../plant-detail.screen';
 
 import { Icon, Text } from '@/atoms';
-import { PLANT_DETAIL_DUMMY_DATA } from '@/dummy-data';
+import { useGetPlantDetailQuery } from '@/hooks';
 import { calculateDaysDifference, palette } from '@/utils';
 
 type PlantDetailGrowthModule = {};
 
 export const PlantDetailGrowthModule = memo<PlantDetailGrowthModule>(() => {
-  const navigation = useNavigation<PlantDetailScreenNavigationProps>();
   const {
     params: { id },
   } = useRoute<PlantDetailScreenNavigationRouteProps>();
+  const { data } = useGetPlantDetailQuery({ plant_id: id });
 
-  const currentPlant = PLANT_DETAIL_DUMMY_DATA.find(v => v.id === id);
-
-  if (isUndefined(currentPlant)) {
+  if (isUndefined(data)) {
     return null;
   }
 
-  const { planted_at, harvest_period_start, harvest_period_end } = currentPlant;
+  const { planted_at, harvest_period_start, harvest_period_end } = data;
 
   return (
     <Stack space={12}>
