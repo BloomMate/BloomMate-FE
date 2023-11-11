@@ -20,7 +20,6 @@ type UploadPhotoResponseData = {
   res: JSON;
 };
 
-//TODO: 제대로 고치기
 export const useUploadPhotoMutation = () => {
   const { control } = useFormContext<PlantAddForm>();
   const currentScreenStepIndex = useRecoilValue(
