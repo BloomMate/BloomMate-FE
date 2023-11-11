@@ -130,6 +130,11 @@ export const PlantAddContentDateModalComponent =
       today: '오늘',
     };
     LocaleConfig.defaultLocale = 'kr';
+    const today = new Date();
+    const tomorrow = new Date(today);
+    tomorrow.setDate(today.getDate() + 1);
+
+    const maxDate = tomorrow.toISOString().split('T')[0];
 
     return (
       <Modal isVisible={isVisible} isBottomSheet={true}>
@@ -144,7 +149,7 @@ export const PlantAddContentDateModalComponent =
           }}>
           <Calendar
             monthFormat={'yyyy년 MM월'}
-            maxDate={new Date().toISOString().split('T')[0]}
+            maxDate={maxDate}
             onDayPress={day => handleDatePress(day)}
             hideExtraDays={true}
             markedDates={{

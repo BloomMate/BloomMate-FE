@@ -1,20 +1,9 @@
 import { CLOUDINARY_NAME } from '@env';
 import { Box } from '@mobily/stacks';
-import { useNavigation } from '@react-navigation/native';
 import isUndefined from 'lodash/isUndefined';
 import { memo } from 'react';
-import { useController, useFormContext } from 'react-hook-form';
 import { TouchableOpacity } from 'react-native';
 import { launchCamera } from 'react-native-image-picker';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
-
-import { PlantAddForm } from '../../../../hooks';
-import { PlantAddScreenNavigationProps } from '../../../../plant-add.screen';
-import {
-  $currentScreenStepIndexSelector,
-  $plantAddState,
-  EPlantAddStep,
-} from '../../../../plant-add.state';
 
 import { useUploadPhotoMutation } from './hooks';
 
@@ -26,25 +15,9 @@ type PlantAddContentPhotoComponentProps = {};
 
 export const PlantAddContentPhotoComponent =
   memo<PlantAddContentPhotoComponentProps>(() => {
-    const navigation = useNavigation<PlantAddScreenNavigationProps>();
     const { mutateAsync, isLoading } = useUploadPhotoMutation();
 
     useMutationIndicator([isLoading]);
-
-    const { control } = useFormContext<PlantAddForm>();
-    const currentScreenStepIndex = useRecoilValue(
-      $currentScreenStepIndexSelector,
-    );
-    const { field: field1 } = useController({
-      name: EPlantAddStep.PICTURE,
-      control,
-    });
-    const { field: field2 } = useController({
-      name: EPlantAddStep.PICTURE_COMPLETE,
-      control,
-    });
-
-    const setPlantAddState = useSetRecoilState($plantAddState);
 
     const handlePressPictureButton = async () => {
       const result = await launchCamera({
