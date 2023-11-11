@@ -19,7 +19,7 @@ type PlantAddFooterModuleProps = {};
 export const PlantAddFooterModule = memo<PlantAddFooterModuleProps>(() => {
   const navigation = useNavigation<PlantAddScreenNavigationProps>();
   const setPlantAddState = useSetRecoilState($plantAddState);
-  const { formState, handleSubmit } = useFormContext<PlantAddForm>();
+  const { formState, handleSubmit, getValues } = useFormContext<PlantAddForm>();
 
   const { isDirty, isValid, errors, dirtyFields } = formState;
 
@@ -33,6 +33,8 @@ export const PlantAddFooterModule = memo<PlantAddFooterModuleProps>(() => {
 
     return !errors[currentFieldName] && dirtyFields[currentFieldName];
   };
+  const allFormValues = getValues();
+  console.log(allFormValues);
   const isLastStep = currentScreenStepIndex === plantAddSteps.length - 1;
   const isPictureCompleteStep = currentScreenStepIndex === 1;
   const isPictureStep = currentScreenStepIndex === 0;

@@ -29,11 +29,15 @@ export const PlantAddContentPhotoComponent =
     const currentScreenStepIndex = useRecoilValue(
       $currentScreenStepIndexSelector,
     );
-    const { field, fieldState } = useController({
-      control,
+    const { field: field1 } = useController({
       name: EPlantAddStep.PICTURE,
+      control,
     });
-    const { onChange, value } = field;
+    const { field: field2 } = useController({
+      name: EPlantAddStep.PICTURE_COMPLETE,
+      control,
+    });
+
     const setPlantAddState = useSetRecoilState($plantAddState);
 
     const handlePressPictureButton = async () => {
@@ -72,8 +76,9 @@ export const PlantAddContentPhotoComponent =
         if (response.ok) {
           const jsonResponse = await response.json();
           console.log('Upload successful:', jsonResponse);
-          field.value = jsonResponse.url as string;
-          onChange(jsonResponse.url as string);
+          field1.value = jsonResponse.url as string;
+          field1.onChange(jsonResponse.url as string);
+          field2.onChange(field1.value);
           setPlantAddState({
             screenStep: plantAddSteps[currentScreenStepIndex + 1],
           });
