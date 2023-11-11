@@ -1,14 +1,31 @@
 import { Box, Stack } from '@mobily/stacks';
+import { useRoute } from '@react-navigation/native';
+import { isUndefined } from 'lodash';
 import { memo } from 'react';
 import { Image } from 'react-native';
 
+import { PlantDiagnosisIntroScreenNavigationRouteProps } from '../../plant-diagnosis-intro.screen';
+
 import { Icon, Text } from '@/atoms';
+import { useGetPlantDetailQuery } from '@/hooks';
 import { palette } from '@/utils';
 
 type PlantDiagnosisIntroContentModuleProps = {};
 
 export const PlantDiagnosisIntroContentModule =
   memo<PlantDiagnosisIntroContentModuleProps>(() => {
+    const {
+      params: { id },
+    } = useRoute<PlantDiagnosisIntroScreenNavigationRouteProps>();
+
+    const { data } = useGetPlantDetailQuery({ plant_id: id });
+
+    if (isUndefined(data)) {
+      return;
+    }
+
+    const { plant_nickname } = data;
+
     return (
       <Box flex="fluid" paddingTop={48} alignX="center">
         <Stack space={64}>
@@ -28,7 +45,7 @@ export const PlantDiagnosisIntroContentModule =
             </Box>
             <Stack space={8}>
               <Text variants="titleLarge" fontWeight="Medium" color="gray-900">
-                AI 식물 진단 - 팝콘묵자
+                {`AI 식물 진단 - ${plant_nickname}`}
               </Text>
               <Text variants="labelLarge" fontWeight="Medium" color="gray-700">
                 본 진단은 LG 스마트 코티지 야외용 틔운 텃밭의 식물을 촬영하여 AI

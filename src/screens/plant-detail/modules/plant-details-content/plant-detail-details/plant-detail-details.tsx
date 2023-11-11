@@ -1,31 +1,27 @@
 import { Stack } from '@mobily/stacks';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useRoute } from '@react-navigation/native';
 import { isUndefined } from 'lodash';
 import React, { memo } from 'react';
 
-import {
-  PlantDetailScreenNavigationProps,
-  PlantDetailScreenNavigationRouteProps,
-} from '../../../plant-detail.screen';
+import { PlantDetailScreenNavigationRouteProps } from '../../../plant-detail.screen';
+
+import { DetailItem } from './components';
 
 import { Icon, Text } from '@/atoms';
-import { PLANT_DETAIL_DUMMY_DATA } from '@/dummy-data';
+import { useGetPlantDetailQuery } from '@/hooks';
 import { palette } from '@/utils';
 
 type PlantDetailDetailsModule = {};
 
 export const PlantDetailDetailsModule = memo<PlantDetailDetailsModule>(() => {
-  const navigation = useNavigation<PlantDetailScreenNavigationProps>();
   const {
     params: { id },
   } = useRoute<PlantDetailScreenNavigationRouteProps>();
+  const { data } = useGetPlantDetailQuery({ plant_id: id });
 
-  const currentPlant = PLANT_DETAIL_DUMMY_DATA.find(v => v.id === id);
-
-  if (isUndefined(currentPlant)) {
+  if (isUndefined(data)) {
     return null;
   }
-
   const {
     plant_name,
     plant_temperature,
@@ -35,7 +31,7 @@ export const PlantDetailDetailsModule = memo<PlantDetailDetailsModule>(() => {
     plant_watering_cycle,
     plant_difficulty,
     plant_caution,
-  } = currentPlant;
+  } = data;
 
   const plantDetails = [
     { title: '품종', content: plant_name },
@@ -47,25 +43,6 @@ export const PlantDetailDetailsModule = memo<PlantDetailDetailsModule>(() => {
     { title: '난이도', content: plant_difficulty },
     { title: '주의사항', content: plant_caution },
   ];
-
-  const DetailItem = ({
-    detail,
-  }: {
-    detail: { title: string; content: string | undefined };
-  }) => (
-    <Stack horizontal>
-      <Text
-        style={{ minWidth: 81 }}
-        variants="bodySmall"
-        fontWeight={'Medium'}
-        color={'gray-900'}>
-        {detail.title}
-      </Text>
-      <Text variants={'bodySmall'} fontWeight={'Light'} color={'gray-900'}>
-        {detail.content}
-      </Text>
-    </Stack>
-  );
 
   return (
     <>

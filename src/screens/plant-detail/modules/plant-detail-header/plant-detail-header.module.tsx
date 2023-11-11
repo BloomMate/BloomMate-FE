@@ -1,4 +1,3 @@
-import { Stack } from '@mobily/stacks';
 import { useNavigation } from '@react-navigation/native';
 import { memo } from 'react';
 
@@ -17,9 +16,7 @@ export const PlantDetailHeaderModule = memo<PlantDetailHeaderModuleProps>(
     };
 
     return (
-      <Stack space={32}>
-        <ModalHeader left={{ type: 'icon' }} onPressExit={handlePressBack} />
-      </Stack>
+      <ModalHeader left={{ type: 'icon' }} onPressExit={handlePressBack} />
     );
   },
 );

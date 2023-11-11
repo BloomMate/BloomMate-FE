@@ -10,6 +10,7 @@ import { LoginScreen } from './login';
 import { PlantAddScreen } from './plant-add';
 import { PlantChatScreen } from './plant-chat';
 import { PlantDetailScreen } from './plant-detail';
+import { PlantDetailEditScreen } from './plant-detail-edit';
 import { PlantDiagnosisIntroScreen } from './plant-diagnosis-intro';
 import { PlantDiagnosisListScreen } from './plant-diagnosis-list';
 import { PlantDiagnosisResultScreen } from './plant-diagnosis-result';
@@ -25,6 +26,7 @@ export type RootStackParamList = {
   LandingScreen: undefined;
   PlantChatScreen: { id: number };
   PlantDetailScreen: { id: number };
+  PlantDetailEditScreen: { id: number };
   PlantDiagnosisIntroScreen: { id: number };
   PlantDiagnosisResultScreen: { id: number; photo_url: string };
   PlantDiagnosisListScreen: { id: number };
@@ -56,7 +58,10 @@ export const RootNavigator = ({}: RootNavigatorProps) => {
         <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
         <Stack.Screen name="PlantChatScreen" component={PlantChatScreen} />
         <Stack.Screen name="PlantDetailScreen" component={PlantDetailScreen} />
-
+        <Stack.Screen
+          name="PlantDetailEditScreen"
+          component={PlantDetailEditScreen}
+        />
         <Stack.Screen
           name="PlantDiagnosisIntroScreen"
           component={PlantDiagnosisIntroScreen}
