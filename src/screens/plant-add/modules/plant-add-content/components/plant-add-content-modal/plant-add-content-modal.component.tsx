@@ -91,6 +91,8 @@ export const PlantAddContentDateModalComponent =
 
     const handleDatePress = (day: DateData) => {
       onChange(day.dateString);
+      field.value = day.dateString + 'T09:00:00+09:00';
+
       setModal(false);
     };
 

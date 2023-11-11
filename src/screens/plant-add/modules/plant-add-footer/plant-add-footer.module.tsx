@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import { memo } from 'react';
-import { useFormContext } from 'react-hook-form';
+import { SubmitHandler, useFormContext } from 'react-hook-form';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 import { PlantAddForm } from '../../hooks';
@@ -11,16 +11,21 @@ import {
   plantAddSteps,
 } from '../../plant-add.state';
 
+import { usePostPlantAddMutation } from './hooks';
+
 import { Button } from '@/atoms';
 import { CTASection, SingleButtonProps } from '@/layouts';
+import { useMutationIndicator } from '@/providers';
 
 type PlantAddFooterModuleProps = {};
 
 export const PlantAddFooterModule = memo<PlantAddFooterModuleProps>(() => {
   const navigation = useNavigation<PlantAddScreenNavigationProps>();
   const setPlantAddState = useSetRecoilState($plantAddState);
-  const { formState, handleSubmit, getValues } = useFormContext<PlantAddForm>();
+  const { formState, handleSubmit } = useFormContext<PlantAddForm>();
+  const { mutateAsync, isLoading } = usePostPlantAddMutation();
 
+  useMutationIndicator([isLoading]);
   const { isDirty, isValid, errors, dirtyFields } = formState;
 
   const currentScreenStepIndex = useRecoilValue(
@@ -33,8 +38,21 @@ export const PlantAddFooterModule = memo<PlantAddFooterModuleProps>(() => {
 
     return !errors[currentFieldName] && dirtyFields[currentFieldName];
   };
-  const allFormValues = getValues();
-  console.log(allFormValues);
+
+  const addNewPlant: SubmitHandler<PlantAddForm> = async ({
+    PICTURE: plant_picture_url,
+    ALIAS_INPUT: plant_nickname,
+    DATE_INPUT: planted_at,
+    VARIETY: plant_type_id,
+  }) => {
+    await mutateAsync({
+      plant_picture_url,
+      planted_at,
+      plant_nickname,
+      plant_type_id,
+    });
+  };
+
   const isLastStep = currentScreenStepIndex === plantAddSteps.length - 1;
   const isPictureCompleteStep = currentScreenStepIndex === 1;
   const isPictureStep = currentScreenStepIndex === 0;
@@ -42,7 +60,7 @@ export const PlantAddFooterModule = memo<PlantAddFooterModuleProps>(() => {
 
   const handlePressButton = () => {
     if (isLastStep) {
-      console.log('마지막!');
+      handleSubmit(addNewPlant)();
     } else {
       setPlantAddState({
         screenStep: plantAddSteps[currentScreenStepIndex + 1],
