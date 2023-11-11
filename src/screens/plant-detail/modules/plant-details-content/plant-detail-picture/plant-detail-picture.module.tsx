@@ -1,22 +1,31 @@
-import { Stack } from '@mobily/stacks';
-import { useRoute } from '@react-navigation/native';
+import { Box, Stack } from '@mobily/stacks';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { isUndefined } from 'lodash';
 import { memo } from 'react';
-import { Image, View } from 'react-native';
+import { Image, TouchableOpacity, View } from 'react-native';
 
-import { PlantDetailScreenNavigationRouteProps } from '../../../plant-detail.screen';
+import {
+  PlantDetailScreenNavigationProps,
+  PlantDetailScreenNavigationRouteProps,
+} from '../../../plant-detail.screen';
 
-import { Text } from '@/atoms';
+import { Icon, Text } from '@/atoms';
 import { useGetPlantDetailQuery } from '@/hooks';
 import { palette } from '@/utils';
 
 type PlantDetailPictureModule = {};
 
 export const PlantDetailPictureModule = memo<PlantDetailPictureModule>(() => {
+  const navigation = useNavigation<PlantDetailScreenNavigationProps>();
+
   const {
     params: { id },
   } = useRoute<PlantDetailScreenNavigationRouteProps>();
   const { data } = useGetPlantDetailQuery({ plant_id: id });
+
+  const handlePressUpdate = () => {
+    navigation.navigate('PlantDetailEditScreen', { id });
+  };
 
   if (isUndefined(data)) {
     return null;
@@ -26,9 +35,19 @@ export const PlantDetailPictureModule = memo<PlantDetailPictureModule>(() => {
 
   return (
     <Stack space={8}>
-      <Text variants={'titleLarge'} fontWeight={'Medium'} color={'gray-900'}>
-        {plant_nickname}
-      </Text>
+      <Box alignX="between" direction="row" alignY="center">
+        <Text variants={'titleLarge'} fontWeight={'Medium'} color={'gray-900'}>
+          {plant_nickname}
+        </Text>
+        <TouchableOpacity onPress={handlePressUpdate}>
+          <Box direction="row" alignX="center" alignY="center">
+            <Text variants="bodySmall" fontWeight="Medium" color="primary">
+              {'업데이트 '}
+            </Text>
+            <Icon name="photo-camera" size={16} color={palette['primary']} />
+          </Box>
+        </TouchableOpacity>
+      </Box>
       <View
         style={{
           borderRadius: 8,
