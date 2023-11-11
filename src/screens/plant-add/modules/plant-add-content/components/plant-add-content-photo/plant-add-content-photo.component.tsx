@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import isUndefined from 'lodash/isUndefined';
 import { memo } from 'react';
 import { useController, useFormContext } from 'react-hook-form';
-import { Image, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { launchCamera } from 'react-native-image-picker';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
@@ -13,7 +13,7 @@ import { PlantAddScreenNavigationProps } from '../../../../plant-add.screen';
 import {
   $currentScreenStepIndexSelector,
   $plantAddState,
-  ESignUpStep,
+  EPlantAddStep,
   plantAddSteps,
 } from '../../../../plant-add.state';
 
@@ -22,9 +22,6 @@ import { palette } from '@/utils';
 
 type PlantAddContentPhotoComponentProps = {};
 
-//TODO: 아이콘 찾기
-
-//TODO: useState 안 쓰는 법 생각해보기, 나중에 onChange하면 될 것 같기도 하고
 export const PlantAddContentPhotoComponent =
   memo<PlantAddContentPhotoComponentProps>(() => {
     const navigation = useNavigation<PlantAddScreenNavigationProps>();
@@ -32,10 +29,9 @@ export const PlantAddContentPhotoComponent =
     const currentScreenStepIndex = useRecoilValue(
       $currentScreenStepIndexSelector,
     );
-    const isPictureCompleteStep = currentScreenStepIndex === 1;
     const { field, fieldState } = useController({
       control,
-      name: ESignUpStep.PICTURE,
+      name: EPlantAddStep.PICTURE,
     });
     const { onChange, value } = field;
     const setPlantAddState = useSetRecoilState($plantAddState);
@@ -88,7 +84,7 @@ export const PlantAddContentPhotoComponent =
       });
     };
 
-    return !isPictureCompleteStep ? (
+    return (
       <Box alignX="center">
         <TouchableOpacity onPress={handlePressPictureButton}>
           <PointLinearGradient
@@ -104,7 +100,5 @@ export const PlantAddContentPhotoComponent =
           </PointLinearGradient>
         </TouchableOpacity>
       </Box>
-    ) : (
-      <Image source={{ uri: value }} style={{ height: 200, borderRadius: 8 }} />
     );
   });

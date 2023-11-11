@@ -5,7 +5,7 @@ import { TouchableOpacity } from 'react-native';
 import { Calendar, DateData, LocaleConfig } from 'react-native-calendars';
 
 import { PlantAddForm } from '../../../../hooks';
-import { ESignUpStep } from '../../../../plant-add.state';
+import { EPlantAddStep } from '../../../../plant-add.state';
 
 import { Modal, Text } from '@/atoms';
 import { palette } from '@/utils';
@@ -25,7 +25,7 @@ export const PlantAddContentVarietyModalComponent =
     const { control } = useFormContext<PlantAddForm>();
     const { field } = useController({
       control,
-      name: ESignUpStep.VARIETY,
+      name: EPlantAddStep.VARIETY,
     });
     const { onChange } = field;
 
@@ -83,7 +83,7 @@ export const PlantAddContentDateModalComponent =
     const { control } = useFormContext<PlantAddForm>();
     const { field } = useController({
       control,
-      name: ESignUpStep.DATE_INPUT,
+      name: EPlantAddStep.DATE_INPUT,
     });
     const { onChange, value } = field;
     const isVisible = isModal;

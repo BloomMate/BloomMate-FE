@@ -1,6 +1,6 @@
-import { ESignUpStep } from '../../plant-add.state';
+import { EPlantAddStep } from '../../plant-add.state';
 
-export const getInfoByScreenStep = (screenStep: ESignUpStep) => {
+export const getInfoByScreenStep = (screenStep: EPlantAddStep) => {
   switch (screenStep) {
     case 'PICTURE':
       return '사진을\n등록해주세요';

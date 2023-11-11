@@ -1,6 +1,6 @@
 import { atom, selector } from 'recoil';
 
-export enum ESignUpStep {
+export enum EPlantAddStep {
   'PICTURE' = 'PICTURE',
   'PICTURE_COMPLETE' = 'PICTURE_COMPLETE',
   'VARIETY' = 'VARIETY',
@@ -8,12 +8,12 @@ export enum ESignUpStep {
   'DATE_INPUT' = 'DATE_INPUT',
 }
 
-export const plantAddSteps: ESignUpStep[] = [
-  ESignUpStep.PICTURE,
-  ESignUpStep.PICTURE_COMPLETE,
-  ESignUpStep.VARIETY,
-  ESignUpStep.ALIAS_INPUT,
-  ESignUpStep.DATE_INPUT,
+export const plantAddSteps: EPlantAddStep[] = [
+  EPlantAddStep.PICTURE,
+  EPlantAddStep.PICTURE_COMPLETE,
+  EPlantAddStep.VARIETY,
+  EPlantAddStep.ALIAS_INPUT,
+  EPlantAddStep.DATE_INPUT,
 ];
 
 export type plantAddState = {

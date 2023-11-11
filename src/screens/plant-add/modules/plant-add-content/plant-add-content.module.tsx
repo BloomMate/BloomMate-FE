@@ -2,11 +2,12 @@ import { Box, Stack } from '@mobily/stacks';
 import { memo } from 'react';
 import { useRecoilValue } from 'recoil';
 
-import { $plantAddState, ESignUpStep } from '../../plant-add.state';
+import { $plantAddState, EPlantAddStep } from '../../plant-add.state';
 
 import {
   PlantAddContentInfoComponent,
   PlantAddContentInputComponent,
+  PlantAddContentPhotoCompleteComponent,
   PlantAddContentPhotoComponent,
   PlantAddDateInputComponent,
   PlantAddVarietyInputComponent,
@@ -22,14 +23,15 @@ export const PlantAddContentModule = memo<PlantAddContentModuleProps>(() => {
   const isPhoto = screenStep === 'PICTURE' || screenStep === 'PICTURE_COMPLETE';
   const renderInputs = () => {
     switch (screenStep) {
-      case ESignUpStep.PICTURE:
-      case ESignUpStep.PICTURE_COMPLETE:
+      case EPlantAddStep.PICTURE:
         return <PlantAddContentPhotoComponent />;
-      case ESignUpStep.ALIAS_INPUT:
+      case EPlantAddStep.PICTURE_COMPLETE:
+        return <PlantAddContentPhotoCompleteComponent />;
+      case EPlantAddStep.ALIAS_INPUT:
         return <PlantAddContentInputComponent screenStep={screenStep} />;
-      case ESignUpStep.VARIETY:
+      case EPlantAddStep.VARIETY:
         return <PlantAddVarietyInputComponent screenStep={screenStep} />;
-      case ESignUpStep.DATE_INPUT:
+      case EPlantAddStep.DATE_INPUT:
         return <PlantAddDateInputComponent screenStep={screenStep} />;
     }
   };

@@ -4,7 +4,7 @@ import { useController, useFormContext } from 'react-hook-form';
 import { TouchableOpacity } from 'react-native';
 
 import { PlantAddForm } from '../../../../hooks';
-import { ESignUpStep } from '../../../../plant-add.state';
+import { EPlantAddStep } from '../../../../plant-add.state';
 import {
   PlantAddContentDateModalComponent,
   PlantAddContentVarietyModalComponent,
@@ -15,7 +15,7 @@ import { mapLabelByScreenStep } from './plant-add-content-const';
 import { TextInput } from '@/atoms';
 
 type PlantAddContentInputComponentProps = {
-  screenStep: ESignUpStep;
+  screenStep: EPlantAddStep;
 };
 
 //TODO: 아이콘 이름 찾기
@@ -25,7 +25,7 @@ export const PlantAddContentInputComponent =
     const { control } = useFormContext<PlantAddForm>();
     const { field, fieldState } = useController({
       control,
-      name: ESignUpStep.ALIAS_INPUT,
+      name: EPlantAddStep.ALIAS_INPUT,
     });
     const { onChange, value } = field;
     const { placeholder, label, rightIconName } =
@@ -52,7 +52,7 @@ export const PlantAddVarietyInputComponent =
     const { control } = useFormContext<PlantAddForm>();
     const { field, fieldState } = useController({
       control,
-      name: ESignUpStep.VARIETY,
+      name: EPlantAddStep.VARIETY,
     });
     const { onChange, value } = field;
     const selectedVariety = () => {
@@ -99,7 +99,7 @@ export const PlantAddDateInputComponent =
     const { control } = useFormContext<PlantAddForm>();
     const { field, fieldState } = useController({
       control,
-      name: ESignUpStep.DATE_INPUT,
+      name: EPlantAddStep.DATE_INPUT,
     });
     const { value } = field;
 
