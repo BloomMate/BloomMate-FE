@@ -14,10 +14,12 @@ import {
   $currentScreenStepIndexSelector,
   $plantAddState,
   EPlantAddStep,
-  plantAddSteps,
 } from '../../../../plant-add.state';
 
+import { useUploadPhotoMutation } from './hooks';
+
 import { Icon, PointLinearGradient } from '@/atoms';
+import { useMutationIndicator } from '@/providers';
 import { palette } from '@/utils';
 
 type PlantAddContentPhotoComponentProps = {};
@@ -25,6 +27,10 @@ type PlantAddContentPhotoComponentProps = {};
 export const PlantAddContentPhotoComponent =
   memo<PlantAddContentPhotoComponentProps>(() => {
     const navigation = useNavigation<PlantAddScreenNavigationProps>();
+    const { mutateAsync, isLoading } = useUploadPhotoMutation();
+
+    useMutationIndicator([isLoading]);
+
     const { control } = useFormContext<PlantAddForm>();
     const currentScreenStepIndex = useRecoilValue(
       $currentScreenStepIndexSelector,
@@ -57,37 +63,17 @@ export const PlantAddContentPhotoComponent =
         type,
         name: fileName,
       };
-      try {
-        const formData = new FormData();
-        const cloudName = CLOUDINARY_NAME;
+      const formData = new FormData();
+      const cloudName = CLOUDINARY_NAME;
 
-        formData.append('file', source);
-        formData.append('upload_preset', 'BloomMate');
-        formData.append('cloud_name', cloudName);
+      formData.append('file', source);
+      formData.append('upload_preset', 'BloomMate');
+      formData.append('cloud_name', cloudName);
+      addNewPicture(formData);
+    };
 
-        const response = await fetch(
-          `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
-          {
-            method: 'POST',
-            body: formData,
-          },
-        );
-
-        if (response.ok) {
-          const jsonResponse = await response.json();
-          console.log('Upload successful:', jsonResponse);
-          field1.value = jsonResponse.url as string;
-          field1.onChange(jsonResponse.url as string);
-          field2.onChange(field1.value);
-          setPlantAddState({
-            screenStep: plantAddSteps[currentScreenStepIndex + 1],
-          });
-        } else {
-          console.error('Upload failed:', response.statusText);
-        }
-      } catch (error) {
-        console.error('Error during upload:', error);
-      }
+    const addNewPicture = async (formData: FormData) => {
+      await mutateAsync(formData);
     };
 
     return (

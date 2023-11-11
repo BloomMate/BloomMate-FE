@@ -1,4 +1,16 @@
-import { CLOUDINARY_KEY, CLOUDINARY_NAME } from '@env';
+import { CLOUDINARY_NAME } from '@env';
+import axios from 'axios';
+import { useController, useFormContext } from 'react-hook-form';
+import { useMutation } from 'react-query';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+
+import { PlantAddForm } from '../../../../../../hooks';
+import {
+  $currentScreenStepIndexSelector,
+  $plantAddState,
+  EPlantAddStep,
+  plantAddSteps,
+} from '../../../../../../plant-add.state';
 
 type UploadPhotoRequestProps = {
   file: string;
@@ -9,32 +21,50 @@ type UploadPhotoResponseData = {
 };
 
 //TODO: 제대로 고치기
-export const useUploadPhotoMutation = async (file: string) => {
-  try {
-    const formData = new FormData();
-    const cloudName = CLOUDINARY_NAME;
-    const apiKey = CLOUDINARY_KEY;
-    formData.append('file', file);
-    formData.append('upload_preset', 'BloomMate');
-    formData.append('public_id', false);
-    formData.append('api_key', Number(apiKey));
+export const useUploadPhotoMutation = () => {
+  const { control } = useFormContext<PlantAddForm>();
+  const currentScreenStepIndex = useRecoilValue(
+    $currentScreenStepIndexSelector,
+  );
+  const { field: field1 } = useController({
+    name: EPlantAddStep.PICTURE,
+    control,
+  });
+  const { field: field2 } = useController({
+    name: EPlantAddStep.PICTURE_COMPLETE,
+    control,
+  });
+  const cloudName = CLOUDINARY_NAME;
 
-    console.log(formData);
-    const response = await fetch(
-      `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
-      {
-        method: 'POST',
-        body: formData,
-      },
-    );
+  const setPlantAddState = useSetRecoilState($plantAddState);
 
-    if (response.ok) {
-      const jsonResponse = await response.json();
-      console.log('Upload successful:', jsonResponse);
-    } else {
-      console.error('Upload failed:', response.statusText);
+  return useMutation(async (formData: FormData) => {
+    try {
+      const response = await axios(
+        `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+          data: formData,
+        },
+      );
+
+      if (response.status == 200) {
+        const jsonResponse = await response;
+        console.log('Upload successful:', jsonResponse);
+        field1.value = jsonResponse.data.url as string;
+        field1.onChange(jsonResponse.data.url as string);
+        field2.onChange(field1.value);
+        setPlantAddState({
+          screenStep: plantAddSteps[currentScreenStepIndex + 1],
+        });
+      } else {
+        console.error('Upload failed:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error during upload:', error);
     }
-  } catch (error) {
-    console.error('Error during upload:', error);
-  }
+  });
 };
