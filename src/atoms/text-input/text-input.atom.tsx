@@ -49,11 +49,11 @@ export const TextInput = ({
           fonts: {
             bodyLarge: {
               ...bodyLargeFontStyle,
-              fontFamily: 'GmarketSansTTFMedium',
+              fontFamily: 'SUITE-SemiBold',
             },
             bodySmall: {
               ...bodySmallFontStyle,
-              fontFamily: 'GmarketSansTTFLight',
+              fontFamily: 'SUITE-Regular',
             },
           },
           colors: {

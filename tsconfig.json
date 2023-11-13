@@ -13,6 +13,8 @@
       "@/hooks/*": ["./src/hooks/*"],
       "@/dummy-data": ["./src/dummy-data"],
       "@/dummy-data/*": ["./src/dummy-data/*"],
+      "@/assets": ["./src/assets"],
+      "@/assets/*": ["./src/assets/*"]
     },
     "esModuleInterop": true,
     "typeRoots": ["./src/types"]

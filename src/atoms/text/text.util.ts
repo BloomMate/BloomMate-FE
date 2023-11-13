@@ -18,19 +18,19 @@ export const getFontFamilyByFontWeight = (
   switch (fontWeight) {
     case 'Light':
       return {
-        fontFamily: 'GmarketSansTTFLight',
+        fontFamily: 'SUITE-Regular',
       };
     case 'Medium':
       return {
-        fontFamily: 'GmarketSansTTFMedium',
+        fontFamily: 'SUITE-SemiBold',
       };
     case 'Bold':
       return {
-        fontFamily: 'GmarketSansTTFBold',
+        fontFamily: 'SUITE-Bold',
       };
     default:
       return {
-        fontFamily: 'GmarketSansTTFMedium',
+        fontFamily: 'SUITE-SemiBold',
       };
   }
 };

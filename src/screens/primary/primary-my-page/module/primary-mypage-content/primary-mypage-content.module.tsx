@@ -1,10 +1,12 @@
 import { Box, Stack } from '@mobily/stacks';
 import { useNavigation } from '@react-navigation/native';
+import { Image } from 'react-native';
 
 import { PrimaryMyPageScreenNavigatorProp } from '../../primary-my-page.screen';
 
 import { InfoItem } from './components';
 
+import { MYPAGE_IMG } from '@/assets';
 import { Text } from '@/atoms';
 import { palette } from '@/utils';
 
@@ -23,14 +25,12 @@ export const PrimaryMyPageContentModule =
     return (
       <Stack>
         <Stack horizontal space={8} style={{ alignItems: 'center' }}>
-          <Box
-            style={{
-              backgroundColor: 'red',
-              width: 80,
-              height: 80,
-              borderRadius: 80,
-            }}
-          />
+          <Box style={{}}>
+            <Image
+              style={{ width: 80, height: 80, borderRadius: 80 }}
+              source={{ uri: MYPAGE_IMG }}
+            />
+          </Box>
           <Text variants={'bodyLarge'} fontWeight={'Medium'} color={'gray-900'}>
             윤용성님 환영합니다!
           </Text>

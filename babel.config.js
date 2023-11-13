@@ -7,18 +7,18 @@ module.exports = {
   },
   plugins: [
     [
-			'module:react-native-dotenv',
-			{
-				"envName": "APP_ENV",
-				"moduleName": "@env",
-				"path": ".env",
-				"blocklist": null,
-				"allowlist": null,
-				"safe": false,
-				"allowUndefined": false,
-				"verbose": false
-			},
-		],
+      'module:react-native-dotenv',
+      {
+        envName: 'APP_ENV',
+        moduleName: '@env',
+        path: '.env',
+        blocklist: null,
+        allowlist: null,
+        safe: false,
+        allowUndefined: false,
+        verbose: false,
+      },
+    ],
     [
       'module-resolver',
       {
@@ -41,6 +41,7 @@ module.exports = {
           '@/providers': './src/providers',
           '@/hooks': './src/hooks',
           '@/dummy-data': './src/dummy-data',
+          '@/assets': './src/assets',
         },
       },
     ],
