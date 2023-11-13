@@ -1,6 +1,8 @@
 import { Box } from '@mobily/stacks';
 import { Suspense } from 'react';
 
+import { PrimaryCommunityArticleContentModule } from './modules';
+
 import { LoadingPage } from '@/layouts';
 import { palette } from '@/utils';
 
@@ -16,7 +18,9 @@ export const PrimaryCommunityArticleScreen =
           style={{
             backgroundColor: palette['gray-100'],
             height: '100%',
-          }}></Box>
+          }}>
+          <PrimaryCommunityArticleContentModule />
+        </Box>
       </Suspense>
     );
   };
