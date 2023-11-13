@@ -68,7 +68,7 @@ export const PlantAddContentVarietyModalComponent =
             </TouchableOpacity>
             <TouchableOpacity
               style={{ backgroundColor: palette['gray-100'], padding: 8 }}
-              onPress={() => handleClickButton(4)}>
+              onPress={() => handleClickButton(1)}>
               <Text fontWeight="Medium" color="gray-700" variants="titleMedium">
                 🍅 토마토
               </Text>
@@ -90,7 +90,7 @@ export const PlantAddContentDateModalComponent =
     const selectedDate = value;
 
     const handleDatePress = (day: DateData) => {
-      onChange(day.dateString + 'T09:00:00+09:00');
+      onChange(day.dateString + 'T00:00:00+09:00');
       setModal(false);
     };
 
@@ -129,10 +129,7 @@ export const PlantAddContentDateModalComponent =
     };
     LocaleConfig.defaultLocale = 'kr';
     const today = new Date();
-    const tomorrow = new Date(today);
-    tomorrow.setDate(today.getDate() + 1);
-
-    const maxDate = tomorrow.toISOString().split('T')[0];
+    const maxDate = today.toISOString().split('T')[0];
 
     return (
       <Modal isVisible={isVisible} isBottomSheet={true}>
