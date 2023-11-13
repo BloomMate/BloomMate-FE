@@ -18,7 +18,6 @@ type PostPlantAddResponseData = {
   planted_at: string;
   harvested_at: null;
 };
-//TODO: api 연결
 
 export const usePostPlantAddMutation = () => {
   return useMutation(

@@ -46,7 +46,7 @@ export const PlantAddContentVarietyModalComponent =
             </Text>
 
             <TouchableOpacity
-              onPress={() => handleClickButton(0)}
+              onPress={() => handleClickButton(2)}
               style={{ backgroundColor: palette['gray-100'], padding: 8 }}>
               <Text fontWeight="Medium" color="gray-700" variants="titleMedium">
                 🍓 딸기
@@ -54,21 +54,21 @@ export const PlantAddContentVarietyModalComponent =
             </TouchableOpacity>
             <TouchableOpacity
               style={{ backgroundColor: palette['gray-100'], padding: 8 }}
-              onPress={() => handleClickButton(1)}>
+              onPress={() => handleClickButton(3)}>
               <Text fontWeight="Medium" color="gray-700" variants="titleMedium">
                 🌽 옥수수
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={{ backgroundColor: palette['gray-100'], padding: 8 }}
-              onPress={() => handleClickButton(2)}>
+              onPress={() => handleClickButton(4)}>
               <Text fontWeight="Medium" color="gray-700" variants="titleMedium">
                 🥔 감자
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={{ backgroundColor: palette['gray-100'], padding: 8 }}
-              onPress={() => handleClickButton(3)}>
+              onPress={() => handleClickButton(4)}>
               <Text fontWeight="Medium" color="gray-700" variants="titleMedium">
                 🍅 토마토
               </Text>
@@ -90,9 +90,7 @@ export const PlantAddContentDateModalComponent =
     const selectedDate = value;
 
     const handleDatePress = (day: DateData) => {
-      onChange(day.dateString);
-      field.value = day.dateString + 'T09:00:00+09:00';
-
+      onChange(day.dateString + 'T09:00:00+09:00');
       setModal(false);
     };
 

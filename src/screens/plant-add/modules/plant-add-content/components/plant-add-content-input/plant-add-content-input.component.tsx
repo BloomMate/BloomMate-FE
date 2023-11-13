@@ -100,7 +100,12 @@ export const PlantAddDateInputComponent =
       name: EPlantAddStep.DATE_INPUT,
     });
     const { value } = field;
-
+    let date_value = '';
+    if (value == undefined) {
+      date_value = '';
+    } else {
+      date_value = value.slice(0, 10);
+    }
     return (
       <>
         <PlantAddContentDateModalComponent
@@ -112,7 +117,7 @@ export const PlantAddDateInputComponent =
             disabled
             placeholder={placeholder}
             label={label}
-            value={value}
+            value={date_value}
             rightIconName={rightIconName}
             error={!isUndefined(fieldState.error)}
             errorMsg={fieldState.error?.message as string}
