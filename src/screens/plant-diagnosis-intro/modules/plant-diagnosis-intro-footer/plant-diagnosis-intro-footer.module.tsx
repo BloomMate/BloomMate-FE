@@ -1,7 +1,10 @@
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { memo } from 'react';
 
-import { PlantDiagnosisIntroScreenNavigationProps } from '../../plant-diagnosis-intro.screen';
+import {
+  PlantDiagnosisIntroScreenNavigationProps,
+  PlantDiagnosisIntroScreenNavigationRouteProps,
+} from '../../plant-diagnosis-intro.screen';
 
 import { usePostPlantDiagnosis } from './hooks';
 
@@ -17,23 +20,31 @@ export const PlantDiagnosisIntroFooterModule =
       useUploadPhotoMutation();
 
     const {
-      mutateAsync: photoPlantDiagnosis,
+      mutateAsync: postPlantDiagnosis,
       isLoading: isPostingPlantDiagnosis,
     } = usePostPlantDiagnosis();
 
-    useMutationIndicator([isUploadingPhoto]);
+    useMutationIndicator([isUploadingPhoto, isPostingPlantDiagnosis]);
     const navigation =
       useNavigation<PlantDiagnosisIntroScreenNavigationProps>();
+    const {
+      params: { id },
+    } = useRoute<PlantDiagnosisIntroScreenNavigationRouteProps>();
 
     const handlePressDiagnosisRecordButton = () => {
       navigation.navigate('PlantDiagnosisListScreen', { id: 1 });
     };
 
     const handlePressDiagnosis = async () => {
-      const response = await uploadPhoto();
+      const { data: data1 } = await uploadPhoto();
+
+      const data2 = await postPlantDiagnosis({
+        diagnose_photo_url: data1.url,
+        plant_id: id.toString(),
+      });
 
       navigation.navigate('PlantDiagnosisResultScreen', {
-        id: 1,
+        id: data2.id,
       });
     };
 
