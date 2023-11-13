@@ -1,37 +1,24 @@
 import { CLOUDINARY_NAME } from '@env';
 import { Box } from '@mobily/stacks';
-import { useNavigation } from '@react-navigation/native';
 import isUndefined from 'lodash/isUndefined';
-import { memo, useState } from 'react';
-import { Image, TouchableOpacity } from 'react-native';
+import { memo } from 'react';
+import { TouchableOpacity } from 'react-native';
 import { launchCamera } from 'react-native-image-picker';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
 
-import { PlantAddScreenNavigationProps } from '../../../../plant-add.screen';
-import {
-  $currentScreenStepIndexSelector,
-  $plantAddState,
-  plantAddSteps,
-} from '../../../../plant-add.state';
+import { useUploadPhotoMutation } from './hooks';
 
 import { Icon, PointLinearGradient } from '@/atoms';
+import { useMutationIndicator } from '@/providers';
 import { palette } from '@/utils';
 
 type PlantAddContentPhotoComponentProps = {};
 
-//TODO: 아이콘 찾기
-
-//TODO: useState 안 쓰는 법 생각해보기, 나중에 onChange하면 될 것 같기도 하고
 export const PlantAddContentPhotoComponent =
   memo<PlantAddContentPhotoComponentProps>(() => {
-    const navigation = useNavigation<PlantAddScreenNavigationProps>();
-    const [photo, setPhoto] = useState('');
-    const setPlantAddState = useSetRecoilState($plantAddState);
-    const currentScreenStepIndex = useRecoilValue(
-      $currentScreenStepIndexSelector,
-    );
+    const { mutateAsync, isLoading } = useUploadPhotoMutation();
 
-    const isPictureCompleteStep = currentScreenStepIndex === 1;
+    useMutationIndicator([isLoading]);
+
     const handlePressPictureButton = async () => {
       const result = await launchCamera({
         mediaType: 'photo',
@@ -49,39 +36,20 @@ export const PlantAddContentPhotoComponent =
         type,
         name: fileName,
       };
-      try {
-        const formData = new FormData();
-        const cloudName = CLOUDINARY_NAME;
+      const formData = new FormData();
+      const cloudName = CLOUDINARY_NAME;
 
-        formData.append('file', source);
-        formData.append('upload_preset', 'BloomMate');
-        formData.append('cloud_name', cloudName);
-
-        const response = await fetch(
-          `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
-          {
-            method: 'POST',
-            body: formData,
-          },
-        );
-
-        if (response.ok) {
-          const jsonResponse = await response.json();
-          console.log('Upload successful:', jsonResponse);
-        } else {
-          console.error('Upload failed:', response.statusText);
-        }
-      } catch (error) {
-        console.error('Error during upload:', error);
-      }
-
-      setPhoto(uri as string);
-      setPlantAddState({
-        screenStep: plantAddSteps[currentScreenStepIndex + 1],
-      });
+      formData.append('file', source);
+      formData.append('upload_preset', 'BloomMate');
+      formData.append('cloud_name', cloudName);
+      addNewPicture(formData);
     };
 
-    return !isPictureCompleteStep ? (
+    const addNewPicture = async (formData: FormData) => {
+      await mutateAsync(formData);
+    };
+
+    return (
       <Box alignX="center">
         <TouchableOpacity onPress={handlePressPictureButton}>
           <PointLinearGradient
@@ -97,7 +65,5 @@ export const PlantAddContentPhotoComponent =
           </PointLinearGradient>
         </TouchableOpacity>
       </Box>
-    ) : (
-      <Image source={{ uri: photo }} style={{ height: 200, borderRadius: 8 }} />
     );
   });
