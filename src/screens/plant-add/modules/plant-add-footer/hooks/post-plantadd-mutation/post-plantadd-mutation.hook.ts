@@ -1,5 +1,6 @@
 import { useMutation } from 'react-query';
 
+import { queryClient } from '@/providers';
 import { defaultAxios, logHttpErrorMessage } from '@/utils';
 
 type PostPlantAddRequestProps = {
@@ -43,6 +44,11 @@ export const usePostPlantAddMutation = () => {
         logHttpErrorMessage(error);
         throw new Error(error as string);
       }
+    },
+    {
+      onSuccess: () => {
+        return queryClient.invalidateQueries('/plants');
+      },
     },
   );
 };
