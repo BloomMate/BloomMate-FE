@@ -18,8 +18,6 @@ type PlantAddContentInputComponentProps = {
   screenStep: EPlantAddStep;
 };
 
-//TODO: 아이콘 이름 찾기
-
 export const PlantAddContentInputComponent =
   memo<PlantAddContentInputComponentProps>(({ screenStep }) => {
     const { control } = useFormContext<PlantAddForm>();

@@ -13,11 +13,11 @@ export const mapLabelByScreenStep: Partial<
   [EPlantAddStep.VARIETY]: {
     label: '품종',
     placeholder: '품종을 선택해주세요',
-    rightIconName: 'arrow-down',
+    rightIconName: 'menu-down',
   },
   [EPlantAddStep.DATE_INPUT]: {
     label: '날짜',
     placeholder: '심은 날짜를 선택해주세요',
-    rightIconName: 'calendar-month',
+    rightIconName: 'calendar-month-outline',
   },
 };
