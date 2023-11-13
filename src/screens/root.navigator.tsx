@@ -28,7 +28,7 @@ export type RootStackParamList = {
   PlantDetailScreen: { id: number };
   PlantDetailEditScreen: { id: number };
   PlantDiagnosisIntroScreen: { id: number };
-  PlantDiagnosisResultScreen: { id: number; photo_url: string };
+  PlantDiagnosisResultScreen: { id: number };
   PlantDiagnosisListScreen: { id: number };
   PlantDiagnosisLogScreen: { diagnosis_id: number };
   UserInfoScreen: undefined;

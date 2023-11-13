@@ -1,16 +1,27 @@
 import { useNavigation } from '@react-navigation/native';
-import isUndefined from 'lodash/isUndefined';
 import { memo } from 'react';
-import { launchCamera } from 'react-native-image-picker';
 
 import { PlantDiagnosisIntroScreenNavigationProps } from '../../plant-diagnosis-intro.screen';
 
+import { usePostPlantDiagnosis } from './hooks';
+
+import { useUploadPhotoMutation } from '@/hooks';
 import { CTASection, SingleButtonProps } from '@/layouts';
+import { useMutationIndicator } from '@/providers';
 
 type PlantDiagnosisIntroFooterModuleProps = {};
 
 export const PlantDiagnosisIntroFooterModule =
   memo<PlantDiagnosisIntroFooterModuleProps>(() => {
+    const { mutateAsync: uploadPhoto, isLoading: isUploadingPhoto } =
+      useUploadPhotoMutation();
+
+    const {
+      mutateAsync: photoPlantDiagnosis,
+      isLoading: isPostingPlantDiagnosis,
+    } = usePostPlantDiagnosis();
+
+    useMutationIndicator([isUploadingPhoto]);
     const navigation =
       useNavigation<PlantDiagnosisIntroScreenNavigationProps>();
 
@@ -19,17 +30,9 @@ export const PlantDiagnosisIntroFooterModule =
     };
 
     const handlePressDiagnosis = async () => {
-      const result = await launchCamera({
-        mediaType: 'photo',
-        saveToPhotos: true,
-      });
-
-      if (isUndefined(result.assets) || result.didCancel) {
-        return;
-      }
+      const response = await uploadPhoto();
 
       navigation.navigate('PlantDiagnosisResultScreen', {
-        photo_url: result.assets[0].uri as string,
         id: 1,
       });
     };
