@@ -2,7 +2,7 @@ import { Box, Stack } from '@mobily/stacks';
 import { useRoute } from '@react-navigation/native';
 import { isUndefined } from 'lodash';
 import { memo, useRef, useState } from 'react';
-import { useCountdown } from 'rooks';
+import { useCountdown, useDidUpdate } from 'rooks';
 
 import { PlantDiagnosisResultScreenNavigationRouteProps } from '../../plant-diagnosis-result.screen';
 
@@ -16,6 +16,8 @@ export const PlantDiagnosisResultGPTModule = memo(() => {
   const [gptState, setGptState] = useState<'loading' | 'button' | 'confirm'>(
     'loading',
   );
+
+  const [isCountDownEnd, setIsCountDownEnd] = useState(false);
   const endTimeRef = useRef(new Date(Date.now() + 5000));
 
   const {
@@ -28,8 +30,14 @@ export const PlantDiagnosisResultGPTModule = memo(() => {
 
   useCountdown(endTimeRef.current, {
     interval: 1000,
-    onEnd: () => setGptState('button'),
+    onEnd: () => setIsCountDownEnd(true),
   });
+
+  useDidUpdate(() => {
+    if (isCountDownEnd) {
+      setGptState('button');
+    }
+  }, [isCountDownEnd]);
 
   if (isUndefined(data)) {
     return;
@@ -55,7 +63,7 @@ export const PlantDiagnosisResultGPTModule = memo(() => {
   }
 
   return (
-    <Box flex="fluid" alignY="center">
+    <Box flex="fluid" alignY="center" direction="row" alignX="center">
       <Stack
         horizontal
         space={12}
