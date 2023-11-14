@@ -32,7 +32,7 @@ export const PlantDiagnosisIntroFooterModule =
     } = useRoute<PlantDiagnosisIntroScreenNavigationRouteProps>();
 
     const handlePressDiagnosisRecordButton = () => {
-      navigation.navigate('PlantDiagnosisListScreen', { id: 1 });
+      navigation.navigate('PlantDiagnosisListScreen', { id });
     };
 
     const handlePressDiagnosis = async () => {

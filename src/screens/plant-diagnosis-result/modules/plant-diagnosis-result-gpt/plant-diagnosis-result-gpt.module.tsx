@@ -1,11 +1,35 @@
 import { Box, Column, Columns, Stack } from '@mobily/stacks';
+import { useRoute } from '@react-navigation/native';
+import { isUndefined } from 'lodash';
 import { memo } from 'react';
 import { Image, TouchableOpacity } from 'react-native';
 
+import { PlantDiagnosisResultScreenNavigationRouteProps } from '../../plant-diagnosis-result.screen';
+
 import { Text } from '@/atoms';
-import { palette } from '@/utils';
+import { useGetPlantDiagnosisRecordDetailQuery } from '@/hooks';
+import { isPlantSickByPlantDiseaseName, palette } from '@/utils';
 
 export const PlantDiagnosisResultGPTModule = memo(() => {
+  const {
+    params: { id },
+  } = useRoute<PlantDiagnosisResultScreenNavigationRouteProps>();
+
+  const { data } = useGetPlantDiagnosisRecordDetailQuery({
+    disease_record_id: id,
+  });
+
+  if (isUndefined(data)) {
+    return;
+  }
+
+  const { plant_disease_name } = data;
+  const isPlantSick = isPlantSickByPlantDiseaseName(plant_disease_name);
+
+  if (!isPlantSick) {
+    return null;
+  }
+
   return (
     <Box flex="fluid" alignY="center">
       <Stack space={8} style={{ minHeight: 128 }}>
