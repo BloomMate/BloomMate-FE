@@ -1,5 +1,6 @@
 import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import { Suspense } from 'react';
 
 import { RootStackParamList } from '../root.navigator';
 
@@ -8,7 +9,7 @@ import {
   PlantDiagnosisListHeaderModule,
 } from './modules';
 
-import { BasicLayout } from '@/layouts';
+import { BasicLayout, LoadingPage } from '@/layouts';
 
 type PlantDiagnosisListScreenProps = {};
 
@@ -26,7 +27,9 @@ export const PlantDiagnosisListScreen = ({}: PlantDiagnosisListScreenProps) => {
   return (
     <BasicLayout backgroundColor="gray-100">
       <PlantDiagnosisListHeaderModule />
-      <PlantDiagnosisListContentModule />
+      <Suspense fallback={<LoadingPage />}>
+        <PlantDiagnosisListContentModule />
+      </Suspense>
     </BasicLayout>
   );
 };

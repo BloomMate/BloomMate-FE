@@ -1,36 +1,50 @@
-import { useNavigation } from '@react-navigation/native';
-import isUndefined from 'lodash/isUndefined';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { memo } from 'react';
-import { launchCamera } from 'react-native-image-picker';
 
-import { PlantDiagnosisIntroScreenNavigationProps } from '../../plant-diagnosis-intro.screen';
+import {
+  PlantDiagnosisIntroScreenNavigationProps,
+  PlantDiagnosisIntroScreenNavigationRouteProps,
+} from '../../plant-diagnosis-intro.screen';
 
+import { usePostPlantDiagnosis } from './hooks';
+
+import { useUploadPhotoMutation } from '@/hooks';
 import { CTASection, SingleButtonProps } from '@/layouts';
+import { useMutationIndicator } from '@/providers';
 
 type PlantDiagnosisIntroFooterModuleProps = {};
 
 export const PlantDiagnosisIntroFooterModule =
   memo<PlantDiagnosisIntroFooterModuleProps>(() => {
+    const { mutateAsync: uploadPhoto, isLoading: isUploadingPhoto } =
+      useUploadPhotoMutation();
+
+    const {
+      mutateAsync: postPlantDiagnosis,
+      isLoading: isPostingPlantDiagnosis,
+    } = usePostPlantDiagnosis();
+
+    useMutationIndicator([isUploadingPhoto, isPostingPlantDiagnosis]);
     const navigation =
       useNavigation<PlantDiagnosisIntroScreenNavigationProps>();
+    const {
+      params: { id },
+    } = useRoute<PlantDiagnosisIntroScreenNavigationRouteProps>();
 
     const handlePressDiagnosisRecordButton = () => {
-      navigation.navigate('PlantDiagnosisListScreen', { id: 1 });
+      navigation.navigate('PlantDiagnosisListScreen', { id });
     };
 
     const handlePressDiagnosis = async () => {
-      const result = await launchCamera({
-        mediaType: 'photo',
-        saveToPhotos: true,
+      const { data: cloudinaryData } = await uploadPhoto();
+
+      const diagnosisData = await postPlantDiagnosis({
+        diagnose_photo_url: cloudinaryData.url,
+        plant_id: id.toString(),
       });
 
-      if (isUndefined(result.assets) || result.didCancel) {
-        return;
-      }
-
       navigation.navigate('PlantDiagnosisResultScreen', {
-        photo_url: result.assets[0].uri as string,
-        id: 1,
+        id: diagnosisData.id,
       });
     };
 

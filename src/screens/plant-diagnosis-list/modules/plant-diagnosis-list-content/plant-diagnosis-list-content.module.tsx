@@ -1,16 +1,31 @@
 import { Box } from '@mobily/stacks';
+import { useRoute } from '@react-navigation/native';
+import { isUndefined } from 'lodash';
 import { FlatList } from 'react-native';
+
+import { PlantDiagnosisListScreenNavigationRouteProps } from '../../plant-diagnosis-list.screen';
 
 import { DiagnosisListItem, DiagnosisListEmpty } from './components';
 
 import { Text } from '@/atoms';
-import { PLANT_DIAGNOSIS_LIST_DUMMY_DATA } from '@/dummy-data';
+import { useGetPlantDiagnosisRecordListQuery } from '@/hooks';
 
 type PlantDiagnosisListContentModuleProps = {};
 
 export const PlantDiagnosisListContentModule =
   ({}: PlantDiagnosisListContentModuleProps) => {
-    const diagnosisList = PLANT_DIAGNOSIS_LIST_DUMMY_DATA;
+    const {
+      params: { id },
+    } = useRoute<PlantDiagnosisListScreenNavigationRouteProps>();
+
+    const { data } = useGetPlantDiagnosisRecordListQuery({ plant_id: id });
+
+    if (isUndefined(data)) {
+      return;
+    }
+
+    const diagnosisList = data.DATA;
+    const { plant_nickname } = data;
 
     return (
       <FlatList
@@ -20,7 +35,7 @@ export const PlantDiagnosisListContentModule =
         ListHeaderComponent={() => (
           <Box paddingY={32}>
             <Text variants="titleLarge" fontWeight="Medium" color="gray-900">
-              진단 기록 - 킹왕옥수수
+              진단 기록 - {plant_nickname}
             </Text>
           </Box>
         )}

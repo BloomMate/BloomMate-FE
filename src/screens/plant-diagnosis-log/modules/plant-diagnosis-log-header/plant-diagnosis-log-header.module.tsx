@@ -1,10 +1,15 @@
 import { Stack } from '@mobily/stacks';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import isUndefined from 'lodash/isUndefined';
 import { memo } from 'react';
 
-import { PlantDiagnosisLogScreenNavigationProps } from '../../plant-diagnosis-log.screen';
+import {
+  PlantDiagnosisLogScreenNavigationProps,
+  PlantDiagnosisLogScreenNavigationRouteProps,
+} from '../../plant-diagnosis-log.screen';
 
 import { Text } from '@/atoms';
+import { useGetPlantDiagnosisRecordDetailQuery } from '@/hooks';
 import { ModalHeader } from '@/layouts';
 
 type PlantDiagnosisLogHeaderModules = {};
@@ -12,6 +17,20 @@ type PlantDiagnosisLogHeaderModules = {};
 export const PlantDiagnosisLogHeader = memo<PlantDiagnosisLogHeaderModules>(
   () => {
     const navigation = useNavigation<PlantDiagnosisLogScreenNavigationProps>();
+
+    const {
+      params: { diagnosis_id },
+    } = useRoute<PlantDiagnosisLogScreenNavigationRouteProps>();
+
+    const { data } = useGetPlantDiagnosisRecordDetailQuery({
+      disease_record_id: diagnosis_id,
+    });
+
+    if (isUndefined(data)) {
+      return;
+    }
+
+    const { plant_nickname } = data;
 
     const onPressExit = () => {
       navigation.goBack();
@@ -21,7 +40,7 @@ export const PlantDiagnosisLogHeader = memo<PlantDiagnosisLogHeaderModules>(
       <Stack space={32}>
         <ModalHeader left={{ type: 'icon' }} onPressExit={onPressExit} />
         <Text variants="titleLarge" fontWeight="Medium" color="gray-900">
-          진단결과 - 팝콘묵자
+          진단결과 - {plant_nickname}
         </Text>
       </Stack>
     );
