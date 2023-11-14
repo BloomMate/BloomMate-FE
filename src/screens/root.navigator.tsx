@@ -13,6 +13,7 @@ import { PlantDetailScreen } from './plant-detail';
 import { PlantDetailEditScreen } from './plant-detail-edit';
 import { PlantDiagnosisIntroScreen } from './plant-diagnosis-intro';
 import { PlantDiagnosisListScreen } from './plant-diagnosis-list';
+import { PlantDiagnosisLogScreen } from './plant-diagnosis-log';
 import { PlantDiagnosisResultScreen } from './plant-diagnosis-result';
 import { PrimaryNavigator, PrimaryNavigatorParamLists } from './primary';
 import { SignUpScreen } from './signup';
@@ -72,6 +73,10 @@ export const RootNavigator = ({}: RootNavigatorProps) => {
         <Stack.Screen
           name="PlantDiagnosisListScreen"
           component={PlantDiagnosisListScreen}
+        />
+        <Stack.Screen
+          name="PlantDiagnosisLogScreen"
+          component={PlantDiagnosisLogScreen}
         />
         <Stack.Screen name="UserInfoScreen" component={UserInfoScreen} />
         <Stack.Screen name="PrimaryStack" component={PrimaryNavigator} />
