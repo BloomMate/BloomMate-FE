@@ -36,15 +36,15 @@ export const PlantDiagnosisIntroFooterModule =
     };
 
     const handlePressDiagnosis = async () => {
-      const { data: data1 } = await uploadPhoto();
+      const { data: cloudinaryData } = await uploadPhoto();
 
-      const data2 = await postPlantDiagnosis({
-        diagnose_photo_url: data1.url,
+      const diagnosisData = await postPlantDiagnosis({
+        diagnose_photo_url: cloudinaryData.url,
         plant_id: id.toString(),
       });
 
       navigation.navigate('PlantDiagnosisResultScreen', {
-        id: data2.id,
+        id: diagnosisData.id,
       });
     };
 
