@@ -1,16 +1,22 @@
 import { Box, Column, Columns, Stack } from '@mobily/stacks';
 import { useRoute } from '@react-navigation/native';
 import { isUndefined } from 'lodash';
-import { memo } from 'react';
+import { memo, useState } from 'react';
 import { Image, TouchableOpacity } from 'react-native';
 
 import { PlantDiagnosisResultScreenNavigationRouteProps } from '../../plant-diagnosis-result.screen';
+
+import { GPTLoading } from './components';
 
 import { Text } from '@/atoms';
 import { useGetPlantDiagnosisRecordDetailQuery } from '@/hooks';
 import { isPlantSickByPlantDiseaseName, palette } from '@/utils';
 
 export const PlantDiagnosisResultGPTModule = memo(() => {
+  const [gptState, setGptState] = useState<'loading' | 'button' | 'confirm'>(
+    'loading',
+  );
+
   const {
     params: { id },
   } = useRoute<PlantDiagnosisResultScreenNavigationRouteProps>();
@@ -23,11 +29,15 @@ export const PlantDiagnosisResultGPTModule = memo(() => {
     return;
   }
 
-  const { plant_disease_name } = data;
+  const { plant_disease_name, plant_name } = data;
   const isPlantSick = isPlantSickByPlantDiseaseName(plant_disease_name);
 
   if (!isPlantSick) {
     return null;
+  }
+
+  if (gptState === 'loading') {
+    return <GPTLoading />;
   }
 
   return (
@@ -55,8 +65,8 @@ export const PlantDiagnosisResultGPTModule = memo(() => {
           </Column>
           <Column width="fluid">
             <Stack space={16}>
-              <Text variants="bodySmall" fontWeight="Medium" color="white">
-                틔움 옥수수 씨앗 키트
+              <Text variants="bodyMedium" fontWeight="Medium" color="white">
+                {`틔움 ${plant_name} 씨앗 키트`}
               </Text>
               <TouchableOpacity>
                 <Box
@@ -67,7 +77,7 @@ export const PlantDiagnosisResultGPTModule = memo(() => {
                     borderRadius: 8,
                   }}>
                   <Text
-                    variants="bodySmall"
+                    variants="bodyMedium"
                     fontWeight="Medium"
                     color="primary">
                     원클릭 구매

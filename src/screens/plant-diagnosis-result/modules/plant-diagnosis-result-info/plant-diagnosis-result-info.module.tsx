@@ -113,7 +113,7 @@ export const PlantDiagnosisResultInfoModule =
         </Box>
         {isPlantSick && (
           <Text
-            variants="bodyMedium"
+            variants="bodyLarge"
             fontWeight="Medium"
             color="primary"
             textAlignment="center">
