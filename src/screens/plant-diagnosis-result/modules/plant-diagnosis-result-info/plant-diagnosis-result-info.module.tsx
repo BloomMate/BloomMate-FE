@@ -1,6 +1,7 @@
 import { Box, Stack } from '@mobily/stacks';
 import { useRoute } from '@react-navigation/native';
 import dayjs from 'dayjs';
+import isUndefined from 'lodash/isUndefined';
 import { memo } from 'react';
 import { Image } from 'react-native';
 
@@ -9,15 +10,45 @@ import { PlantDiagnosisResultScreenNavigationRouteProps } from '../../plant-diag
 import { DiseaseInfoItem } from './components';
 
 import { Icon, Text } from '@/atoms';
-import { palette } from '@/utils';
+import { useGetPlantDiagnosisRecordDetailQuery } from '@/hooks';
+import {
+  getCopyByGrowthLevel,
+  isPlantSickByPlantDiseaseName,
+  palette,
+} from '@/utils';
 
 type PlantDiagnosisResultInfoModuleProps = {};
 
 export const PlantDiagnosisResultInfoModule =
   memo<PlantDiagnosisResultInfoModuleProps>(() => {
     const {
-      params: { photo_url },
+      params: { id },
     } = useRoute<PlantDiagnosisResultScreenNavigationRouteProps>();
+
+    const { data } = useGetPlantDiagnosisRecordDetailQuery({
+      disease_record_id: id,
+    });
+
+    if (isUndefined(data)) {
+      return;
+    }
+
+    const {
+      diagnose_photo_url,
+      created_at,
+      plant_disease_name,
+      growth_level,
+      plant_disease_symptom,
+      plant_disease_condition,
+    } = data;
+
+    const diseaseInfoItems = [
+      { title: '병명', content: plant_disease_name },
+      { title: '증상', content: plant_disease_symptom },
+      { title: '조건', content: plant_disease_condition },
+    ];
+
+    const isPlantSick = isPlantSickByPlantDiseaseName(plant_disease_name);
 
     return (
       <Stack space={36} paddingTop={64}>
@@ -38,7 +69,7 @@ export const PlantDiagnosisResultInfoModule =
               borderBottomColor: palette['gray-300'],
             }}>
             <Image
-              source={{ uri: photo_url }}
+              source={{ uri: diagnose_photo_url }}
               style={{ width: 80, height: 80, borderRadius: 150 }}
               resizeMode="contain"
             />
@@ -48,46 +79,47 @@ export const PlantDiagnosisResultInfoModule =
                   진단 일자 :
                 </Text>
                 <Text variants="bodySmall" fontWeight="Light" color="gray-900">
-                  {`${dayjs().format('YYYY.MM.DD')} - 성장기`}
+                  {`${dayjs(created_at).format(
+                    'YYYY.MM.DD',
+                  )} - ${getCopyByGrowthLevel(growth_level)}`}
                 </Text>
               </Stack>
-              <Stack horizontal space={4} align="center">
-                <Icon name="warning" color={palette['red-600']} size={16} />
-                <Text variants="bodySmall" fontWeight="Medium" color="error">
-                  병이 발견되었습니다
+              {isPlantSick ? (
+                <Stack horizontal space={4} align="center">
+                  <Icon name="warning" color={palette['red-600']} size={16} />
+                  <Text variants="bodySmall" fontWeight="Medium" color="error">
+                    병이 발견되었습니다
+                  </Text>
+                </Stack>
+              ) : (
+                <Text variants="bodySmall" fontWeight="Medium" color="primary">
+                  문제 없이 잘 자라고 있습니다
                 </Text>
+              )}
+            </Stack>
+          </Stack>
+          {isPlantSick && (
+            <Stack space={12} paddingY={12} paddingX={16}>
+              <Text variants="bodySmall" fontWeight="Medium" color="error">
+                진단 내용
+              </Text>
+              <Stack space={8}>
+                {diseaseInfoItems.map(v => (
+                  <DiseaseInfoItem {...v} key={v.title} />
+                ))}
               </Stack>
             </Stack>
-          </Stack>
-          <Stack space={12} paddingY={12} paddingX={16}>
-            <Text variants="bodySmall" fontWeight="Medium" color="error">
-              진단 내용
-            </Text>
-            <Stack space={8}>
-              {[
-                { title: '병명', content: 'Corn gray leaf spot' },
-                {
-                  title: '증상',
-                  content: '처음에는 반점처럼 나타났다가 점차 커지며 괴사함',
-                },
-                {
-                  title: '조건',
-                  content:
-                    '24도 보다 높은 온도, 95%보다 높은 습도 및 습한 날씨에 오래 방치될 때',
-                },
-              ].map(v => (
-                <DiseaseInfoItem {...v} key={v.title} />
-              ))}
-            </Stack>
-          </Stack>
+          )}
         </Box>
-        <Text
-          variants="bodyMedium"
-          fontWeight="Medium"
-          color="primary"
-          textAlignment="center">
-          {'아쉽지만 모종을 뽑고\n새로운 씨앗을 다시 심어봐요'}
-        </Text>
+        {isPlantSick && (
+          <Text
+            variants="bodyMedium"
+            fontWeight="Medium"
+            color="primary"
+            textAlignment="center">
+            {'아쉽지만 모종을 뽑고\n새로운 씨앗을 다시 심어봐요'}
+          </Text>
+        )}
       </Stack>
     );
   });
