@@ -5,6 +5,7 @@ export type PlantDiagnosisRecordDetailResponse = {
   created_at: string;
   diagnose_photo_url: string;
   growth_level: 'germination' | 'growth' | 'harvest';
+  plant_name: '토마토' | '옥수수' | '감자' | '딸기';
   plant_disease_name: string;
   plant_disease_symptom: string;
   plant_disease_condition: string;
