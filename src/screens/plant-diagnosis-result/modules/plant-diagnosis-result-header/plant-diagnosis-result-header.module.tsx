@@ -14,6 +14,9 @@ type PlantDiagnosisResultHeaderModuleProps = {};
 
 export const PlantDiagnosisResultHeaderModule =
   memo<PlantDiagnosisResultHeaderModuleProps>(() => {
+    const navigation =
+      useNavigation<PlantDiagnosisResultScreenNavigationProps>();
+
     const {
       params: { id },
     } = useRoute<PlantDiagnosisResultScreenNavigationRouteProps>();
@@ -27,9 +30,6 @@ export const PlantDiagnosisResultHeaderModule =
     }
 
     const { plant_nickname } = data;
-
-    const navigation =
-      useNavigation<PlantDiagnosisResultScreenNavigationProps>();
 
     const onPressExit = () => {
       navigation.goBack();
