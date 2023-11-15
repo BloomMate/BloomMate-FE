@@ -29,6 +29,7 @@ export const SignUpContentInputComponent =
 
       return (
         <TextInput
+          disabled
           placeholder={placeholder}
           label={label}
           value={value as string}

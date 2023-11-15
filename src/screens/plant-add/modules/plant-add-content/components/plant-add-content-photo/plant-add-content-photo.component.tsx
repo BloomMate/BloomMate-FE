@@ -1,13 +1,19 @@
-import { CLOUDINARY_NAME } from '@env';
 import { Box } from '@mobily/stacks';
-import isUndefined from 'lodash/isUndefined';
 import { memo } from 'react';
+import { useFormContext, useController } from 'react-hook-form';
 import { TouchableOpacity } from 'react-native';
-import { launchCamera } from 'react-native-image-picker';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 
-import { useUploadPhotoMutation } from './hooks';
+import { PlantAddForm } from '../../../../hooks';
+import {
+  $currentScreenStepIndexSelector,
+  EPlantAddStep,
+  $plantAddState,
+  plantAddSteps,
+} from '../../../../plant-add.state';
 
 import { Icon, PointLinearGradient } from '@/atoms';
+import { useUploadPhotoMutation } from '@/hooks';
 import { useMutationIndicator } from '@/providers';
 import { palette } from '@/utils';
 
@@ -19,34 +25,30 @@ export const PlantAddContentPhotoComponent =
 
     useMutationIndicator([isLoading]);
 
+    const { control } = useFormContext<PlantAddForm>();
+    const currentScreenStepIndex = useRecoilValue(
+      $currentScreenStepIndexSelector,
+    );
+    const { field: field1 } = useController({
+      name: EPlantAddStep.PICTURE,
+      control,
+    });
+    const { field: field2 } = useController({
+      name: EPlantAddStep.PICTURE_COMPLETE,
+      control,
+    });
+
+    const setPlantAddState = useSetRecoilState($plantAddState);
+
     const handlePressPictureButton = async () => {
-      const result = await launchCamera({
-        mediaType: 'photo',
-        saveToPhotos: true,
+      const jsonResponse = await mutateAsync();
+
+      field1.value = jsonResponse.data.url as string;
+      field1.onChange(jsonResponse.data.url as string);
+      field2.onChange(field1.value);
+      setPlantAddState({
+        screenStep: plantAddSteps[currentScreenStepIndex + 1],
       });
-
-      if (isUndefined(result.assets) || result.didCancel) {
-        return;
-      }
-
-      const { uri, fileName, type } = result.assets[0];
-
-      const source = {
-        uri,
-        type,
-        name: fileName,
-      };
-      const formData = new FormData();
-      const cloudName = CLOUDINARY_NAME;
-
-      formData.append('file', source);
-      formData.append('upload_preset', 'BloomMate');
-      formData.append('cloud_name', cloudName);
-      addNewPicture(formData);
-    };
-
-    const addNewPicture = async (formData: FormData) => {
-      await mutateAsync(formData);
     };
 
     return (

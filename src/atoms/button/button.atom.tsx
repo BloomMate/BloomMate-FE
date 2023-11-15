@@ -44,7 +44,7 @@ export const Button = ({
         }}
         onPress={onPress}>
         <Stack space={8} horizontal align="center">
-          <Text fontWeight="Medium" variants="labelLarge" color="white">
+          <Text fontWeight="Bold" variants="labelLarge" color="white">
             {children}
           </Text>
           <Icon name={icon} size={20} color={palette['white']} />
@@ -63,7 +63,7 @@ export const Button = ({
         fonts: {
           labelLarge: {
             ...labelLargeFontStyle,
-            fontFamily: 'GmarketSansTTFMedium',
+            fontFamily: 'SUITE-Bold',
           },
         },
         colors: {

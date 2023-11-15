@@ -2,6 +2,7 @@ import { Stack } from '@mobily/stacks';
 import {
   TextInputProps as PaperTextInputProps,
   TextInput as PaperTextInput,
+  DefaultTheme,
 } from 'react-native-paper';
 
 import { getVariantsStyle } from '../text';
@@ -27,15 +28,17 @@ type Right = {
 
 type TextInputProps = Omit<PaperTextInputProps, 'error' | 'right' | 'mode'> &
   Error &
-  Right;
+  Right & { disabled?: boolean };
 
 export const TextInput = ({
   error,
   rightIconName,
+  disabled = false,
   ...props
 }: TextInputProps) => {
   const bodyLargeFontStyle = getVariantsStyle('bodyLarge');
   const bodySmallFontStyle = getVariantsStyle('bodySmall');
+
   const renderTextInput = () => {
     return (
       <PaperTextInput
@@ -46,23 +49,25 @@ export const TextInput = ({
           borderRadius: 8,
         }}
         theme={{
+          ...DefaultTheme,
+          roundness: 8,
+          colors: {
+            ...DefaultTheme.colors,
+            primary: palette['primary'],
+            outline: palette['gray-900'],
+            onSurface: palette['gray-900'],
+            onSurfaceVariant: palette['gray-900'],
+            error: palette['error'],
+          },
           fonts: {
             bodyLarge: {
               ...bodyLargeFontStyle,
-              fontFamily: 'GmarketSansTTFMedium',
+              fontFamily: 'SUITE-SemiBold',
             },
             bodySmall: {
               ...bodySmallFontStyle,
-              fontFamily: 'GmarketSansTTFLight',
+              fontFamily: 'SUITE-Regular',
             },
-          },
-          colors: {
-            onSurface: palette['gray-900'],
-            onSurfaceVariant: palette['gray-900'],
-            primary: palette['primary'],
-            error: palette['error'],
-            outline: palette['gray-900'],
-            disabled: palette['gray-400'],
           },
         }}
         placeholderTextColor={palette['gray-400']}
@@ -75,6 +80,7 @@ export const TextInput = ({
             />
           )
         }
+        editable={!disabled} // 이 부분을 수정했습니다.
         {...props}
       />
     );

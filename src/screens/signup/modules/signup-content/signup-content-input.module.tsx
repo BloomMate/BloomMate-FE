@@ -13,6 +13,7 @@ import {
   SignUpContentModalComponent,
 } from './components';
 
+import { SMART_COTTAGE_IMG, TIIUN_IMG } from '@/assets';
 import { Icon, Text } from '@/atoms';
 import { palette } from '@/utils';
 
@@ -100,10 +101,7 @@ export const SignUpTiiunInputModule = () => {
         field={field}
         fieldState={fieldState}
       />
-      <Image
-        source={require('./const/garden.png')}
-        style={{ width: 250, height: 250 }}
-      />
+      <Image source={{ uri: TIIUN_IMG }} style={{ width: 250, height: 250 }} />
     </Stack>
   );
 };
@@ -169,7 +167,7 @@ export const SignUpAddressInputModule = () => {
         </TouchableOpacity>
         {value && (
           <Image
-            source={require('./const/SmartCottage.jpg')}
+            source={{ uri: SMART_COTTAGE_IMG }}
             style={{ width: '100%' }}
             resizeMode="contain"
           />
