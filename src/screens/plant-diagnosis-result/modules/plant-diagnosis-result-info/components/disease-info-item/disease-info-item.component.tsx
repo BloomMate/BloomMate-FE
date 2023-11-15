@@ -10,11 +10,11 @@ type DiseaseInfoItemProps = {
 
 export const DiseaseInfoItem = memo<DiseaseInfoItemProps>(
   ({ title, content }) => (
-    <Stack space={24} horizontal>
-      <Text variants="bodySmall" fontWeight="Medium" color="gray-900">
+    <Stack space={24} horizontal align="center">
+      <Text variants="bodyMedium" fontWeight="Medium" color="gray-900">
         {title}
       </Text>
-      <Text variants="labelSmall" fontWeight="Light" color="gray-900">
+      <Text variants="labelMedium" fontWeight="Light" color="gray-900">
         {content}
       </Text>
     </Stack>
