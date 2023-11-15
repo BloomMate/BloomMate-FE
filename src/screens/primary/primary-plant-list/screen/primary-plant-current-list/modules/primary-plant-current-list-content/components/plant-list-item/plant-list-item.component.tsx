@@ -77,7 +77,10 @@ export const PlantListItem = memo<PlantListItemProps>(
                 alignItems: 'center',
               }}>
               <Stack horizontal space={4} align="center">
-                <Text variants="bodySmall" fontWeight="Medium" color="gray-700">
+                <Text
+                  variants="bodyMedium"
+                  fontWeight="Medium"
+                  color="gray-700">
                   채팅하기
                 </Text>
                 <Icon
@@ -98,7 +101,10 @@ export const PlantListItem = memo<PlantListItemProps>(
                 alignItems: 'center',
               }}>
               <Stack horizontal space={4} align="center">
-                <Text variants="bodySmall" fontWeight="Medium" color="gray-700">
+                <Text
+                  variants="bodyMedium"
+                  fontWeight="Medium"
+                  color="gray-700">
                   상세정보
                 </Text>
                 <Icon name="list-alt" size={20} color={palette['gray-700']} />
