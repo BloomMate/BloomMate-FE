@@ -50,14 +50,17 @@ export const PlantListItem = memo<PlantListItemProps>(
           <Column width="fluid" paddingY={16} paddingLeft={12}>
             <Stack space={16}>
               <Stack horizontal space={8} align="center">
-                <Text variants="bodyMedium" color="black" fontWeight="Medium">
+                <Text variants="bodyLarge" color="black" fontWeight="Medium">
                   {plant_nickname}
                 </Text>
-                <Text variants="bodySmall" color="gray-700" fontWeight="Light">
+                <Text
+                  variants="bodyMedium"
+                  color="gray-700"
+                  fontWeight="Medium">
                   {`함께한 지 ${calculateDaysDifference(planted_at)}일째`}
                 </Text>
               </Stack>
-              <Text variants="labelSmall" fontWeight="Medium" color="primary">
+              <Text variants="bodySmall" fontWeight="Medium" color="primary">
                 {getPlantListItemCopyByGrowthLevel(growth_level)}
               </Text>
             </Stack>
