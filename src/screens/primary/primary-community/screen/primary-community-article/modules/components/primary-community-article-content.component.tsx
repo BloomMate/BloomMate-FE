@@ -7,29 +7,36 @@ import { PrimaryCommunityScreenNavigatorProp } from '../../../../primary-communi
 
 import { Text } from '@/atoms';
 
-type PrimaryCommuntiyArticleItemProps = {};
+type PrimaryCommuntiyArticleItemProps = {
+  id: string;
+  article_title: string;
+  article_content: string;
+  article_thumbnail_url: string;
+};
 
 export const PrimaryCommuntiyArticleItem =
-  memo<PrimaryCommuntiyArticleItemProps>(() => {
-    const navigation = useNavigation<PrimaryCommunityScreenNavigatorProp>();
+  memo<PrimaryCommuntiyArticleItemProps>(
+    ({ id, article_content, article_thumbnail_url, article_title }) => {
+      const navigation = useNavigation<PrimaryCommunityScreenNavigatorProp>();
 
-    return (
-      <TouchableOpacity>
+      return (
         <Rows space={12}>
-          <Row>
-            <Image
-              source={{
-                uri: 'https://res.cloudinary.com/dolc0qkxk/image/upload/v1699585038/001_poybv6.png',
-              }}
-              style={{ aspectRatio: 190 / 80 }}
-            />
-          </Row>
+          <TouchableOpacity>
+            <Row>
+              <Image
+                source={{
+                  uri: article_thumbnail_url,
+                }}
+                style={{ aspectRatio: 190 / 80 }}
+              />
+            </Row>
+          </TouchableOpacity>
           <Row>
             <Text variants="labelMedium" fontWeight="Medium" color="gray-900">
-              EP01 감자를 잘 키우는 법
+              {article_title}
             </Text>
           </Row>
         </Rows>
-      </TouchableOpacity>
-    );
-  });
+      );
+    },
+  );

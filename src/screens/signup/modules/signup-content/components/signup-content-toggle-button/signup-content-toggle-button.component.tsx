@@ -33,13 +33,16 @@ export const SignUpContentToggleButtonComponent =
                   borderWidth: 1,
                   borderColor: palette['gray-700'],
                 },
-                selected && { backgroundColor: palette['teal-100'] },
+                selected && {
+                  borderColor: 'primary',
+                  backgroundColor: palette['teal-100'],
+                },
               ]}
               alignX="center"
               alignY="center">
               <Text
                 variants="labelLarge"
-                fontWeight="Medium"
+                fontWeight="Light"
                 color="gray-700"
                 textAlignment="center">
                 {gardenSizeText}
