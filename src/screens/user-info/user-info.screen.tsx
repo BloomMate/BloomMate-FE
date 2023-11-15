@@ -1,10 +1,12 @@
 import { Stack } from '@mobily/stacks';
-import { RouteProp, useNavigation } from '@react-navigation/native';
+import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 
 import { RootStackParamList } from '../root.navigator';
 
-import { Text } from '@/atoms';
+import { UserInfoContentModule } from './module/user-info-screen-content';
+import { UserInfoHeaderModule } from './module/user-info-screen-header/user-info-screen-header';
+
 import { BasicLayout } from '@/layouts';
 
 type UserInfoScreenProps = {};
@@ -20,14 +22,11 @@ export type UserInfoScreenNavigationRouteProps = RouteProp<
 >;
 
 export const UserInfoScreen = ({}: UserInfoScreenProps) => {
-  const navigation = useNavigation<UserInfoScreenNavigationProps>();
-
   return (
     <BasicLayout backgroundColor="gray-100">
-      <Stack>
-        <Text variants={'displayLarge'} fontWeight={'Light'} color={'gray-900'}>
-          안녕하세요
-        </Text>
+      <Stack space={32}>
+        <UserInfoHeaderModule />
+        <UserInfoContentModule />
       </Stack>
     </BasicLayout>
   );

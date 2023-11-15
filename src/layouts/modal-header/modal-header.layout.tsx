@@ -22,7 +22,7 @@ export const ModalHeader = memo<ModalHeaderProps>(({ left, onPressExit }) => {
 
   if (left.type === 'string') {
     return (
-      <Text variants="titleLarge" fontWeight="Bold" color="gray-900">
+      <Text variants="titleLarge" fontWeight="Bold" color={'black'}>
         {left.title}
       </Text>
     );
