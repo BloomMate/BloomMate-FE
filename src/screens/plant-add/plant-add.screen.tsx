@@ -4,7 +4,7 @@ import { FormProvider } from 'react-hook-form';
 
 import { RootStackParamList } from '../root.navigator';
 
-import { usePlantAddForm } from './hooks';
+import { usePlantAddForm, useResetPlantState } from './hooks';
 import {
   PlantAddFooterModule,
   PlantAddHeaderModule,
@@ -26,6 +26,8 @@ export type PlantAddScreenNavigationRouteProps = RouteProp<
 >;
 export const PlantAddScreen = ({}: PlantAddScreenProps) => {
   const methods = usePlantAddForm();
+
+  useResetPlantState();
 
   return (
     <FormProvider {...methods}>
