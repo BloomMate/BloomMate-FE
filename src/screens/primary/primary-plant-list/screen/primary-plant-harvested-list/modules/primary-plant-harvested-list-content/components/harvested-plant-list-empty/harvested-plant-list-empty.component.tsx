@@ -8,7 +8,7 @@ export const HarvestedPlantListEmpty = () => {
       <Text
         variants="labelLarge"
         fontWeight="Medium"
-        color="gray-900"
+        color="gray-700"
         textAlignment="center">
         {
           '수확된 식물이 없어요.\n스마트 코티지 텃밭에서 BloomMate와\n함께 식물을 키워봐요!'
