@@ -1,7 +1,7 @@
 import { Box, Stack } from '@mobily/stacks';
 import { memo } from 'react';
 import { useController, useFormContext } from 'react-hook-form';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import { Calendar, DateData, LocaleConfig } from 'react-native-calendars';
 
 import { PlantAddForm } from '../../../../hooks';
@@ -33,13 +33,23 @@ export const PlantAddContentVarietyModalComponent =
       <Modal isVisible={isVisible} isBottomSheet={true}>
         <Box
           paddingX={32}
-          paddingY={20}
+          paddingY={12}
           style={{
             minHeight: 390,
             borderTopRightRadius: 24,
             borderTopLeftRadius: 24,
             backgroundColor: palette['white'],
           }}>
+          <Stack style={{ alignItems: 'center' }} paddingBottom={12}>
+            <View
+              style={{
+                width: 50,
+                height: 3,
+                backgroundColor: palette['gray-400'],
+                borderRadius: 8,
+              }}></View>
+          </Stack>
+
           <Stack space={20}>
             <Text fontWeight="Bold" color="black" variants="titleMedium">
               품종
