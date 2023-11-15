@@ -15,11 +15,6 @@ export const PrimaryCommunityArticleContentModule =
     const articleList = PRIMARY_COMMUNITY_ARTICLE_DATA;
 
     return (
-      //   <Tiles space={12} columns={2}>
-      //     <PrimaryCommuntiyArticleItem />
-      //     <PrimaryCommuntiyArticleItem />
-      //   </Tiles>
-
       <FlatList
         contentContainerStyle={{ flexGrow: 1 }}
         data={articleList}
