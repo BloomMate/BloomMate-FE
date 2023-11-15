@@ -48,7 +48,7 @@ export const PlantListItem = memo<PlantListItemProps>(
             />
           </Column>
           <Column width="fluid" paddingY={16} paddingLeft={12}>
-            <Stack space={16}>
+            <Stack space={12}>
               <Stack horizontal space={8} align="center">
                 <Text variants="bodyLarge" color="black" fontWeight="Medium">
                   {plant_nickname}
