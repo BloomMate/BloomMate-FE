@@ -51,10 +51,7 @@ export const PrimaryMyPageContentModule =
             }}
             space={24}>
             <Stack horizontal>
-              <Text
-                variants={'bodyLarge'}
-                fontWeight={'Bold'}
-                color={'gray-900'}>
+              <Text variants={'bodyLarge'} fontWeight={'Bold'} color={'black'}>
                 정보
               </Text>
             </Stack>
