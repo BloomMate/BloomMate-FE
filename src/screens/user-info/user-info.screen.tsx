@@ -24,7 +24,7 @@ export type UserInfoScreenNavigationRouteProps = RouteProp<
 export const UserInfoScreen = ({}: UserInfoScreenProps) => {
   return (
     <BasicLayout backgroundColor="gray-100">
-      <Stack space={32}>
+      <Stack space={60}>
         <UserInfoHeaderModule />
         <UserInfoContentModule />
       </Stack>

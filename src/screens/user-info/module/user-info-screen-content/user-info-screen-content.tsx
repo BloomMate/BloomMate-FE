@@ -22,8 +22,8 @@ export const UserInfoContentModule = ({}: UserInfoContentModuleProps) => {
           borderRadius: 8,
         }}>
         <Stack paddingBottom={24}>
-          <Text variants={'titleLarge'} fontWeight={'Bold'} color={'gray-900'}>
-            회원 정보
+          <Text variants={'bodyLarge'} fontWeight={'Bold'} color={'black'}>
+            회원정보
           </Text>
         </Stack>
 
@@ -48,13 +48,13 @@ const UserInfoItem: React.FC<UserInfoItemProps> = ({ title, content }) => (
   <Stack>
     <Stack horizontal>
       <Text
-        style={{ minWidth: 120 }}
-        variants={'bodyLarge'}
+        style={{ minWidth: 95 }}
+        variants={'bodyMedium'}
         fontWeight={'Medium'}
         color={'gray-900'}>
         {title}
       </Text>
-      <Text variants={'bodyLarge'} fontWeight={'Medium'} color={'gray-900'}>
+      <Text variants={'bodyMedium'} fontWeight={'Medium'} color={'gray-700'}>
         {content}
       </Text>
     </Stack>

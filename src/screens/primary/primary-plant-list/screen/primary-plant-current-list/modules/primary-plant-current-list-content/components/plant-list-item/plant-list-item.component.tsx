@@ -34,10 +34,10 @@ export const PlantListItem = memo<PlantListItemProps>(
           borderTopLeftRadius: 8,
           borderTopRightRadius: 8,
           borderTopStartRadius: 8,
-          borderBottomLeftRadius: 12,
-          borderBottomEndRadius: 12,
-          borderBottomRightRadius: 12,
-          borderBottomStartRadius: 12,
+          borderBottomLeftRadius: 8,
+          borderBottomEndRadius: 8,
+          borderBottomRightRadius: 8,
+          borderBottomStartRadius: 8,
         }}>
         <Columns>
           <Column width="content" padding={10}>
@@ -48,7 +48,7 @@ export const PlantListItem = memo<PlantListItemProps>(
             />
           </Column>
           <Column width="fluid" paddingY={16} paddingLeft={12}>
-            <Stack space={16}>
+            <Stack space={12}>
               <Stack horizontal space={8} align="center">
                 <Text variants="bodyLarge" color="black" fontWeight="Medium">
                   {plant_nickname}

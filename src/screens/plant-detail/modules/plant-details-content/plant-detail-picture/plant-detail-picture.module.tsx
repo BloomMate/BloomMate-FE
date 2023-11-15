@@ -36,7 +36,7 @@ export const PlantDetailPictureModule = memo<PlantDetailPictureModule>(() => {
   return (
     <Stack space={8}>
       <Box alignX="between" direction="row" alignY="center">
-        <Text variants={'titleLarge'} fontWeight={'Medium'} color={'gray-900'}>
+        <Text variants={'titleLarge'} fontWeight={'Bold'} color={'black'}>
           {plant_nickname}
         </Text>
         <TouchableOpacity onPress={handlePressUpdate}>

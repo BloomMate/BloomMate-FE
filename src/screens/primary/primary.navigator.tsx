@@ -47,7 +47,7 @@ export const PrimaryNavigator = () => {
         name="PrimaryPlantListScreen"
         component={PrimaryPlantListScreen}
         options={{
-          tabBarLabel: '',
+          tabBarLabel: '식물리스트',
           tabBarIcon: ({ color }) => {
             return <Icon color={color} size={28} name="list" />;
           },
@@ -57,9 +57,9 @@ export const PrimaryNavigator = () => {
         name="PrimaryCommunityScreen"
         component={PrimaryCommunityScreen}
         options={{
-          tabBarLabel: '',
+          tabBarLabel: '커뮤니티',
           tabBarIcon: ({ color }) => {
-            return <Icon color={color} size={28} name="article" />;
+            return <Icon color={color} size={28} name="note-alt" />;
           },
         }}
       />
@@ -67,7 +67,7 @@ export const PrimaryNavigator = () => {
         name="PrimaryMyPageScreen"
         component={PrimaryMyPageScreen}
         options={{
-          tabBarLabel: '',
+          tabBarLabel: '마이페이지',
           tabBarIcon: ({ color }) => {
             return <Icon color={color} size={28} name="person-outline" />;
           },

@@ -1,7 +1,7 @@
 import { Box, Stack } from '@mobily/stacks';
 import { memo } from 'react';
 import { useController, useFormContext } from 'react-hook-form';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import { Calendar, DateData, LocaleConfig } from 'react-native-calendars';
 
 import { PlantAddForm } from '../../../../hooks';
@@ -40,36 +40,62 @@ export const PlantAddContentVarietyModalComponent =
             borderTopLeftRadius: 24,
             backgroundColor: palette['white'],
           }}>
+          <Stack style={{ alignItems: 'center' }} paddingBottom={12}>
+            <View
+              style={{
+                width: 50,
+                height: 3,
+                backgroundColor: palette['gray-400'],
+                borderRadius: 8,
+              }}></View>
+          </Stack>
+
           <Stack space={20}>
-            <Text fontWeight="Medium" color="gray-900" variants="titleMedium">
+            <Text fontWeight="Bold" color="black" variants="titleMedium">
               품종
             </Text>
 
             <TouchableOpacity
               onPress={() => handleClickButton(2)}
-              style={{ backgroundColor: palette['gray-100'], padding: 8 }}>
-              <Text fontWeight="Medium" color="gray-700" variants="titleMedium">
+              style={{
+                backgroundColor: palette['gray-100'],
+                padding: 12,
+                borderRadius: 8,
+              }}>
+              <Text fontWeight="Medium" color="gray-700" variants="titleSmall">
                 🍓 딸기
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
-              style={{ backgroundColor: palette['gray-100'], padding: 8 }}
+              style={{
+                backgroundColor: palette['gray-100'],
+                padding: 12,
+                borderRadius: 8,
+              }}
               onPress={() => handleClickButton(3)}>
-              <Text fontWeight="Medium" color="gray-700" variants="titleMedium">
+              <Text fontWeight="Medium" color="gray-700" variants="titleSmall">
                 🌽 옥수수
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
-              style={{ backgroundColor: palette['gray-100'], padding: 8 }}
+              style={{
+                backgroundColor: palette['gray-100'],
+                padding: 12,
+                borderRadius: 8,
+              }}
               onPress={() => handleClickButton(4)}>
-              <Text fontWeight="Medium" color="gray-700" variants="titleMedium">
+              <Text fontWeight="Medium" color="gray-700" variants="titleSmall">
                 🥔 감자
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
-              style={{ backgroundColor: palette['gray-100'], padding: 8 }}
+              style={{
+                backgroundColor: palette['gray-100'],
+                padding: 12,
+                borderRadius: 8,
+              }}
               onPress={() => handleClickButton(4)}>
-              <Text fontWeight="Medium" color="gray-700" variants="titleMedium">
+              <Text fontWeight="Medium" color="gray-700" variants="titleSmall">
                 🍅 토마토
               </Text>
             </TouchableOpacity>

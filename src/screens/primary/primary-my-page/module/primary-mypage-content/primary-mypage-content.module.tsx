@@ -51,20 +51,14 @@ export const PrimaryMyPageContentModule =
             }}
             space={24}>
             <Stack horizontal>
-              <Text
-                variants={'bodyLarge'}
-                fontWeight={'Bold'}
-                color={'gray-900'}>
+              <Text variants={'bodyLarge'} fontWeight={'Bold'} color={'black'}>
                 정보
               </Text>
             </Stack>
 
             <Stack space={24}>
               <InfoItem text="로그아웃" onPress={handlePressLogOut} />
-              <InfoItem
-                text="회원정보 확인"
-                onPress={handlePressUserInfoCheck}
-              />
+              <InfoItem text="회원정보" onPress={handlePressUserInfoCheck} />
               <InfoItem
                 text="About BloomMate"
                 onPress={handlePressAboutBloomMate}

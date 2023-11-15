@@ -45,7 +45,7 @@ export const PrimaryPlantListScreen = ({}: PrimaryPlantListScreenProps) => {
   return (
     <BasicLayout backgroundColor="gray-100" tabBar>
       <ModalHeader
-        left={{ type: 'string', title: '식물 리스트' }}
+        left={{ type: 'string', title: '식물리스트' }}
         onPressExit={() => navigation.goBack()}
       />
       <Tab.Navigator

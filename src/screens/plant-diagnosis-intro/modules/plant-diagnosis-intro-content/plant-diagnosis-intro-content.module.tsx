@@ -44,7 +44,7 @@ export const PlantDiagnosisIntroContentModule =
               />
             </Box>
             <Stack space={8}>
-              <Text variants="titleLarge" fontWeight="Medium" color="gray-900">
+              <Text variants="titleLarge" fontWeight="Bold" color="black">
                 {`AI 식물 진단 - ${plant_nickname}`}
               </Text>
               <Text variants="labelLarge" fontWeight="Medium" color="gray-700">
