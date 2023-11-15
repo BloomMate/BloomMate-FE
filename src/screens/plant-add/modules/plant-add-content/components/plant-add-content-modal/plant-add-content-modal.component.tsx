@@ -33,7 +33,7 @@ export const PlantAddContentVarietyModalComponent =
       <Modal isVisible={isVisible} isBottomSheet={true}>
         <Box
           paddingX={32}
-          paddingY={12}
+          paddingY={20}
           style={{
             minHeight: 390,
             borderTopRightRadius: 24,
@@ -41,35 +41,51 @@ export const PlantAddContentVarietyModalComponent =
             backgroundColor: palette['white'],
           }}>
           <Stack space={20}>
-            <Text fontWeight="Medium" color="gray-900" variants="titleMedium">
+            <Text fontWeight="Bold" color="black" variants="titleMedium">
               품종
             </Text>
 
             <TouchableOpacity
               onPress={() => handleClickButton(2)}
-              style={{ backgroundColor: palette['gray-100'], padding: 8 }}>
-              <Text fontWeight="Medium" color="gray-700" variants="titleMedium">
+              style={{
+                backgroundColor: palette['gray-100'],
+                padding: 12,
+                borderRadius: 8,
+              }}>
+              <Text fontWeight="Medium" color="gray-700" variants="titleSmall">
                 🍓 딸기
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
-              style={{ backgroundColor: palette['gray-100'], padding: 8 }}
+              style={{
+                backgroundColor: palette['gray-100'],
+                padding: 12,
+                borderRadius: 8,
+              }}
               onPress={() => handleClickButton(3)}>
-              <Text fontWeight="Medium" color="gray-700" variants="titleMedium">
+              <Text fontWeight="Medium" color="gray-700" variants="titleSmall">
                 🌽 옥수수
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
-              style={{ backgroundColor: palette['gray-100'], padding: 8 }}
+              style={{
+                backgroundColor: palette['gray-100'],
+                padding: 12,
+                borderRadius: 8,
+              }}
               onPress={() => handleClickButton(4)}>
-              <Text fontWeight="Medium" color="gray-700" variants="titleMedium">
+              <Text fontWeight="Medium" color="gray-700" variants="titleSmall">
                 🥔 감자
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
-              style={{ backgroundColor: palette['gray-100'], padding: 8 }}
+              style={{
+                backgroundColor: palette['gray-100'],
+                padding: 12,
+                borderRadius: 8,
+              }}
               onPress={() => handleClickButton(4)}>
-              <Text fontWeight="Medium" color="gray-700" variants="titleMedium">
+              <Text fontWeight="Medium" color="gray-700" variants="titleSmall">
                 🍅 토마토
               </Text>
             </TouchableOpacity>
