@@ -34,10 +34,10 @@ export const PlantListItem = memo<PlantListItemProps>(
           borderTopLeftRadius: 8,
           borderTopRightRadius: 8,
           borderTopStartRadius: 8,
-          borderBottomLeftRadius: 12,
-          borderBottomEndRadius: 12,
-          borderBottomRightRadius: 12,
-          borderBottomStartRadius: 12,
+          borderBottomLeftRadius: 8,
+          borderBottomEndRadius: 8,
+          borderBottomRightRadius: 8,
+          borderBottomStartRadius: 8,
         }}>
         <Columns>
           <Column width="content" padding={10}>
