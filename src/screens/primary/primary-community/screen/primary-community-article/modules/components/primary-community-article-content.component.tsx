@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import { memo } from 'react';
 import { Image, TouchableOpacity } from 'react-native';
 
-import { PrimaryCommunityScreenNavigatorProp } from '../../../../primary-community.screen';
+import { PrimaryArticleWebviewScreenNavigatorProp } from '../../primary-article-webview.screen';
 
 import { Text } from '@/atoms';
 
@@ -17,17 +17,24 @@ type PrimaryCommuntiyArticleItemProps = {
 export const PrimaryCommuntiyArticleItem =
   memo<PrimaryCommuntiyArticleItemProps>(
     ({ id, article_content, article_thumbnail_url, article_title }) => {
-      const navigation = useNavigation<PrimaryCommunityScreenNavigatorProp>();
+      const navigation =
+        useNavigation<PrimaryArticleWebviewScreenNavigatorProp>();
+
+      const handlePressArticle = () => {
+        navigation.navigate('PrimaryArticleWebviewScreen', {
+          article_content: article_content,
+        });
+      };
 
       return (
         <Rows space={12}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={handlePressArticle}>
             <Row>
               <Image
                 source={{
                   uri: article_thumbnail_url,
                 }}
-                style={{ aspectRatio: 190 / 80 }}
+                style={{ aspectRatio: 190 / 80, borderRadius: 10 }}
               />
             </Row>
           </TouchableOpacity>
