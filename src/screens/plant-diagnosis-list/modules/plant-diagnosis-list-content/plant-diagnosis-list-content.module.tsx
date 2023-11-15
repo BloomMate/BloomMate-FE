@@ -19,7 +19,7 @@ export const PlantDiagnosisListContentModule =
         ItemSeparatorComponent={() => <Box style={{ height: 20 }} />}
         ListHeaderComponent={() => (
           <Box paddingY={32}>
-            <Text variants="titleLarge" fontWeight="Medium" color="gray-900">
+            <Text variants="titleLarge" fontWeight="Bold" color="black">
               진단 기록 - 킹왕옥수수
             </Text>
           </Box>

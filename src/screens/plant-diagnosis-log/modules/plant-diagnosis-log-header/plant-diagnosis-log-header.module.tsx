@@ -20,7 +20,7 @@ export const PlantDiagnosisLogHeader = memo<PlantDiagnosisLogHeaderModules>(
     return (
       <Stack space={32}>
         <ModalHeader left={{ type: 'icon' }} onPressExit={onPressExit} />
-        <Text variants="titleLarge" fontWeight="Medium" color="gray-900">
+        <Text variants="titleLarge" fontWeight="Bold" color="black">
           진단결과 - 팝콘묵자
         </Text>
       </Stack>
