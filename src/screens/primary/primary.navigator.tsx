@@ -59,7 +59,7 @@ export const PrimaryNavigator = () => {
         options={{
           tabBarLabel: '',
           tabBarIcon: ({ color }) => {
-            return <Icon color={color} size={28} name="article" />;
+            return <Icon color={color} size={28} name="note-alt" />;
           },
         }}
       />
