@@ -23,7 +23,7 @@ export const UserInfoContentModule = ({}: UserInfoContentModuleProps) => {
         }}>
         <Stack paddingBottom={24}>
           <Text variants={'bodyLarge'} fontWeight={'Bold'} color={'black'}>
-            회원 정보
+            회원정보
           </Text>
         </Stack>
 
