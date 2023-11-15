@@ -16,6 +16,7 @@ import { PlantDiagnosisListScreen } from './plant-diagnosis-list';
 import { PlantDiagnosisLogScreen } from './plant-diagnosis-log';
 import { PlantDiagnosisResultScreen } from './plant-diagnosis-result';
 import { PrimaryNavigator, PrimaryNavigatorParamLists } from './primary';
+import { PrimaryArticleWebviewScreen } from './primary/primary-community/screen';
 import { SignUpScreen } from './signup';
 import { UserInfoScreen } from './user-info';
 
@@ -35,6 +36,7 @@ export type RootStackParamList = {
   UserInfoScreen: undefined;
   PrimaryStack: NavigatorScreenParams<PrimaryNavigatorParamLists>;
   PlantAddScreen: undefined;
+  PrimaryArticleWebview: { article_content: string };
 };
 
 type RootNavigatorProps = {};
@@ -80,6 +82,10 @@ export const RootNavigator = ({}: RootNavigatorProps) => {
         />
         <Stack.Screen name="UserInfoScreen" component={UserInfoScreen} />
         <Stack.Screen name="PrimaryStack" component={PrimaryNavigator} />
+        <Stack.Screen
+          name="PrimaryArticleWebview"
+          component={PrimaryArticleWebviewScreen}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

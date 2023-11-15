@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import { memo } from 'react';
 import { Image, TouchableOpacity } from 'react-native';
 
-import { PrimaryArticleWebviewScreenNavigatorProp } from '../../primary-article-webview.screen';
+import { PrimaryArticleWebviewScreenNavigationProps } from '../../primary-article-webview.screen';
 
 import { Text } from '@/atoms';
 
@@ -18,10 +18,10 @@ export const PrimaryCommuntiyArticleItem =
   memo<PrimaryCommuntiyArticleItemProps>(
     ({ id, article_content, article_thumbnail_url, article_title }) => {
       const navigation =
-        useNavigation<PrimaryArticleWebviewScreenNavigatorProp>();
+        useNavigation<PrimaryArticleWebviewScreenNavigationProps>();
 
       const handlePressArticle = () => {
-        navigation.navigate('PrimaryArticleWebviewScreen', {
+        navigation.navigate('PrimaryArticleWebview', {
           article_content: article_content,
         });
       };

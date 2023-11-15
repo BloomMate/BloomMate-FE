@@ -5,7 +5,6 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../root.navigator';
 
 import { PrimaryCommunityScreen } from './primary-community';
-import { PrimaryArticleWebviewScreen } from './primary-community/screen';
 import { PrimaryMyPageScreen } from './primary-my-page';
 import { PrimaryPlantListScreen } from './primary-plant-list';
 
@@ -74,10 +73,6 @@ export const PrimaryNavigator = () => {
             return <Icon color={color} size={28} name="person-outline" />;
           },
         }}
-      />
-      <Tab.Screen
-        name="PrimaryArticleWebviewScreen"
-        component={PrimaryArticleWebviewScreen}
       />
     </Tab.Navigator>
   );

@@ -1,40 +1,29 @@
-import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
-import {
-  CompositeNavigationProp,
-  RouteProp,
-  useRoute,
-} from '@react-navigation/native';
+import { RouteProp, useRoute } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 import { Suspense } from 'react';
 import WebView from 'react-native-webview';
 
-import {
-  PrimaryNavigatorParamLists,
-  PrimaryNavigatorProps,
-} from '../../../primary.navigator';
+import { RootStackParamList } from '../../../../root.navigator';
 
 import { LoadingPage } from '@/layouts';
 
 type PrimaryArticleWebviewScreenProps = {};
 
-export type PrimaryArticleWebviewScreenNavigatorProp = CompositeNavigationProp<
-  PrimaryNavigatorProps,
-  BottomTabNavigationProp<
-    PrimaryNavigatorParamLists,
-    'PrimaryArticleWebviewScreen'
-  >
+export type PrimaryArticleWebviewScreenNavigationProps = StackNavigationProp<
+  RootStackParamList,
+  'PrimaryArticleWebview'
 >;
 
-export type PrimaryArticleWebviewScreenRouteProp = RouteProp<
-  PrimaryNavigatorParamLists,
-  'PrimaryArticleWebviewScreen'
+export type PrimaryArticleWebviewScreenRouteProps = RouteProp<
+  RootStackParamList,
+  'PrimaryArticleWebview'
 >;
 
 export const PrimaryArticleWebviewScreen =
   ({}: PrimaryArticleWebviewScreenProps) => {
     const {
       params: { article_content },
-    } = useRoute<PrimaryArticleWebviewScreenRouteProp>();
-    console.log(article_content);
+    } = useRoute<PrimaryArticleWebviewScreenRouteProps>();
 
     return (
       <Suspense fallback={<LoadingPage />}>
