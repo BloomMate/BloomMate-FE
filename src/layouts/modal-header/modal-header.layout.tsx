@@ -37,7 +37,7 @@ export const ModalHeader = memo<ModalHeaderProps>(({ left, onPressExit }) => {
       name="arrow-back-ios"
       onPress={handlePressBackIcon}
       size={24}
-      color={palette['gray-900']}
+      color={palette['black']}
     />
   );
 });
