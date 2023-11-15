@@ -1,6 +1,8 @@
 import { Box } from '@mobily/stacks';
 import { Suspense } from 'react';
 
+import { PrimaryCommunityQnaFloatingModule } from './modules';
+
 import { LoadingPage } from '@/layouts';
 import { palette } from '@/utils';
 
@@ -16,7 +18,9 @@ export const PrimaryCommunityQnaScreen =
           style={{
             backgroundColor: palette['gray-100'],
             height: '100%',
-          }}></Box>
+          }}>
+          <PrimaryCommunityQnaFloatingModule />
+        </Box>
       </Suspense>
     );
   };
