@@ -11,6 +11,8 @@ type PrimaryCommunityQnaListModuleProps = {};
 export const PrimaryCommunityQnaListModule =
   memo<PrimaryCommunityQnaListModuleProps>(() => {
     const data = QUESTION_LIST_DUMMY_DATA;
+    //TODO:추후 실 data와 연결
+    //const { data } = useGetQuestionListQuery();
 
     return (
       <FlatList
