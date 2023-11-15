@@ -33,7 +33,10 @@ export const SignUpContentToggleButtonComponent =
                   borderWidth: 1,
                   borderColor: palette['gray-900'],
                 },
-                selected && { backgroundColor: palette['teal-200'] },
+                selected && {
+                  backgroundColor: palette['teal-100'],
+                  borderColor: palette['primary'],
+                },
               ]}
               alignX="center"
               alignY="center">
