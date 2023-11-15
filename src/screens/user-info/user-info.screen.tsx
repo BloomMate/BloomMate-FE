@@ -4,6 +4,8 @@ import { StackNavigationProp } from '@react-navigation/stack';
 
 import { RootStackParamList } from '../root.navigator';
 
+import { UserInfoHeaderModule } from './module/user-info-screen-header/user-info-screen-header';
+
 import { Text } from '@/atoms';
 import { USER_DETAIL_DUMMY_DATA } from '@/dummy-data/user-detail-dummy-data';
 import { BasicLayout } from '@/layouts';
@@ -28,6 +30,7 @@ export const UserInfoScreen = ({}: UserInfoScreenProps) => {
   return (
     <BasicLayout backgroundColor="gray-100">
       <Stack>
+        <UserInfoHeaderModule />
         <UserInfoItem title="이름" content={user_name} />
         <UserInfoItem title="계정 ID" content={account_id} />
         <UserInfoItem title="Tiiun 번호" content={tiiun_number} />
