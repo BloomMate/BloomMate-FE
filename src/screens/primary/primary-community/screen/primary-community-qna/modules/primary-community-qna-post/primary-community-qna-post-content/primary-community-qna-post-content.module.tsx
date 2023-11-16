@@ -1,4 +1,4 @@
-import { Stack } from '@mobily/stacks';
+import { Box, Stack } from '@mobily/stacks';
 import { memo } from 'react';
 
 import {
@@ -11,9 +11,11 @@ type PrimaryCommunityQnaPostContentModuleProps = {};
 export const PrimaryCommunityQnaPostContentModule =
   memo<PrimaryCommunityQnaPostContentModuleProps>(() => {
     return (
-      <Stack space={32}>
-        <PrimaryCommunityQnaPostContentTitleComponent />
-        <PrimaryCommunityQnaPostContentContentComponent />
-      </Stack>
+      <Box flex="fluid">
+        <Stack space={32} paddingTop={32}>
+          <PrimaryCommunityQnaPostContentTitleComponent />
+          <PrimaryCommunityQnaPostContentContentComponent />
+        </Stack>
+      </Box>
     );
   });

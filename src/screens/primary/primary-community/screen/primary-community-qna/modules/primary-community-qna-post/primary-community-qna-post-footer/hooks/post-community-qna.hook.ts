@@ -1,5 +1,6 @@
 import { useMutation } from 'react-query';
 
+import { queryClient } from '@/providers';
 import { defaultAxios, logHttpErrorMessage } from '@/utils';
 
 type PostCommunityQnARequestProps = {
@@ -24,7 +25,7 @@ export const usePostCommunityQnaMutation = () => {
     }: PostCommunityQnARequestProps) => {
       try {
         const { data } = await defaultAxios.post<PostCommunityQnAData>(
-          '/community/create/',
+          'community/create',
           {
             question_title: question_title,
             question_content: question_content,
@@ -36,6 +37,11 @@ export const usePostCommunityQnaMutation = () => {
         logHttpErrorMessage(error);
         throw new Error(error as string);
       }
+    },
+    {
+      onSuccess: () => {
+        return queryClient.invalidateQueries('/community/?page_size=10');
+      },
     },
   );
 };

@@ -3,7 +3,7 @@ import { memo } from 'react';
 import { SubmitHandler, useFormContext } from 'react-hook-form';
 
 import { PrimaryNavigatorProps } from '../../../../../../primary.navigator';
-import { QnAForm } from '../hooks';
+import { QnAForm } from '../../../hooks';
 
 import { usePostCommunityQnaMutation } from './hooks';
 
@@ -39,6 +39,7 @@ export const PrimaryCommunityQnaPostFooterModule =
 
     return (
       <Button
+        style={{ marginTop: 16 }}
         onPress={handlePressButton}
         disabled={!isPostQnAPossible}
         mode="contained">
