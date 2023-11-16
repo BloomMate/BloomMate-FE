@@ -13,12 +13,12 @@ export const DetailItem = ({ detail }: DetailItemProps) => (
   <Stack horizontal>
     <Text
       style={{ minWidth: 81 }}
-      variants="bodySmall"
+      variants="bodyMedium"
       fontWeight={'Medium'}
       color={'gray-900'}>
       {detail.title}
     </Text>
-    <Text variants={'bodySmall'} fontWeight={'Light'} color={'gray-900'}>
+    <Text variants={'bodyMedium'} fontWeight={'Medium'} color={'gray-700'}>
       {detail.content}
     </Text>
   </Stack>
