@@ -1,17 +1,21 @@
 import { Box, Stack } from '@mobily/stacks';
+import { useNavigation } from '@react-navigation/native';
 import { memo } from 'react';
 import { TouchableOpacity } from 'react-native';
+
+import { PrimaryCommunityQnaPostScreenNavigationProps } from '../../primary-community-qna-post.screen';
 
 import { Icon, PointLinearGradient, Text } from '@/atoms';
 import { palette } from '@/utils';
 
-// TODO : props 삭제 예정
 type PrimaryCommunityQnaFloatingModuleProps = {};
 
 export const PrimaryCommunityQnaFloatingModule = memo(
   ({}: PrimaryCommunityQnaFloatingModuleProps) => {
+    const navigation =
+      useNavigation<PrimaryCommunityQnaPostScreenNavigationProps>();
     const handlePressButton = () => {
-      console.log('누르면 질의응답 등록');
+      navigation.navigate('PrimaryCommunityQnaPostScreen');
     };
 
     return (
