@@ -75,7 +75,7 @@ export const TextInput = ({
         right={
           rightIconName && (
             <PaperTextInput.Icon
-              color={palette['gray-400']}
+              color={palette['gray-900']}
               icon={rightIconName}
             />
           )

@@ -34,10 +34,10 @@ export const PlantListItem = memo<PlantListItemProps>(
           borderTopLeftRadius: 8,
           borderTopRightRadius: 8,
           borderTopStartRadius: 8,
-          borderBottomLeftRadius: 12,
-          borderBottomEndRadius: 12,
-          borderBottomRightRadius: 12,
-          borderBottomStartRadius: 12,
+          borderBottomLeftRadius: 8,
+          borderBottomEndRadius: 8,
+          borderBottomRightRadius: 8,
+          borderBottomStartRadius: 8,
         }}>
         <Columns>
           <Column width="content" padding={10}>
@@ -48,16 +48,19 @@ export const PlantListItem = memo<PlantListItemProps>(
             />
           </Column>
           <Column width="fluid" paddingY={16} paddingLeft={12}>
-            <Stack space={16}>
+            <Stack space={12}>
               <Stack horizontal space={8} align="center">
-                <Text variants="bodyMedium" color="black" fontWeight="Medium">
+                <Text variants="bodyLarge" color="black" fontWeight="Medium">
                   {plant_nickname}
                 </Text>
-                <Text variants="bodySmall" color="gray-700" fontWeight="Light">
+                <Text
+                  variants="bodyMedium"
+                  color="gray-700"
+                  fontWeight="Medium">
                   {`함께한 지 ${calculateDaysDifference(planted_at)}일째`}
                 </Text>
               </Stack>
-              <Text variants="labelSmall" fontWeight="Medium" color="primary">
+              <Text variants="bodySmall" fontWeight="Medium" color="primary">
                 {getPlantListItemCopyByGrowthLevel(growth_level)}
               </Text>
             </Stack>
@@ -74,7 +77,10 @@ export const PlantListItem = memo<PlantListItemProps>(
                 alignItems: 'center',
               }}>
               <Stack horizontal space={4} align="center">
-                <Text variants="bodySmall" fontWeight="Medium" color="gray-700">
+                <Text
+                  variants="bodyMedium"
+                  fontWeight="Medium"
+                  color="gray-700">
                   채팅하기
                 </Text>
                 <Icon
@@ -95,7 +101,10 @@ export const PlantListItem = memo<PlantListItemProps>(
                 alignItems: 'center',
               }}>
               <Stack horizontal space={4} align="center">
-                <Text variants="bodySmall" fontWeight="Medium" color="gray-700">
+                <Text
+                  variants="bodyMedium"
+                  fontWeight="Medium"
+                  color="gray-700">
                   상세정보
                 </Text>
                 <Icon name="list-alt" size={20} color={palette['gray-700']} />

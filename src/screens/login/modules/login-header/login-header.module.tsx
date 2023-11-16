@@ -18,7 +18,7 @@ export const LoginHeaderModule = memo<LoginHeaderModuleProps>(() => {
   return (
     <Stack space={32}>
       <ModalHeader left={{ type: 'icon' }} onPressExit={handlePressBack} />
-      <Text fontWeight="Medium" variants="titleLarge" color="gray-900">
+      <Text fontWeight="Bold" variants="titleLarge" color="black">
         로그인
       </Text>
     </Stack>

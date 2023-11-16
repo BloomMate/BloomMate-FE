@@ -44,7 +44,7 @@ export const SignUpContentPotComponent = memo<SignUpContentPotComponentProps>(
           {renderImages()}
         </Stack>
         <Text
-          variants="labelMedium"
+          variants="bodyMedium"
           fontWeight="Medium"
           color="gray-700"
           textAlignment="center">
