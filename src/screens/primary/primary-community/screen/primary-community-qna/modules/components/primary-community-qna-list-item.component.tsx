@@ -24,7 +24,6 @@ export const PrimaryCommuntiyQnaListItem =
 
       const question_date = created_at.slice(0, 10);
       const handlePressItem = () => {
-        console.log(id, '누르면 질의응답 상세');
         navigation.navigate('PrimaryCommunityQnaDetailScreen', {
           id: id,
         });
