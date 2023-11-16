@@ -4,19 +4,18 @@ import { Text } from 'react-native';
 
 import { PrimaryPlantListScreenNavigatorProp } from '../../../primary/primary-plant-list';
 
-type PrimaryMyPageContentModuleProps = {};
+type PlantUpdateContentModuleProps = {};
 
-export const PrimaryMyPageContentModule =
-  ({}: PrimaryMyPageContentModuleProps) => {
-    const navigation = useNavigation<PrimaryPlantListScreenNavigatorProp>();
+export const PlantUpdateContentModule = ({}: PlantUpdateContentModuleProps) => {
+  const navigation = useNavigation<PrimaryPlantListScreenNavigatorProp>();
 
-    const handlePressPlantUpdate = () => {
-      navigation.navigate('UserInfoScreen');
-    };
-
-    return (
-      <Stack>
-        <Text onPress={handlePressPlantUpdate}>여길 눌러</Text>
-      </Stack>
-    );
+  const handlePressPlantUpdate = () => {
+    navigation.navigate('UserInfoScreen');
   };
+
+  return (
+    <Stack>
+      <Text onPress={handlePressPlantUpdate}>여길 눌러</Text>
+    </Stack>
+  );
+};

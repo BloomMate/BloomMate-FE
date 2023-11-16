@@ -4,6 +4,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 
 import { RootStackParamList } from '../root.navigator';
 
+import { PlantUpdateContentModule } from './module/plant-update-content';
 import { PlantUpdateHeaderModule } from './module/plant-update-header/plant-update-header.module';
 
 import { BasicLayout } from '@/layouts';
@@ -25,6 +26,7 @@ export const PlantUpdateScreen = ({}: PlantUpdateScreenProps) => {
     <BasicLayout backgroundColor="gray-100">
       <Stack>
         <PlantUpdateHeaderModule />
+        <PlantUpdateContentModule />
       </Stack>
     </BasicLayout>
   );
