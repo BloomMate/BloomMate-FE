@@ -1,6 +1,9 @@
 import { Box, Column, Columns, Stack } from '@mobily/stacks';
+import { useNavigation } from '@react-navigation/native';
 import { memo } from 'react';
 import { TouchableOpacity } from 'react-native';
+
+import { PrimaryCommunityQnaDetailScreenNavigationProps } from '../../primary-community-qna-detail.screen';
 
 import { Text } from '@/atoms';
 import { palette } from '@/utils';
@@ -16,9 +19,15 @@ type PrimaryCommuntiyQnaListItemProps = {
 export const PrimaryCommuntiyQnaListItem =
   memo<PrimaryCommuntiyQnaListItemProps>(
     ({ id, created_at, question_title, question_content, is_answered }) => {
+      const navigation =
+        useNavigation<PrimaryCommunityQnaDetailScreenNavigationProps>();
+
       const question_date = created_at.slice(0, 10);
       const handlePressItem = () => {
         console.log(id, '누르면 질의응답 상세');
+        navigation.navigate('PrimaryCommunityQnaDetailScreen', {
+          id: id,
+        });
       };
 
       return (

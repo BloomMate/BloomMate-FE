@@ -41,7 +41,7 @@ export type RootStackParamList = {
   PrimaryStack: NavigatorScreenParams<PrimaryNavigatorParamLists>;
   PlantAddScreen: undefined;
   PrimaryArticleWebview: { article_content: string };
-  PrimaryCommunityQnaDetailScreen: undefined;
+  PrimaryCommunityQnaDetailScreen: { id: number };
   PrimaryCommunityQnaPostScreen: undefined;
 };
 

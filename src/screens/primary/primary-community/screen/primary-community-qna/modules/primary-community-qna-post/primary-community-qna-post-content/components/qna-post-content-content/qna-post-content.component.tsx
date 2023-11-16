@@ -19,7 +19,7 @@ export const PrimaryCommunityQnaPostContentContentComponent =
     } = useController({ control, name: 'question_content' });
 
     const placeholder =
-      '식물에 대해서 궁금한 점을 질문하세요.\n자세하게 작성할 수록, BloomMate팀이 \n더 정확한 정보와 팁을 제공합니다';
+      '식물에 대해서 궁금한 점을 질문하세요.\n\n자세하게 작성할 수록, BloomMate팀이 \n더 정확한 정보와 팁을 제공합니다';
 
     return (
       <TextInput
@@ -27,8 +27,10 @@ export const PrimaryCommunityQnaPostContentContentComponent =
         placeholder={placeholder}
         value={value}
         onChangeText={onChange}
+        multiline={true}
         error={!isUndefined(fieldState.error)}
         errorMsg={fieldState.error?.message as string}
+        contentStyle={{ height: 200 }}
       />
     );
   });
