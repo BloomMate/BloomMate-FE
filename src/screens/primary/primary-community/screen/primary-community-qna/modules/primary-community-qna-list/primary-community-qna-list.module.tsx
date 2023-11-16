@@ -4,20 +4,19 @@ import { FlatList } from 'react-native';
 
 import { PrimaryCommuntiyQnaListItem } from '../components';
 
-import { QUESTION_LIST_DUMMY_DATA } from '@/dummy-data';
+import { useGetQuestionListQuery } from '@/hooks';
 
 type PrimaryCommunityQnaListModuleProps = {};
 
 export const PrimaryCommunityQnaListModule =
   memo<PrimaryCommunityQnaListModuleProps>(() => {
-    const data = QUESTION_LIST_DUMMY_DATA;
-    //TODO:추후 실 data와 연결
-    //const { data } = useGetQuestionListQuery();
+    const { data } = useGetQuestionListQuery();
+    const item = data?.DATA;
 
     return (
       <FlatList
         contentContainerStyle={{ flexGrow: 1 }}
-        data={data}
+        data={item}
         ItemSeparatorComponent={() => <Box style={{ height: 16 }} />}
         renderItem={({ item }) => <PrimaryCommuntiyQnaListItem {...item} />}
         ListFooterComponent={<Box style={{ height: 40 }} />}

@@ -6,7 +6,7 @@ import { Text } from '@/atoms';
 import { palette } from '@/utils';
 
 type PrimaryCommuntiyQnaListItemProps = {
-  id: string;
+  id: number;
   created_at: string;
   question_title: string;
   question_content: string;
