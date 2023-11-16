@@ -5,7 +5,14 @@ import { Suspense } from 'react';
 
 import { RootStackParamList } from '../../../../root.navigator';
 
-import { LoadingPage, ModalHeader } from '@/layouts';
+import {
+  PrimaryCommunityQnaDetailAnswerModule,
+  PrimaryCommunityQnaDetailHeaderModule,
+  PrimaryCommunityQnaDetailQuestionModule,
+} from './modules';
+
+import { useGetQuestionDetailQuery } from '@/hooks';
+import { LoadingPage } from '@/layouts';
 import { palette } from '@/utils';
 
 export type PrimaryCommunityQnaDetailScreenNavigationProps =
@@ -24,24 +31,27 @@ export const PrimaryCommunityQnaDetailScreen =
       params: { id },
     } = useRoute<PrimaryCommunityQnaDetailScreenRouteProps>();
 
-    const handlePressButton = () => {
-      console.log(id);
-    };
+    const { data } = useGetQuestionDetailQuery(id);
 
-    return (
-      <Suspense fallback={<LoadingPage />}>
-        <Box
-          paddingY={32}
-          paddingX={24}
-          style={{
-            backgroundColor: palette['gray-100'],
-            height: '100%',
-          }}>
-          <ModalHeader
-            left={{ type: 'icon' }}
-            onPressExit={handlePressButton}
-          />
-        </Box>
-      </Suspense>
-    );
+    if (data) {
+      const filteredData = data.DATA.filter(item => item.id === id);
+
+      return (
+        <Suspense fallback={<LoadingPage />}>
+          <Box
+            paddingY={32}
+            paddingX={24}
+            style={{
+              backgroundColor: palette['gray-100'],
+              height: '100%',
+            }}>
+            <PrimaryCommunityQnaDetailHeaderModule />
+            <PrimaryCommunityQnaDetailQuestionModule data={filteredData} />
+            <PrimaryCommunityQnaDetailAnswerModule />
+          </Box>
+        </Suspense>
+      );
+    } else {
+      console.log(data);
+    }
   };
