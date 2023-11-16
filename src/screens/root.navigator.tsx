@@ -15,6 +15,7 @@ import { PlantDiagnosisIntroScreen } from './plant-diagnosis-intro';
 import { PlantDiagnosisListScreen } from './plant-diagnosis-list';
 import { PlantDiagnosisLogScreen } from './plant-diagnosis-log';
 import { PlantDiagnosisResultScreen } from './plant-diagnosis-result';
+import { PlantUpdateScreen } from './plant-update/plant-update.screen';
 import { PrimaryNavigator, PrimaryNavigatorParamLists } from './primary';
 import { SignUpScreen } from './signup';
 import { UserInfoScreen } from './user-info';
@@ -33,6 +34,7 @@ export type RootStackParamList = {
   PlantDiagnosisListScreen: { id: number };
   PlantDiagnosisLogScreen: { diagnosis_id: number };
   UserInfoScreen: undefined;
+  PlantUpdateScreen: undefined;
   PrimaryStack: NavigatorScreenParams<PrimaryNavigatorParamLists>;
   PlantAddScreen: undefined;
 };
@@ -79,6 +81,7 @@ export const RootNavigator = ({}: RootNavigatorProps) => {
           component={PlantDiagnosisLogScreen}
         />
         <Stack.Screen name="UserInfoScreen" component={UserInfoScreen} />
+        <Stack.Screen name="PlantUpdateScreen" component={PlantUpdateScreen} />
         <Stack.Screen name="PrimaryStack" component={PrimaryNavigator} />
       </Stack.Navigator>
     </NavigationContainer>

@@ -7,7 +7,7 @@ import { palette } from '@/utils';
 type UserInfoContentModuleProps = {};
 
 export const UserInfoContentModule = ({}: UserInfoContentModuleProps) => {
-  const data = USER_DETAIL_DUMMY_DATA; // 더미 데이터를 직접 사용합니다
+  const data = USER_DETAIL_DUMMY_DATA;
 
   const { user_name, account_id, tiiun_number, garden_size, address } = data;
 
