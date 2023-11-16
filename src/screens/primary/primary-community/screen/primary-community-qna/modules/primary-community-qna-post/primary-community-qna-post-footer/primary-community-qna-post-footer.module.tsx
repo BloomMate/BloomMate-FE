@@ -1,3 +1,4 @@
+import { Box } from '@mobily/stacks';
 import { useNavigation } from '@react-navigation/native';
 import { memo } from 'react';
 import { SubmitHandler, useFormContext } from 'react-hook-form';
@@ -38,12 +39,14 @@ export const PrimaryCommunityQnaPostFooterModule =
     const isPostQnAPossible = isDirty && isValid;
 
     return (
-      <Button
-        style={{ marginTop: 16 }}
-        onPress={handlePressButton}
-        disabled={!isPostQnAPossible}
-        mode="contained">
-        질문하기
-      </Button>
+      <Box flex="content">
+        <Button
+          style={{ marginTop: 16 }}
+          onPress={handlePressButton}
+          disabled={!isPostQnAPossible}
+          mode="contained">
+          질문하기
+        </Button>
+      </Box>
     );
   });

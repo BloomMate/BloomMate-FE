@@ -1,4 +1,4 @@
-import { Box } from '@mobily/stacks';
+import { Box, Row, Rows } from '@mobily/stacks';
 import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Suspense } from 'react';
@@ -41,8 +41,14 @@ export const PrimaryCommunityQnaPostScreen =
               height: '100%',
             }}>
             <PrimaryCommunityQnaPostHeaderModule />
-            <PrimaryCommunityQnaPostContentModule />
-            <PrimaryCommunityQnaPostFooterModule />
+            <Rows alignY="between">
+              <Row height="content">
+                <PrimaryCommunityQnaPostContentModule />
+              </Row>
+              <Row height="content">
+                <PrimaryCommunityQnaPostFooterModule />
+              </Row>
+            </Rows>
           </Box>
         </Suspense>
       </FormProvider>

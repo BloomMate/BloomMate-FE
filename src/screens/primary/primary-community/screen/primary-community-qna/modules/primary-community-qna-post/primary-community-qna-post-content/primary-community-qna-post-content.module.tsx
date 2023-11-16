@@ -11,7 +11,7 @@ type PrimaryCommunityQnaPostContentModuleProps = {};
 export const PrimaryCommunityQnaPostContentModule =
   memo<PrimaryCommunityQnaPostContentModuleProps>(() => {
     return (
-      <Box flex="fluid">
+      <Box>
         <Stack space={32} paddingTop={32}>
           <PrimaryCommunityQnaPostContentTitleComponent />
           <PrimaryCommunityQnaPostContentContentComponent />
