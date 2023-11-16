@@ -33,6 +33,7 @@ export type RootStackParamList = {
   PlantDiagnosisListScreen: { id: number };
   PlantDiagnosisLogScreen: { diagnosis_id: number };
   UserInfoScreen: undefined;
+
   PrimaryStack: NavigatorScreenParams<PrimaryNavigatorParamLists>;
   PlantAddScreen: undefined;
 };
