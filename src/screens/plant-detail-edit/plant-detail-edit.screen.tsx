@@ -3,7 +3,8 @@ import { StackNavigationProp } from '@react-navigation/stack';
 
 import { RootStackParamList } from '../root.navigator';
 
-import { Text } from '@/atoms';
+import { DetailEditHeaderModule } from './module/detail-edit-header';
+
 import { BasicLayout } from '@/layouts';
 
 type PlantDetailEditScreenProps = {};
@@ -21,9 +22,7 @@ export type PlantDetailEditScreenNavigationRouteProps = RouteProp<
 export const PlantDetailEditScreen = ({}: PlantDetailEditScreenProps) => {
   return (
     <BasicLayout backgroundColor="gray-100">
-      <Text variants="bodyMedium" fontWeight="Medium" color="gray-900">
-        Plant Detail Edit Screen
-      </Text>
+      <DetailEditHeaderModule />
     </BasicLayout>
   );
 };
