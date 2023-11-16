@@ -49,7 +49,7 @@ export const PlantDetailDetailsModule = memo<PlantDetailDetailsModule>(() => {
       <Stack space={12}>
         <Stack space={4} horizontal>
           <Icon color={palette['primary']} size={16} name={'list-alt'} />
-          <Text variants={'bodyMedium'} fontWeight={'Medium'} color={'primary'}>
+          <Text variants={'bodyLarge'} fontWeight={'Bold'} color={'primary'}>
             상세정보
           </Text>
         </Stack>
