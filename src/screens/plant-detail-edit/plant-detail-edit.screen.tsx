@@ -1,8 +1,10 @@
+import { Stack } from '@mobily/stacks';
 import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 
 import { RootStackParamList } from '../root.navigator';
 
+import { DetailEditContentModule } from './module/detail-edit-content';
 import { DetailEditHeaderModule } from './module/detail-edit-header';
 
 import { BasicLayout } from '@/layouts';
@@ -22,7 +24,15 @@ export type PlantDetailEditScreenNavigationRouteProps = RouteProp<
 export const PlantDetailEditScreen = ({}: PlantDetailEditScreenProps) => {
   return (
     <BasicLayout backgroundColor="gray-100">
-      <DetailEditHeaderModule />
+      <Stack space={48}>
+        <DetailEditHeaderModule />
+        <DetailEditContentModule
+          value={''}
+          onChange={function (text: string): void {
+            throw new Error('Function not implemented.');
+          }}
+        />
+      </Stack>
     </BasicLayout>
   );
 };
