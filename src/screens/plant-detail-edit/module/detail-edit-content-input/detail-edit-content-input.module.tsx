@@ -1,14 +1,12 @@
 import { Stack } from '@mobily/stacks';
-import { useRoute } from '@react-navigation/native';
-import { isUndefined } from 'lodash';
-
-import { PlantDetailEditScreenNavigationRouteProps } from '../../plant-detail-edit.screen';
 
 import { Text, TextInput } from '@/atoms';
-import { useGetPlantDetailQuery } from '@/hooks';
 
 type DetailEditContentInputModuleProps = {
-  placeholder?: string;
+  placeholder: {
+    title: string;
+    content: string;
+  }[];
   label?: string;
   value: string;
   onChange: (text: string) => void;
@@ -20,23 +18,11 @@ type DetailEditContentInputModuleProps = {
 export const DetailEditContentInputModule = ({
   value,
   onChange,
+  placeholder,
   error,
   errorMsg,
   secureTextEntry,
 }: DetailEditContentInputModuleProps) => {
-  const {
-    params: { id },
-  } = useRoute<PlantDetailEditScreenNavigationRouteProps>();
-  const { data } = useGetPlantDetailQuery({ plant_id: id });
-
-  if (isUndefined(data)) {
-    return null;
-  }
-
-  const { plant_name } = data;
-
-  const plantDetails = [{ title: '품종', content: plant_name }];
-
   return (
     <Stack space={48}>
       {/* 별명스택 */}
@@ -45,7 +31,7 @@ export const DetailEditContentInputModule = ({
           별명
         </Text>
         <TextInput
-          placeholder="토토로"
+          placeholder={placeholder[0].content} // placeholder는 배열 형태이므로 원하는 값을 추출하여 사용합니다.
           label="별명 수정"
           value={value}
           onChangeText={onChange}
