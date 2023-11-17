@@ -5,6 +5,7 @@ import { useState } from 'react';
 
 import { RootStackParamList } from '../root.navigator';
 
+import { DetailEditContentInputModule } from './module/detail-edit-content-input';
 import { DetailEditHeaderModule } from './module/detail-edit-header';
 
 import { BasicLayout } from '@/layouts';
@@ -32,6 +33,7 @@ export const PlantDetailEditScreen = ({}: PlantDetailEditScreenProps) => {
     <BasicLayout backgroundColor="gray-100">
       <Stack space={48}>
         <DetailEditHeaderModule />
+        <DetailEditContentInputModule value={value} onChange={handleChange} />
       </Stack>
     </BasicLayout>
   );

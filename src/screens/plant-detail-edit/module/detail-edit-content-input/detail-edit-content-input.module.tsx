@@ -1,6 +1,11 @@
 import { Stack } from '@mobily/stacks';
+import { useRoute } from '@react-navigation/native';
+import { isUndefined } from 'lodash';
+
+import { PlantDetailEditScreenNavigationRouteProps } from '../../plant-detail-edit.screen';
 
 import { Text, TextInput } from '@/atoms';
+import { useGetPlantDetailQuery } from '@/hooks';
 
 type DetailEditContentInputModuleProps = {
   placeholder?: string;
@@ -19,6 +24,19 @@ export const DetailEditContentInputModule = ({
   errorMsg,
   secureTextEntry,
 }: DetailEditContentInputModuleProps) => {
+  const {
+    params: { id },
+  } = useRoute<PlantDetailEditScreenNavigationRouteProps>();
+  const { data } = useGetPlantDetailQuery({ plant_id: id });
+
+  if (isUndefined(data)) {
+    return null;
+  }
+
+  const { plant_name } = data;
+
+  const plantDetails = [{ title: '품종', content: plant_name }];
+
   return (
     <Stack space={48}>
       {/* 별명스택 */}
