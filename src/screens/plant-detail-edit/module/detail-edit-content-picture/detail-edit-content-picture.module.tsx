@@ -26,7 +26,7 @@ export const DetailEditContentPictureModule =
 
     return (
       <Stack>
-        <Stack space={12}>
+        <Stack space={8}>
           <Box alignX="between" direction="row" alignY="center">
             <Text variants={'titleLarge'} fontWeight={'Bold'} color={'black'}>
               사진 업데이트
@@ -34,7 +34,7 @@ export const DetailEditContentPictureModule =
             <TouchableOpacity>
               <Box direction="row" alignX="center" alignY="center">
                 <Text variants="bodySmall" fontWeight="Bold" color="primary">
-                  {'업데이트 '}
+                  {'촬영하기'}
                 </Text>
                 <Icon
                   name="photo-camera"
