@@ -1,11 +1,11 @@
-import { Stack } from '@mobily/stacks';
+import { Box, Stack } from '@mobily/stacks';
 import { useRoute } from '@react-navigation/native';
 import { isUndefined } from 'lodash';
-import { View, Image } from 'react-native';
+import { View, Image, TouchableOpacity } from 'react-native';
 
 import { PlantDetailEditScreenNavigationRouteProps } from '../../plant-detail-edit.screen';
 
-import { Text } from '@/atoms';
+import { Icon, Text } from '@/atoms';
 import { useGetPlantDetailQuery } from '@/hooks';
 import { palette } from '@/utils';
 
@@ -27,9 +27,24 @@ export const DetailEditContentPictureModule =
     return (
       <Stack>
         <Stack space={12}>
-          <Text variants={'titleLarge'} fontWeight={'Bold'} color={'black'}>
-            사진 업데이트
-          </Text>
+          <Box alignX="between" direction="row" alignY="center">
+            <Text variants={'titleLarge'} fontWeight={'Bold'} color={'black'}>
+              사진 업데이트
+            </Text>
+            <TouchableOpacity>
+              <Box direction="row" alignX="center" alignY="center">
+                <Text variants="bodySmall" fontWeight="Bold" color="primary">
+                  {'업데이트 '}
+                </Text>
+                <Icon
+                  name="photo-camera"
+                  size={16}
+                  color={palette['primary']}
+                />
+              </Box>
+            </TouchableOpacity>
+          </Box>
+
           <View
             style={{
               borderRadius: 8,
