@@ -28,11 +28,11 @@ export const DetailEditContentInputModule = ({
       {/* 별명스택 */}
       <Stack space={12}>
         <Text variants={'titleLarge'} fontWeight={'Bold'} color={'black'}>
-          별명
+          별명 업데이트
         </Text>
         <TextInput
           placeholder={placeholder[0].content} // placeholder는 배열 형태이므로 원하는 값을 추출하여 사용합니다.
-          label="별명 수정"
+          label="별명"
           value={value}
           onChangeText={onChange}
           error={error}
