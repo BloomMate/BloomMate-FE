@@ -2,7 +2,7 @@ import { Stack } from '@mobily/stacks';
 
 import { Text, TextInput } from '@/atoms';
 
-type DetailEditContentModuleProps = {
+type DetailEditContentInputModuleProps = {
   placeholder?: string;
   label?: string;
   value: string;
@@ -12,13 +12,13 @@ type DetailEditContentModuleProps = {
   secureTextEntry?: boolean;
 };
 
-export const DetailEditContentModule = ({
+export const DetailEditContentInputModule = ({
   value,
   onChange,
   error,
   errorMsg,
   secureTextEntry,
-}: DetailEditContentModuleProps) => {
+}: DetailEditContentInputModuleProps) => {
   return (
     <Stack space={48}>
       {/* 별명스택 */}
@@ -35,12 +35,6 @@ export const DetailEditContentModule = ({
           errorMsg={errorMsg || ''}
           secureTextEntry={secureTextEntry}
         />
-      </Stack>
-      {/* 사진스택 */}
-      <Stack>
-        <Text variants={'titleLarge'} fontWeight={'Bold'} color={'black'}>
-          gd
-        </Text>
       </Stack>
     </Stack>
   );
