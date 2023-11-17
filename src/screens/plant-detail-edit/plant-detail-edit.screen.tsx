@@ -43,7 +43,7 @@ export const PlantDetailEditScreen = () => {
 
   return (
     <BasicLayout backgroundColor="gray-100">
-      <Stack space={48}>
+      <Stack space={100}>
         <DetailEditHeaderModule />
         <DetailEditContentInputModule
           value={value}

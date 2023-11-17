@@ -22,7 +22,6 @@ export const DetailEditContentInputModule = ({
 }: DetailEditContentInputModuleProps) => {
   return (
     <Stack>
-      {/* 별명스택 */}
       <Stack space={12}>
         <Text variants={'titleLarge'} fontWeight={'Bold'} color={'black'}>
           별명 업데이트

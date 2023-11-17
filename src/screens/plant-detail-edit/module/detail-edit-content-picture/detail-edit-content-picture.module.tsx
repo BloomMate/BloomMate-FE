@@ -5,6 +5,7 @@ import { View, Image } from 'react-native';
 
 import { PlantDetailEditScreenNavigationRouteProps } from '../../plant-detail-edit.screen';
 
+import { Text } from '@/atoms';
 import { useGetPlantDetailQuery } from '@/hooks';
 import { palette } from '@/utils';
 
@@ -25,19 +26,24 @@ export const DetailEditContentPictureModule =
 
     return (
       <Stack>
-        <View
-          style={{
-            borderRadius: 8,
-            height: 180,
-            backgroundColor: palette['white'],
-            elevation: 4,
-          }}>
-          <Image
-            source={{ uri: plant_picture_url }}
-            style={{ width: '100%', height: '100%', borderRadius: 8 }}
-            resizeMode="cover"
-          />
-        </View>
+        <Stack space={12}>
+          <Text variants={'titleLarge'} fontWeight={'Bold'} color={'black'}>
+            사진 업데이트
+          </Text>
+          <View
+            style={{
+              borderRadius: 8,
+              height: 180,
+              backgroundColor: palette['white'],
+              elevation: 4,
+            }}>
+            <Image
+              source={{ uri: plant_picture_url }}
+              style={{ width: '100%', height: '100%', borderRadius: 8 }}
+              resizeMode="cover"
+            />
+          </View>
+        </Stack>
       </Stack>
     );
   };
