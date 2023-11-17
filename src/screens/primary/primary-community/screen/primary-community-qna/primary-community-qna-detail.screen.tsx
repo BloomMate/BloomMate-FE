@@ -1,6 +1,7 @@
 import { Box } from '@mobily/stacks';
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import isUndefined from 'lodash/isUndefined';
 import { Suspense } from 'react';
 
 import { RootStackParamList } from '../../../../root.navigator';
@@ -33,25 +34,26 @@ export const PrimaryCommunityQnaDetailScreen =
 
     const { data } = useGetQuestionDetailQuery(id);
 
-    if (data) {
-      const filteredData = data.DATA.filter(item => item.id === id);
-
-      return (
-        <Suspense fallback={<LoadingPage />}>
-          <Box
-            paddingY={32}
-            paddingX={24}
-            style={{
-              backgroundColor: palette['gray-100'],
-              height: '100%',
-            }}>
-            <PrimaryCommunityQnaDetailHeaderModule />
-            <PrimaryCommunityQnaDetailQuestionModule data={filteredData} />
-            <PrimaryCommunityQnaDetailAnswerModule />
-          </Box>
-        </Suspense>
-      );
-    } else {
-      console.log(data);
+    if (isUndefined(data)) {
+      return;
     }
+    const { question, comment } = data;
+
+    return (
+      <Suspense fallback={<LoadingPage />}>
+        <Box
+          paddingY={32}
+          paddingX={24}
+          style={{
+            backgroundColor: palette['gray-100'],
+            height: '100%',
+          }}>
+          <PrimaryCommunityQnaDetailHeaderModule />
+          <PrimaryCommunityQnaDetailQuestionModule question_data={question} />
+          {question.is_answered && (
+            <PrimaryCommunityQnaDetailAnswerModule question_comment={comment} />
+          )}
+        </Box>
+      </Suspense>
+    );
   };

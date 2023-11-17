@@ -40,12 +40,15 @@ const Tab = createMaterialTopTabNavigator<PrimaryCommunityScreenTabParamList>();
 
 export const PrimaryCommunityScreen = ({}: PrimaryCommunityScreenProps) => {
   const navigation = useNavigation<PrimaryCommunityScreenNavigatorProp>();
+  const handlePressExit = () => {
+    navigation.goBack();
+  };
 
   return (
     <BasicLayout backgroundColor="gray-100" tabBar>
       <ModalHeader
         left={{ type: 'string', title: '식집사 커뮤니티' }}
-        onPressExit={() => navigation.goBack()}
+        onPressExit={handlePressExit}
       />
       <Tab.Navigator
         style={{ marginTop: 24 }}

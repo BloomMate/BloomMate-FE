@@ -6,14 +6,12 @@ import { QuestionDetail } from '@/hooks';
 import { palette } from '@/utils';
 
 type PrimaryCommunityQnaDetailQuestionModuleProps = {
-  data: QuestionDetail[];
+  question_data: QuestionDetail;
 };
 
 export const PrimaryCommunityQnaDetailQuestionModule = memo(
-  ({ data }: PrimaryCommunityQnaDetailQuestionModuleProps) => {
-    const { id, created_at, question_content, question_title, is_answered } =
-      data[0];
-    const question_date = created_at.slice(0, 10);
+  ({ question_data }: PrimaryCommunityQnaDetailQuestionModuleProps) => {
+    const question_date = question_data.created_at.slice(0, 10);
 
     return (
       <Box
@@ -33,7 +31,7 @@ export const PrimaryCommunityQnaDetailQuestionModule = memo(
                     style={[
                       { height: 12, width: 12, borderRadius: 100 },
                       {
-                        backgroundColor: is_answered
+                        backgroundColor: question_data.is_answered
                           ? palette['primary']
                           : palette['gray-400'],
                       },
@@ -44,8 +42,8 @@ export const PrimaryCommunityQnaDetailQuestionModule = memo(
                   <Text
                     variants="labelSmall"
                     fontWeight="Medium"
-                    color={is_answered ? 'primary' : 'gray-400'}>
-                    {is_answered ? '답변 완료' : '답변 필요'}
+                    color={question_data.is_answered ? 'primary' : 'gray-400'}>
+                    {question_data.is_answered ? '답변 완료' : '답변 필요'}
                   </Text>
                 </Column>
               </Columns>
@@ -57,10 +55,10 @@ export const PrimaryCommunityQnaDetailQuestionModule = memo(
             </Column>
           </Columns>
           <Text variants="bodyMedium" fontWeight="Medium" color="gray-900">
-            {question_title}
+            {question_data.question_title}
           </Text>
           <Text variants="bodySmall" fontWeight="Light" color="gray-900">
-            {question_content}
+            {question_data.question_content}
           </Text>
         </Stack>
       </Box>

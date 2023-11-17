@@ -12,5 +12,5 @@ export type QuestionListResponse = {
   DATA: Question[];
 };
 export const useGetQuestionListQuery = () => {
-  return useQuery<QuestionListResponse>('/community/?page_size=10');
+  return useQuery<QuestionListResponse>('/community');
 };

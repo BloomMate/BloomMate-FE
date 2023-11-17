@@ -27,7 +27,7 @@ export const PrimaryCommunityQnaPostContentContentComponent =
         placeholder={placeholder}
         value={value}
         onChangeText={onChange}
-        multiline={true}
+        multiline
         error={!isUndefined(fieldState.error)}
         errorMsg={fieldState.error?.message as string}
         contentStyle={{ height: 200 }}

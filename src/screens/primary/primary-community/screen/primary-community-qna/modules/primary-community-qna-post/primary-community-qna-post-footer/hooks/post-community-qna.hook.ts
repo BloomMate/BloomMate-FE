@@ -40,7 +40,7 @@ export const usePostCommunityQnaMutation = () => {
     },
     {
       onSuccess: () => {
-        return queryClient.invalidateQueries('/community/?page_size=10');
+        return queryClient.invalidateQueries('/community');
       },
     },
   );

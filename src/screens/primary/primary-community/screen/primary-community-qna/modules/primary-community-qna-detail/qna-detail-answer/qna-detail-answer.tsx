@@ -4,12 +4,16 @@ import { Image } from 'react-native';
 
 import { QNA_IMG } from '@/assets';
 import { Divider, PointLinearGradient, Text } from '@/atoms';
+import { QuestionDetailComment } from '@/hooks';
 
-type PrimaryCommunityQnaDetailAnswerModuleProps = {};
+type PrimaryCommunityQnaDetailAnswerModuleProps = {
+  question_comment: QuestionDetailComment;
+};
 
-//TODO: 실제 답변 넣기
 export const PrimaryCommunityQnaDetailAnswerModule =
-  memo<PrimaryCommunityQnaDetailAnswerModuleProps>(() => {
+  memo<PrimaryCommunityQnaDetailAnswerModuleProps>(({ question_comment }) => {
+    const comment_date = question_comment.created_at.slice(0, 10);
+
     return (
       <Stack space={16} marginTop={16}>
         <Divider />
@@ -19,7 +23,7 @@ export const PrimaryCommunityQnaDetailAnswerModule =
             <PointLinearGradient style={{ borderRadius: 8, padding: 4 }}>
               <Image
                 source={{ uri: QNA_IMG }}
-                style={{ aspectRatio: 50 / 50, minWidth: 50 }}
+                style={{ aspectRatio: 1, minWidth: 50 }}
               />
             </PointLinearGradient>
           </Column>
@@ -29,14 +33,14 @@ export const PrimaryCommunityQnaDetailAnswerModule =
                 BloomMate
               </Text>
               <Text variants="bodySmall" color="gray-900" fontWeight="Light">
-                2023-10-25
+                {comment_date}
               </Text>
             </Stack>
           </Column>
         </Columns>
 
         <Text variants="titleSmall" color="gray-900" fontWeight="Medium">
-          안녕하세요. BloomMate입니다!
+          {question_comment.comment_content}
         </Text>
       </Stack>
     );

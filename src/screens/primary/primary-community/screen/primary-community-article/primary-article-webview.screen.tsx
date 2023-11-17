@@ -1,7 +1,7 @@
+import { useBackHandler } from '@react-native-community/hooks';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { Suspense, useEffect } from 'react';
-import { BackHandler } from 'react-native';
+import { Suspense } from 'react';
 import WebView from 'react-native-webview';
 
 import { RootStackParamList } from '../../../../root.navigator';
@@ -29,14 +29,12 @@ export const PrimaryArticleWebviewScreen =
 
     const navigation = useNavigation<PrimaryNavigatorProps>();
 
-    useEffect(() => {
-      BackHandler.addEventListener('hardwareBackPress', () => {
-        navigation.replace('PrimaryStack', {
-          screen: 'PrimaryCommunityScreen',
-        });
-        return true;
+    useBackHandler(() => {
+      navigation.replace('PrimaryStack', {
+        screen: 'PrimaryCommunityScreen',
       });
-    }, []);
+      return true;
+    });
 
     return (
       <Suspense fallback={<LoadingPage />}>
