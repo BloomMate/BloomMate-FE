@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { RootStackParamList } from '../root.navigator';
 
 import { DetailEditContentInputModule } from './module/detail-edit-content-input';
+import { DetailEditContentPictureModule } from './module/detail-edit-content-picture';
 import { DetailEditHeaderModule } from './module/detail-edit-header';
 
 import { useGetPlantDetailQuery } from '@/hooks';
@@ -34,8 +35,6 @@ export const PlantDetailEditScreen = () => {
 
   const { plant_nickname } = data;
 
-  const plantDetails = [{ title: '품종', content: plant_nickname }];
-
   const [value, setValue] = useState('');
 
   const handleChange = (text: string) => {
@@ -49,8 +48,9 @@ export const PlantDetailEditScreen = () => {
         <DetailEditContentInputModule
           value={value}
           onChange={handleChange}
-          placeholder={plantDetails}
+          placeholder={plant_nickname}
         />
+        <DetailEditContentPictureModule />
       </Stack>
     </BasicLayout>
   );
