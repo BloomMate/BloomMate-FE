@@ -1,6 +1,6 @@
 import { Stack } from '@mobily/stacks';
 
-import { PrimaryMyPageGreetingModule } from './primary-mypage-greeting';
+import { PrimaryMypageGreetingModule } from './primary-mypage-greeting';
 import { PrimaryMyPageHeaderModule } from './primary-mypage-header';
 import { PrimaryMyPageInfoItemModule } from './primary-mypage-infoitem';
 
@@ -12,7 +12,7 @@ export const PrimaryMyPageContentModule =
       <Stack>
         <Stack space={48}>
           <PrimaryMyPageHeaderModule />
-          <PrimaryMyPageGreetingModule />
+          <PrimaryMypageGreetingModule />
         </Stack>
 
         <PrimaryMyPageInfoItemModule />
