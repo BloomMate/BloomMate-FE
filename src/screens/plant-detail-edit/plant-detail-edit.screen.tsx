@@ -7,9 +7,9 @@ import { useEffect } from 'react';
 import { RootStackParamList } from '../root.navigator';
 
 import { usePlantDetailEditForm } from './hooks';
-import { DetailEditContentInputModule } from './module/detail-edit-content-input';
+import { PlantDetailEditNickNameInputModule } from './module';
 import { DetailEditContentPictureModule } from './module/detail-edit-content-picture';
-import { DetailEditHeaderModule } from './module/detail-edit-header';
+import { PlantDetailEditHeaderModule } from './module/plant-detail-edit-header';
 
 import { useGetPlantDetailQuery } from '@/hooks';
 import { BasicLayout } from '@/layouts';
@@ -46,9 +46,9 @@ export const PlantDetailEditScreen = () => {
 
   return (
     <BasicLayout backgroundColor="gray-100">
+      <PlantDetailEditHeaderModule />
       <Stack space={100}>
-        <DetailEditHeaderModule />
-        <DetailEditContentInputModule />
+        <PlantDetailEditNickNameInputModule />
         <DetailEditContentPictureModule />
       </Stack>
     </BasicLayout>
