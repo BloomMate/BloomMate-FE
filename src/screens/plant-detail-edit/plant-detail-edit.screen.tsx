@@ -30,7 +30,7 @@ export type PlantDetailEditScreenNavigationRouteProps = RouteProp<
 
 export const PlantDetailEditScreen = () => {
   const methods = usePlantDetailEditForm();
-  const { setValue } = methods;
+  const { reset } = methods;
 
   const {
     params: { id },
@@ -39,8 +39,10 @@ export const PlantDetailEditScreen = () => {
 
   useEffect(() => {
     if (!isUndefined(data)) {
-      setValue('plant_nickname', data.plant_nickname);
-      setValue('plant_picture_url', data.plant_picture_url);
+      reset({
+        plant_nickname: data.plant_nickname,
+        plant_picture_url: data.plant_picture_url,
+      });
     }
   }, [data]);
 

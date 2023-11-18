@@ -1,3 +1,4 @@
+import { Box } from '@mobily/stacks';
 import { useNavigation } from '@react-navigation/native';
 import { memo } from 'react';
 import { SubmitHandler, useFormContext } from 'react-hook-form';
@@ -17,7 +18,7 @@ export const PlantDetailEditFooterModule = memo(() => {
     plant_nickname,
     plant_picture_url,
   }) => {
-    await mutateAsync({ id, pw });
+    // await mutateAsync({ id, pw });
 
     navigation.goBack();
   };
@@ -26,14 +27,18 @@ export const PlantDetailEditFooterModule = memo(() => {
     handleSubmit(loginByIdAndPassWord)();
   };
 
+  console.log(isDirty);
+
   const isEditable = isDirty && isValid;
 
   return (
-    <Button
-      onPress={handlePressEditButton}
-      disabled={!isEditable}
-      mode="contained">
-      업데이트
-    </Button>
+    <Box flex="fluid" alignY="bottom">
+      <Button
+        onPress={handlePressEditButton}
+        disabled={!isEditable}
+        mode="contained">
+        업데이트
+      </Button>
+    </Box>
   );
 });
