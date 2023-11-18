@@ -35,7 +35,7 @@ export const PlantDetailEditScreen = () => {
 
   const { plant_nickname } = data;
 
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState(plant_nickname);
 
   const handleChange = (text: string) => {
     setValue(text);
