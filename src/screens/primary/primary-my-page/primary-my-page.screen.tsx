@@ -8,7 +8,6 @@ import {
 } from '../primary.navigator';
 
 import { PrimaryMyPageContentModule } from './module/primary-mypage-content';
-import { PrimaryMyPageHeaderModule } from './module/primary-mypage-header';
 
 import { palette } from '@/utils';
 
@@ -31,7 +30,6 @@ export const PrimaryMyPageScreen = ({}: PrimaryMyPageScreenProps) => {
       paddingY={32}
       style={{ backgroundColor: palette['gray-100'], flex: 1 }}
       space={48}>
-      <PrimaryMyPageHeaderModule />
       <PrimaryMyPageContentModule />
     </Stack>
   );
