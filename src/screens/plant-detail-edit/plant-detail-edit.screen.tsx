@@ -2,10 +2,11 @@ import { Stack } from '@mobily/stacks';
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { isUndefined } from 'lodash';
-import { useState } from 'react';
+import { useEffect } from 'react';
 
 import { RootStackParamList } from '../root.navigator';
 
+import { usePlantDetailEditForm } from './hooks';
 import { DetailEditContentInputModule } from './module/detail-edit-content-input';
 import { DetailEditContentPictureModule } from './module/detail-edit-content-picture';
 import { DetailEditHeaderModule } from './module/detail-edit-header';
@@ -24,32 +25,30 @@ export type PlantDetailEditScreenNavigationRouteProps = RouteProp<
 >;
 
 export const PlantDetailEditScreen = () => {
+  const methods = usePlantDetailEditForm();
+  const { setValue } = methods;
+
   const {
     params: { id },
   } = useRoute<PlantDetailEditScreenNavigationRouteProps>();
   const { data } = useGetPlantDetailQuery({ plant_id: id });
 
+  useEffect(() => {
+    if (!isUndefined(data)) {
+      setValue('plant_nickname', data.plant_nickname);
+      setValue('plant_picture_url', data.plant_picture_url);
+    }
+  }, [data]);
+
   if (isUndefined(data)) {
     return null;
   }
-
-  const { plant_nickname } = data;
-
-  const [value, setValue] = useState(plant_nickname);
-
-  const handleChange = (text: string) => {
-    setValue(text);
-  };
 
   return (
     <BasicLayout backgroundColor="gray-100">
       <Stack space={100}>
         <DetailEditHeaderModule />
-        <DetailEditContentInputModule
-          value={value}
-          onChange={handleChange}
-          placeholder={plant_nickname}
-        />
+        <DetailEditContentInputModule />
         <DetailEditContentPictureModule />
       </Stack>
     </BasicLayout>
