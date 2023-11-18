@@ -15,9 +15,9 @@ export const PlantDetailEditNickNameInputModule = memo(() => {
   } = useController({ control, name: 'plant_nickname' });
 
   return (
-    <Stack space={8}>
+    <Stack space={16}>
       <Text variants={'titleLarge'} fontWeight={'Bold'} color={'black'}>
-        별명 업데이트
+        별명
       </Text>
       <TextInput
         label="별명"

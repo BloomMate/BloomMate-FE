@@ -3,13 +3,16 @@ import { RouteProp, useRoute } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { isUndefined } from 'lodash';
 import { useEffect } from 'react';
+import { FormProvider } from 'react-hook-form';
 
 import { RootStackParamList } from '../root.navigator';
 
 import { usePlantDetailEditForm } from './hooks';
-import { PlantDetailEditNickNameInputModule } from './module';
-import { DetailEditContentPictureModule } from './module/detail-edit-content-picture';
-import { PlantDetailEditHeaderModule } from './module/plant-detail-edit-header';
+import {
+  PlantDetailEditNickNameInputModule,
+  PlantDetailEditHeaderModule,
+  PlantDetailEditPictureInputModule,
+} from './module';
 
 import { useGetPlantDetailQuery } from '@/hooks';
 import { BasicLayout } from '@/layouts';
@@ -45,12 +48,14 @@ export const PlantDetailEditScreen = () => {
   }
 
   return (
-    <BasicLayout backgroundColor="gray-100">
-      <PlantDetailEditHeaderModule />
-      <Stack space={100}>
-        <PlantDetailEditNickNameInputModule />
-        <DetailEditContentPictureModule />
-      </Stack>
-    </BasicLayout>
+    <FormProvider {...methods}>
+      <BasicLayout backgroundColor="gray-100">
+        <PlantDetailEditHeaderModule />
+        <Stack space={48} paddingTop={48}>
+          <PlantDetailEditNickNameInputModule />
+          <PlantDetailEditPictureInputModule />
+        </Stack>
+      </BasicLayout>
+    </FormProvider>
   );
 };
