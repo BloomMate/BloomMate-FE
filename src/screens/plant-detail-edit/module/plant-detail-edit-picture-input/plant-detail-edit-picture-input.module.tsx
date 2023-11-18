@@ -5,6 +5,8 @@ import { Image, TouchableOpacity } from 'react-native';
 import { PlantEditForm } from '../../hooks';
 
 import { Icon, Text } from '@/atoms';
+import { useUploadPhotoMutation } from '@/hooks';
+import { useMutationIndicator } from '@/providers';
 import { palette } from '@/utils';
 
 type PlantDetailEditPictureInputModuleProps = {};
@@ -17,13 +19,25 @@ export const PlantDetailEditPictureInputModule =
       fieldState,
     } = useController({ control, name: 'plant_picture_url' });
 
+    const { mutateAsync, isLoading } = useUploadPhotoMutation();
+    useMutationIndicator([isLoading]);
+
+    const handlePressTakePhoto = async () => {
+      const response = await mutateAsync();
+      onChange(response.data.url);
+    };
+
+    if (!value) {
+      return;
+    }
+
     return (
       <Stack space={16}>
         <Box alignX="between" direction="row" alignY="center">
           <Text variants={'titleLarge'} fontWeight={'Bold'} color={'black'}>
             사진 업데이트
           </Text>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={handlePressTakePhoto}>
             <Box direction="row" alignX="center" alignY="center">
               <Text variants="bodySmall" fontWeight="Bold" color="primary">
                 {'촬영하기'}
@@ -41,7 +55,7 @@ export const PlantDetailEditPictureInputModule =
           }}>
           <Image
             source={{ uri: value }}
-            style={{ width: '100%', height: '100%', borderRadius: 8 }}
+            style={{ height: '100%', borderRadius: 8 }}
             resizeMode="cover"
           />
         </Box>
