@@ -36,7 +36,7 @@ export const PlantDetailEditFooterModule = memo(() => {
       plant_id: id.toString(),
     });
 
-    navigation.goBack();
+    navigation.replace('PlantDetailScreen', { id });
   };
 
   const handlePressEditButton = () => {
