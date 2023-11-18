@@ -1,6 +1,7 @@
 import { Box } from '@mobily/stacks';
 import LottieView from 'lottie-react-native';
 
+import { MUTATION_LOTTIE } from '@/assets';
 import { Modal } from '@/atoms';
 
 type MutationIndicatorProps = {
@@ -12,7 +13,7 @@ export const MutationIndicator = ({ isMutating }: MutationIndicatorProps) => {
     <Modal isVisible={isMutating}>
       <Box alignX="center" alignY="center" alignSelf="center" flex="fluid">
         <LottieView
-          source={require('./mutation-lottie.json')}
+          source={MUTATION_LOTTIE}
           autoPlay
           loop
           style={{ width: 100, height: 100 }}
