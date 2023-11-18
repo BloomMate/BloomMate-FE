@@ -7,3 +7,4 @@ export * from './divider';
 export * from './suspender';
 export * from './point-linear-gradient';
 export * from './toast';
+export * from './image';

@@ -1,13 +1,13 @@
 import { Box, Columns, Column, Stack } from '@mobily/stacks';
 import { useNavigation } from '@react-navigation/native';
 import { memo } from 'react';
-import { Image, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 
 import { PrimaryPlantListScreenNavigatorProp } from '../../../../../../primary-plant-list.screen';
 
 import { getPlantListItemCopyByGrowthLevel } from './plant-list-item.util';
 
-import { Icon, Text } from '@/atoms';
+import { Icon, Image, Text } from '@/atoms';
 import { PlantListResponse } from '@/hooks';
 import { palette, calculateDaysDifference } from '@/utils';
 
@@ -42,9 +42,9 @@ export const PlantListItem = memo<PlantListItemProps>(
         <Columns>
           <Column width="content" padding={10}>
             <Image
-              style={{ borderRadius: 80, width: 80, height: 80 }}
+              style={{ width: 80, height: 80, borderRadius: 80 }}
               source={{ uri: plant_picture_url }}
-              resizeMode="contain"
+              resizeMode="cover"
             />
           </Column>
           <Column width="fluid" paddingY={16} paddingLeft={12}>
