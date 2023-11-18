@@ -16,7 +16,7 @@ import {
 } from './module';
 
 import { useGetPlantDetailQuery } from '@/hooks';
-import { BasicLayout } from '@/layouts';
+import { BasicLayout, ScrollView } from '@/layouts';
 
 export type PlantDetailEditScreenNavigationProps = StackNavigationProp<
   RootStackParamList,
@@ -52,14 +52,16 @@ export const PlantDetailEditScreen = () => {
 
   return (
     <FormProvider {...methods}>
-      <BasicLayout backgroundColor="gray-100">
-        <PlantDetailEditHeaderModule />
-        <Stack space={48} paddingTop={48}>
-          <PlantDetailEditNickNameInputModule />
-          <PlantDetailEditPictureInputModule />
-        </Stack>
-        <PlantDetailEditFooterModule />
-      </BasicLayout>
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+        <BasicLayout backgroundColor="gray-100">
+          <PlantDetailEditHeaderModule />
+          <Stack space={48} paddingTop={48}>
+            <PlantDetailEditNickNameInputModule />
+            <PlantDetailEditPictureInputModule />
+          </Stack>
+          <PlantDetailEditFooterModule />
+        </BasicLayout>
+      </ScrollView>
     </FormProvider>
   );
 };
