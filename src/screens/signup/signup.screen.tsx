@@ -5,7 +5,7 @@ import { FormProvider } from 'react-hook-form';
 
 import { RootStackParamList } from '../root.navigator';
 
-import { useSignUpForm } from './hooks';
+import { useSignUpForm, useSignUpResetState } from './hooks';
 import {
   SignUpContentModule,
   SignUpFooterModule,
@@ -27,6 +27,7 @@ export type SignUpScreenNavigationRouteProps = RouteProp<
 >;
 export const SignUpScreen = ({}: SignUpScreenProps) => {
   const methods = useSignUpForm();
+  useSignUpResetState();
 
   return (
     <FormProvider {...methods}>

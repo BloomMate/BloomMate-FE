@@ -20,6 +20,7 @@ export type PrimaryNavigatorParamLists = {
   PrimaryPlantListScreen: undefined;
   PrimaryCommunityScreen: undefined;
   PrimaryMyPageScreen: undefined;
+  PrimaryArticleWebviewScreen: { article_content: string };
 };
 
 const Tab = createBottomTabNavigator<PrimaryNavigatorParamLists>();
@@ -53,8 +54,8 @@ export const PrimaryNavigator = () => {
         },
         tabBarStyle: {
           height: 76,
-          paddingBottom: 16,
-          paddingTop: 16,
+          paddingBottom: 12,
+          paddingTop: 12,
           backgroundColor: palette['white'],
         },
         tabBarActiveTintColor: palette['primary'],

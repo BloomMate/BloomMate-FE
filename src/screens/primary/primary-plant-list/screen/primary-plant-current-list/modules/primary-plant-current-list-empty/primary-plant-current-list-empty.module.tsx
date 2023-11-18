@@ -13,7 +13,6 @@ export const PrimaryPlantCurrentListEmptyModule =
     const navigation = useNavigation<PrimaryPlantListScreenNavigatorProp>();
     const handleAddPlantButton = () => {
       navigation.navigate('PlantAddScreen');
-      console.log('눌림!');
     };
 
     return (
