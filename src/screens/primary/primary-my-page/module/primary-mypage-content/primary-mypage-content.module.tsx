@@ -10,8 +10,11 @@ export const PrimaryMyPageContentModule =
   ({}: PrimaryMyPageContentModuleProps) => {
     return (
       <Stack>
-        <PrimaryMyPageHeaderModule />
-        <PrimaryMyPageGreetingModule />
+        <Stack space={48}>
+          <PrimaryMyPageHeaderModule />
+          <PrimaryMyPageGreetingModule />
+        </Stack>
+
         <PrimaryMyPageInfoItemModule />
       </Stack>
     );
