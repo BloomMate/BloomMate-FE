@@ -2,11 +2,11 @@ import { Stack } from '@mobily/stacks';
 import { useNavigation } from '@react-navigation/native';
 import dayjs from 'dayjs';
 import { memo } from 'react';
-import { Image, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 
 import { PlantDiagnosisListScreenNavigationProps } from '../../../../plant-diagnosis-list.screen';
 
-import { Icon, Text } from '@/atoms';
+import { Icon, Image, Text } from '@/atoms';
 import {
   palette,
   getCopyByGrowthLevel,
@@ -51,8 +51,8 @@ export const DiagnosisListItem = memo<DiagnosisListItemProps>(
           }}>
           <Image
             source={{ uri: diagnose_photo_url }}
-            style={{ width: 80, height: 80, borderRadius: 150 }}
-            resizeMode="contain"
+            style={{ width: 80, height: 80, borderRadius: 100 }}
+            resizeMode="cover"
           />
           <Stack space={20}>
             <Stack horizontal space={4} align="center">

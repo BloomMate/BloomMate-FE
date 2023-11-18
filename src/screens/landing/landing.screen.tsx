@@ -1,7 +1,6 @@
 import { Row, Rows, Stack } from '@mobily/stacks';
 import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { Image } from 'react-native';
 
 import { RootStackParamList } from '../root.navigator';
 
@@ -10,6 +9,8 @@ import {
   LandingSignUpModule,
   LandingTextModule,
 } from './modules';
+
+import { Image } from '@/atoms';
 
 type LandingScreenProps = {};
 
@@ -33,7 +34,7 @@ export const LandingScreen = ({}: LandingScreenProps) => {
           <Stack space={80} align={'center'}>
             <Image
               source={require('./const/Image/LogoImage.png')}
-              style={{ height: 56 }}
+              style={{ height: 56, width: 320 }}
               resizeMode="contain"
             />
             <Image
