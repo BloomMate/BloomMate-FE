@@ -76,7 +76,6 @@ export const PlantAddVarietyInputComponent =
         />
         <TouchableOpacity onPress={() => setModal(!isModal)}>
           <TextInput
-            disabled
             placeholder={placeholder}
             label={label}
             rightIconName={rightIconName}

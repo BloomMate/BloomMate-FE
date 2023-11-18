@@ -12,6 +12,7 @@ import {
   PlantDetailEditNickNameInputModule,
   PlantDetailEditHeaderModule,
   PlantDetailEditPictureInputModule,
+  PlantDetailEditFooterModule,
 } from './module';
 
 import { useGetPlantDetailQuery } from '@/hooks';
@@ -55,6 +56,7 @@ export const PlantDetailEditScreen = () => {
           <PlantDetailEditNickNameInputModule />
           <PlantDetailEditPictureInputModule />
         </Stack>
+        <PlantDetailEditFooterModule />
       </BasicLayout>
     </FormProvider>
   );
