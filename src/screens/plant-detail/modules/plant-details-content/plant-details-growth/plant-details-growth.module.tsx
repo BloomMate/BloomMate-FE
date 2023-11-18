@@ -29,18 +29,24 @@ export const PlantDetailGrowthModule = memo<PlantDetailGrowthModule>(() => {
       <Stack space={4} horizontal>
         <Icon
           color={palette['primary']}
-          size={16}
+          size={24}
           name={'energy-savings-leaf'}></Icon>
-        <Text variants={'bodyMedium'} fontWeight={'Medium'} color={'primary'}>
+        <Text variants={'bodyLarge'} fontWeight={'Bold'} color={'primary'}>
           성장정보
         </Text>
       </Stack>
       <Stack space={4}>
         <Stack space={12} horizontal>
-          <Text variants={'bodySmall'} fontWeight={'Medium'} color={'gray-900'}>
+          <Text
+            variants={'bodyMedium'}
+            fontWeight={'Medium'}
+            color={'gray-900'}>
             {calculateDaysDifference(planted_at)} 일차
           </Text>
-          <Text variants={'bodySmall'} fontWeight={'Light'} color={'gray-900'}>
+          <Text
+            variants={'bodyMedium'}
+            fontWeight={'Medium'}
+            color={'gray-700'}>
             {`수확 예상 시기 : ${dayjs(planted_at)
               .add(harvest_period_start, 'd')
               .format('MM.DD')} ~  ${dayjs(planted_at)
@@ -48,7 +54,7 @@ export const PlantDetailGrowthModule = memo<PlantDetailGrowthModule>(() => {
               .format('MM.DD')}`}
           </Text>
         </Stack>
-        <Text variants={'bodySmall'} fontWeight={'Medium'} color={'primary'}>
+        <Text variants={'bodyMedium'} fontWeight={'Medium'} color={'primary'}>
           수확기입니다. 상태를 확인 후 수확해주세요.
         </Text>
       </Stack>
