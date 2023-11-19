@@ -42,8 +42,8 @@ export const SignUpContentToggleButtonComponent =
               alignY="center">
               <Text
                 variants="labelLarge"
-                fontWeight="Medium"
-                color="gray-900"
+                fontWeight="Light"
+                color="gray-700"
                 textAlignment="center">
                 {gardenSizeText}
               </Text>

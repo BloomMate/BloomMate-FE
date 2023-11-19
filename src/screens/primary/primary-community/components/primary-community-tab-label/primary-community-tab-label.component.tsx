@@ -1,16 +1,16 @@
 import { Text, fontColorType } from '@/atoms';
 
-type PrimaryPlantListTabLabelProps = {
+type PrimaryCommunityTabLabelProps = {
   label: string;
   focused: boolean;
   color: string;
 };
 
-export const PrimaryPlantListTabLabel = ({
+export const PrimaryCommunityTabLabel = ({
   color,
   focused,
   label,
-}: PrimaryPlantListTabLabelProps) => (
+}: PrimaryCommunityTabLabelProps) => (
   <Text
     variants="bodySmall"
     color={color as fontColorType}

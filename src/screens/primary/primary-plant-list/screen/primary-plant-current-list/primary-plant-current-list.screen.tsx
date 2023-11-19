@@ -20,10 +20,7 @@ export const PrimaryPlantCurrentListScreen =
           paddingBottom={52}
           style={{ backgroundColor: palette['gray-100'], height: '100%' }}>
           <PrimaryPlantCurrentListContentModule />
-          <PrimaryPlantCurrentListFloatingModule
-            isEmptyList={false}
-            isFullList={false}
-          />
+          <PrimaryPlantCurrentListFloatingModule />
         </Box>
       </Suspense>
     );

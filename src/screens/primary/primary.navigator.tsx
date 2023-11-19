@@ -8,13 +8,19 @@ import { PrimaryCommunityScreen } from './primary-community';
 import { PrimaryMyPageScreen } from './primary-my-page';
 import { PrimaryPlantListScreen } from './primary-plant-list';
 
-import { Icon } from '@/atoms';
+import {
+  Icon,
+  getFontFamilyByFontWeight,
+  getTextAlignStyle,
+  getVariantsStyle,
+} from '@/atoms';
 import { palette } from '@/utils';
 
 export type PrimaryNavigatorParamLists = {
   PrimaryPlantListScreen: undefined;
   PrimaryCommunityScreen: undefined;
   PrimaryMyPageScreen: undefined;
+  PrimaryArticleWebviewScreen: { article_content: string };
 };
 
 const Tab = createBottomTabNavigator<PrimaryNavigatorParamLists>();
@@ -28,14 +34,28 @@ type PrimaryNavigatorRouteProps = RouteProp<RootStackParamList, 'PrimaryStack'>;
 export const PrimaryNavigator = () => {
   const navigation = useNavigation<PrimaryNavigatorProps>();
   const route = useRoute<PrimaryNavigatorRouteProps>();
+  const fontWeight = 'Medium';
+  const variants = 'bodySmall';
+  const textAlignment = 'center';
+
+  const fontFamily = getFontFamilyByFontWeight(fontWeight);
+  const variantsStyle = getVariantsStyle(variants);
+
+  const textAlignmentStyle = getTextAlignStyle(textAlignment);
 
   return (
     <Tab.Navigator
       screenOptions={{
+        tabBarLabelStyle: {
+          ...fontFamily,
+          ...variantsStyle,
+
+          ...textAlignmentStyle,
+        },
         tabBarStyle: {
           height: 76,
-          paddingBottom: 16,
-          paddingTop: 16,
+          paddingBottom: 12,
+          paddingTop: 12,
           backgroundColor: palette['white'],
         },
         tabBarActiveTintColor: palette['primary'],
