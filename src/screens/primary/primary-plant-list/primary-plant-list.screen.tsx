@@ -11,7 +11,7 @@ import {
   PrimaryNavigatorProps,
 } from '../primary.navigator';
 
-import { PrimaryPlantListTabLabel } from './components';
+import { PrimaryPlantListTab } from './components';
 import { MATERIAL_TOP_TAB_NAVIGATOR_SCREEN_OPTIONS } from './primary-plant-list.const';
 import {
   PrimaryPlantCurrentListScreen,
@@ -51,22 +51,19 @@ export const PrimaryPlantListScreen = ({}: PrimaryPlantListScreenProps) => {
       <Tab.Navigator
         style={{ marginTop: 24 }}
         initialRouteName="PrimaryPlantCurrentList"
-        screenOptions={MATERIAL_TOP_TAB_NAVIGATOR_SCREEN_OPTIONS}>
+        screenOptions={MATERIAL_TOP_TAB_NAVIGATOR_SCREEN_OPTIONS}
+        tabBar={PrimaryPlantListTab}>
         <Tab.Screen
           name="PrimaryPlantCurrentList"
           options={() => ({
-            tabBarLabel: props => (
-              <PrimaryPlantListTabLabel {...props} label="성장중" />
-            ),
+            tabBarLabel: '성장중',
           })}
           component={PrimaryPlantCurrentListScreen}
         />
         <Tab.Screen
           name="PrimaryPlantHarvestedList"
           options={() => ({
-            tabBarLabel: props => (
-              <PrimaryPlantListTabLabel {...props} label="수확완료" />
-            ),
+            tabBarLabel: '수확 완료',
           })}
           component={PrimaryPlantHarvestedListScreen}
         />
