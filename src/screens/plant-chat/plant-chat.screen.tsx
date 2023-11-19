@@ -1,4 +1,4 @@
-import { Box } from '@mobily/stacks';
+import { Box, Stack } from '@mobily/stacks';
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 
@@ -29,8 +29,10 @@ export const PlantChatScreen = ({}: PlantChatScreenProps) => {
   return (
     <PointLinearGradient style={{ width: '100%', height: '100%' }}>
       <Box paddingX={24} paddingY={24}>
-        <PlantChatHeaderModule />
-        <PlantChatContentModule />
+        <Stack space={40}>
+          <PlantChatHeaderModule />
+          <PlantChatContentModule />
+        </Stack>
       </Box>
     </PointLinearGradient>
   );
