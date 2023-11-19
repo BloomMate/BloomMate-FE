@@ -11,7 +11,7 @@ import {
   PrimaryNavigatorProps,
 } from '../primary.navigator';
 
-import { PrimaryPlantListTabLabel } from './components';
+import { PrimaryPlantListTab, PrimaryPlantListTabLabel } from './components';
 import { MATERIAL_TOP_TAB_NAVIGATOR_SCREEN_OPTIONS } from './primary-plant-list.const';
 import {
   PrimaryPlantCurrentListScreen,
@@ -51,7 +51,8 @@ export const PrimaryPlantListScreen = ({}: PrimaryPlantListScreenProps) => {
       <Tab.Navigator
         style={{ marginTop: 24 }}
         initialRouteName="PrimaryPlantCurrentList"
-        screenOptions={MATERIAL_TOP_TAB_NAVIGATOR_SCREEN_OPTIONS}>
+        screenOptions={MATERIAL_TOP_TAB_NAVIGATOR_SCREEN_OPTIONS}
+        tabBar={PrimaryPlantListTab}>
         <Tab.Screen
           name="PrimaryPlantCurrentList"
           options={() => ({
