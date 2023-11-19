@@ -24,3 +24,5 @@ export const ARTICLE7_IMG =
   'https://res.cloudinary.com/dolc0qkxk/image/upload/v1699585041/007_vdtnyv.png';
 export const ARTICLE8_IMG =
   'https://res.cloudinary.com/dolc0qkxk/image/upload/v1699585042/008_ojpfxk.png';
+export const CHAT_LOGO_IMG =
+  'https://res.cloudinary.com/dahw1d9li/image/upload/v1700404118/chatlogo_ed8pau.png';
