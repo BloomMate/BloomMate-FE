@@ -5,8 +5,10 @@ import { Image, TouchableOpacity } from 'react-native';
 
 import { RootStackParamList } from '../root.navigator';
 
+import { PlantChatHeaderModule } from './module/plant-chat-header/plant-chat-header.module';
+
 import { CHAT_LOGO_IMG } from '@/assets';
-import { PointLinearGradient, Text } from '@/atoms';
+import { PointLinearGradient } from '@/atoms';
 
 type PlantChatScreenProps = {};
 
@@ -28,9 +30,7 @@ export const PlantChatScreen = ({}: PlantChatScreenProps) => {
   return (
     <PointLinearGradient style={{ width: '100%', height: '100%' }}>
       <Box paddingX={24} paddingY={24}>
-        <Text variants="displaySmall" fontWeight="Medium" color="gray-700">
-          식물과 채팅하기 - id: {id}
-        </Text>
+        <PlantChatHeaderModule />
         <Image
           style={{ width: 300, height: 300 }}
           source={{ uri: CHAT_LOGO_IMG }}
