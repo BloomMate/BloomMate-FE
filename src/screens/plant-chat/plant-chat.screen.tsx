@@ -1,13 +1,12 @@
 import { Box } from '@mobily/stacks';
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { Image, TouchableOpacity } from 'react-native';
 
 import { RootStackParamList } from '../root.navigator';
 
+import { PlantChatContentModule } from './module/plant-chat-content';
 import { PlantChatHeaderModule } from './module/plant-chat-header/plant-chat-header.module';
 
-import { CHAT_LOGO_IMG } from '@/assets';
 import { PointLinearGradient } from '@/atoms';
 
 type PlantChatScreenProps = {};
@@ -31,11 +30,7 @@ export const PlantChatScreen = ({}: PlantChatScreenProps) => {
     <PointLinearGradient style={{ width: '100%', height: '100%' }}>
       <Box paddingX={24} paddingY={24}>
         <PlantChatHeaderModule />
-        <Image
-          style={{ width: 300, height: 300 }}
-          source={{ uri: CHAT_LOGO_IMG }}
-        />
-        <TouchableOpacity></TouchableOpacity>
+        <PlantChatContentModule />
       </Box>
     </PointLinearGradient>
   );
