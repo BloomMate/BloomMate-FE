@@ -1,10 +1,13 @@
-import { Box } from '@mobily/stacks';
+import { Box, Stack } from '@mobily/stacks';
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 
 import { RootStackParamList } from '../root.navigator';
 
-import { PointLinearGradient, Text } from '@/atoms';
+import { PlantChatContentModule } from './module/plant-chat-content';
+import { PlantChatHeaderModule } from './module/plant-chat-header/plant-chat-header.module';
+
+import { PointLinearGradient } from '@/atoms';
 
 type PlantChatScreenProps = {};
 
@@ -26,9 +29,10 @@ export const PlantChatScreen = ({}: PlantChatScreenProps) => {
   return (
     <PointLinearGradient style={{ width: '100%', height: '100%' }}>
       <Box paddingX={24} paddingY={24}>
-        <Text variants="displaySmall" fontWeight="Medium" color="gray-700">
-          식물과 채팅하기 - id: {id}
-        </Text>
+        <Stack space={40}>
+          <PlantChatHeaderModule />
+          <PlantChatContentModule />
+        </Stack>
       </Box>
     </PointLinearGradient>
   );

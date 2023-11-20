@@ -247,7 +247,7 @@ export const PlantAddContentDateModalComponent =
             />
             <Text variants="labelMedium" fontWeight="Medium" color="gray-900">
               {
-                '이때 심으신 작물은 현재 수확기 기간입니다.\n현재 수확기인 식물은 진단하기 기능 이용이 어렵습니다.'
+                '현재 수확기간인 날짜에 표시됩니다. \n진단하기 기능이 불가하니 주의하세요!'
               }
             </Text>
           </Stack>
