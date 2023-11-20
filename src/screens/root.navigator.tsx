@@ -8,6 +8,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { LandingScreen } from './landing';
 import { LoginScreen } from './login';
 import { PlantAddScreen } from './plant-add';
+import { PlantAnimationScreen } from './plant-animation';
 import { PlantChatScreen } from './plant-chat';
 import { PlantDetailScreen } from './plant-detail';
 import { PlantDetailEditScreen } from './plant-detail-edit';
@@ -36,6 +37,9 @@ export type RootStackParamList = {
   PlantDiagnosisIntroScreen: { id: number };
   PlantDiagnosisResultScreen: { id: number };
   PlantDiagnosisListScreen: { id: number };
+  PlantAnimationScreen: {
+    type: 'plant-add' | 'harvest' | 'plant-dead';
+  };
   PlantDiagnosisLogScreen: { diagnosis_id: number };
   UserInfoScreen: undefined;
 
@@ -100,6 +104,10 @@ export const RootNavigator = ({}: RootNavigatorProps) => {
         <Stack.Screen
           name="PrimaryCommunityQnaPostScreen"
           component={PrimaryCommunityQnaPostScreen}
+        />
+        <Stack.Screen
+          name="PlantAnimationScreen"
+          component={PlantAnimationScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>
