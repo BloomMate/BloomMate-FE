@@ -2,7 +2,7 @@ import { Box, Stack, Columns, Column } from '@mobily/stacks';
 import { memo } from 'react';
 import { Image, TouchableOpacity } from 'react-native';
 
-import { CORN_SEED_IMG } from '@/assets';
+import { CORN_SEED_IMG, LOGO_FONT_IMG } from '@/assets';
 import { Text } from '@/atoms';
 import { palette } from '@/utils';
 
@@ -20,7 +20,7 @@ export const GPTButton = memo<GPTButtonProps>(({ plant_name, onPress }) => {
     <Box flex="fluid" alignY="center">
       <Stack space={8} style={{ minHeight: 128 }}>
         <Image
-          source={require('../../assets/bloomMate-logo.png')}
+          source={{ uri: LOGO_FONT_IMG }}
           style={{ width: 80, height: 16 }}
           resizeMode="contain"
         />
