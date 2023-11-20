@@ -1,13 +1,21 @@
 import { Box, Stack } from '@mobily/stacks';
-import { memo } from 'react';
+import React, { memo } from 'react';
 import { useController, useFormContext } from 'react-hook-form';
 import { TouchableOpacity, View } from 'react-native';
 import { Calendar, DateData, LocaleConfig } from 'react-native-calendars';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 import { PlantAddForm } from '../../../../hooks';
-import { EPlantAddStep } from '../../../../plant-add.state';
+import {
+  $currentScreenStepIndexSelector,
+  $plantAddState,
+  EPlantAddStep,
+  plantAddSteps,
+} from '../../../../plant-add.state';
 
 import { Button, Modal, Text } from '@/atoms';
+import { useUploadImageLibraryMutation, useUploadPhotoMutation } from '@/hooks';
+import { useMutationIndicator } from '@/providers';
 import { palette } from '@/utils';
 
 type PlantAddContentModalComponentProps = {
@@ -191,10 +199,47 @@ export const PlantAddContentDateModalComponent =
 export const PlantAddPictureModalComponent =
   memo<PlantAddContentModalComponentProps>(({ isModal, setModal }) => {
     const isVisible = isModal;
-    const handlePressPictureButton = () => {
+
+    const { control } = useFormContext<PlantAddForm>();
+    const currentScreenStepIndex = useRecoilValue(
+      $currentScreenStepIndexSelector,
+    );
+    const { field: field1 } = useController({
+      name: EPlantAddStep.PICTURE,
+      control,
+    });
+    const { field: field2 } = useController({
+      name: EPlantAddStep.PICTURE_COMPLETE,
+      control,
+    });
+    const setPlantAddState = useSetRecoilState($plantAddState);
+
+    const { mutateAsync: mutatePhotoAsync, isLoading: isPhotoLoading } =
+      useUploadPhotoMutation();
+    const { mutateAsync: mutateLibraryAsync, isLoading: isLibraryLoading } =
+      useUploadImageLibraryMutation();
+
+    useMutationIndicator([isPhotoLoading, isLibraryLoading]);
+
+    const handlePressPictureButton = async () => {
+      const jsonResponse = await mutatePhotoAsync();
+      field1.value = jsonResponse.data.url as string;
+      field1.onChange(jsonResponse.data.url as string);
+      field2.onChange(field1.value);
+      setPlantAddState({
+        screenStep: plantAddSteps[currentScreenStepIndex + 1],
+      });
       setModal(false);
     };
-    const handlePressLibraryButton = () => {
+
+    const handlePressLibraryButton = async () => {
+      const jsonResponse = await mutateLibraryAsync();
+      field1.value = jsonResponse.data.url as string;
+      field1.onChange(jsonResponse.data.url as string);
+      field2.onChange(field1.value);
+      setPlantAddState({
+        screenStep: plantAddSteps[currentScreenStepIndex + 1],
+      });
       setModal(false);
     };
 
