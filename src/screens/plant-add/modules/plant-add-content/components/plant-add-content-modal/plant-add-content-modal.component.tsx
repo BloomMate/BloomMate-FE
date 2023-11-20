@@ -1,9 +1,14 @@
 import { Box, Stack } from '@mobily/stacks';
 import dayjs from 'dayjs';
+import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
 import { memo } from 'react';
 import { useController, useFormContext } from 'react-hook-form';
 import { TouchableOpacity, View } from 'react-native';
 import { Calendar, DateData, LocaleConfig } from 'react-native-calendars';
+
+dayjs.extend(isSameOrAfter);
+
+import { MarkingProps } from 'react-native-calendars/src/calendar/day/marking';
 
 import { PlantAddForm } from '../../../../hooks';
 import { EPlantAddStep } from '../../../../plant-add.state';
@@ -170,16 +175,31 @@ export const PlantAddContentDateModalComponent =
     const today = dayjs();
 
     const maxDate = today.format('YYYY-MM-DD');
-    const minDate = today.subtract(harvestEndDate, 'day').format('YYYY-MM-DD');
+    const harvestEndRealDate = today.subtract(harvestEndDate, 'day');
+    const harvestStartRealDate = today.subtract(harvestStartDate, 'day');
+
+    // harvestStartRealDate부터 harvestEndRealDate까지의 날짜 배열을 생성합니다.
+    const harvestDateRange = [];
+
+    for (
+      let currentDate = harvestStartRealDate;
+      currentDate.isSameOrAfter(harvestEndRealDate);
+      currentDate = currentDate.subtract(1, 'day')
+    ) {
+      harvestDateRange.push(currentDate.format('YYYY-MM-DD'));
+    }
+
+    console.log(harvestDateRange);
 
     return (
       <Modal
         isVisible={isVisible}
         isBottomSheet={true}
         onBackdropPress={handlePressBackdropModal}>
-        <Box
+        <Stack
           paddingX={32}
           paddingY={12}
+          space={16}
           style={{
             minHeight: 390,
             borderTopRightRadius: 24,
@@ -191,13 +211,23 @@ export const PlantAddContentDateModalComponent =
             onDayPress={day => handleDatePress(day)}
             hideExtraDays={true}
             maxDate={maxDate}
-            minDate={minDate}
+            minDate={harvestEndRealDate.format('YYYY-MM-DD')}
             markedDates={{
-              [selectedDate]: {
+              ...harvestDateRange.reduce(
+                (marked: { [key: string]: MarkingProps }, date) => {
+                  marked[date] = {
+                    selected: true,
+                    selectedColor: palette['red-300'],
+                  };
+                  return marked;
+                },
+                {},
+              ),
+              [selectedDate?.split('T')[0]]: {
                 selected: true,
                 disableTouchEvent: true,
-                selectedColor: palette['gray-200'],
-                selectedTextColor: palette['gray-900'],
+                selectedColor: palette['primary'],
+                selectedTextColor: palette['white'],
               },
             }}
             theme={{
@@ -206,7 +236,22 @@ export const PlantAddContentDateModalComponent =
               textMonthFontFamily: 'SUITE-Regular',
             }}
           />
-        </Box>
+          <Stack horizontal space={12} paddingLeft={20} align="center">
+            <Box
+              style={{
+                width: 16,
+                height: 16,
+                borderRadius: 16,
+                backgroundColor: palette['red-300'],
+              }}
+            />
+            <Text variants="labelMedium" fontWeight="Medium" color="gray-900">
+              {
+                '이때 심으신 작물은 현재 수확기 기간입니다.\n현재 수확기인 식물은 진단하기 기능 이용이 어렵습니다.'
+              }
+            </Text>
+          </Stack>
+        </Stack>
       </Modal>
     );
   });
