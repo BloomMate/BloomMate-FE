@@ -4,6 +4,7 @@ import { memo, useState } from 'react';
 import { Image } from 'react-native';
 import { useIntervalWhen } from 'rooks';
 
+import { LOGO_FONT_IMG } from '@/assets';
 import { palette } from '@/utils';
 
 type GPTLoadingProps = {};
@@ -38,7 +39,7 @@ export const GPTLoading = memo<GPTLoadingProps>(() => {
     <Box flex="fluid" alignY="center">
       <Stack space={8} style={{ minHeight: 128 }}>
         <Image
-          source={require('../../assets/bloomMate-logo.png')}
+          source={{ uri: LOGO_FONT_IMG }}
           style={{ width: 80, height: 16 }}
           resizeMode="contain"
         />
