@@ -11,7 +11,6 @@ import {
   PrimaryNavigatorProps,
 } from '../primary.navigator';
 
-import { PrimaryCommunityTabLabel } from './components';
 import { MATERIAL_TOP_TAB_NAVIGATOR_SCREEN_OPTIONS } from './primary-community.const';
 import {
   PrimaryCommunityArticleScreen,
@@ -36,6 +35,7 @@ export type PrimaryCommunityScreenTabParamList = {
 };
 
 type PrimaryCommunityScreenProps = {};
+
 const Tab = createMaterialTopTabNavigator<PrimaryCommunityScreenTabParamList>();
 
 export const PrimaryCommunityScreen = ({}: PrimaryCommunityScreenProps) => {
@@ -57,18 +57,14 @@ export const PrimaryCommunityScreen = ({}: PrimaryCommunityScreenProps) => {
         <Tab.Screen
           name="PrimaryCommunityQna"
           options={() => ({
-            tabBarLabel: props => (
-              <PrimaryCommunityTabLabel {...props} label="질의응답" />
-            ),
+            tabBarLabel: '질의응답',
           })}
           component={PrimaryCommunityQnaScreen}
         />
         <Tab.Screen
           name="PrimaryCommunityArticle"
           options={() => ({
-            tabBarLabel: props => (
-              <PrimaryCommunityTabLabel {...props} label="전문가 아티클" />
-            ),
+            tabBarLabel: '전문가 아티클',
           })}
           component={PrimaryCommunityArticleScreen}
         />

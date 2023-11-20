@@ -1,5 +1,5 @@
 import { Box } from '@mobily/stacks';
-import { memo } from 'react';
+import { memo, useState } from 'react';
 import { useFormContext, useController } from 'react-hook-form';
 import { TouchableOpacity } from 'react-native';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
@@ -11,6 +11,7 @@ import {
   $plantAddState,
   plantAddSteps,
 } from '../../../../plant-add.state';
+import { PlantAddPictureModalComponent } from '../plant-add-content-modal';
 
 import { Icon, PointLinearGradient } from '@/atoms';
 import { useUploadPhotoMutation } from '@/hooks';
@@ -21,6 +22,8 @@ type PlantAddContentPhotoComponentProps = {};
 
 export const PlantAddContentPhotoComponent =
   memo<PlantAddContentPhotoComponentProps>(() => {
+    const [isModal, setModal] = useState(false);
+
     const { mutateAsync, isLoading } = useUploadPhotoMutation();
 
     useMutationIndicator([isLoading]);
@@ -41,8 +44,8 @@ export const PlantAddContentPhotoComponent =
     const setPlantAddState = useSetRecoilState($plantAddState);
 
     const handlePressPictureButton = async () => {
+      setModal(true);
       const jsonResponse = await mutateAsync();
-
       field1.value = jsonResponse.data.url as string;
       field1.onChange(jsonResponse.data.url as string);
       field2.onChange(field1.value);
@@ -53,6 +56,7 @@ export const PlantAddContentPhotoComponent =
 
     return (
       <Box alignX="center">
+        <PlantAddPictureModalComponent isModal={isModal} setModal={setModal} />
         <TouchableOpacity onPress={handlePressPictureButton}>
           <PointLinearGradient
             style={{

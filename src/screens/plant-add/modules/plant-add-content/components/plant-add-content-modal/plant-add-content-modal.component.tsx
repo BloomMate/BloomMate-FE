@@ -7,7 +7,7 @@ import { Calendar, DateData, LocaleConfig } from 'react-native-calendars';
 import { PlantAddForm } from '../../../../hooks';
 import { EPlantAddStep } from '../../../../plant-add.state';
 
-import { Modal, Text } from '@/atoms';
+import { Button, Modal, Text } from '@/atoms';
 import { palette } from '@/utils';
 
 type PlantAddContentModalComponentProps = {
@@ -184,6 +184,33 @@ export const PlantAddContentDateModalComponent =
             }}
           />
         </Box>
+      </Modal>
+    );
+  });
+
+export const PlantAddPictureModalComponent =
+  memo<PlantAddContentModalComponentProps>(({ isModal, setModal }) => {
+    const isVisible = isModal;
+    const handlePressPictureButton = () => {
+      setModal(false);
+    };
+    const handlePressLibraryButton = () => {
+      setModal(false);
+    };
+
+    return (
+      <Modal isVisible={isVisible} isBottomSheet={true}>
+        <Stack space={24} padding={32}>
+          <Button onPress={handlePressPictureButton} mode="contained">
+            직접 촬영하기
+          </Button>
+          <Button
+            onPress={handlePressLibraryButton}
+            mode="outlined"
+            style={{ backgroundColor: palette['white'] }}>
+            갤러리에서 선택하기
+          </Button>
+        </Stack>
       </Modal>
     );
   });
