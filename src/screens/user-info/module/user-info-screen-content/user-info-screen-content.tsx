@@ -1,15 +1,23 @@
 import { Stack } from '@mobily/stacks';
+import { isUndefined } from 'lodash';
+import { memo } from 'react';
 
 import { Text } from '@/atoms';
-import { USER_DETAIL_DUMMY_DATA } from '@/dummy-data/user-detail-dummy-data';
-import { palette } from '@/utils';
+import { useGetAccountInfoQuery } from '@/hooks/get-account-info';
+import { myPageGardenSize, palette } from '@/utils';
 
 type UserInfoContentModuleProps = {};
 
-export const UserInfoContentModule = ({}: UserInfoContentModuleProps) => {
-  const data = USER_DETAIL_DUMMY_DATA; // 더미 데이터를 직접 사용합니다
+export const UserInfoContentModule = memo<UserInfoContentModuleProps>(() => {
+  const { data } = useGetAccountInfoQuery();
+
+  if (isUndefined(data)) {
+    return null;
+  }
 
   const { user_name, account_id, tiiun_number, garden_size, address } = data;
+
+  const myPageGardenSizeCopy = myPageGardenSize(garden_size);
 
   return (
     <Stack>
@@ -31,13 +39,16 @@ export const UserInfoContentModule = ({}: UserInfoContentModuleProps) => {
           <UserInfoItem title="이름" content={user_name} />
           <UserInfoItem title="계정 ID" content={account_id} />
           <UserInfoItem title="Tiiun 제품키" content={tiiun_number} />
-          <UserInfoItem title="Tiiun 사이즈" content={String(garden_size)} />
+          <UserInfoItem
+            title="Tiiun 사이즈"
+            content={String(myPageGardenSizeCopy)}
+          />
           <UserInfoItem title="주소" content={address} />
         </Stack>
       </Stack>
     </Stack>
   );
-};
+});
 
 interface UserInfoItemProps {
   title: string;

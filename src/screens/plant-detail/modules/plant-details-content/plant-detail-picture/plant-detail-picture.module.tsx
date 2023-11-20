@@ -41,10 +41,10 @@ export const PlantDetailPictureModule = memo<PlantDetailPictureModule>(() => {
         </Text>
         <TouchableOpacity onPress={handlePressUpdate}>
           <Box direction="row" alignX="center" alignY="center">
-            <Text variants="bodySmall" fontWeight="Medium" color="primary">
-              {'업데이트 '}
+            <Text variants="bodySmall" fontWeight="Bold" color="primary">
+              {'업데이트'}
             </Text>
-            <Icon name="photo-camera" size={16} color={palette['primary']} />
+            <Icon name="update" size={16} color={palette['primary']} />
           </Box>
         </TouchableOpacity>
       </Box>

@@ -8,7 +8,7 @@ import {
 import {
   PrimaryNavigatorParamLists,
   PrimaryNavigatorProps,
-} from '../../../primary.navigator';
+} from '../../../../primary.navigator';
 
 import { ModalHeader } from '@/layouts/modal-header/modal-header.layout';
 

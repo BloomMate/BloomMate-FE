@@ -1,12 +1,22 @@
-import { RouteProp } from '@react-navigation/native';
+import { Stack } from '@mobily/stacks';
+import { RouteProp, useRoute } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import { isUndefined } from 'lodash';
+import { useEffect } from 'react';
+import { FormProvider } from 'react-hook-form';
 
 import { RootStackParamList } from '../root.navigator';
 
-import { Text } from '@/atoms';
-import { BasicLayout } from '@/layouts';
+import { usePlantDetailEditForm } from './hooks';
+import {
+  PlantDetailEditNickNameInputModule,
+  PlantDetailEditHeaderModule,
+  PlantDetailEditPictureInputModule,
+  PlantDetailEditFooterModule,
+} from './module';
 
-type PlantDetailEditScreenProps = {};
+import { useGetPlantDetailQuery } from '@/hooks';
+import { BasicLayout, ScrollView } from '@/layouts';
 
 export type PlantDetailEditScreenNavigationProps = StackNavigationProp<
   RootStackParamList,
@@ -18,12 +28,40 @@ export type PlantDetailEditScreenNavigationRouteProps = RouteProp<
   'PlantDetailEditScreen'
 >;
 
-export const PlantDetailEditScreen = ({}: PlantDetailEditScreenProps) => {
+export const PlantDetailEditScreen = () => {
+  const methods = usePlantDetailEditForm();
+  const { reset } = methods;
+
+  const {
+    params: { id },
+  } = useRoute<PlantDetailEditScreenNavigationRouteProps>();
+  const { data } = useGetPlantDetailQuery({ plant_id: id });
+
+  useEffect(() => {
+    if (!isUndefined(data)) {
+      reset({
+        plant_nickname: data.plant_nickname,
+        plant_picture_url: data.plant_picture_url,
+      });
+    }
+  }, [data]);
+
+  if (isUndefined(data)) {
+    return null;
+  }
+
   return (
-    <BasicLayout backgroundColor="gray-100">
-      <Text variants="bodyMedium" fontWeight="Medium" color="gray-900">
-        Plant Detail Edit Screen
-      </Text>
-    </BasicLayout>
+    <FormProvider {...methods}>
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+        <BasicLayout backgroundColor="gray-100">
+          <PlantDetailEditHeaderModule />
+          <Stack space={48} paddingTop={48}>
+            <PlantDetailEditNickNameInputModule />
+            <PlantDetailEditPictureInputModule />
+          </Stack>
+          <PlantDetailEditFooterModule />
+        </BasicLayout>
+      </ScrollView>
+    </FormProvider>
   );
 };

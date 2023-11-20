@@ -1,5 +1,6 @@
 import { Box, Column, Columns, Stack } from '@mobily/stacks';
 import { useNavigation } from '@react-navigation/native';
+import dayjs from 'dayjs';
 import { memo } from 'react';
 import { TouchableOpacity } from 'react-native';
 
@@ -8,7 +9,7 @@ import { PrimaryCommunityQnaDetailScreenNavigationProps } from '../../primary-co
 import { Text } from '@/atoms';
 import { palette } from '@/utils';
 
-type PrimaryCommuntiyQnaListItemProps = {
+type PrimaryCommunityQnaListItemProps = {
   id: number;
   created_at: string;
   question_title: string;
@@ -16,13 +17,13 @@ type PrimaryCommuntiyQnaListItemProps = {
   is_answered: boolean;
 };
 
-export const PrimaryCommuntiyQnaListItem =
-  memo<PrimaryCommuntiyQnaListItemProps>(
+export const PrimaryCommunityQnaListItem =
+  memo<PrimaryCommunityQnaListItemProps>(
     ({ id, created_at, question_title, question_content, is_answered }) => {
       const navigation =
         useNavigation<PrimaryCommunityQnaDetailScreenNavigationProps>();
 
-      const question_date = created_at.slice(0, 10);
+      const question_date = dayjs(created_at).format('YYYY-MM-DD');
       const handlePressItem = () => {
         navigation.navigate('PrimaryCommunityQnaDetailScreen', {
           id: id,

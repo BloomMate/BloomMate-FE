@@ -49,28 +49,27 @@ export const PlantDetailProgressModule = memo<PlantDetailProgressModule>(() => {
   };
 
   return (
-    <Stack space={16}>
+    <Stack>
       <Stack
-        space={16}
         style={{
           backgroundColor: 'white',
           elevation: 4,
           borderRadius: 8,
         }}
         paddingY={16}>
-        <Stack>
+        <Stack space={12}>
           <Box direction={'row'}>
             <Box direction={'column'} flex={'fluid'}>
               <Stack space={4} style={{ alignItems: 'center' }}>
                 <Text
-                  variants={'bodySmall'}
+                  variants={'bodyMedium'}
                   fontWeight={'Medium'}
                   color={'gray-900'}>
                   발아기
                 </Text>
 
                 <Text
-                  variants={'bodySmall'}
+                  variants={'bodyMedium'}
                   fontWeight={'Light'}
                   color={'gray-900'}>
                   {germination_period_end}일
@@ -80,14 +79,14 @@ export const PlantDetailProgressModule = memo<PlantDetailProgressModule>(() => {
             <Box direction={'column'} flex={'fluid'}>
               <Stack space={4} style={{ alignItems: 'center' }}>
                 <Text
-                  variants={'bodySmall'}
+                  variants={'bodyMedium'}
                   fontWeight={'Medium'}
                   color={'gray-900'}>
                   성장기
                 </Text>
 
                 <Text
-                  variants={'bodySmall'}
+                  variants={'bodyMedium'}
                   fontWeight={'Light'}
                   color={'gray-900'}>
                   {growthPeriod}일
@@ -97,14 +96,14 @@ export const PlantDetailProgressModule = memo<PlantDetailProgressModule>(() => {
             <Box direction={'column'} flex={'fluid'}>
               <Stack space={4} style={{ alignItems: 'center' }}>
                 <Text
-                  variants={'bodySmall'}
+                  variants={'bodyMedium'}
                   fontWeight={'Medium'}
                   color={'gray-900'}>
                   수확기
                 </Text>
 
                 <Text
-                  variants={'bodySmall'}
+                  variants={'bodyMedium'}
                   fontWeight={'Light'}
                   color={'gray-900'}>
                   {harvestPeriod}일

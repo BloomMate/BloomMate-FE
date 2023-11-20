@@ -1,4 +1,3 @@
-import { Stack } from '@mobily/stacks';
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import { CompositeNavigationProp, RouteProp } from '@react-navigation/native';
 
@@ -8,9 +7,8 @@ import {
 } from '../primary.navigator';
 
 import { PrimaryMyPageContentModule } from './module/primary-mypage-content';
-import { PrimaryMyPageHeaderModule } from './module/primary-mypage-header';
 
-import { palette } from '@/utils';
+import { BasicLayout } from '@/layouts';
 
 type PrimaryMyPageScreenProps = {};
 
@@ -26,13 +24,8 @@ export type PrimaryMyPageScreenRouteProp = RouteProp<
 
 export const PrimaryMyPageScreen = ({}: PrimaryMyPageScreenProps) => {
   return (
-    <Stack
-      paddingX={24}
-      paddingY={32}
-      style={{ backgroundColor: palette['gray-100'], flex: 1 }}
-      space={48}>
-      <PrimaryMyPageHeaderModule />
+    <BasicLayout backgroundColor={'gray-100'}>
       <PrimaryMyPageContentModule />
-    </Stack>
+    </BasicLayout>
   );
 };
