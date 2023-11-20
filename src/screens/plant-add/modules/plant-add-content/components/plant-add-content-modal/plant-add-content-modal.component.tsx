@@ -29,8 +29,15 @@ export const PlantAddContentVarietyModalComponent =
     });
     const { onChange } = field;
 
+    const handlePressBackdropModal = () => {
+      setModal(false);
+    };
+
     return (
-      <Modal isVisible={isVisible} isBottomSheet={true}>
+      <Modal
+        isVisible={isVisible}
+        isBottomSheet={true}
+        onBackdropPress={handlePressBackdropModal}>
         <Box
           paddingX={32}
           paddingY={12}
@@ -116,6 +123,10 @@ export const PlantAddContentDateModalComponent =
       setModal(false);
     };
 
+    const handlePressBackdropModal = () => {
+      setModal(false);
+    };
+
     LocaleConfig.locales['kr'] = {
       monthNames: [
         '1월',
@@ -154,7 +165,10 @@ export const PlantAddContentDateModalComponent =
     const maxDate = today.toISOString().split('T')[0];
 
     return (
-      <Modal isVisible={isVisible} isBottomSheet={true}>
+      <Modal
+        isVisible={isVisible}
+        isBottomSheet={true}
+        onBackdropPress={handlePressBackdropModal}>
         <Box
           paddingX={32}
           paddingY={12}
