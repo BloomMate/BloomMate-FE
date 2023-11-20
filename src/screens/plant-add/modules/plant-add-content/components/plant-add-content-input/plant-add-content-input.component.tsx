@@ -36,6 +36,8 @@ export const PlantAddContentInputComponent =
         value={value as string}
         onChangeText={onChange}
         error={!isUndefined(fieldState.error)}
+        autoCapitalize="none"
+        maxLength={5}
         errorMsg={fieldState.error?.message as string}
         rightIconName={rightIconName}
       />
@@ -77,10 +79,10 @@ export const PlantAddVarietyInputComponent =
         />
         <TouchableOpacity onPress={() => setModal(!isModal)}>
           <TextInput
+            disabled
             placeholder={placeholder}
             label={label}
             rightIconName={rightIconName}
-            disabled
             value={selectedVariety()}
             error={!isUndefined(fieldState.error)}
             errorMsg={fieldState.error?.message as string}
