@@ -28,16 +28,11 @@ export const PlantListItem = memo<PlantListItemProps>(
     return (
       <Box
         style={{
-          elevation: 4,
           backgroundColor: palette['white'],
           borderTopEndRadius: 8,
           borderTopLeftRadius: 8,
           borderTopRightRadius: 8,
           borderTopStartRadius: 8,
-          borderBottomLeftRadius: 8,
-          borderBottomEndRadius: 8,
-          borderBottomRightRadius: 8,
-          borderBottomStartRadius: 8,
         }}>
         <Columns>
           <Column width="content" padding={10}>
@@ -66,7 +61,16 @@ export const PlantListItem = memo<PlantListItemProps>(
             </Stack>
           </Column>
         </Columns>
-        <Columns>
+        <Columns
+          style={{
+            elevation: 5,
+            backgroundColor: palette['white'],
+
+            borderBottomLeftRadius: 8,
+            borderBottomEndRadius: 8,
+            borderBottomRightRadius: 8,
+            borderBottomStartRadius: 8,
+          }}>
           <Column width="fluid">
             <TouchableOpacity
               onPress={handlePressChatButton}
