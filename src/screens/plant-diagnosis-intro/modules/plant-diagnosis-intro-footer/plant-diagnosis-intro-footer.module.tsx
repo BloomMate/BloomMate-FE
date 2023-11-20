@@ -1,30 +1,21 @@
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { memo } from 'react';
+import { memo, useState } from 'react';
 
 import {
   PlantDiagnosisIntroScreenNavigationProps,
   PlantDiagnosisIntroScreenNavigationRouteProps,
 } from '../../plant-diagnosis-intro.screen';
 
-import { usePostPlantDiagnosis } from './hooks';
+import { PlantDiagnosisIntroModalComponent } from './components';
 
-import { useUploadPhotoMutation } from '@/hooks';
 import { CTASection, SingleButtonProps } from '@/layouts';
-import { useMutationIndicator } from '@/providers';
 
 type PlantDiagnosisIntroFooterModuleProps = {};
 
 export const PlantDiagnosisIntroFooterModule =
   memo<PlantDiagnosisIntroFooterModuleProps>(() => {
-    const { mutateAsync: uploadPhoto, isLoading: isUploadingPhoto } =
-      useUploadPhotoMutation();
+    const [isModal, setModal] = useState(false);
 
-    const {
-      mutateAsync: postPlantDiagnosis,
-      isLoading: isPostingPlantDiagnosis,
-    } = usePostPlantDiagnosis();
-
-    useMutationIndicator([isUploadingPhoto, isPostingPlantDiagnosis]);
     const navigation =
       useNavigation<PlantDiagnosisIntroScreenNavigationProps>();
     const {
@@ -36,16 +27,7 @@ export const PlantDiagnosisIntroFooterModule =
     };
 
     const handlePressDiagnosis = async () => {
-      const { data: cloudinaryData } = await uploadPhoto();
-
-      const diagnosisData = await postPlantDiagnosis({
-        diagnose_photo_url: cloudinaryData.url,
-        plant_id: id.toString(),
-      });
-
-      navigation.navigate('PlantDiagnosisResultScreen', {
-        id: diagnosisData.id,
-      });
+      setModal(true);
     };
 
     const buttons: SingleButtonProps[] = [
@@ -62,5 +44,13 @@ export const PlantDiagnosisIntroFooterModule =
       },
     ];
 
-    return <CTASection buttons={buttons} direction="row" />;
+    return (
+      <>
+        <PlantDiagnosisIntroModalComponent
+          isModal={isModal}
+          setModal={setModal}
+        />
+        <CTASection buttons={buttons} direction="row" />
+      </>
+    );
   });
