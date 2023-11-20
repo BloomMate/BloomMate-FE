@@ -1,4 +1,5 @@
 import { Box, Stack } from '@mobily/stacks';
+import dayjs from 'dayjs';
 import { memo } from 'react';
 import { useController, useFormContext } from 'react-hook-form';
 import { TouchableOpacity, View } from 'react-native';
@@ -8,7 +9,7 @@ import { PlantAddForm } from '../../../../hooks';
 import { EPlantAddStep } from '../../../../plant-add.state';
 
 import { Modal, Text } from '@/atoms';
-import { palette } from '@/utils';
+import { calculateHarvestDateRange, palette } from '@/utils';
 
 type PlantAddContentModalComponentProps = {
   isModal: boolean;
@@ -109,7 +110,12 @@ export const PlantAddContentVarietyModalComponent =
   });
 export const PlantAddContentDateModalComponent =
   memo<PlantAddContentModalComponentProps>(({ isModal, setModal }) => {
-    const { control } = useFormContext<PlantAddForm>();
+    const { control, watch } = useFormContext<PlantAddForm>();
+
+    const selectedPlant = watch(EPlantAddStep.VARIETY);
+    const [harvestStartDate, harvestEndDate] =
+      calculateHarvestDateRange(selectedPlant);
+
     const { field } = useController({
       control,
       name: EPlantAddStep.DATE_INPUT,
@@ -161,8 +167,10 @@ export const PlantAddContentDateModalComponent =
       today: '오늘',
     };
     LocaleConfig.defaultLocale = 'kr';
-    const today = new Date();
-    const maxDate = today.toISOString().split('T')[0];
+    const today = dayjs();
+
+    const maxDate = today.format('YYYY-MM-DD');
+    const minDate = today.subtract(harvestEndDate, 'day').format('YYYY-MM-DD');
 
     return (
       <Modal
@@ -180,9 +188,10 @@ export const PlantAddContentDateModalComponent =
           }}>
           <Calendar
             monthFormat={'yyyy년 MM월'}
-            maxDate={maxDate}
             onDayPress={day => handleDatePress(day)}
             hideExtraDays={true}
+            maxDate={maxDate}
+            minDate={minDate}
             markedDates={{
               [selectedDate]: {
                 selected: true,
@@ -193,8 +202,8 @@ export const PlantAddContentDateModalComponent =
             }}
             theme={{
               todayTextColor: palette['gray-900'],
-              textDayFontFamily: 'GmarketSansTTFMedium',
-              textMonthFontFamily: 'GmarketSansTTFMedium',
+              textDayFontFamily: 'SUITE-Regular',
+              textMonthFontFamily: 'SUITE-Regular',
             }}
           />
         </Box>

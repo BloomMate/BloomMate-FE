@@ -15,3 +15,19 @@ export const calculateDaysDifference = (inputDateString: string): number => {
 
   return daysDifference;
 };
+
+export const calculateHarvestDateRange = (variety: number) => {
+  switch (variety) {
+    case 1:
+      return [91, 110];
+    case 2:
+      return [71, 100];
+    case 3:
+      return [81, 105];
+    case 4:
+      return [91, 100];
+
+    default:
+      return [0, 0];
+  }
+};

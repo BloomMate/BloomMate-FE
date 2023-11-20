@@ -55,14 +55,15 @@ export const PlantAddVarietyInputComponent =
     const { onChange, value } = field;
     const selectedVariety = () => {
       switch (value) {
+        case 1:
+          return '🍅 토마토';
         case 2:
           return '🍓 딸기';
         case 3:
           return '🌽 옥수수';
         case 4:
           return '🥔 감자';
-        case 1:
-          return '🍅 토마토';
+
         default:
           return undefined;
       }
