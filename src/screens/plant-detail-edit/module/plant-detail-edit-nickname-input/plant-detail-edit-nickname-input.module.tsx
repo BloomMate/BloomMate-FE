@@ -22,6 +22,7 @@ export const PlantDetailEditNickNameInputModule = memo(() => {
       <TextInput
         label="별명"
         value={value}
+        autoCapitalize="none"
         onChangeText={onChange}
         error={!isUndefined(fieldState.error)}
         errorMsg={fieldState.error?.message as string}

@@ -7,12 +7,14 @@ import { palette } from '@/utils';
 
 type ModalProps = PropsWithChildren<{
   isVisible: boolean;
+  onBackdropPress?: () => void;
   isBottomSheet?: boolean;
 }>;
 
 export const Modal = ({
   children,
   isVisible,
+  onBackdropPress = () => {},
   isBottomSheet = false,
 }: ModalProps) => {
   const { width } = useWindowDimensions();
@@ -27,7 +29,7 @@ export const Modal = ({
       isVisible={isVisible}
       animationIn={isBottomSheet ? 'slideInUp' : 'fadeIn'}
       animationOut={isBottomSheet ? 'slideOutDown' : 'fadeOut'}
-      backdropColor={palette['modal']} // 이갓만 색깔 잘 정해서 바꿔
+      backdropColor={palette['modal']}
       backdropOpacity={1}
       style={[
         {
@@ -43,6 +45,7 @@ export const Modal = ({
       statusBarTranslucent
       deviceHeight={maxDeviceHeight}
       deviceWidth={width}
+      onBackdropPress={onBackdropPress}
       avoidKeyboard>
       {children}
     </RNModal>

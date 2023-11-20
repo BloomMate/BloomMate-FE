@@ -36,6 +36,8 @@ export const PlantAddContentInputComponent =
         value={value as string}
         onChangeText={onChange}
         error={!isUndefined(fieldState.error)}
+        autoCapitalize="none"
+        maxLength={5}
         errorMsg={fieldState.error?.message as string}
         rightIconName={rightIconName}
       />
@@ -55,14 +57,15 @@ export const PlantAddVarietyInputComponent =
     const { onChange, value } = field;
     const selectedVariety = () => {
       switch (value) {
+        case 1:
+          return '🍅 토마토';
         case 2:
           return '🍓 딸기';
         case 3:
           return '🌽 옥수수';
         case 4:
           return '🥔 감자';
-        case 1:
-          return '🍅 토마토';
+
         default:
           return undefined;
       }
@@ -76,6 +79,7 @@ export const PlantAddVarietyInputComponent =
         />
         <TouchableOpacity onPress={() => setModal(!isModal)}>
           <TextInput
+            disabled
             placeholder={placeholder}
             label={label}
             rightIconName={rightIconName}
