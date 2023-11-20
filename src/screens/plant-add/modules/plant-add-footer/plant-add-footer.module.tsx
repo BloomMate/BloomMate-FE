@@ -61,7 +61,7 @@ export const PlantAddFooterModule = memo<PlantAddFooterModuleProps>(() => {
   const handlePressButton = () => {
     if (isLastStep) {
       handleSubmit(addNewPlant)();
-      navigation.replace('PrimaryStack', { screen: 'PrimaryPlantListScreen' });
+      navigation.replace('PlantAnimationScreen', { type: 'plant-add' });
     } else {
       setPlantAddState({
         screenStep: plantAddSteps[currentScreenStepIndex + 1],

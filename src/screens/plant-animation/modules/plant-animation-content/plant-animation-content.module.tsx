@@ -17,15 +17,21 @@ export const PlantAnimationContentModule =
     } = useRoute<PlantAnimationScreenNavigationRouteProps>();
 
     return (
-      <Box alignX="center" alignY="center">
+      <Box alignX="center" alignY="center" flex="fluid">
         <LottieView
           source={PLANT_ADD_LOTTIE}
           autoPlay
           loop
           style={{ width: 200, height: 200 }}
         />
-        <Text variants="bodyMedium" fontWeight="Medium" color={'gray-900'}>
-          BloomMate 를 통해 식물을 추가하셨군요!
+        <Text
+          variants="bodyLarge"
+          fontWeight="Medium"
+          color={'gray-900'}
+          textAlignment="center">
+          {
+            '틔운에 성공적으로 식물을 심으셨군요!\nBloomMate에서 식물과 대화하고 진단해보세요'
+          }
         </Text>
       </Box>
     );
