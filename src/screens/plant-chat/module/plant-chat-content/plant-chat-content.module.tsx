@@ -14,7 +14,7 @@ export const PlantChatContentModule = memo<PlantChatContentModuleProps>(() => {
   const navigation = useNavigation<PlantChatScreenNavigationProps>();
 
   return (
-    <Stack>
+    <Stack paddingBottom={80}>
       <Box alignX={'center'}>
         <Image
           style={{ width: 300, height: 300 }}
