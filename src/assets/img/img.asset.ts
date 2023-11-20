@@ -28,3 +28,5 @@ export const CORN_SEED_IMG =
   'https://res.cloudinary.com/dahw1d9li/image/upload/v1700477736/strawberry_bsjmxj.png';
 export const LOGO_FONT_IMG =
   'https://res.cloudinary.com/dahw1d9li/image/upload/v1700478058/LogoFont_ebtook.png';
+export const CHAT_LOGO_IMG =
+  'https://res.cloudinary.com/dahw1d9li/image/upload/v1700404118/chatlogo_ed8pau.png';
