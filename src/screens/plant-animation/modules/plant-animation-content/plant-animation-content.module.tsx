@@ -5,7 +5,8 @@ import { memo } from 'react';
 
 import { PlantAnimationScreenNavigationRouteProps } from '../../plant-animation.screen';
 
-import { PLANT_ADD_LOTTIE } from '@/assets';
+import { getPlantAnimationContents } from './plant-animation-content.util';
+
 import { Text } from '@/atoms';
 
 type PlantAnimationContentModuleProps = {};
@@ -16,10 +17,12 @@ export const PlantAnimationContentModule =
       params: { type },
     } = useRoute<PlantAnimationScreenNavigationRouteProps>();
 
+    const { LOTTIE_FILE, copy } = getPlantAnimationContents(type);
+
     return (
       <Box alignX="center" alignY="center" flex="fluid">
         <LottieView
-          source={PLANT_ADD_LOTTIE}
+          source={LOTTIE_FILE}
           autoPlay
           loop
           style={{ width: 200, height: 200 }}
@@ -29,9 +32,7 @@ export const PlantAnimationContentModule =
           fontWeight="Medium"
           color={'gray-900'}
           textAlignment="center">
-          {
-            '틔운에 성공적으로 식물을 심으셨군요!\nBloomMate에서 식물과 대화하고 진단해보세요'
-          }
+          {copy}
         </Text>
       </Box>
     );

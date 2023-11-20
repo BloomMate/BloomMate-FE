@@ -1,10 +1,13 @@
 import { Box, Stack } from '@mobily/stacks';
-import { useRoute } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { isUndefined } from 'lodash';
 import { memo, useRef, useState } from 'react';
 import { useCountdown, useDidUpdate } from 'rooks';
 
-import { PlantDiagnosisResultScreenNavigationRouteProps } from '../../plant-diagnosis-result.screen';
+import {
+  PlantDiagnosisResultScreenNavigationProps,
+  PlantDiagnosisResultScreenNavigationRouteProps,
+} from '../../plant-diagnosis-result.screen';
 
 import { GPTButton, GPTLoading } from './components';
 
@@ -23,6 +26,8 @@ export const PlantDiagnosisResultGPTModule = memo(() => {
   const {
     params: { id },
   } = useRoute<PlantDiagnosisResultScreenNavigationRouteProps>();
+
+  const navigation = useNavigation<PlantDiagnosisResultScreenNavigationProps>();
 
   const { data } = useGetPlantDiagnosisRecordDetailQuery({
     disease_record_id: id,
@@ -47,7 +52,8 @@ export const PlantDiagnosisResultGPTModule = memo(() => {
   const isPlantSick = isPlantSickByPlantDiseaseName(plant_disease_name);
 
   const handlePressGPTButton = () => {
-    setGptState('confirm');
+    navigation.replace('PlantAnimationScreen', { type: 'plant-dead' });
+    // setGptState('confirm');
   };
 
   if (!isPlantSick) {
