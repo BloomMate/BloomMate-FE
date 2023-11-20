@@ -79,6 +79,7 @@ export const PlantAddVarietyInputComponent =
             placeholder={placeholder}
             label={label}
             rightIconName={rightIconName}
+            disabled
             value={selectedVariety()}
             error={!isUndefined(fieldState.error)}
             errorMsg={fieldState.error?.message as string}
