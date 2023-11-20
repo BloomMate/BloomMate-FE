@@ -8,8 +8,11 @@ import {
   PlantDetailScreenNavigationRouteProps,
 } from '../../plant-detail.screen';
 
+import { usePostHarvestPlantMutation } from './hooks';
+
 import { Button } from '@/atoms';
 import { useGetPlantDetailQuery } from '@/hooks';
+import { useMutationIndicator } from '@/providers';
 
 type PlantDetailFooterModule = {};
 
@@ -21,6 +24,9 @@ export const PlantDetailFooterModule = memo<PlantDetailFooterModule>(() => {
 
   const { data } = useGetPlantDetailQuery({ plant_id: id });
 
+  const { mutateAsync, isLoading } = usePostHarvestPlantMutation();
+  useMutationIndicator([isLoading]);
+
   if (isUndefined(data)) {
     return;
   }
@@ -28,10 +34,10 @@ export const PlantDetailFooterModule = memo<PlantDetailFooterModule>(() => {
 
   const isGrowthLevelHarvest = growth_level === 'harvest';
 
-  const handlePressButton = () => {
+  const handlePressButton = async () => {
     if (isGrowthLevelHarvest) {
-      // TODO : ADD Harvest API + navigate to list
-
+      await mutateAsync({ plant_id: id });
+      navigation.pop(1);
       return;
     }
     navigation.navigate('PlantDiagnosisIntroScreen', { id });
