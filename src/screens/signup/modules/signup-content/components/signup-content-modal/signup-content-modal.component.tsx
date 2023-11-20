@@ -28,8 +28,12 @@ export const SignUpContentModalComponent =
     };
     const isVisible = isModal;
 
+    const handlePressBackdropModal = () => {
+      setModal(false);
+    };
+
     return (
-      <Modal isVisible={isVisible}>
+      <Modal isVisible={isVisible} onBackdropPress={handlePressBackdropModal}>
         <Postcode
           style={{ aspectRatio: 32 / 52 }}
           jsOptions={{ animation: true }}

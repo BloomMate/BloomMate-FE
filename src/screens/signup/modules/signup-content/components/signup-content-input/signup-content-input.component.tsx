@@ -29,13 +29,13 @@ export const SignUpContentInputComponent =
 
       return (
         <TextInput
-          disabled
           placeholder={placeholder}
           label={label}
           value={value as string}
           onChangeText={onChange}
           error={!isUndefined(fieldState.error)}
           errorMsg={fieldState.error?.message as string}
+          autoCapitalize="none"
           secureTextEntry={isPasswordCheck}
         />
       );

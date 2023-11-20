@@ -22,6 +22,7 @@ export const LoginPasswordInputModule = memo(() => {
         value={value}
         secureTextEntry
         onChangeText={onChange}
+        autoCapitalize="none"
         error={!isUndefined(fieldState.error?.message)}
         errorMsg={fieldState.error?.message as string}
       />
