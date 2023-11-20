@@ -75,9 +75,12 @@ export const PlantDiagnosisIntroModalComponent =
     };
 
     return (
-      <Modal isVisible={isVisible} isBottomSheet={true}>
-        <Stack space={16} padding={32}>
-          <Button onPress={handlePressPictureButton} mode="contained">
+      <Modal isVisible={isVisible}>
+        <Stack space={16}>
+          <Button
+            onPress={handlePressPictureButton}
+            mode="outlined"
+            style={{ backgroundColor: palette['white'] }}>
             직접 촬영하기
           </Button>
           <Button
