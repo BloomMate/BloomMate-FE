@@ -57,6 +57,9 @@ export const PlantDiagnosisResultGPTModule = memo(() => {
     setDialogVisible(false);
     setGptState('confirm');
   };
+  const handleCancel = () => {
+    setDialogVisible(false);
+  };
 
   return (
     <>
@@ -68,6 +71,11 @@ export const PlantDiagnosisResultGPTModule = memo(() => {
           label: '확인',
           onPress: handleOkay,
           mode: 'contained',
+        }}
+        cancelButton={{
+          label: '취소',
+          onPress: handleCancel,
+          mode: 'outlined',
         }}
       />
 

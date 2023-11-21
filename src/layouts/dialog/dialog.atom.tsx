@@ -28,7 +28,7 @@ export const Dialog = memo<DialogProps>(
             borderRadius: 8,
             alignItems: 'center',
             justifyContent: 'center',
-            width: '100%',
+            width: 320,
           }}>
           <Stack
             space={8}
@@ -50,14 +50,14 @@ export const Dialog = memo<DialogProps>(
             )}
           </Stack>
           <Columns space={4}>
-            {okayButton && (
-              <Column>
-                <Button {...okayButton}>{okayButton.label}</Button>
-              </Column>
-            )}
             {cancelButton && (
               <Column>
                 <Button {...cancelButton}>{cancelButton.label}</Button>
+              </Column>
+            )}
+            {okayButton && (
+              <Column>
+                <Button {...okayButton}>{okayButton.label}</Button>
               </Column>
             )}
           </Columns>
