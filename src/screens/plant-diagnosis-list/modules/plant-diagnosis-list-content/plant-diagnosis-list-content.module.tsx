@@ -21,11 +21,10 @@ export const PlantDiagnosisListContentModule =
     const { data } = useGetPlantDiagnosisRecordListQuery({ plant_id: id });
 
     if (isUndefined(data)) {
-      return;
+      return null;
     }
 
     const diagnosisList = data.DATA;
-    const { plant_nickname } = data;
 
     return (
       <FlatList

@@ -28,7 +28,7 @@ export const PlantDetailFooterModule = memo<PlantDetailFooterModule>(() => {
   useMutationIndicator([isLoading]);
 
   if (isUndefined(data)) {
-    return;
+    return null;
   }
   const { growth_level } = data;
 

@@ -49,7 +49,7 @@ export const PlantDiagnosisResultGPTModule = memo(() => {
   }, [isCountDownEnd]);
 
   if (isUndefined(data)) {
-    return;
+    return null;
   }
 
   const { plant_disease_name, plant_name } = data;

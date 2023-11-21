@@ -35,7 +35,10 @@ export type RootStackParamList = {
   PlantDetailScreen: { id: number };
   PlantDetailEditScreen: { id: number };
   PlantDiagnosisIntroScreen: { id: number };
-  PlantDiagnosisResultScreen: { id: number };
+  PlantDiagnosisResultScreen: {
+    plant_id: number;
+    id: number;
+  };
   PlantDiagnosisListScreen: { id: number };
   PlantAnimationScreen: {
     type: 'plant-add' | 'harvest' | 'plant-dead';
