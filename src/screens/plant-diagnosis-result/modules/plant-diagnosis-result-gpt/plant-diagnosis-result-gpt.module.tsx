@@ -10,9 +10,11 @@ import {
 } from '../../plant-diagnosis-result.screen';
 
 import { GPTButton, GPTLoading } from './components';
+import { useDeletePlantMutation } from './hooks';
 
 import { useGetPlantDiagnosisRecordDetailQuery } from '@/hooks';
 import { Dialog } from '@/layouts';
+import { useMutationIndicator } from '@/providers';
 import { isPlantSickByPlantDiseaseName } from '@/utils';
 
 export const PlantDiagnosisResultGPTModule = memo(() => {
@@ -21,6 +23,9 @@ export const PlantDiagnosisResultGPTModule = memo(() => {
 
   const [isCountDownEnd, setIsCountDownEnd] = useState(false);
   const endTimeRef = useRef(new Date(Date.now() + 5000));
+
+  const { mutateAsync, isLoading } = useDeletePlantMutation();
+  useMutationIndicator([isLoading]);
 
   const {
     params: { id },
@@ -62,10 +67,10 @@ export const PlantDiagnosisResultGPTModule = memo(() => {
     setDialogVisible(false);
   };
 
-  const handlePressDialogOkayButton = () => {
-    // TODO : add delete api
-    setDialogVisible(false);
+  const handlePressDialogOkayButton = async () => {
+    await mutateAsync({ plant_id: id.toString() });
 
+    setDialogVisible(false);
     navigation.reset({
       index: 1,
       routes: [
