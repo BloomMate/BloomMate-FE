@@ -8,6 +8,7 @@ import { palette } from '@/utils';
 
 type DialogProps = {
   dialogVisible: boolean;
+  onBackdropPress?: () => void;
   title: string;
   content?: string;
   okayButton?: SingleButtonProps;
@@ -15,57 +16,57 @@ type DialogProps = {
 };
 
 export const Dialog = memo<DialogProps>(
-  ({ dialogVisible, title, content, okayButton, cancelButton }) => {
+  ({
+    dialogVisible,
+    onBackdropPress,
+    title,
+    content,
+    okayButton,
+    cancelButton,
+  }) => {
     return (
-      <Modal isVisible={dialogVisible}>
+      <Modal isVisible={dialogVisible} onBackdropPress={onBackdropPress}>
         <Box
-          paddingBottom={16}
-          paddingTop={16}
-          paddingX={16}
+          padding={16}
           style={{
             backgroundColor: palette['white'],
-
             borderRadius: 8,
             alignItems: 'center',
             justifyContent: 'center',
-            width: 327,
+            width: '100%',
           }}>
-          <Stack space={8}>
-            <Stack
-              space={16}
-              style={{
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}>
-              <Text color="black" fontWeight="Bold" variants="bodyLarge">
-                {title}
+          <Stack
+            space={24}
+            paddingBottom={24}
+            style={{
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <Text color="black" fontWeight="Bold" variants="bodyLarge">
+              {title}
+            </Text>
+            {content && (
+              <Text
+                color="gray-700"
+                fontWeight="Medium"
+                variants="bodyMedium"
+                textAlignment="center">
+                {content}
               </Text>
-              {content && (
-                <Text
-                  style={{
-                    width: '90%',
-                    textAlign: 'center',
-                  }}
-                  color="gray-700"
-                  fontWeight="Medium"
-                  variants={'bodyMedium'}>
-                  {content}
-                </Text>
-              )}
-            </Stack>
-            <Columns space={4}>
-              {cancelButton && (
-                <Column>
-                  <Button {...cancelButton}>{cancelButton.label}</Button>
-                </Column>
-              )}
-              {okayButton && (
-                <Column>
-                  <Button {...okayButton}>{okayButton.label}</Button>
-                </Column>
-              )}
-            </Columns>
+            )}
           </Stack>
+          <Columns space={12}>
+            {cancelButton && (
+              <Column>
+                <Button {...cancelButton}>{cancelButton.label}</Button>
+              </Column>
+            )}
+            {okayButton && (
+              <Column>
+                <Button {...okayButton}>{okayButton.label}</Button>
+              </Column>
+            )}
+          </Columns>
         </Box>
       </Modal>
     );

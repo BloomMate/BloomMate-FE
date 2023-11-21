@@ -28,7 +28,7 @@ export const PlantDetailEditPictureInputModule =
     };
 
     if (!value) {
-      return;
+      return null;
     }
 
     return (

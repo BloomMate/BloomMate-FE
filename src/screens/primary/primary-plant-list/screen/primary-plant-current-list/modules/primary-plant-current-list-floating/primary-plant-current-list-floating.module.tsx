@@ -28,7 +28,7 @@ export const PrimaryPlantCurrentListFloatingModule = memo(
 
     const isFullList = isFullListByGardenSizeAndNumberOfPlant(
       garden_size,
-      DATA.length,
+      DATA.filter(v => !v.is_harvested).length,
     );
 
     const handlePressButton = () => {

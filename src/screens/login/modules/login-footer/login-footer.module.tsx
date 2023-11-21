@@ -27,7 +27,15 @@ export const LoginFooterModule = memo<LoginFooterModuleProps>(() => {
   }) => {
     await mutateAsync({ id, pw });
 
-    navigation.replace('PrimaryStack', { screen: 'PrimaryPlantListScreen' });
+    navigation.reset({
+      index: 1,
+      routes: [
+        {
+          name: 'PrimaryStack',
+          params: { screen: 'PrimaryPlantListScreen' },
+        },
+      ],
+    });
   };
 
   const handlePressLoginButton = () => {

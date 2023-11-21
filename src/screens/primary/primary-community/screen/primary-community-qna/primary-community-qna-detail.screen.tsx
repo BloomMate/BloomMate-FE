@@ -35,7 +35,7 @@ export const PrimaryCommunityQnaDetailScreen =
     const { data } = useGetQuestionDetailQuery(id);
 
     if (isUndefined(data)) {
-      return;
+      return null;
     }
     const { question, comment } = data;
 

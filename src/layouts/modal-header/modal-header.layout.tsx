@@ -1,4 +1,5 @@
 import { useBackHandler } from '@react-native-community/hooks';
+import isUndefined from 'lodash/isUndefined';
 import { memo } from 'react';
 
 import { Icon, Text } from '@/atoms';
@@ -11,13 +12,17 @@ type ModalHeaderProps = {
         title: string;
       }
     | { type: 'icon' };
-  onPressExit: () => void;
+  onPressExit?: () => void;
 };
 
 export const ModalHeader = memo<ModalHeaderProps>(({ left, onPressExit }) => {
   useBackHandler(() => {
-    onPressExit();
-    return true;
+    if (!isUndefined(onPressExit)) {
+      onPressExit();
+      return true;
+    }
+
+    return false;
   });
 
   if (left.type === 'string') {
@@ -29,7 +34,7 @@ export const ModalHeader = memo<ModalHeaderProps>(({ left, onPressExit }) => {
   }
 
   const handlePressBackIcon = () => {
-    onPressExit();
+    onPressExit?.();
   };
 
   return (

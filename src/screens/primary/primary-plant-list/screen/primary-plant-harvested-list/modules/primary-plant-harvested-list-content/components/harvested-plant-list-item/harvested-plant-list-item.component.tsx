@@ -17,14 +17,7 @@ export const HarvestedPlantListItem =
           style={{
             elevation: 4,
             backgroundColor: palette['white'],
-            borderTopEndRadius: 8,
-            borderTopLeftRadius: 8,
-            borderTopRightRadius: 8,
-            borderTopStartRadius: 8,
-            borderBottomLeftRadius: 12,
-            borderBottomEndRadius: 12,
-            borderBottomRightRadius: 12,
-            borderBottomStartRadius: 12,
+            borderRadius: 12,
           }}
           alignY="center">
           <Column width="content" padding={10}>

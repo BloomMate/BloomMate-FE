@@ -30,7 +30,7 @@ export const PlantDiagnosisResultInfoModule =
     });
 
     if (isUndefined(data)) {
-      return;
+      return null;
     }
 
     const {

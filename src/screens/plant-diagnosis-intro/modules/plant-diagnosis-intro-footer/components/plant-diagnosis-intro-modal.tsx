@@ -55,6 +55,7 @@ export const PlantDiagnosisIntroModalComponent =
       });
 
       navigation.navigate('PlantDiagnosisResultScreen', {
+        plant_id: id,
         id: diagnosisData.id,
       });
       setModal(false);
@@ -68,14 +69,19 @@ export const PlantDiagnosisIntroModalComponent =
       });
 
       navigation.navigate('PlantDiagnosisResultScreen', {
+        plant_id: id,
         id: diagnosisData.id,
       });
 
       setModal(false);
     };
 
+    const handlePressBackdrop = () => {
+      setModal(false);
+    };
+
     return (
-      <Modal isVisible={isVisible}>
+      <Modal isVisible={isVisible} onBackdropPress={handlePressBackdrop}>
         <Stack space={16}>
           <Button
             onPress={handlePressPictureButton}

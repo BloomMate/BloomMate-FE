@@ -1,6 +1,10 @@
 import { Stack } from '@mobily/stacks';
+import { Suspense } from 'react';
 
-import { PrimaryMypageGreetingModule } from './primary-mypage-greeting';
+import {
+  PrimaryMyPageGreetingSuspenseModule,
+  PrimaryMypageGreetingModule,
+} from './primary-mypage-greeting';
 import { PrimaryMyPageHeaderModule } from './primary-mypage-header';
 import { PrimaryMyPageInfoItemModule } from './primary-mypage-infoitem';
 
@@ -12,9 +16,10 @@ export const PrimaryMyPageContentModule =
       <Stack>
         <Stack space={48}>
           <PrimaryMyPageHeaderModule />
-          <PrimaryMypageGreetingModule />
+          <Suspense fallback={<PrimaryMyPageGreetingSuspenseModule />}>
+            <PrimaryMypageGreetingModule />
+          </Suspense>
         </Stack>
-
         <PrimaryMyPageInfoItemModule />
       </Stack>
     );
