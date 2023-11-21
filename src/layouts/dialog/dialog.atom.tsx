@@ -30,19 +30,22 @@ export const Dialog = memo<DialogProps>(
             justifyContent: 'center',
             width: 327,
           }}>
-          <Stack space={24}>
+          <Stack space={8}>
             <Stack
-              space={24}
+              space={16}
               style={{
                 alignItems: 'center',
                 justifyContent: 'center',
-                width: '100%',
               }}>
               <Text color="black" fontWeight="Bold" variants="bodyLarge">
                 {title}
               </Text>
               {content && (
                 <Text
+                  style={{
+                    width: '90%',
+                    textAlign: 'center',
+                  }}
                   color="gray-700"
                   fontWeight="Medium"
                   variants={'bodyMedium'}>
