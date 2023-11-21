@@ -1,7 +1,7 @@
 import { Box, Stack } from '@mobily/stacks';
 import dayjs from 'dayjs';
 import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
-import { memo } from 'react';
+import React, { memo } from 'react';
 import { useController, useFormContext } from 'react-hook-form';
 import { TouchableOpacity, View } from 'react-native';
 import { Calendar, DateData, LocaleConfig } from 'react-native-calendars';
@@ -9,11 +9,19 @@ import { Calendar, DateData, LocaleConfig } from 'react-native-calendars';
 dayjs.extend(isSameOrAfter);
 
 import { MarkingProps } from 'react-native-calendars/src/calendar/day/marking';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 import { PlantAddForm } from '../../../../hooks';
-import { EPlantAddStep } from '../../../../plant-add.state';
+import {
+  $currentScreenStepIndexSelector,
+  $plantAddState,
+  EPlantAddStep,
+  plantAddSteps,
+} from '../../../../plant-add.state';
 
-import { Modal, Text } from '@/atoms';
+import { Button, Modal, Text } from '@/atoms';
+import { useUploadImageLibraryMutation, useUploadPhotoMutation } from '@/hooks';
+import { useMutationIndicator } from '@/providers';
 import { calculateHarvestDateRange, palette } from '@/utils';
 
 type PlantAddContentModalComponentProps = {
@@ -251,6 +259,70 @@ export const PlantAddContentDateModalComponent =
               }
             </Text>
           </Stack>
+        </Stack>
+      </Modal>
+    );
+  });
+
+export const PlantAddPictureModalComponent =
+  memo<PlantAddContentModalComponentProps>(({ isModal, setModal }) => {
+    const isVisible = isModal;
+
+    const { control } = useFormContext<PlantAddForm>();
+    const currentScreenStepIndex = useRecoilValue(
+      $currentScreenStepIndexSelector,
+    );
+    const { field: field1 } = useController({
+      name: EPlantAddStep.PICTURE,
+      control,
+    });
+    const { field: field2 } = useController({
+      name: EPlantAddStep.PICTURE_COMPLETE,
+      control,
+    });
+    const setPlantAddState = useSetRecoilState($plantAddState);
+
+    const { mutateAsync: mutatePhotoAsync, isLoading: isPhotoLoading } =
+      useUploadPhotoMutation();
+    const { mutateAsync: mutateLibraryAsync, isLoading: isLibraryLoading } =
+      useUploadImageLibraryMutation();
+
+    useMutationIndicator([isPhotoLoading, isLibraryLoading]);
+
+    const handlePressPictureButton = async () => {
+      const jsonResponse = await mutatePhotoAsync();
+      field1.value = jsonResponse.data.url as string;
+      field1.onChange(jsonResponse.data.url as string);
+      field2.onChange(field1.value);
+      setPlantAddState({
+        screenStep: plantAddSteps[currentScreenStepIndex + 1],
+      });
+      setModal(false);
+    };
+
+    const handlePressLibraryButton = async () => {
+      const jsonResponse = await mutateLibraryAsync();
+      field1.value = jsonResponse.data.url as string;
+      field1.onChange(jsonResponse.data.url as string);
+      field2.onChange(field1.value);
+      setPlantAddState({
+        screenStep: plantAddSteps[currentScreenStepIndex + 1],
+      });
+      setModal(false);
+    };
+
+    return (
+      <Modal isVisible={isVisible} isBottomSheet={true}>
+        <Stack space={24} padding={32}>
+          <Button onPress={handlePressPictureButton} mode="contained">
+            직접 촬영하기
+          </Button>
+          <Button
+            onPress={handlePressLibraryButton}
+            mode="outlined"
+            style={{ backgroundColor: palette['white'] }}>
+            갤러리에서 선택하기
+          </Button>
         </Stack>
       </Modal>
     );

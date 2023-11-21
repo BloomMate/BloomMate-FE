@@ -5,7 +5,7 @@ export const palette = {
   black: '#000000',
   white: '#ffffff',
   primary: '#00695C',
-  modal: 'rgba(0,0,0,0.4)',
+  modal: 'rgba(0,0,0,0.6)',
   error: '#E53935',
 
   'red-50': '#FFEBEE',
