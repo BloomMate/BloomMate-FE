@@ -14,7 +14,7 @@ export const PrimaryCommunityArticleScreen =
       <Suspense fallback={<LoadingPage />}>
         <Box
           paddingTop={24}
-          paddingBottom={52}
+          paddingBottom={16}
           style={{
             backgroundColor: palette['gray-100'],
             height: '100%',
