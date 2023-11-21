@@ -65,7 +65,7 @@ export const PlantDiagnosisResultGPTModule = memo(() => {
   };
 
   if (!isPlantSick) {
-    return null;
+    return <Box flex="fluid" />;
   }
 
   if (gptState === 'loading') {
