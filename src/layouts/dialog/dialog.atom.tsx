@@ -24,8 +24,7 @@ export const Dialog = memo<DialogProps>(
           paddingX={16}
           style={{
             backgroundColor: palette['white'],
-            borderWidth: 2,
-            borderColor: palette['green-500'],
+
             borderRadius: 8,
             alignItems: 'center',
             justifyContent: 'center',
