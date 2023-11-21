@@ -34,6 +34,7 @@ export const GPTButton = memo<GPTButtonProps>(({ name, onPress }) => {
           }}>
           <Column width="content">
             <Image
+              // TODO : 식물 이미지 Mapping
               source={{ uri: CORN_SEED_IMG }}
               style={{ width: 80, height: 80, borderRadius: 80 }}
               resizeMode="contain"

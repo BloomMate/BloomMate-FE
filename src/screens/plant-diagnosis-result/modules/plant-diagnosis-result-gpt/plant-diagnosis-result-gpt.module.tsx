@@ -28,7 +28,7 @@ export const PlantDiagnosisResultGPTModule = memo(() => {
   useMutationIndicator([isLoading]);
 
   const {
-    params: { id },
+    params: { id, plant_id },
   } = useRoute<PlantDiagnosisResultScreenNavigationRouteProps>();
 
   const navigation = useNavigation<PlantDiagnosisResultScreenNavigationProps>();
@@ -68,7 +68,7 @@ export const PlantDiagnosisResultGPTModule = memo(() => {
   };
 
   const handlePressDialogOkayButton = async () => {
-    await mutateAsync({ plant_id: id.toString() });
+    await mutateAsync({ plant_id: plant_id.toString() });
 
     setDialogVisible(false);
     navigation.reset({
