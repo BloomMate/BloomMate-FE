@@ -8,6 +8,7 @@ import { palette } from '@/utils';
 
 type DialogProps = {
   dialogVisible: boolean;
+  onBackdropPress?: () => void;
   title: string;
   content?: string;
   okayButton?: SingleButtonProps;
@@ -15,50 +16,54 @@ type DialogProps = {
 };
 
 export const Dialog = memo<DialogProps>(
-  ({ dialogVisible, title, content, okayButton, cancelButton }) => {
+  ({
+    dialogVisible,
+    onBackdropPress,
+    title,
+    content,
+    okayButton,
+    cancelButton,
+  }) => {
     return (
-      <Modal isVisible={dialogVisible}>
+      <Modal isVisible={dialogVisible} onBackdropPress={onBackdropPress}>
         <Box
-          paddingBottom={10}
-          paddingTop={20}
-          paddingX={10}
+          padding={16}
           style={{
             backgroundColor: palette['white'],
-            borderWidth: 2,
-            borderColor: palette['green-500'],
             borderRadius: 8,
             alignItems: 'center',
             justifyContent: 'center',
             width: '100%',
           }}>
           <Stack
-            space={8}
-            padding={30}
+            space={24}
+            paddingBottom={24}
             style={{
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-            <Text color="gray-900" fontWeight="Medium" variants="headlineLarge">
+            <Text color="black" fontWeight="Bold" variants="bodyLarge">
               {title}
             </Text>
             {content && (
               <Text
-                color="gray-800"
-                fontWeight="Light"
-                variants={'headlineSmall'}>
+                color="gray-700"
+                fontWeight="Medium"
+                variants="bodyMedium"
+                textAlignment="center">
                 {content}
               </Text>
             )}
           </Stack>
           <Columns space={12}>
-            {okayButton && (
-              <Column>
-                <Button {...okayButton}>{okayButton.label}</Button>
-              </Column>
-            )}
             {cancelButton && (
               <Column>
                 <Button {...cancelButton}>{cancelButton.label}</Button>
+              </Column>
+            )}
+            {okayButton && (
+              <Column>
+                <Button {...okayButton}>{okayButton.label}</Button>
               </Column>
             )}
           </Columns>
