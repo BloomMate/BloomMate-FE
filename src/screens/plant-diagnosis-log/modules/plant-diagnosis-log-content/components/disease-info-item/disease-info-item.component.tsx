@@ -1,4 +1,4 @@
-import { Stack } from '@mobily/stacks';
+import { Column, Columns } from '@mobily/stacks';
 import { memo } from 'react';
 
 import { Text } from '@/atoms';
@@ -10,13 +10,17 @@ type DiseaseInfoItemProps = {
 
 export const DiseaseInfoItem = memo<DiseaseInfoItemProps>(
   ({ title, content }) => (
-    <Stack space={24} horizontal>
-      <Text variants="bodySmall" fontWeight="Medium" color="gray-900">
-        {title}
-      </Text>
-      <Text variants="labelSmall" fontWeight="Light" color="gray-900">
-        {content}
-      </Text>
-    </Stack>
+    <Columns space={24}>
+      <Column width="content">
+        <Text variants="bodyMedium" fontWeight="Medium" color="gray-900">
+          {title}
+        </Text>
+      </Column>
+      <Column width="fluid">
+        <Text variants="labelMedium" fontWeight="Light" color="gray-900">
+          {content}
+        </Text>
+      </Column>
+    </Columns>
   ),
 );
