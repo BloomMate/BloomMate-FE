@@ -42,7 +42,7 @@ export const GPTButton = memo<GPTButtonProps>(({ name, onPress }) => {
           <Column width="fluid">
             <Stack space={16}>
               <Text variants="bodyMedium" fontWeight="Medium" color="white">
-                {`틔움 ${name} 씨앗 키트`}
+                {`틔운 ${name} 씨앗 키트`}
               </Text>
               <TouchableOpacity onPress={handlePressButton}>
                 <Box
