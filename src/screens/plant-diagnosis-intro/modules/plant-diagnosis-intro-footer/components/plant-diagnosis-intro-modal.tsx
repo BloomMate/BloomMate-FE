@@ -74,8 +74,12 @@ export const PlantDiagnosisIntroModalComponent =
       setModal(false);
     };
 
+    const handlePressBackdrop = () => {
+      setModal(false);
+    };
+
     return (
-      <Modal isVisible={isVisible}>
+      <Modal isVisible={isVisible} onBackdropPress={handlePressBackdrop}>
         <Stack space={16}>
           <Button
             onPress={handlePressPictureButton}
