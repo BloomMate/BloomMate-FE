@@ -58,51 +58,49 @@ export const PlantDiagnosisResultGPTModule = memo(() => {
     setGptState('confirm');
   };
 
-  if (!isPlantSick) {
-    return null;
-  }
-
-  if (gptState === 'loading') {
-    return <GPTLoading />;
-  }
-
-  if (gptState === 'button') {
-    return <GPTButton plant_name={plant_name} onPress={handlePressGPTButton} />;
-  }
-
-  if (gptState === 'confirm') {
-    return (
-      <Box flex="fluid" alignY="center" direction="row" alignX="center">
-        <Stack
-          horizontal
-          space={12}
-          paddingX={12}
-          paddingY={16}
-          align="center"
-          style={{ backgroundColor: palette['teal-400'], borderRadius: 8 }}>
-          <Icon name="notifications-none" size={24} color={palette['white']} />
-          <Text
-            variants="labelLarge"
-            fontWeight="Light"
-            color="white"
-            textAlignment="center">
-            {`씨앗 구매가 완료되었습니다`}
-          </Text>
-        </Stack>
-      </Box>
-    );
-  }
-
   return (
-    <Dialog
-      dialogVisible={dialogVisible}
-      title={'원클릭 구매'}
-      content="ㅎㅎ"
-      okayButton={{
-        label: '확인',
-        onPress: handleOkay,
-        mode: 'contained', // 필요에 따라 다른 값을 사용하세요.
-      }}
-    />
+    <>
+      <Dialog
+        dialogVisible={dialogVisible}
+        title={'원클릭 구매'}
+        content="ㅎㅎ"
+        okayButton={{
+          label: '확인',
+          onPress: handleOkay,
+          mode: 'contained',
+        }}
+      />
+
+      {(!isPlantSick || gptState === 'loading') && <GPTLoading />}
+
+      {isPlantSick && gptState === 'button' && (
+        <GPTButton plant_name={plant_name} onPress={handlePressGPTButton} />
+      )}
+
+      {isPlantSick && gptState === 'confirm' && (
+        <Box flex="fluid" alignY="center" direction="row" alignX="center">
+          <Stack
+            horizontal
+            space={12}
+            paddingX={12}
+            paddingY={16}
+            align="center"
+            style={{ backgroundColor: palette['teal-400'], borderRadius: 8 }}>
+            <Icon
+              name="notifications-none"
+              size={24}
+              color={palette['white']}
+            />
+            <Text
+              variants="labelLarge"
+              fontWeight="Light"
+              color="white"
+              textAlignment="center">
+              {`씨앗 구매가 완료되었습니다`}
+            </Text>
+          </Stack>
+        </Box>
+      )}
+    </>
   );
 });
