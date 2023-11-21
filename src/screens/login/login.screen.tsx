@@ -45,9 +45,7 @@ export const LoginScreen = ({}: LoginScreenProps) => {
               </Stack>
             </Row>
             <Row height="content">
-              <Stack space={8}>
-                <LoginFooterModule />
-              </Stack>
+              <LoginFooterModule />
             </Row>
           </Rows>
         </BasicLayout>

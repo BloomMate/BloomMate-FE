@@ -52,8 +52,16 @@ export const PlantDiagnosisResultGPTModule = memo(() => {
   const isPlantSick = isPlantSickByPlantDiseaseName(plant_disease_name);
 
   const handlePressGPTButton = () => {
-    navigation.replace('PlantAnimationScreen', { type: 'plant-dead' });
-    // setGptState('confirm');
+    navigation.reset({
+      index: 1,
+      routes: [
+        {
+          name: 'PrimaryStack',
+          params: { screen: 'PrimaryPlantListScreen' },
+        },
+        { name: 'PlantAnimationScreen', params: { type: 'plant-dead' } },
+      ],
+    });
   };
 
   if (!isPlantSick) {

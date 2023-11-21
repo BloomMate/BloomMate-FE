@@ -37,9 +37,19 @@ export const PlantDetailFooterModule = memo<PlantDetailFooterModule>(() => {
   const handlePressButton = async () => {
     if (isGrowthLevelHarvest) {
       await mutateAsync({ plant_id: id });
-      navigation.pop(1);
+      navigation.reset({
+        index: 1,
+        routes: [
+          {
+            name: 'PrimaryStack',
+            params: { screen: 'PrimaryPlantListScreen' },
+          },
+          { name: 'PlantAnimationScreen', params: { type: 'harvest' } },
+        ],
+      });
       return;
     }
+
     navigation.navigate('PlantDiagnosisIntroScreen', { id });
   };
 
