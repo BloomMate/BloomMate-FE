@@ -75,10 +75,13 @@ export const PlantDiagnosisLogContentModule =
             />
             <Stack space={20}>
               <Stack horizontal space={4} align="center">
-                <Text variants="bodySmall" fontWeight="Medium" color="gray-900">
+                <Text
+                  variants="bodyMedium"
+                  fontWeight="Medium"
+                  color="gray-900">
                   진단 일자 :
                 </Text>
-                <Text variants="bodySmall" fontWeight="Light" color="gray-900">
+                <Text variants="bodyMedium" fontWeight="Light" color="gray-900">
                   {`${dayjs(created_at).format(
                     'YYYY.MM.DD',
                   )} - ${getCopyByGrowthLevel(growth_level)}`}
@@ -87,12 +90,12 @@ export const PlantDiagnosisLogContentModule =
               {isPlantSick ? (
                 <Stack horizontal space={4} align="center">
                   <Icon name="warning" color={palette['red-600']} size={16} />
-                  <Text variants="bodySmall" fontWeight="Medium" color="error">
+                  <Text variants="bodyMedium" fontWeight="Medium" color="error">
                     병이 발견되었습니다
                   </Text>
                 </Stack>
               ) : (
-                <Text variants="bodySmall" fontWeight="Medium" color="primary">
+                <Text variants="bodyMedium" fontWeight="Medium" color="primary">
                   문제 없이 잘 자라고 있습니다
                 </Text>
               )}
@@ -100,7 +103,7 @@ export const PlantDiagnosisLogContentModule =
           </Stack>
           {isPlantSick && (
             <Stack space={12} paddingY={12} paddingX={16}>
-              <Text variants="bodySmall" fontWeight="Medium" color="error">
+              <Text variants="bodyMedium" fontWeight="Medium" color="error">
                 진단 내용
               </Text>
               <Stack space={8}>

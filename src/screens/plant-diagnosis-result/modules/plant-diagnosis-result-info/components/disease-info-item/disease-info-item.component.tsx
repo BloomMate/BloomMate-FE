@@ -17,7 +17,7 @@ export const DiseaseInfoItem = memo<DiseaseInfoItemProps>(
         </Text>
       </Column>
       <Column width="fluid">
-        <Text variants="labelMedium" fontWeight="Light" color="gray-900">
+        <Text variants="bodyMedium" fontWeight="Light" color="gray-700">
           {content}
         </Text>
       </Column>
