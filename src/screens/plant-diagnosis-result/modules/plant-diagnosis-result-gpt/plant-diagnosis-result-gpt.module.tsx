@@ -19,7 +19,6 @@ import { isPlantSickByPlantDiseaseName } from '@/utils';
 
 export const PlantDiagnosisResultGPTModule = memo(() => {
   const [gptState, setGptState] = useState<'loading' | 'button'>('loading');
-  const [dialogVisible, setDialogVisible] = useState(false);
 
   const [isCountDownEnd, setIsCountDownEnd] = useState(false);
   const endTimeRef = useRef(new Date(Date.now() + 5000));
@@ -54,6 +53,8 @@ export const PlantDiagnosisResultGPTModule = memo(() => {
 
   const { plant_disease_name, plant_name } = data;
   const isPlantSick = isPlantSickByPlantDiseaseName(plant_disease_name);
+
+  const [dialogVisible, setDialogVisible] = useState(false);
 
   const handlePressGPTButton = () => {
     setDialogVisible(true);
