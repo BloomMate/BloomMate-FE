@@ -19,9 +19,9 @@ export const Dialog = memo<DialogProps>(
     return (
       <Modal isVisible={dialogVisible}>
         <Box
-          paddingBottom={10}
-          paddingTop={20}
-          paddingX={10}
+          paddingBottom={24}
+          paddingTop={24}
+          paddingX={16}
           style={{
             backgroundColor: palette['white'],
             borderWidth: 2,
@@ -38,19 +38,19 @@ export const Dialog = memo<DialogProps>(
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-            <Text color="gray-900" fontWeight="Medium" variants="headlineLarge">
+            <Text color="black" fontWeight="Bold" variants="bodyLarge">
               {title}
             </Text>
             {content && (
               <Text
-                color="gray-800"
-                fontWeight="Light"
-                variants={'headlineSmall'}>
+                color="gray-700"
+                fontWeight="Medium"
+                variants={'bodyMedium'}>
                 {content}
               </Text>
             )}
           </Stack>
-          <Columns space={12}>
+          <Columns space={4}>
             {okayButton && (
               <Column>
                 <Button {...okayButton}>{okayButton.label}</Button>
