@@ -33,7 +33,7 @@ export const Dialog = memo<DialogProps>(
             borderRadius: 8,
             alignItems: 'center',
             justifyContent: 'center',
-            width: '100%',
+            width: 327,
           }}>
           <Stack
             space={24}
