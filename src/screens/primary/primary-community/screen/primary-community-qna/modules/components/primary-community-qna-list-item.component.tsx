@@ -31,15 +31,15 @@ export const PrimaryCommunityQnaListItem =
       };
 
       return (
-        <TouchableOpacity onPress={handlePressItem}>
-          <Box
-            style={{
-              height: 136,
-              backgroundColor: palette['white'],
-              borderRadius: 8,
-              elevation: 4,
-            }}
-            padding={12}>
+        <TouchableOpacity
+          onPress={handlePressItem}
+          style={{
+            elevation: 4,
+            height: 136,
+            backgroundColor: palette['white'],
+            borderRadius: 8,
+          }}>
+          <Box padding={12}>
             <Stack space={12}>
               <Columns alignX={'between'}>
                 <Column width="fluid">

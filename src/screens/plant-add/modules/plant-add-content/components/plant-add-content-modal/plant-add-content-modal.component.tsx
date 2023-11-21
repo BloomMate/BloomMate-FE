@@ -311,8 +311,15 @@ export const PlantAddPictureModalComponent =
       setModal(false);
     };
 
+    const handlePressBackdrop = () => {
+      setModal(false);
+    };
+
     return (
-      <Modal isVisible={isVisible} isBottomSheet={true}>
+      <Modal
+        isVisible={isVisible}
+        isBottomSheet={true}
+        onBackdropPress={handlePressBackdrop}>
         <Stack space={24} padding={32}>
           <Button onPress={handlePressPictureButton} mode="contained">
             직접 촬영하기

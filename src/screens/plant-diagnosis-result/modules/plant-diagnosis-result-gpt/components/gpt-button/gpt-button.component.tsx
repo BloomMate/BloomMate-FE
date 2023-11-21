@@ -7,11 +7,11 @@ import { Text } from '@/atoms';
 import { palette } from '@/utils';
 
 type GPTButtonProps = {
-  plant_name: string;
+  name: string;
   onPress: () => void;
 };
 
-export const GPTButton = memo<GPTButtonProps>(({ plant_name, onPress }) => {
+export const GPTButton = memo<GPTButtonProps>(({ name, onPress }) => {
   const handlePressButton = () => {
     onPress();
   };
@@ -34,6 +34,7 @@ export const GPTButton = memo<GPTButtonProps>(({ plant_name, onPress }) => {
           }}>
           <Column width="content">
             <Image
+              // TODO : 식물 이미지 Mapping
               source={{ uri: CORN_SEED_IMG }}
               style={{ width: 80, height: 80, borderRadius: 80 }}
               resizeMode="contain"
@@ -42,7 +43,7 @@ export const GPTButton = memo<GPTButtonProps>(({ plant_name, onPress }) => {
           <Column width="fluid">
             <Stack space={16}>
               <Text variants="bodyMedium" fontWeight="Medium" color="white">
-                {`틔움 ${plant_name} 씨앗 키트`}
+                {`틔움 ${name} 씨앗 키트`}
               </Text>
               <TouchableOpacity onPress={handlePressButton}>
                 <Box

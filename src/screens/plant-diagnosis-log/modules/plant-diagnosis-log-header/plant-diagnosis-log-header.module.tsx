@@ -27,7 +27,7 @@ export const PlantDiagnosisLogHeader = memo<PlantDiagnosisLogHeaderModules>(
     });
 
     if (isUndefined(data)) {
-      return;
+      return null;
     }
 
     const { plant_nickname } = data;
@@ -40,7 +40,7 @@ export const PlantDiagnosisLogHeader = memo<PlantDiagnosisLogHeaderModules>(
       <Stack space={32}>
         <ModalHeader left={{ type: 'icon' }} onPressExit={onPressExit} />
         <Text variants="titleLarge" fontWeight="Bold" color="black">
-          진단결과 - 팝콘묵자
+          진단결과 - {plant_nickname}
         </Text>
       </Stack>
     );

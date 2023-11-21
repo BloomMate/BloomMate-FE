@@ -24,8 +24,9 @@ export const PlantDiagnosisResultFooterModule =
         return;
       }
 
+      // TODO : ADD Plant Diagnosis API
       navigation.replace('PlantDiagnosisResultScreen', {
-        photo_url: result.assets[0].uri as string,
+        plant_id: 1,
         id: 1,
       });
     };

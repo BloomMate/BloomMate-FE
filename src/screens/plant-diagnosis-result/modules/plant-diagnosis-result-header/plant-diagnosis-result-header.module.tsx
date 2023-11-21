@@ -26,7 +26,7 @@ export const PlantDiagnosisResultHeaderModule =
     });
 
     if (isUndefined(data)) {
-      return;
+      return null;
     }
 
     const { plant_nickname } = data;
