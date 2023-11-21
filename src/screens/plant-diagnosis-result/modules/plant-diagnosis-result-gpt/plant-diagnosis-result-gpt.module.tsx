@@ -66,7 +66,9 @@ export const PlantDiagnosisResultGPTModule = memo(() => {
       <Dialog
         dialogVisible={dialogVisible}
         title={'원클릭 구매'}
-        content="ㅎㅎ"
+        content={
+          '새로운 씨앗을 구매하시면, 기존의 식물이 삭제됩니다.\n구매하시겠습니까?'
+        }
         okayButton={{
           label: '확인',
           onPress: handleOkay,
