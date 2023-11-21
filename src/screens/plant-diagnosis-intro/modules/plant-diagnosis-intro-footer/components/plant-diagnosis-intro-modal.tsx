@@ -55,6 +55,7 @@ export const PlantDiagnosisIntroModalComponent =
       });
 
       navigation.navigate('PlantDiagnosisResultScreen', {
+        plant_id: id,
         id: diagnosisData.id,
       });
       setModal(false);
@@ -68,6 +69,7 @@ export const PlantDiagnosisIntroModalComponent =
       });
 
       navigation.navigate('PlantDiagnosisResultScreen', {
+        plant_id: id,
         id: diagnosisData.id,
       });
 

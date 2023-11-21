@@ -21,7 +21,7 @@ export const PlantDiagnosisIntroContentModule =
     const { data } = useGetPlantDetailQuery({ plant_id: id });
 
     if (isUndefined(data)) {
-      return;
+      return null;
     }
 
     const { plant_nickname } = data;
