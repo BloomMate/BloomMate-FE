@@ -7,7 +7,7 @@ export type QnAForm = {
   question_content: string;
 };
 
-const QnASchemaFormSchema: yup.ObjectSchema<QnAForm> = yup.object().shape({
+const QnAFormSchema: yup.ObjectSchema<QnAForm> = yup.object().shape({
   question_title: yup
     .string()
     .required('제목을 입력해주세요.')
@@ -21,7 +21,7 @@ export const useQnAForm = () => {
       question_title: undefined,
       question_content: undefined,
     },
-    resolver: yupResolver(QnASchemaFormSchema),
+    resolver: yupResolver(QnAFormSchema),
     reValidateMode: 'onChange',
     mode: 'all',
   });

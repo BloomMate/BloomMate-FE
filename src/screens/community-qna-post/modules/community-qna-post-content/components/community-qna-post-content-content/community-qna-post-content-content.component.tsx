@@ -2,15 +2,14 @@ import isUndefined from 'lodash/isUndefined';
 import { memo } from 'react';
 import { useController, useFormContext } from 'react-hook-form';
 
-import { QnAForm } from '../../../../../hooks';
+import { QnAForm } from '../../../../hooks';
 
 import { TextInput } from '@/atoms';
 
-type PrimaryCommunityQnaPostContentContentComponentProps = {};
+type CommunityQnaPostContentContentComponentProps = {};
 
-export const PrimaryCommunityQnaPostContentContentComponent =
-  memo<PrimaryCommunityQnaPostContentContentComponentProps>(() => {
-    //TODO: height 어케 키우지
+export const CommunityQnaPostContentContentComponent =
+  memo<CommunityQnaPostContentContentComponentProps>(() => {
     const { control } = useFormContext<QnAForm>();
 
     const {

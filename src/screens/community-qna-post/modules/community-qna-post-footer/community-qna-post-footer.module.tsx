@@ -2,18 +2,18 @@ import { useNavigation } from '@react-navigation/native';
 import { memo } from 'react';
 import { SubmitHandler, useFormContext } from 'react-hook-form';
 
-import { PrimaryNavigatorProps } from '../../../../../../primary.navigator';
-import { QnAForm } from '../../../hooks';
+import { PrimaryNavigatorProps } from '../../../primary';
+import { QnAForm } from '../../hooks';
 
 import { usePostCommunityQnaMutation } from './hooks';
 
 import { Button } from '@/atoms';
 import { useMutationIndicator } from '@/providers';
 
-type PrimaryCommunityQnaPostFooterModuleProps = {};
+type CommunityQnaPostFooterModuleProps = {};
 
-export const PrimaryCommunityQnaPostFooterModule =
-  memo<PrimaryCommunityQnaPostFooterModuleProps>(() => {
+export const CommunityQnaPostFooterModule =
+  memo<CommunityQnaPostFooterModuleProps>(() => {
     const navigation = useNavigation<PrimaryNavigatorProps>();
 
     const { formState, handleSubmit } = useFormContext<QnAForm>();

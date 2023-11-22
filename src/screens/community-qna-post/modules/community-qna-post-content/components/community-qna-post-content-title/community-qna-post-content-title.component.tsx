@@ -2,14 +2,14 @@ import isUndefined from 'lodash/isUndefined';
 import { memo } from 'react';
 import { useController, useFormContext } from 'react-hook-form';
 
-import { QnAForm } from '../../../../../hooks';
+import { QnAForm } from '../../../../hooks';
 
 import { TextInput } from '@/atoms';
 
-type PrimaryCommunityQnaPostContentTitleComponentProps = {};
+type CommunityQnaPostContentTitleComponentProps = {};
 
-export const PrimaryCommunityQnaPostContentTitleComponent =
-  memo<PrimaryCommunityQnaPostContentTitleComponentProps>(() => {
+export const CommunityQnaPostContentTitleComponent =
+  memo<CommunityQnaPostContentTitleComponentProps>(() => {
     const { control } = useFormContext<QnAForm>();
 
     const {

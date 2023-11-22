@@ -1,14 +1,14 @@
 import { useNavigation } from '@react-navigation/native';
 import { memo } from 'react';
 
-import { PrimaryNavigatorProps } from '../../../../../../primary.navigator';
+import { PrimaryNavigatorProps } from '../../../primary';
 
 import { ModalHeader } from '@/layouts';
 
-type PrimaryCommunityQnaPostHeaderModuleProps = {};
+type CommunityQnaPostHeaderModuleProps = {};
 
-export const PrimaryCommunityQnaPostHeaderModule =
-  memo<PrimaryCommunityQnaPostHeaderModuleProps>(() => {
+export const CommunityQnaPostHeaderModule =
+  memo<CommunityQnaPostHeaderModuleProps>(() => {
     const navigation = useNavigation<PrimaryNavigatorProps>();
     const handlePressBack = () => {
       navigation.replace('PrimaryStack', { screen: 'PrimaryCommunityScreen' });
