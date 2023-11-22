@@ -12,7 +12,7 @@ export const useUploadPhotoMutation = () => {
     });
 
     if (isUndefined(result.assets) || result.didCancel) {
-      return;
+      return null;
     }
 
     const { uri, fileName, type } = result.assets[0];
@@ -34,6 +34,11 @@ export const useUploadPhotoMutation = () => {
 
   return useMutation(async () => {
     const data = await makePhotoFormData();
+
+    if (!data) {
+      return null;
+    }
+
     const cloudName = CLOUDINARY_NAME;
 
     const response = await axios(

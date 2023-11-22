@@ -47,24 +47,26 @@ export const PlantDiagnosisIntroModalComponent =
     ]);
 
     const handlePressPictureButton = async () => {
-      const { data: cloudinaryData } = await uploadPhoto();
+      const response = await uploadPhoto();
 
-      const diagnosisData = await postPlantDiagnosis({
-        diagnose_photo_url: cloudinaryData.url,
-        plant_id: id.toString(),
-      });
+      if (response != null) {
+        const diagnosisData = await postPlantDiagnosis({
+          diagnose_photo_url: response.data.url,
+          plant_id: id.toString(),
+        });
 
-      navigation.navigate('PlantDiagnosisResultScreen', {
-        plant_id: id,
-        id: diagnosisData.id,
-      });
+        navigation.navigate('PlantDiagnosisResultScreen', {
+          plant_id: id,
+          id: diagnosisData.id,
+        });
+      }
       setModal(false);
     };
 
     const handlePressLibraryButton = async () => {
-      const { data: cloudinaryData } = await uploadImageLibrary();
+      const response = await uploadImageLibrary();
       const diagnosisData = await postPlantDiagnosis({
-        diagnose_photo_url: cloudinaryData.url,
+        diagnose_photo_url: response?.data.url,
         plant_id: id.toString(),
       });
 
