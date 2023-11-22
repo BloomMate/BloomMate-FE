@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import { memo } from 'react';
 import { TouchableOpacity } from 'react-native';
 
-import { PrimaryCommunityQnaPostScreenNavigationProps } from '../../primary-community-qna-post.screen';
+import { CommunityQnaPostScreenNavigationProps } from '../../../../../../community-qna-post';
 
 import { Icon, PointLinearGradient, Text } from '@/atoms';
 import { palette } from '@/utils';
@@ -12,10 +12,9 @@ type PrimaryCommunityQnaFloatingModuleProps = {};
 
 export const PrimaryCommunityQnaFloatingModule = memo(
   ({}: PrimaryCommunityQnaFloatingModuleProps) => {
-    const navigation =
-      useNavigation<PrimaryCommunityQnaPostScreenNavigationProps>();
+    const navigation = useNavigation<CommunityQnaPostScreenNavigationProps>();
     const handlePressButton = () => {
-      navigation.navigate('PrimaryCommunityQnaPostScreen');
+      navigation.navigate('CommunityQnaPostScreen');
     };
 
     return (
