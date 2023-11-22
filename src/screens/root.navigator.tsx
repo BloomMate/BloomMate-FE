@@ -5,6 +5,7 @@ import {
 } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
+import { ArticleWebviewScreen } from './article-webview';
 import { LandingScreen } from './landing';
 import { LoginScreen } from './login';
 import { PlantAddScreen } from './plant-add';
@@ -18,7 +19,6 @@ import { PlantDiagnosisLogScreen } from './plant-diagnosis-log';
 import { PlantDiagnosisResultScreen } from './plant-diagnosis-result';
 import { PrimaryNavigator, PrimaryNavigatorParamLists } from './primary';
 import {
-  PrimaryArticleWebviewScreen,
   PrimaryCommunityQnaDetailScreen,
   PrimaryCommunityQnaPostScreen,
 } from './primary/primary-community/screen';
@@ -48,7 +48,7 @@ export type RootStackParamList = {
 
   PrimaryStack: NavigatorScreenParams<PrimaryNavigatorParamLists>;
   PlantAddScreen: undefined;
-  PrimaryArticleWebview: { article_content: string };
+  ArticleWebview: { article_content: string };
   PrimaryCommunityQnaDetailScreen: { id: number };
   PrimaryCommunityQnaPostScreen: undefined;
 };
@@ -96,10 +96,7 @@ export const RootNavigator = ({}: RootNavigatorProps) => {
         />
         <Stack.Screen name="UserInfoScreen" component={UserInfoScreen} />
         <Stack.Screen name="PrimaryStack" component={PrimaryNavigator} />
-        <Stack.Screen
-          name="PrimaryArticleWebview"
-          component={PrimaryArticleWebviewScreen}
-        />
+        <Stack.Screen name="ArticleWebview" component={ArticleWebviewScreen} />
         <Stack.Screen
           name="PrimaryCommunityQnaDetailScreen"
           component={PrimaryCommunityQnaDetailScreen}
