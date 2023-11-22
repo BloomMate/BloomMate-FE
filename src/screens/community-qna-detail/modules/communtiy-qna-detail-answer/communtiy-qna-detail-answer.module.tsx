@@ -6,12 +6,12 @@ import { QNA_IMG } from '@/assets';
 import { Divider, PointLinearGradient, Text } from '@/atoms';
 import { QuestionDetailComment } from '@/hooks';
 
-type PrimaryCommunityQnaDetailAnswerModuleProps = {
+type CommunityQnaDetailAnswerModuleProps = {
   question_comment: QuestionDetailComment;
 };
 
-export const PrimaryCommunityQnaDetailAnswerModule =
-  memo<PrimaryCommunityQnaDetailAnswerModuleProps>(({ question_comment }) => {
+export const CommunityQnaDetailAnswerModule =
+  memo<CommunityQnaDetailAnswerModuleProps>(({ question_comment }) => {
     const comment_date = question_comment.created_at.slice(0, 10);
 
     return (

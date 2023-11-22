@@ -5,12 +5,12 @@ import { Text } from '@/atoms';
 import { QuestionDetail } from '@/hooks';
 import { palette } from '@/utils';
 
-type PrimaryCommunityQnaDetailQuestionModuleProps = {
+type CommunityQnaDetailQuestionModuleProps = {
   question_data: QuestionDetail;
 };
 
-export const PrimaryCommunityQnaDetailQuestionModule = memo(
-  ({ question_data }: PrimaryCommunityQnaDetailQuestionModuleProps) => {
+export const CommunityQnaDetailQuestionModule = memo(
+  ({ question_data }: CommunityQnaDetailQuestionModuleProps) => {
     const question_date = question_data.created_at.slice(0, 10);
 
     return (

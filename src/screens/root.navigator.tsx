@@ -18,14 +18,12 @@ import { PlantDiagnosisListScreen } from './plant-diagnosis-list';
 import { PlantDiagnosisLogScreen } from './plant-diagnosis-log';
 import { PlantDiagnosisResultScreen } from './plant-diagnosis-result';
 import { PrimaryNavigator, PrimaryNavigatorParamLists } from './primary';
-import {
-  PrimaryCommunityQnaDetailScreen,
-  PrimaryCommunityQnaPostScreen,
-} from './primary/primary-community/screen';
+import { PrimaryCommunityQnaPostScreen } from './primary/primary-community/screen';
 import { SignUpScreen } from './signup';
 import { UserInfoScreen } from './user-info';
 
 import { LoadingPage } from '@/layouts';
+import { CommunityQnaDetailScreen } from './community-qna-detail';
 
 export type RootStackParamList = {
   LoginScreen: undefined;
@@ -49,7 +47,7 @@ export type RootStackParamList = {
   PrimaryStack: NavigatorScreenParams<PrimaryNavigatorParamLists>;
   PlantAddScreen: undefined;
   ArticleWebview: { article_content: string };
-  PrimaryCommunityQnaDetailScreen: { id: number };
+  CommunityQnaDetailScreen: { id: number };
   PrimaryCommunityQnaPostScreen: undefined;
 };
 
@@ -98,8 +96,8 @@ export const RootNavigator = ({}: RootNavigatorProps) => {
         <Stack.Screen name="PrimaryStack" component={PrimaryNavigator} />
         <Stack.Screen name="ArticleWebview" component={ArticleWebviewScreen} />
         <Stack.Screen
-          name="PrimaryCommunityQnaDetailScreen"
-          component={PrimaryCommunityQnaDetailScreen}
+          name="CommunityQnaDetailScreen"
+          component={CommunityQnaDetailScreen}
         />
         <Stack.Screen
           name="PrimaryCommunityQnaPostScreen"
