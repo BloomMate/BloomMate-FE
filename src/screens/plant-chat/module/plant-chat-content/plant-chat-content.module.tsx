@@ -1,4 +1,4 @@
-import { Box, Stack } from '@mobily/stacks';
+import { Box } from '@mobily/stacks';
 import { useNavigation } from '@react-navigation/native';
 import { memo } from 'react';
 import { Image } from 'react-native';
@@ -14,15 +14,12 @@ export const PlantChatContentModule = memo<PlantChatContentModuleProps>(() => {
   const navigation = useNavigation<PlantChatScreenNavigationProps>();
 
   return (
-    <Stack paddingBottom={136}>
-      <Box alignX={'center'}>
-        <Image
-          style={{ width: 300, height: 300 }}
-          source={{ uri: CHAT_LOGO_IMG }}
-        />
-      </Box>
-
+    <Box flex="fluid" alignX="center">
+      <Image
+        style={{ width: 300, height: 300 }}
+        source={{ uri: CHAT_LOGO_IMG }}
+      />
       <Button mode={'contained'}>오늘의 레포트 확인</Button>
-    </Stack>
+    </Box>
   );
 });

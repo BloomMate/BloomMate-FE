@@ -1,14 +1,11 @@
-import { Box, Stack } from '@mobily/stacks';
+import { Box } from '@mobily/stacks';
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { KeyboardAvoidingView } from 'react-native';
 
 import { RootStackParamList } from '../root.navigator';
 
 import { ChattingForm } from './components/chatting-form';
-import { FloatingButton } from './components/floating-button';
-import { PlantChatContentModule } from './module/plant-chat-content';
-import { PlantChatHeaderModule } from './module/plant-chat-header/plant-chat-header.module';
+import { PlantChatContentModule, PlantChatHeaderModule } from './module';
 
 import { PointLinearGradient } from '@/atoms';
 
@@ -30,17 +27,13 @@ export const PlantChatScreen = ({}: PlantChatScreenProps) => {
   } = useRoute<PlantChatScreenNavigationRouteProps>();
 
   return (
-    <KeyboardAvoidingView behavior={'height'}>
-      <PointLinearGradient style={{ width: '100%', height: '100%' }}>
-        <Box paddingX={24} paddingY={24}>
-          <Stack space={40}>
-            <PlantChatHeaderModule />
-            <PlantChatContentModule />
-            <FloatingButton />
-            <ChattingForm />
-          </Stack>
-        </Box>
-      </PointLinearGradient>
-    </KeyboardAvoidingView>
+    <PointLinearGradient style={{ width: '100%', height: '100%' }}>
+      <Box paddingX={24} paddingY={24} flex="fluid">
+        <PlantChatHeaderModule />
+        <PlantChatContentModule />
+        {/* <FloatingButton /> */}
+        <ChattingForm />
+      </Box>
+    </PointLinearGradient>
   );
 };
