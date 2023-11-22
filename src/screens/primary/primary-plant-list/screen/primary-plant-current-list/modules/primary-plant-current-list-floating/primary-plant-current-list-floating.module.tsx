@@ -10,7 +10,12 @@ import { PrimaryPlantListScreenNavigatorProp } from '../../../../primary-plant-l
 
 import { Icon, PointLinearGradient, Text } from '@/atoms';
 import { useGetPlantListQuery } from '@/hooks';
-import { isFullListByGardenSizeAndNumberOfPlant, palette } from '@/utils';
+import {
+  isFullListByGardenSizeAndNumberOfPlant,
+  mapCopyByGardenSize,
+  maxNumberMappingByGardenSize,
+  palette,
+} from '@/utils';
 
 // TODO : props 삭제 예정
 type PrimaryPlantCurrentListFloatingModuleProps = {};
@@ -35,8 +40,8 @@ export const PrimaryPlantCurrentListFloatingModule = memo(
       if (isFullList) {
         Toast.show({
           type: 'plantAddFailed',
-          text1: '중간',
-          text2: '5',
+          text1: mapCopyByGardenSize[garden_size],
+          text2: maxNumberMappingByGardenSize[garden_size].toString(),
           topOffset: 64,
         });
       } else {
