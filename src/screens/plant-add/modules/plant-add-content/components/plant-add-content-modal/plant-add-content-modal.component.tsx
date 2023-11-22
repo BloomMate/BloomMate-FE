@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
 import React, { memo } from 'react';
 import { useController, useFormContext } from 'react-hook-form';
-import { TouchableOpacity, View } from 'react-native';
+import { TouchableOpacity, View, useWindowDimensions } from 'react-native';
 import { Calendar, DateData, LocaleConfig } from 'react-native-calendars';
 
 dayjs.extend(isSameOrAfter);
@@ -31,6 +31,7 @@ type PlantAddContentModalComponentProps = {
 
 export const PlantAddContentVarietyModalComponent =
   memo<PlantAddContentModalComponentProps>(({ isModal, setModal }) => {
+    const { width: deviceWidth } = useWindowDimensions();
     const handleClickButton = (v: number) => {
       onChange(v);
       setModal(false);
@@ -68,9 +69,9 @@ export const PlantAddContentVarietyModalComponent =
                 height: 3,
                 backgroundColor: palette['gray-400'],
                 borderRadius: 8,
-              }}></View>
+              }}
+            />
           </Stack>
-
           <Stack space={20}>
             <Text fontWeight="Bold" color="black" variants="titleMedium">
               품종
@@ -196,8 +197,6 @@ export const PlantAddContentDateModalComponent =
     ) {
       harvestDateRange.push(currentDate.format('YYYY-MM-DD'));
     }
-
-    console.log(harvestDateRange);
 
     return (
       <Modal

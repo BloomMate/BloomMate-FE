@@ -1,7 +1,7 @@
 import { useMutation } from 'react-query';
 
 import { queryClient } from '@/providers';
-import { defaultAxios } from '@/utils';
+import { defaultAxios, logHttpErrorMessage } from '@/utils';
 
 type DeletePlantRequestProps = {
   plant_id: string;
@@ -17,6 +17,10 @@ export const useDeletePlantMutation = () => {
       return { plant_id };
     },
     {
+      onError: e => {
+        console.log(e);
+        logHttpErrorMessage(e);
+      },
       onSuccess: async ({ plant_id }) => {
         await queryClient.invalidateQueries([
           'plants/plant_detail',

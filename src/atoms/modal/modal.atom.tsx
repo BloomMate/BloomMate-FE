@@ -35,8 +35,6 @@ export const Modal = ({
         {
           margin: 0,
           paddingHorizontal: isBottomSheet ? 0 : 20,
-          justifyContent: 'center',
-          alignItems: 'center',
         },
         isBottomSheet && {
           justifyContent: 'flex-end',

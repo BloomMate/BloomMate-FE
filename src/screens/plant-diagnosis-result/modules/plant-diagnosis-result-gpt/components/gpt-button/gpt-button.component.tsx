@@ -2,7 +2,9 @@ import { Box, Stack, Columns, Column } from '@mobily/stacks';
 import { memo } from 'react';
 import { Image, TouchableOpacity } from 'react-native';
 
-import { LOGO_FONT_IMG, STRAWBERRY_SEED_IMG } from '@/assets';
+import { getSeedImgByPlantName } from './gpt-button.util';
+
+import { LOGO_FONT_IMG } from '@/assets';
 import { Text } from '@/atoms';
 import { palette } from '@/utils';
 
@@ -34,7 +36,7 @@ export const GPTButton = memo<GPTButtonProps>(({ name, onPress }) => {
           }}>
           <Column width="content">
             <Image
-              source={{ uri: STRAWBERRY_SEED_IMG }}
+              source={{ uri: getSeedImgByPlantName(name) }}
               style={{ width: 80, height: 80, borderRadius: 80 }}
               resizeMode="contain"
             />

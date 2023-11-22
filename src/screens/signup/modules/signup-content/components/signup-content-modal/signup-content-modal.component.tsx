@@ -37,7 +37,7 @@ export const SignUpContentModalComponent =
         <Postcode
           style={{ aspectRatio: 32 / 52 }}
           jsOptions={{ animation: true }}
-          onError={() => console.log('error')}
+          onError={() => {}}
           onSelected={data => {
             handleClickAddress(data);
           }}
