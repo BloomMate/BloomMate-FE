@@ -5,7 +5,7 @@ import { PrimaryMyPageScreenNavigatorProp } from '../../../primary-my-page.scree
 import { InfoItem } from '../components';
 
 import { Text } from '@/atoms';
-import { palette } from '@/utils';
+import { defaultAxios, palette } from '@/utils';
 
 type PrimaryMyPageInfoItemModuleProps = {};
 
@@ -13,7 +13,18 @@ export const PrimaryMyPageInfoItemModule =
   ({}: PrimaryMyPageInfoItemModuleProps) => {
     const navigation = useNavigation<PrimaryMyPageScreenNavigatorProp>();
 
-    const handlePressLogOut = () => {};
+    const handlePressLogOut = () => {
+      defaultAxios.defaults.headers.Authorization = null;
+
+      navigation.reset({
+        index: 1,
+        routes: [
+          {
+            name: 'LandingScreen',
+          },
+        ],
+      });
+    };
     const handlePressUserInfoCheck = () => {
       navigation.navigate('UserInfoScreen');
     };
