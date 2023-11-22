@@ -1,13 +1,13 @@
+export const maxNumberMappingByGardenSize = {
+  '0': 3,
+  '1': 5,
+  '2': 7,
+};
+
 export const isFullListByGardenSizeAndNumberOfPlant = (
   gardenSize: '0' | '1' | '2',
   numberOfPlant: number,
 ) => {
-  const maxNumberMappingByGardenSize = {
-    '0': 3,
-    '1': 5,
-    '2': 7,
-  };
-
   return maxNumberMappingByGardenSize[gardenSize] === numberOfPlant;
 };
 
@@ -20,4 +20,10 @@ export const myPageGardenSize = (gardenSize: '0' | '1' | '2') => {
     case '2':
       return '대형 : 10평 (33.06㎡)';
   }
+};
+
+export const mapCopyByGardenSize = {
+  '0': '소형',
+  '1': '중형',
+  '2': '대형',
 };

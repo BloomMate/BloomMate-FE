@@ -25,6 +25,7 @@ export const PlantDiagnosisListContentModule =
     }
 
     const diagnosisList = data.DATA;
+    const { plant_nickname } = data;
 
     return (
       <FlatList
@@ -34,7 +35,7 @@ export const PlantDiagnosisListContentModule =
         ListHeaderComponent={() => (
           <Box paddingY={32}>
             <Text variants="titleLarge" fontWeight="Bold" color="black">
-              진단 기록 - 킹왕옥수수
+              진단 기록 - {plant_nickname}
             </Text>
           </Box>
         )}
