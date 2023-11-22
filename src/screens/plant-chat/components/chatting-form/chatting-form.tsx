@@ -1,6 +1,6 @@
 import { Stack } from '@mobily/stacks';
 import { memo, useState } from 'react';
-import { TextInput, KeyboardAvoidingView } from 'react-native';
+import { TextInput } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -17,32 +17,30 @@ export const ChattingForm = memo<ChattingFormProps>(() => {
   };
 
   return (
-    <KeyboardAvoidingView behavior={'height'}>
-      <Stack
-        paddingX={12}
-        horizontal
+    <Stack
+      paddingX={12}
+      horizontal
+      style={{
+        backgroundColor: palette['white'],
+        justifyContent: 'space-between',
+        borderRadius: 8,
+        alignItems: 'center',
+      }}>
+      <TextInput
         style={{
-          backgroundColor: palette['white'],
-          justifyContent: 'space-between',
-          borderRadius: 8,
-          alignItems: 'center',
-        }}>
-        <TextInput
-          style={{
-            height: 40,
-            color: palette['gray-900'],
-          }}
-          onChangeText={setText}
-          value={text}
-          placeholder="메시지를 입력하세요..."
-          placeholderTextColor={palette['primary']}
-        />
-        <TouchableOpacity
-          style={{ alignItems: 'center', justifyContent: 'center' }}
-          onPress={handleSend}>
-          <Icon color={palette['primary']} size={24} name="send-outline" />
-        </TouchableOpacity>
-      </Stack>
-    </KeyboardAvoidingView>
+          height: 40,
+          color: palette['gray-900'],
+        }}
+        onChangeText={setText}
+        value={text}
+        placeholder="메시지를 입력하세요..."
+        placeholderTextColor={palette['primary']}
+      />
+      <TouchableOpacity
+        style={{ alignItems: 'center', justifyContent: 'center' }}
+        onPress={handleSend}>
+        <Icon color={palette['primary']} size={24} name="send-outline" />
+      </TouchableOpacity>
+    </Stack>
   );
 });
