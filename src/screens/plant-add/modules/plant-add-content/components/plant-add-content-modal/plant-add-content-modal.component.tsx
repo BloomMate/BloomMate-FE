@@ -198,8 +198,6 @@ export const PlantAddContentDateModalComponent =
       harvestDateRange.push(currentDate.format('YYYY-MM-DD'));
     }
 
-    console.log(harvestDateRange);
-
     return (
       <Modal
         isVisible={isVisible}
