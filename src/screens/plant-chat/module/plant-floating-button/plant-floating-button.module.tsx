@@ -13,6 +13,8 @@ export const PlantFloatingButton = memo<PlantFloatingButtonProps>(() => {
         <Icon size={20} name={'add'} style={{ color: palette['white'] }} />
       )}
       offsetX={0}
+      offsetY={0}
+      style={{ marginBottom: 84, marginRight: 24 }}
       nativeFeedbackRippleColor="rgba(255,255,255,0.1)"
       size={44}
       buttonColor={palette['primary']}>
@@ -23,13 +25,12 @@ export const PlantFloatingButton = memo<PlantFloatingButtonProps>(() => {
           backgroundColor: 'transparent',
           borderWidth: 0,
         }}
-        hideLabelShadow={true}
+        hideLabelShadow
         textStyle={{
           color: palette['gray-900'],
           fontFamily: 'SUITE-Regular',
         }}
-        spaceBetween={4}
-        onPress={() => console.log('notes tapped!')}>
+        spaceBetween={4}>
         <Icon
           name="calendar-month"
           size={20}

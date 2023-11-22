@@ -32,7 +32,7 @@ export const PlantChatFooterModule = memo<PlantChatFooterModuleProps>(() => {
         }}
         onChangeText={setText}
         value={text}
-        placeholder="메시지를 입력하세요..."
+        placeholder=""
         placeholderTextColor={palette['primary']}
       />
       <TouchableOpacity

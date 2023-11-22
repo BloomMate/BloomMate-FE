@@ -35,9 +35,9 @@ export const PlantChatScreen = ({}: PlantChatScreenProps) => {
       <Box paddingX={24} paddingY={24} flex="fluid">
         <PlantChatHeaderModule />
         <PlantChatContentModule />
-        <PlantFloatingButton />
         <PlantChatFooterModule />
       </Box>
+      <PlantFloatingButton />
     </PointLinearGradient>
   );
 };
