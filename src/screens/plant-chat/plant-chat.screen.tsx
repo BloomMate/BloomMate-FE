@@ -8,6 +8,7 @@ import {
   PlantChatContentModule,
   PlantChatFooterModule,
   PlantChatHeaderModule,
+  PlantFloatingButton,
 } from './module';
 
 import { PointLinearGradient } from '@/atoms';
@@ -34,7 +35,7 @@ export const PlantChatScreen = ({}: PlantChatScreenProps) => {
       <Box paddingX={24} paddingY={24} flex="fluid">
         <PlantChatHeaderModule />
         <PlantChatContentModule />
-        {/* <FloatingButton /> */}
+        <PlantFloatingButton />
         <PlantChatFooterModule />
       </Box>
     </PointLinearGradient>
