@@ -4,6 +4,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 
 import { RootStackParamList } from '../root.navigator';
 
+import { useResetPlantChatState } from './hooks';
 import {
   PlantChatContentModule,
   PlantChatFooterModule,
@@ -29,6 +30,8 @@ export const PlantChatScreen = ({}: PlantChatScreenProps) => {
   const {
     params: { id },
   } = useRoute<PlantChatScreenNavigationRouteProps>();
+
+  useResetPlantChatState();
 
   return (
     <PointLinearGradient style={{ width: '100%', height: '100%' }}>
