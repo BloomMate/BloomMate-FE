@@ -24,7 +24,10 @@ export const PlantDetailEditPictureInputModule =
 
     const handlePressTakePhoto = async () => {
       const response = await mutateAsync();
-      onChange(response.data.url);
+
+      if (response != null) {
+        onChange(response.data.url);
+      }
     };
 
     if (!value) {

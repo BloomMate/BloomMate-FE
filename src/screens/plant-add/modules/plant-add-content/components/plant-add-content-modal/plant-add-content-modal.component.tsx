@@ -290,23 +290,30 @@ export const PlantAddPictureModalComponent =
 
     const handlePressPictureButton = async () => {
       const jsonResponse = await mutatePhotoAsync();
-      field1.value = jsonResponse.data.url as string;
-      field1.onChange(jsonResponse.data.url as string);
-      field2.onChange(field1.value);
-      setPlantAddState({
-        screenStep: plantAddSteps[currentScreenStepIndex + 1],
-      });
+
+      if (jsonResponse != null) {
+        field1.value = jsonResponse.data.url as string;
+        field1.onChange(jsonResponse.data.url as string);
+        field2.onChange(field1.value);
+        setPlantAddState({
+          screenStep: plantAddSteps[currentScreenStepIndex + 1],
+        });
+      }
+
       setModal(false);
     };
 
     const handlePressLibraryButton = async () => {
       const jsonResponse = await mutateLibraryAsync();
-      field1.value = jsonResponse.data.url as string;
-      field1.onChange(jsonResponse.data.url as string);
-      field2.onChange(field1.value);
-      setPlantAddState({
-        screenStep: plantAddSteps[currentScreenStepIndex + 1],
-      });
+
+      if (jsonResponse != null) {
+        field1.value = jsonResponse.data.url as string;
+        field1.onChange(jsonResponse.data.url as string);
+        field2.onChange(field1.value);
+        setPlantAddState({
+          screenStep: plantAddSteps[currentScreenStepIndex + 1],
+        });
+      }
       setModal(false);
     };
 
