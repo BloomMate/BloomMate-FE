@@ -14,12 +14,15 @@ export const PlantChatContentModule = memo<PlantChatContentModuleProps>(() => {
   const navigation = useNavigation<PlantChatScreenNavigationProps>();
 
   return (
-    <Box flex="fluid" alignX="center">
+    <Box flex="fluid" alignX="center" style={{ width: '100%' }}>
       <Image
         style={{ width: 300, height: 300 }}
         source={{ uri: CHAT_LOGO_IMG }}
       />
-      <Button mode={'contained'}>오늘의 레포트 확인</Button>
+
+      <Button style={{ width: '100%' }} mode={'contained'}>
+        오늘의 레포트 확인
+      </Button>
     </Box>
   );
 });

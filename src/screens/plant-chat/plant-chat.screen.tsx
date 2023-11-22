@@ -4,8 +4,11 @@ import { StackNavigationProp } from '@react-navigation/stack';
 
 import { RootStackParamList } from '../root.navigator';
 
-import { ChattingForm } from './components/chatting-form';
-import { PlantChatContentModule, PlantChatHeaderModule } from './module';
+import {
+  PlantChatContentModule,
+  PlantChatFooterModule,
+  PlantChatHeaderModule,
+} from './module';
 
 import { PointLinearGradient } from '@/atoms';
 
@@ -32,7 +35,7 @@ export const PlantChatScreen = ({}: PlantChatScreenProps) => {
         <PlantChatHeaderModule />
         <PlantChatContentModule />
         {/* <FloatingButton /> */}
-        <ChattingForm />
+        <PlantChatFooterModule />
       </Box>
     </PointLinearGradient>
   );
