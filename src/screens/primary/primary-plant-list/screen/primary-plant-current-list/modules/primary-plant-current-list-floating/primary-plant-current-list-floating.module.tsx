@@ -25,7 +25,10 @@ export const PrimaryPlantCurrentListFloatingModule = memo(
     const { data } = useGetPlantListQuery();
     const navigation = useNavigation<PrimaryPlantListScreenNavigatorProp>();
 
-    if (isEmpty(data?.DATA) || isUndefined(data)) {
+    if (
+      isEmpty(data?.DATA.filter(v => v.is_harvested === false)) ||
+      isUndefined(data)
+    ) {
       return null;
     }
 
