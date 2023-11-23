@@ -3,6 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import dayjs from 'dayjs';
 import { memo } from 'react';
 import { TouchableOpacity } from 'react-native';
+import FastImage from 'react-native-fast-image';
 
 import { PlantDiagnosisListScreenNavigationProps } from '../../../../plant-diagnosis-list.screen';
 
@@ -37,22 +38,18 @@ export const DiagnosisListItem = memo<DiagnosisListItemProps>(
     const isPlantSick = isPlantSickByPlantDiseaseName(plant_disease_name);
 
     return (
-      <TouchableOpacity onPress={handlePressItem}>
-        <Stack
-          align="center"
-          horizontal
-          space={16}
-          paddingY={12}
-          paddingX={16}
-          style={{
-            backgroundColor: palette['white'],
-            borderRadius: 8,
-            elevation: 4,
-          }}>
+      <TouchableOpacity
+        onPress={handlePressItem}
+        style={{
+          backgroundColor: palette['white'],
+          borderRadius: 8,
+          elevation: 4,
+        }}>
+        <Stack align="center" horizontal space={16} paddingY={12} paddingX={16}>
           <Image
             source={{ uri: diagnose_photo_url }}
             style={{ width: 80, height: 80, borderRadius: 100 }}
-            resizeMode="cover"
+            resizeMode={FastImage.resizeMode.cover}
           />
           <Stack space={20}>
             <Stack horizontal space={4} align="center">

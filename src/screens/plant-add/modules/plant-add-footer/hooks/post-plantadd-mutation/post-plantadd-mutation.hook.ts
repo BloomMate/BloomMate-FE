@@ -38,7 +38,7 @@ export const usePostPlantAddMutation = () => {
             planted_at: planted_at,
           },
         );
-        console.log(data);
+
         return data;
       } catch (error) {
         logHttpErrorMessage(error);

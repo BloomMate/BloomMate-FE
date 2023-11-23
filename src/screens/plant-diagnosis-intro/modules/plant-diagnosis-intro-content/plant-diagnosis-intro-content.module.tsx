@@ -2,11 +2,12 @@ import { Box, Stack } from '@mobily/stacks';
 import { useRoute } from '@react-navigation/native';
 import { isUndefined } from 'lodash';
 import { memo } from 'react';
-import { Image } from 'react-native';
+import FastImage from 'react-native-fast-image';
 
 import { PlantDiagnosisIntroScreenNavigationRouteProps } from '../../plant-diagnosis-intro.screen';
 
-import { Icon, Text } from '@/atoms';
+import { DIAGNOSIS_IMG } from '@/assets';
+import { Icon, Image, Text } from '@/atoms';
 import { useGetPlantDetailQuery } from '@/hooks';
 import { palette } from '@/utils';
 
@@ -32,9 +33,10 @@ export const PlantDiagnosisIntroContentModule =
           <Stack space={36} align="center">
             <Box>
               <Image
-                source={require('./assets/plant-diagnosis.png')}
+                source={{ uri: DIAGNOSIS_IMG }}
                 style={{ width: 200, height: 200, borderRadius: 100 }}
-                resizeMode="contain"
+                resizeMode={FastImage.resizeMode.contain}
+                skeletonStyle={{ width: 200, height: 200, borderRadius: 100 }}
               />
               <Icon
                 style={{ position: 'absolute', bottom: 0, right: 0 }}

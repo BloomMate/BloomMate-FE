@@ -10,7 +10,7 @@ import { InfoItem } from '../components';
 import { MYPAGE_GREETING_LOTTIE } from '@/assets';
 import { Skeleton, Text } from '@/atoms';
 import { useGetAccountInfoQuery } from '@/hooks/get-account-info';
-import { palette } from '@/utils';
+import { defaultAxios, palette } from '@/utils';
 
 type GreetingSectionProps = {
   userName: string;
@@ -47,6 +47,22 @@ type InfoSectionProps = {
   handlePressUserInfoCheck: () => void;
   handlePressAboutBloomMate: () => void;
 };
+const handlePressLogOut = () => {
+  defaultAxios.defaults.headers.Authorization = null;
+
+  navigation.reset({
+    index: 1,
+    routes: [
+      {
+        name: 'LandingScreen',
+      },
+    ],
+  });
+};
+const handlePressUserInfoCheck = () => {
+  navigation.navigate('UserInfoScreen');
+};
+const handlePressAboutBloomMate = () => {};
 
 const InfoSection: React.FC<InfoSectionProps> = ({
   handlePressLogOut,

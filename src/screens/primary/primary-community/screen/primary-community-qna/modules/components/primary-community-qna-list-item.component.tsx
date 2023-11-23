@@ -4,7 +4,7 @@ import dayjs from 'dayjs';
 import { memo } from 'react';
 import { TouchableOpacity } from 'react-native';
 
-import { PrimaryCommunityQnaDetailScreenNavigationProps } from '../../primary-community-qna-detail.screen';
+import { CommunityQnaDetailScreenNavigationProps } from '../../../../../../community-qna-detail';
 
 import { Text } from '@/atoms';
 import { palette } from '@/utils';
@@ -21,11 +21,11 @@ export const PrimaryCommunityQnaListItem =
   memo<PrimaryCommunityQnaListItemProps>(
     ({ id, created_at, question_title, question_content, is_answered }) => {
       const navigation =
-        useNavigation<PrimaryCommunityQnaDetailScreenNavigationProps>();
+        useNavigation<CommunityQnaDetailScreenNavigationProps>();
 
       const question_date = dayjs(created_at).format('YYYY-MM-DD');
       const handlePressItem = () => {
-        navigation.navigate('PrimaryCommunityQnaDetailScreen', {
+        navigation.navigate('CommunityQnaDetailScreen', {
           id: id,
         });
       };

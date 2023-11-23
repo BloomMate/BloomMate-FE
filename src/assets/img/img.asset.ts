@@ -24,8 +24,14 @@ export const ARTICLE7_IMG =
   'https://res.cloudinary.com/dolc0qkxk/image/upload/v1699585041/007_vdtnyv.png';
 export const ARTICLE8_IMG =
   'https://res.cloudinary.com/dolc0qkxk/image/upload/v1699585042/008_ojpfxk.png';
+export const CORN_SEED_IMG =
+  'https://res.cloudinary.com/dahw1d9li/image/upload/v1700477659/corn_ve3y9g.avif';
 export const STRAWBERRY_SEED_IMG =
   'https://res.cloudinary.com/dahw1d9li/image/upload/v1700477736/strawberry_bsjmxj.png';
+export const TOMATO_SEED_IMG =
+  'https://res.cloudinary.com/dahw1d9li/image/upload/v1700634827/%ED%86%A0%EB%A7%88%ED%86%A0_t9m4z1.jpg';
+export const POTATO_SEED_IMG =
+  'https://res.cloudinary.com/dahw1d9li/image/upload/v1700635097/%EA%B0%90%E3%85%88_ggj5wp.jpg';
 export const LOGO_FONT_IMG =
   'https://res.cloudinary.com/dahw1d9li/image/upload/v1700478058/LogoFont_ebtook.png';
 export const CHAT_LOGO_IMG =

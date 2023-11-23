@@ -1,7 +1,7 @@
 import { Box, Column, Columns, Stack } from '@mobily/stacks';
 import { useState } from 'react';
 import { useFormContext, useController } from 'react-hook-form';
-import { Image } from 'react-native';
+import FastImage from 'react-native-fast-image';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useRecoilValue } from 'recoil';
 
@@ -14,7 +14,7 @@ import {
 } from './components';
 
 import { SMART_COTTAGE_IMG, TIIUN_IMG } from '@/assets';
-import { Icon, Text } from '@/atoms';
+import { Icon, Image, Text } from '@/atoms';
 import { palette } from '@/utils';
 
 export const SignUpNameInputModule = () => {
@@ -101,7 +101,12 @@ export const SignUpTiiunInputModule = () => {
         field={field}
         fieldState={fieldState}
       />
-      <Image source={{ uri: TIIUN_IMG }} style={{ width: 250, height: 250 }} />
+      <Image
+        source={{ uri: TIIUN_IMG }}
+        style={{ width: 250, height: 250 }}
+        skeletonStyle={{ width: 250, height: 250 }}
+        resizeMode={FastImage.resizeMode.contain}
+      />
     </Stack>
   );
 };
@@ -169,7 +174,8 @@ export const SignUpAddressInputModule = () => {
           <Image
             source={{ uri: SMART_COTTAGE_IMG }}
             style={{ width: '100%' }}
-            resizeMode="contain"
+            resizeMode={FastImage.resizeMode.contain}
+            skeletonStyle={{ width: '100%' }}
           />
         )}
       </Stack>

@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
 import React, { memo } from 'react';
 import { useController, useFormContext } from 'react-hook-form';
-import { TouchableOpacity, View } from 'react-native';
+import { TouchableOpacity, View, useWindowDimensions } from 'react-native';
 import { Calendar, DateData, LocaleConfig } from 'react-native-calendars';
 
 dayjs.extend(isSameOrAfter);
@@ -13,7 +13,7 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 import { PlantAddForm } from '../../../../hooks';
 import {
-  $currentScreenStepIndexSelector,
+  $currentPlantAddScreenStepIndexSelector,
   $plantAddState,
   EPlantAddStep,
   plantAddSteps,
@@ -31,6 +31,7 @@ type PlantAddContentModalComponentProps = {
 
 export const PlantAddContentVarietyModalComponent =
   memo<PlantAddContentModalComponentProps>(({ isModal, setModal }) => {
+    const { width: deviceWidth } = useWindowDimensions();
     const handleClickButton = (v: number) => {
       onChange(v);
       setModal(false);
@@ -68,9 +69,9 @@ export const PlantAddContentVarietyModalComponent =
                 height: 3,
                 backgroundColor: palette['gray-400'],
                 borderRadius: 8,
-              }}></View>
+              }}
+            />
           </Stack>
-
           <Stack space={20}>
             <Text fontWeight="Bold" color="black" variants="titleMedium">
               품종
@@ -197,8 +198,6 @@ export const PlantAddContentDateModalComponent =
       harvestDateRange.push(currentDate.format('YYYY-MM-DD'));
     }
 
-    console.log(harvestDateRange);
-
     return (
       <Modal
         isVisible={isVisible}
@@ -269,8 +268,8 @@ export const PlantAddPictureModalComponent =
     const isVisible = isModal;
 
     const { control } = useFormContext<PlantAddForm>();
-    const currentScreenStepIndex = useRecoilValue(
-      $currentScreenStepIndexSelector,
+    const currentPlantAddScreenStepIndex = useRecoilValue(
+      $currentPlantAddScreenStepIndexSelector,
     );
     const { field: field1 } = useController({
       name: EPlantAddStep.PICTURE,
@@ -291,23 +290,30 @@ export const PlantAddPictureModalComponent =
 
     const handlePressPictureButton = async () => {
       const jsonResponse = await mutatePhotoAsync();
-      field1.value = jsonResponse.data.url as string;
-      field1.onChange(jsonResponse.data.url as string);
-      field2.onChange(field1.value);
-      setPlantAddState({
-        screenStep: plantAddSteps[currentScreenStepIndex + 1],
-      });
+
+      if (jsonResponse != null) {
+        field1.value = jsonResponse.data.url as string;
+        field1.onChange(jsonResponse.data.url as string);
+        field2.onChange(field1.value);
+        setPlantAddState({
+          screenStep: plantAddSteps[currentPlantAddScreenStepIndex + 1],
+        });
+      }
+
       setModal(false);
     };
 
     const handlePressLibraryButton = async () => {
       const jsonResponse = await mutateLibraryAsync();
-      field1.value = jsonResponse.data.url as string;
-      field1.onChange(jsonResponse.data.url as string);
-      field2.onChange(field1.value);
-      setPlantAddState({
-        screenStep: plantAddSteps[currentScreenStepIndex + 1],
-      });
+
+      if (jsonResponse != null) {
+        field1.value = jsonResponse.data.url as string;
+        field1.onChange(jsonResponse.data.url as string);
+        field2.onChange(field1.value);
+        setPlantAddState({
+          screenStep: plantAddSteps[currentPlantAddScreenStepIndex + 1],
+        });
+      }
       setModal(false);
     };
 

@@ -6,7 +6,7 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 import { PlantAddScreenNavigationProps } from '../../plant-add.screen';
 import {
-  $currentScreenStepIndexSelector,
+  $currentPlantAddScreenStepIndexSelector,
   $plantAddState,
   plantAddSteps,
 } from '../../plant-add.state';
@@ -19,27 +19,27 @@ type PlantAddHeaderModuleProps = {};
 export const PlantAddHeaderModule = memo<PlantAddHeaderModuleProps>(() => {
   const navigation = useNavigation<PlantAddScreenNavigationProps>();
   const setPlantAddState = useSetRecoilState($plantAddState);
-  const currentScreenStepIndex = useRecoilValue(
-    $currentScreenStepIndexSelector,
+  const currentPlantAddScreenStepIndex = useRecoilValue(
+    $currentPlantAddScreenStepIndexSelector,
   );
 
   const handlePressBack = () => {
     if (!isFirstStep) {
       setPlantAddState({
-        screenStep: plantAddSteps[currentScreenStepIndex - 1],
+        screenStep: plantAddSteps[currentPlantAddScreenStepIndex - 1],
       });
     } else {
       navigation.goBack();
     }
   };
 
-  const isFirstStep = currentScreenStepIndex === 0;
+  const isFirstStep = currentPlantAddScreenStepIndex === 0;
 
   return (
     <Stack space={32}>
       <ModalHeader left={{ type: 'icon' }} onPressExit={handlePressBack} />
       <ProgressBar
-        progress={(currentScreenStepIndex + 1) / plantAddSteps.length}
+        progress={(currentPlantAddScreenStepIndex + 1) / plantAddSteps.length}
         color={palette['primary']}
         style={{ backgroundColor: palette['gray-300'], borderRadius: 4 }}
       />
