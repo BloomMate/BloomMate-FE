@@ -1,7 +1,7 @@
-import { Box, Stack } from '@mobily/stacks';
+import { Box } from '@mobily/stacks';
 import isEmpty from 'lodash/isEmpty';
 import { memo } from 'react';
-import { Image } from 'react-native';
+import { FlatList, Image } from 'react-native';
 import { useRecoilState } from 'recoil';
 import { useDidUpdate } from 'rooks';
 
@@ -11,7 +11,7 @@ import { usePostPlantChat } from './hooks';
 
 import { CHAT_LOGO_IMG } from '@/assets';
 import { Button, Text } from '@/atoms';
-import { ScrollView } from '@/layouts';
+import { palette } from '@/utils';
 
 type PlantChatContentModuleProps = {};
 
@@ -64,26 +64,38 @@ export const PlantChatContentModule = memo<PlantChatContentModuleProps>(() => {
     );
   }
 
-  if (isTodayPlantChat) {
-    return (
-      <ScrollView>
-        <Stack space={12}>
-          {contents.map(content => (
-            <Text
-              variants="labelLarge"
-              fontWeight="Medium"
-              color="gray-900"
-              style={{
-                alignSelf: content.is_user_chat ? 'flex-start' : 'flex-end',
-              }}
-              key={content.chatting_content}>
-              {content.chatting_content}
-            </Text>
-          ))}
-        </Stack>
-      </ScrollView>
-    );
-  }
-
-  return null;
+  return (
+    <FlatList
+      data={contents}
+      ListHeaderComponent={() => (
+        <Box paddingBottom={32} alignX="center">
+          <Text variants="bodyMedium" fontWeight="Bold" color="black">
+            {date.format('YY.MM.DD')}
+          </Text>
+        </Box>
+      )}
+      ItemSeparatorComponent={() => <Box style={{ height: 32 }} />}
+      renderItem={({ item }) => (
+        <Box
+          padding={12}
+          alignSelf={item.is_user_chat ? 'right' : 'left'}
+          style={{
+            backgroundColor: item.is_user_chat
+              ? palette['white']
+              : palette['teal-400'],
+            maxWidth: 256,
+            borderRadius: 12,
+            borderTopLeftRadius: 0,
+          }}>
+          <Text
+            variants="labelMedium"
+            fontWeight="Medium"
+            color={item.is_user_chat ? 'gray-900' : 'white'}>
+            {item.chatting_content}
+          </Text>
+        </Box>
+      )}
+      ListFooterComponent={() => <Box style={{ height: 40 }} />}
+    />
+  );
 });
