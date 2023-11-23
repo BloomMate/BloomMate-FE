@@ -8,7 +8,7 @@ export const MATERIAL_TOP_TAB_NAVIGATOR_SCREEN_OPTIONS: MaterialTopTabNavigation
     tabBarActiveTintColor: palette['primary'],
     tabBarInactiveTintColor: palette['gray-400'],
     tabBarLabelStyle: {
-      fontFamily: 'GmarketSansTTFBold',
+      fontFamily: 'SUITE-Bold',
       ...getVariantsStyle('bodySmall'),
       marginBottom: 16,
     },

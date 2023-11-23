@@ -23,7 +23,7 @@ export const PlantListEmpty = () => {
         </Text>
         <Button mode="contained" onPress={handleAddPlantButton} icon="add">
           <Text variants="labelLarge" fontWeight="Medium" color="white">
-            식물 등록
+            첫 식물 등록
           </Text>
         </Button>
       </Stack>
