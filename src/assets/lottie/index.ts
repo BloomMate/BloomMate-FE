@@ -1,3 +1,4 @@
+import ABOUT_BLOOMMATE_LOTTIE = require('./about-BloomMate.json');
 import MUTATION_LOTTIE = require('./mutation-lottie.json');
 import MYPAGE_GREETING_LOTTIE = require('./mypage-greeting.json');
 import PLANT_ADD_LOTTIE = require('./plant-add-lottie.json');
@@ -10,4 +11,5 @@ export {
   PLANT_DELETE_LOTTIE,
   PLANT_HARVEST_LOTTIE,
   MYPAGE_GREETING_LOTTIE,
+  ABOUT_BLOOMMATE_LOTTIE,
 };

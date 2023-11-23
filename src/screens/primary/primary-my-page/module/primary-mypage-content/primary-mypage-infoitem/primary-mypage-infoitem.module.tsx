@@ -47,22 +47,6 @@ type InfoSectionProps = {
   handlePressUserInfoCheck: () => void;
   handlePressAboutBloomMate: () => void;
 };
-const handlePressLogOut = () => {
-  defaultAxios.defaults.headers.Authorization = null;
-
-  navigation.reset({
-    index: 1,
-    routes: [
-      {
-        name: 'LandingScreen',
-      },
-    ],
-  });
-};
-const handlePressUserInfoCheck = () => {
-  navigation.navigate('UserInfoScreen');
-};
-const handlePressAboutBloomMate = () => {};
 
 const InfoSection: React.FC<InfoSectionProps> = ({
   handlePressLogOut,
@@ -95,11 +79,26 @@ export const PrimaryMyPageInfoItemModule: React.FC = () => {
   }
   const { user_name } = data;
 
-  const handlePressLogOut = () => {};
+  const handlePressLogOut = () => {
+    defaultAxios.defaults.headers.Authorization = null;
+
+    navigation.reset({
+      index: 1,
+      routes: [
+        {
+          name: 'LandingScreen',
+        },
+      ],
+    });
+  };
+
   const handlePressUserInfoCheck = () => {
     navigation.navigate('UserInfoScreen');
   };
-  const handlePressAboutBloomMate = () => {};
+
+  const handlePressAboutBloomMate = () => {
+    navigation.navigate('AboutBloomMateScreen');
+  };
 
   return (
     <Stack style={{ elevation: 4 }}>

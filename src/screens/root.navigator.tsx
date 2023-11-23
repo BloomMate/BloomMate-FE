@@ -5,6 +5,7 @@ import {
 } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
+import { AboutBloomMateScreen } from './about-bloommate';
 import { ArticleWebviewScreen } from './article-webview';
 import { CommunityQnaDetailScreen } from './community-qna-detail';
 import { CommunityQnaPostScreen } from './community-qna-post';
@@ -49,6 +50,7 @@ export type RootStackParamList = {
   ArticleWebview: { article_content: string };
   CommunityQnaDetailScreen: { id: number };
   CommunityQnaPostScreen: undefined;
+  AboutBloomMateScreen: undefined;
 };
 
 type RootNavigatorProps = {};
@@ -106,6 +108,10 @@ export const RootNavigator = ({}: RootNavigatorProps) => {
         <Stack.Screen
           name="PlantAnimationScreen"
           component={PlantAnimationScreen}
+        />
+        <Stack.Screen
+          name="AboutBloomMateScreen"
+          component={AboutBloomMateScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>
