@@ -1,10 +1,10 @@
 import { Box, Stack } from '@mobily/stacks';
 import { useController, useFormContext } from 'react-hook-form';
-import { Image, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 
 import { PlantEditForm } from '../../hooks';
 
-import { Icon, Text } from '@/atoms';
+import { Icon, Image, Text } from '@/atoms';
 import { useUploadPhotoMutation } from '@/hooks';
 import { useMutationIndicator } from '@/providers';
 import { palette } from '@/utils';
@@ -60,6 +60,7 @@ export const PlantDetailEditPictureInputModule =
             source={{ uri: value }}
             style={{ height: '100%', borderRadius: 8 }}
             resizeMode="cover"
+            skeletonStyle={{ height: '100%', borderRadius: 8 }}
           />
         </Box>
       </Stack>

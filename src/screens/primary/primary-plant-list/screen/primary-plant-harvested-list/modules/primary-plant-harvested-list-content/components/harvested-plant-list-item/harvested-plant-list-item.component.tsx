@@ -1,9 +1,8 @@
 import { Column, Columns, Stack } from '@mobily/stacks';
 import dayjs from 'dayjs';
 import { memo } from 'react';
-import { Image } from 'react-native';
 
-import { Text } from '@/atoms';
+import { Image, Text } from '@/atoms';
 import { PlantListResponse } from '@/hooks';
 import { palette } from '@/utils';
 
@@ -25,6 +24,7 @@ export const HarvestedPlantListItem =
               style={{ borderRadius: 80, width: 80, height: 80 }}
               source={{ uri: plant_picture_url }}
               resizeMode="contain"
+              skeletonStyle={{ borderRadius: 80, width: 80, height: 80 }}
             />
           </Column>
           <Column width="fluid" paddingY={16} paddingLeft={12}>

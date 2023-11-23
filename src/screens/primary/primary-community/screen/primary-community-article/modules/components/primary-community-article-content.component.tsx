@@ -1,11 +1,11 @@
 import { Row, Rows } from '@mobily/stacks';
 import { useNavigation } from '@react-navigation/native';
 import { memo } from 'react';
-import { Image, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 
 import { ArticleWebviewScreenNavigationProps } from '../../../../../../article-webview';
 
-import { Text } from '@/atoms';
+import { Image, Text } from '@/atoms';
 
 type PrimaryCommuntiyArticleItemProps = {
   id: string;
@@ -34,6 +34,11 @@ export const PrimaryCommuntiyArticleItem =
                   uri: article_thumbnail_url,
                 }}
                 style={{ aspectRatio: 190 / 80, borderRadius: 10 }}
+                skeletonStyle={{
+                  width: '100%',
+                  height: '100%',
+                  borderRadius: 10,
+                }}
               />
             </Row>
           </TouchableOpacity>

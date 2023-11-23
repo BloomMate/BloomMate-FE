@@ -6,7 +6,7 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { PlantAddForm } from '../../hooks';
 import { PlantAddScreenNavigationProps } from '../../plant-add.screen';
 import {
-  $currentScreenStepIndexSelector,
+  $currentPlantAddScreenStepIndexSelector,
   $plantAddState,
   plantAddSteps,
 } from '../../plant-add.state';
@@ -28,13 +28,13 @@ export const PlantAddFooterModule = memo<PlantAddFooterModuleProps>(() => {
   useMutationIndicator([isLoading]);
   const { isDirty, isValid, errors, dirtyFields } = formState;
 
-  const currentScreenStepIndex = useRecoilValue(
-    $currentScreenStepIndexSelector,
+  const currentPlantAddScreenStepIndex = useRecoilValue(
+    $currentPlantAddScreenStepIndexSelector,
   );
   const isPlantAddPossible = isDirty && isValid;
 
   const isCurrentStepValid = () => {
-    const currentFieldName = plantAddSteps[currentScreenStepIndex];
+    const currentFieldName = plantAddSteps[currentPlantAddScreenStepIndex];
 
     return !errors[currentFieldName] && dirtyFields[currentFieldName];
   };
@@ -53,9 +53,10 @@ export const PlantAddFooterModule = memo<PlantAddFooterModuleProps>(() => {
     });
   };
 
-  const isLastStep = currentScreenStepIndex === plantAddSteps.length - 1;
-  const isPictureCompleteStep = currentScreenStepIndex === 1;
-  const isPictureStep = currentScreenStepIndex === 0;
+  const isLastStep =
+    currentPlantAddScreenStepIndex === plantAddSteps.length - 1;
+  const isPictureCompleteStep = currentPlantAddScreenStepIndex === 1;
+  const isPictureStep = currentPlantAddScreenStepIndex === 0;
   const copy = isLastStep ? '식물 등록하기' : '계속하기';
 
   const handlePressButton = () => {
@@ -74,7 +75,7 @@ export const PlantAddFooterModule = memo<PlantAddFooterModuleProps>(() => {
       });
     } else {
       setPlantAddState({
-        screenStep: plantAddSteps[currentScreenStepIndex + 1],
+        screenStep: plantAddSteps[currentPlantAddScreenStepIndex + 1],
       });
     }
   };
@@ -84,7 +85,7 @@ export const PlantAddFooterModule = memo<PlantAddFooterModuleProps>(() => {
       mode: 'outlined',
       onPress: () =>
         setPlantAddState({
-          screenStep: plantAddSteps[currentScreenStepIndex - 1],
+          screenStep: plantAddSteps[currentPlantAddScreenStepIndex - 1],
         }),
     },
     {

@@ -1,13 +1,12 @@
 import { Stack } from '@mobily/stacks';
 import { memo } from 'react';
-import { Image } from 'react-native';
 
 import {
   mapGardenSizeInfoByValue,
   mapGardenSizePotsByValue,
 } from './signup-content-pot.const';
 
-import { Text } from '@/atoms';
+import { Image, Text } from '@/atoms';
 
 type SignUpContentPotComponentProps = {
   value: 0 | 1 | 2;
@@ -26,6 +25,7 @@ export const SignUpContentPotComponent = memo<SignUpContentPotComponentProps>(
             key={i}
             resizeMode="contain"
             style={{ width: 28, height: 42 }}
+            skeletonStyle={{ width: 28, height: 42 }}
             source={require('./Image/flower_pot.png')}
           />,
         );
