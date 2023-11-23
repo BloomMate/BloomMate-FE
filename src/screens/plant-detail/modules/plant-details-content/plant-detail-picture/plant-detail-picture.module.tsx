@@ -2,14 +2,15 @@ import { Box, Stack } from '@mobily/stacks';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { isUndefined } from 'lodash';
 import { memo } from 'react';
-import { Image, TouchableOpacity, View } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
+import FastImage from 'react-native-fast-image';
 
 import {
   PlantDetailScreenNavigationProps,
   PlantDetailScreenNavigationRouteProps,
 } from '../../../plant-detail.screen';
 
-import { Icon, Text } from '@/atoms';
+import { Icon, Image, Text } from '@/atoms';
 import { useGetPlantDetailQuery } from '@/hooks';
 import { palette } from '@/utils';
 
@@ -58,7 +59,8 @@ export const PlantDetailPictureModule = memo<PlantDetailPictureModule>(() => {
         <Image
           source={{ uri: plant_picture_url }}
           style={{ width: '100%', height: '100%', borderRadius: 8 }}
-          resizeMode="cover"
+          resizeMode={FastImage.resizeMode.cover}
+          skeletonStyle={{ borderRadius: 8 }}
         />
       </View>
     </Stack>

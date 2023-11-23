@@ -1,10 +1,9 @@
 import { Box, Stack } from '@mobily/stacks';
 import { isUndefined } from 'lodash';
 import { memo } from 'react';
-import { Image } from 'react-native';
 
 import { MYPAGE_IMG } from '@/assets';
-import { Skeleton, Text } from '@/atoms';
+import { Image, Skeleton, Text } from '@/atoms';
 import { useGetAccountInfoQuery } from '@/hooks/get-account-info';
 
 type PrimaryMyPageGreetingModuleProps = {};
@@ -28,6 +27,11 @@ export const PrimaryMypageGreetingModule =
               borderRadius: 80,
             }}
             source={{ uri: MYPAGE_IMG }}
+            skeletonStyle={{
+              width: 80,
+              height: 80,
+              borderRadius: 80,
+            }}
           />
         </Box>
         <Text variants={'bodyLarge'} fontWeight={'Bold'} color={'gray-900'}>
@@ -47,6 +51,11 @@ export const PrimaryMyPageGreetingSuspenseModule = () => (
           borderRadius: 80,
         }}
         source={{ uri: MYPAGE_IMG }}
+        skeletonStyle={{
+          width: 80,
+          height: 80,
+          borderRadius: 80,
+        }}
       />
     </Box>
     <Skeleton style={{ width: 160, height: 40 }} />

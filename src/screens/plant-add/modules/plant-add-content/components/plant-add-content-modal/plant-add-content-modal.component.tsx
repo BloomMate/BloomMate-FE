@@ -13,7 +13,7 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 import { PlantAddForm } from '../../../../hooks';
 import {
-  $currentScreenStepIndexSelector,
+  $currentPlantAddScreenStepIndexSelector,
   $plantAddState,
   EPlantAddStep,
   plantAddSteps,
@@ -268,8 +268,8 @@ export const PlantAddPictureModalComponent =
     const isVisible = isModal;
 
     const { control } = useFormContext<PlantAddForm>();
-    const currentScreenStepIndex = useRecoilValue(
-      $currentScreenStepIndexSelector,
+    const currentPlantAddScreenStepIndex = useRecoilValue(
+      $currentPlantAddScreenStepIndexSelector,
     );
     const { field: field1 } = useController({
       name: EPlantAddStep.PICTURE,
@@ -296,7 +296,7 @@ export const PlantAddPictureModalComponent =
         field1.onChange(jsonResponse.data.url as string);
         field2.onChange(field1.value);
         setPlantAddState({
-          screenStep: plantAddSteps[currentScreenStepIndex + 1],
+          screenStep: plantAddSteps[currentPlantAddScreenStepIndex + 1],
         });
       }
 
@@ -311,7 +311,7 @@ export const PlantAddPictureModalComponent =
         field1.onChange(jsonResponse.data.url as string);
         field2.onChange(field1.value);
         setPlantAddState({
-          screenStep: plantAddSteps[currentScreenStepIndex + 1],
+          screenStep: plantAddSteps[currentPlantAddScreenStepIndex + 1],
         });
       }
       setModal(false);

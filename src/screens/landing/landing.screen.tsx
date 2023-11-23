@@ -1,6 +1,7 @@
 import { Row, Rows, Stack } from '@mobily/stacks';
 import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import FastImage from 'react-native-fast-image';
 
 import { RootStackParamList } from '../root.navigator';
 
@@ -35,12 +36,12 @@ export const LandingScreen = ({}: LandingScreenProps) => {
             <Image
               source={require('./const/Image/LogoImage.png')}
               style={{ height: 56, width: 320 }}
-              resizeMode="contain"
+              resizeMode={FastImage.resizeMode.contain}
             />
             <Image
               source={require('./const/Image/LandingImage.jpg')}
               style={{ width: 148, height: 120 }}
-              resizeMode="contain"
+              resizeMode={FastImage.resizeMode.contain}
             />
             <LandingTextModule />
           </Stack>

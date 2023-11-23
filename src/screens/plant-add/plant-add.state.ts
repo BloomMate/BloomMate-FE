@@ -27,12 +27,12 @@ export const $plantAddState = atom<plantAddState>({
   },
 });
 
-export const $currentScreenStepIndexSelector = selector({
-  key: 'currentScreenStepIndex',
+export const $currentPlantAddScreenStepIndexSelector = selector({
+  key: 'currentPlantAddScreenStepIndex',
   get: ({ get }) => {
     const { screenStep } = get($plantAddState);
-    const currentScreenStepIndex = plantAddSteps.indexOf(screenStep);
+    const currentPlantAddScreenStepIndex = plantAddSteps.indexOf(screenStep);
 
-    return currentScreenStepIndex;
+    return currentPlantAddScreenStepIndex;
   },
 });

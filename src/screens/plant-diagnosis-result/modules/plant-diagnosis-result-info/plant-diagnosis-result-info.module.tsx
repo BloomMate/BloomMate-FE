@@ -3,13 +3,13 @@ import { useRoute } from '@react-navigation/native';
 import dayjs from 'dayjs';
 import isUndefined from 'lodash/isUndefined';
 import { memo } from 'react';
-import { Image } from 'react-native';
+import FastImage from 'react-native-fast-image';
 
 import { PlantDiagnosisResultScreenNavigationRouteProps } from '../../plant-diagnosis-result.screen';
 
 import { DiseaseInfoItem } from './components';
 
-import { Icon, Text } from '@/atoms';
+import { Icon, Image, Text } from '@/atoms';
 import { useGetPlantDiagnosisRecordDetailQuery } from '@/hooks';
 import {
   getCopyByGrowthLevel,
@@ -71,7 +71,8 @@ export const PlantDiagnosisResultInfoModule =
             <Image
               source={{ uri: diagnose_photo_url }}
               style={{ width: 80, height: 80, borderRadius: 150 }}
-              resizeMode="contain"
+              skeletonStyle={{ width: 80, height: 80, borderRadius: 150 }}
+              resizeMode={FastImage.resizeMode.contain}
             />
             <Stack space={20}>
               <Stack horizontal space={4} align="center">

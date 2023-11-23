@@ -1,10 +1,11 @@
 import { Box, Stack } from '@mobily/stacks';
 import { useController, useFormContext } from 'react-hook-form';
-import { Image, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
+import FastImage from 'react-native-fast-image';
 
 import { PlantEditForm } from '../../hooks';
 
-import { Icon, Text } from '@/atoms';
+import { Icon, Image, Text } from '@/atoms';
 import { useUploadPhotoMutation } from '@/hooks';
 import { useMutationIndicator } from '@/providers';
 import { palette } from '@/utils';
@@ -59,7 +60,8 @@ export const PlantDetailEditPictureInputModule =
           <Image
             source={{ uri: value }}
             style={{ height: '100%', borderRadius: 8 }}
-            resizeMode="cover"
+            resizeMode={FastImage.resizeMode.cover}
+            skeletonStyle={{ height: '100%', borderRadius: 8 }}
           />
         </Box>
       </Stack>
