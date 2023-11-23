@@ -1,15 +1,14 @@
-import { Box } from '@mobily/stacks';
-import isEmpty from 'lodash/isEmpty';
+import { Box, Stack } from '@mobily/stacks';
 import { memo } from 'react';
 import { FlatList, Image } from 'react-native';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { useDidUpdate } from 'rooks';
 
-import { $plantChatState } from '../../plant-chat.state';
+import { $plantChatSelector, $plantChatState } from '../../plant-chat.state';
 
 import { usePostPlantChat } from './hooks';
 
-import { CHAT_LOGO_IMG } from '@/assets';
+import { CHAT_LOGO_IMG, LOGO_FONT_IMG } from '@/assets';
 import { Button, Text } from '@/atoms';
 import { palette } from '@/utils';
 
@@ -17,12 +16,12 @@ type PlantChatContentModuleProps = {};
 
 export const PlantChatContentModule = memo<PlantChatContentModuleProps>(() => {
   const [plantChat, setPlantChat] = useRecoilState($plantChatState);
+
+  const { isEmptyPlantChat, isTodayPlantChat } =
+    useRecoilValue($plantChatSelector);
   const { contents, date } = plantChat;
 
   const { mutate } = usePostPlantChat();
-
-  const isTodayPlantChat = date.isToday();
-  const isEmptyPlantChat = isEmpty(contents);
 
   useDidUpdate(() => {
     if (!isTodayPlantChat) {
@@ -75,27 +74,46 @@ export const PlantChatContentModule = memo<PlantChatContentModuleProps>(() => {
         </Box>
       )}
       ItemSeparatorComponent={() => <Box style={{ height: 32 }} />}
-      renderItem={({ item }) => (
-        <Box
-          padding={12}
-          alignSelf={item.is_user_chat ? 'right' : 'left'}
-          style={{
-            backgroundColor: item.is_user_chat
-              ? palette['white']
-              : palette['teal-400'],
-            maxWidth: 256,
-            borderRadius: 12,
-            borderTopLeftRadius: 0,
-          }}>
-          <Text
-            variants="labelMedium"
-            fontWeight="Medium"
-            color={item.is_user_chat ? 'gray-900' : 'white'}>
-            {item.chatting_content}
+      renderItem={({ item }) => {
+        const { is_user_chat, chatting_content } = item;
+
+        return (
+          <Stack space={8}>
+            {!item.is_user_chat && (
+              <Image
+                source={{ uri: LOGO_FONT_IMG }}
+                style={{ width: 80, height: 16 }}
+              />
+            )}
+            <Box
+              padding={12}
+              alignSelf={item.is_user_chat ? 'right' : 'left'}
+              style={{
+                backgroundColor: item.is_user_chat
+                  ? palette['white']
+                  : palette['teal-400'],
+                maxWidth: 256,
+                borderRadius: 12,
+                borderTopLeftRadius: 0,
+              }}>
+              <Text
+                variants="labelMedium"
+                fontWeight="Medium"
+                color={item.is_user_chat ? 'gray-900' : 'white'}>
+                {item.chatting_content}
+              </Text>
+            </Box>
+          </Stack>
+        );
+      }}
+      ListFooterComponent={() => <Box style={{ height: 40 }} />}
+      ListEmptyComponent={() => (
+        <Box flex="fluid" alignX="center" alignY="center">
+          <Text variants="bodyMedium" fontWeight="Medium" color="gray-900">
+            이 날은 진행된 대화가 없어요!
           </Text>
         </Box>
       )}
-      ListFooterComponent={() => <Box style={{ height: 40 }} />}
     />
   );
 });
