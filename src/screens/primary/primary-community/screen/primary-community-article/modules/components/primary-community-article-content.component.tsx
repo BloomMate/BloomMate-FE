@@ -2,6 +2,7 @@ import { Row, Rows } from '@mobily/stacks';
 import { useNavigation } from '@react-navigation/native';
 import { memo } from 'react';
 import { TouchableOpacity } from 'react-native';
+import FastImage from 'react-native-fast-image';
 
 import { ArticleWebviewScreenNavigationProps } from '../../../../../../article-webview';
 
@@ -39,6 +40,7 @@ export const PrimaryCommuntiyArticleItem =
                   height: '100%',
                   borderRadius: 10,
                 }}
+                resizeMode={FastImage.resizeMode.cover}
               />
             </Row>
           </TouchableOpacity>

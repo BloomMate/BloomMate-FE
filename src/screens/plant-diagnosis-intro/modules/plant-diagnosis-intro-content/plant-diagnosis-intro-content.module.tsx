@@ -2,6 +2,7 @@ import { Box, Stack } from '@mobily/stacks';
 import { useRoute } from '@react-navigation/native';
 import { isUndefined } from 'lodash';
 import { memo } from 'react';
+import FastImage from 'react-native-fast-image';
 
 import { PlantDiagnosisIntroScreenNavigationRouteProps } from '../../plant-diagnosis-intro.screen';
 
@@ -34,7 +35,7 @@ export const PlantDiagnosisIntroContentModule =
               <Image
                 source={{ uri: DIAGNOSIS_IMG }}
                 style={{ width: 200, height: 200, borderRadius: 100 }}
-                resizeMode="contain"
+                resizeMode={FastImage.resizeMode.contain}
                 skeletonStyle={{ width: 200, height: 200, borderRadius: 100 }}
               />
               <Icon

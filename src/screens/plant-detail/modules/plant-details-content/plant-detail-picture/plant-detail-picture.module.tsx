@@ -3,6 +3,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import { isUndefined } from 'lodash';
 import { memo } from 'react';
 import { TouchableOpacity, View } from 'react-native';
+import FastImage from 'react-native-fast-image';
 
 import {
   PlantDetailScreenNavigationProps,
@@ -58,7 +59,7 @@ export const PlantDetailPictureModule = memo<PlantDetailPictureModule>(() => {
         <Image
           source={{ uri: plant_picture_url }}
           style={{ width: '100%', height: '100%', borderRadius: 8 }}
-          resizeMode="cover"
+          resizeMode={FastImage.resizeMode.cover}
           skeletonStyle={{ borderRadius: 8 }}
         />
       </View>

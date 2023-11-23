@@ -1,6 +1,7 @@
 import { Box, Column, Columns, Stack } from '@mobily/stacks';
 import { useState } from 'react';
 import { useFormContext, useController } from 'react-hook-form';
+import FastImage from 'react-native-fast-image';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useRecoilValue } from 'recoil';
 
@@ -104,6 +105,7 @@ export const SignUpTiiunInputModule = () => {
         source={{ uri: TIIUN_IMG }}
         style={{ width: 250, height: 250 }}
         skeletonStyle={{ width: 250, height: 250 }}
+        resizeMode={FastImage.resizeMode.contain}
       />
     </Stack>
   );
@@ -172,7 +174,7 @@ export const SignUpAddressInputModule = () => {
           <Image
             source={{ uri: SMART_COTTAGE_IMG }}
             style={{ width: '100%' }}
-            resizeMode="contain"
+            resizeMode={FastImage.resizeMode.contain}
             skeletonStyle={{ width: '100%' }}
           />
         )}

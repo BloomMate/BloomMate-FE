@@ -1,6 +1,7 @@
 import { Box, Stack } from '@mobily/stacks';
 import { useController, useFormContext } from 'react-hook-form';
 import { TouchableOpacity } from 'react-native';
+import FastImage from 'react-native-fast-image';
 
 import { PlantEditForm } from '../../hooks';
 
@@ -59,7 +60,7 @@ export const PlantDetailEditPictureInputModule =
           <Image
             source={{ uri: value }}
             style={{ height: '100%', borderRadius: 8 }}
-            resizeMode="cover"
+            resizeMode={FastImage.resizeMode.cover}
             skeletonStyle={{ height: '100%', borderRadius: 8 }}
           />
         </Box>

@@ -1,6 +1,7 @@
 import { Column, Columns, Stack } from '@mobily/stacks';
 import dayjs from 'dayjs';
 import { memo } from 'react';
+import FastImage from 'react-native-fast-image';
 
 import { Image, Text } from '@/atoms';
 import { PlantListResponse } from '@/hooks';
@@ -23,7 +24,7 @@ export const HarvestedPlantListItem =
             <Image
               style={{ borderRadius: 80, width: 80, height: 80 }}
               source={{ uri: plant_picture_url }}
-              resizeMode="contain"
+              resizeMode={FastImage.resizeMode.contain}
               skeletonStyle={{ borderRadius: 80, width: 80, height: 80 }}
             />
           </Column>

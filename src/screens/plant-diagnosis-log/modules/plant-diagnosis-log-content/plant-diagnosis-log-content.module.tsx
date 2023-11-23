@@ -3,6 +3,7 @@ import { useRoute } from '@react-navigation/native';
 import dayjs from 'dayjs';
 import { isUndefined } from 'lodash';
 import { memo } from 'react';
+import FastImage from 'react-native-fast-image';
 
 import { PlantDiagnosisLogScreenNavigationRouteProps } from '../../plant-diagnosis-log.screen';
 
@@ -70,7 +71,7 @@ export const PlantDiagnosisLogContentModule =
             <Image
               source={{ uri: diagnose_photo_url }}
               style={{ width: 80, height: 80, borderRadius: 150 }}
-              resizeMode="contain"
+              resizeMode={FastImage.resizeMode.contain}
               skeletonStyle={{ width: 80, height: 80, borderRadius: 150 }}
             />
             <Stack space={20}>

@@ -2,6 +2,7 @@ import { Box, Columns, Column, Stack } from '@mobily/stacks';
 import { useNavigation } from '@react-navigation/native';
 import { memo } from 'react';
 import { TouchableOpacity } from 'react-native';
+import FastImage from 'react-native-fast-image';
 
 import { PrimaryPlantListScreenNavigatorProp } from '../../../../../../primary-plant-list.screen';
 
@@ -39,7 +40,7 @@ export const PlantListItem = memo<PlantListItemProps>(
             <Image
               style={{ width: 80, height: 80, borderRadius: 80 }}
               source={{ uri: plant_picture_url }}
-              resizeMode="cover"
+              resizeMode={FastImage.resizeMode.cover}
             />
           </Column>
           <Column width="fluid" paddingY={16} paddingLeft={12}>
