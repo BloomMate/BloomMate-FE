@@ -28,11 +28,15 @@ export const PlantChatContentModule = memo<PlantChatContentModuleProps>(() => {
     if (!isTodayPlantChat) {
       return;
     }
+    const lastChatting = contents[contents.length - 1];
+    const { chatting_content, is_user_chat } = lastChatting;
 
-    const lastChattingContent = contents[contents.length - 1].chatting_content;
+    if (!is_user_chat) {
+      return;
+    }
 
     mutate({
-      chatting_content: lastChattingContent,
+      chatting_content,
     });
   }, [contents]);
 
