@@ -5,7 +5,7 @@ import { useSetRecoilState } from 'recoil';
 
 import { $plantChatState } from '../../plant-chat.state';
 
-import { GPTChat, UserChat } from './components';
+import { GPTChat, GPTLoading, UserChat } from './components';
 import { useGetChattingContentsByDate, usePostPlantChat } from './hooks';
 
 import { CHAT_LOGO_IMG } from '@/assets';
@@ -61,7 +61,11 @@ const PlantChatContent = memo<PlantChatContentModuleProps>(() => {
       )}
       ItemSeparatorComponent={() => <Box style={{ height: 32 }} />}
       renderItem={({ item }) => {
-        const { is_user_chat } = item;
+        const { is_user_chat, isLoading } = item;
+
+        if (isLoading) {
+          return <GPTLoading />;
+        }
 
         return (
           <>{is_user_chat ? <UserChat {...item} /> : <GPTChat {...item} />}</>
