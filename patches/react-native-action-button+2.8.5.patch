@@ -1,0 +1,32 @@
+diff --git a/node_modules/react-native-action-button/ActionButton.js b/node_modules/react-native-action-button/ActionButton.js
+index b8306c2..54978d7 100644
+--- a/node_modules/react-native-action-button/ActionButton.js
++++ b/node_modules/react-native-action-button/ActionButton.js
+@@ -307,8 +307,7 @@ export default class ActionButton extends Component {
+       />
+     );
+   }
+-
+-  //////////////////////
++   //////////////////////
+   // Animation Methods
+   //////////////////////
+ 
+@@ -316,7 +315,7 @@ export default class ActionButton extends Component {
+     if (this.state.active) return this.reset();
+ 
+     if (animate) {
+-      Animated.spring(this.anim, { toValue: 1 }).start();
++      Animated.spring(this.anim, { toValue: 1, useNativeDriver: false }).start();
+     } else {
+       this.anim.setValue(1);
+     }
+@@ -328,7 +327,7 @@ export default class ActionButton extends Component {
+     if (this.props.onReset) this.props.onReset();
+ 
+     if (animate) {
+-      Animated.spring(this.anim, { toValue: 0 }).start();
++      Animated.spring(this.anim, { toValue: 0, useNativeDriver: false }).start();
+     } else {
+       this.anim.setValue(0);
+     }
