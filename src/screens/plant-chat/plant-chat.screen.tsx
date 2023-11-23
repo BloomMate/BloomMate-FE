@@ -1,8 +1,6 @@
 import { Box } from '@mobily/stacks';
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { Suspense } from 'react';
-import { ActivityIndicator } from 'react-native';
 
 import { RootStackParamList } from '../root.navigator';
 
@@ -11,11 +9,10 @@ import {
   PlantChatContentModule,
   PlantChatFooterModule,
   PlantChatHeaderModule,
-  PlantFloatingButton,
+  PlantChatFloatingButton,
 } from './module';
 
 import { PointLinearGradient } from '@/atoms';
-import { palette } from '@/utils';
 
 type PlantChatScreenProps = {};
 
@@ -40,17 +37,10 @@ export const PlantChatScreen = ({}: PlantChatScreenProps) => {
     <PointLinearGradient style={{ width: '100%', height: '100%' }}>
       <Box paddingX={24} paddingY={24} flex="fluid">
         <PlantChatHeaderModule />
-        <Suspense
-          fallback={
-            <Box flex="fluid">
-              <ActivityIndicator size="large" color={palette['primary']} />
-            </Box>
-          }>
-          <PlantChatContentModule />
-        </Suspense>
+        <PlantChatContentModule />
         <PlantChatFooterModule />
       </Box>
-      <PlantFloatingButton />
+      <PlantChatFloatingButton />
     </PointLinearGradient>
   );
 };

@@ -1,6 +1,6 @@
 import { Box, Stack } from '@mobily/stacks';
 import { memo } from 'react';
-import { FlatList, Image } from 'react-native';
+import { ActivityIndicator, FlatList, Image } from 'react-native';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { useDidUpdate } from 'rooks';
 
@@ -10,11 +10,11 @@ import { useGetChattingContentsByDate, usePostPlantChat } from './hooks';
 
 import { CHAT_LOGO_IMG, LOGO_FONT_IMG } from '@/assets';
 import { Button, Text } from '@/atoms';
-import { palette } from '@/utils';
+import { palette, withSuspense } from '@/utils';
 
 type PlantChatContentModuleProps = {};
 
-export const PlantChatContentModule = memo<PlantChatContentModuleProps>(() => {
+const PlantChatContent = memo<PlantChatContentModuleProps>(() => {
   useGetChattingContentsByDate();
 
   const [plantChat, setPlantChat] = useRecoilState($plantChatState);
@@ -119,3 +119,14 @@ export const PlantChatContentModule = memo<PlantChatContentModuleProps>(() => {
     />
   );
 });
+
+const PlantChatLoading = () => (
+  <Box flex="fluid">
+    <ActivityIndicator size="large" color={palette['primary']} />
+  </Box>
+);
+
+export const PlantChatContentModule = withSuspense(
+  PlantChatContent,
+  PlantChatLoading,
+);
