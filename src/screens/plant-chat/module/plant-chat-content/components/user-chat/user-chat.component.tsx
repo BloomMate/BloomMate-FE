@@ -20,7 +20,7 @@ export const UserChat = memo<UserChatProps>(({ chatting_content }) => {
           borderRadius: 12,
           borderTopRightRadius: 0,
         }}>
-        <Text variants="labelMedium" fontWeight="Medium" color={'gray-900'}>
+        <Text variants="bodyMedium" fontWeight="Medium" color={'gray-900'}>
           {chatting_content}
         </Text>
       </Box>

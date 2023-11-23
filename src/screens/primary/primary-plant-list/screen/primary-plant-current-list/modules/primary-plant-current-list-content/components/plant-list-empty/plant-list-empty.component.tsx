@@ -15,7 +15,7 @@ export const PlantListEmpty = () => {
     <Box alignX="center" alignY="center" style={{ height: '100%' }}>
       <Stack space={32}>
         <Text
-          variants="labelLarge"
+          variants="bodyMedium"
           fontWeight="Medium"
           color="gray-900"
           textAlignment="center">

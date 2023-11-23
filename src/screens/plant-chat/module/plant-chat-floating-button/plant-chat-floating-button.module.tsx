@@ -48,13 +48,14 @@ export const PlantChatFloatingButton = memo<PlantChatFloatingButtonProps>(
             buttonColor={palette['white']}
             title="이전 레포트"
             textContainerStyle={{
-              backgroundColor: 'transparent',
+              backgroundColor: 'white',
               borderWidth: 0,
+              height: 'auto',
             }}
             hideLabelShadow
             textStyle={{
               color: palette['gray-900'],
-              fontFamily: 'SUITE-Regular',
+              fontFamily: 'SUITE-Bold',
             }}
             spaceBetween={4}
             onPress={handleOpenCalendarModal}>
@@ -74,7 +75,7 @@ export const PlantChatFloatingButton = memo<PlantChatFloatingButtonProps>(
             hideLabelShadow={true}
             textStyle={{
               color: palette['gray-900'],
-              fontFamily: 'SUITE-Regular',
+              fontFamily: 'SUITE-Bold',
             }}
             spaceBetween={4}
             onPress={handlePressTodayReport}>

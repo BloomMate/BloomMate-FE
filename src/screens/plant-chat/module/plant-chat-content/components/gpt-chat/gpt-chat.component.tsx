@@ -27,7 +27,7 @@ export const GPTChat = memo<GPTChatProps>(({ chatting_content }) => {
           borderRadius: 12,
           borderTopLeftRadius: 0,
         }}>
-        <Text variants="labelMedium" fontWeight="Medium" color={'white'}>
+        <Text variants="bodyMedium" fontWeight="Medium" color={'white'}>
           {chatting_content}
         </Text>
       </Box>
