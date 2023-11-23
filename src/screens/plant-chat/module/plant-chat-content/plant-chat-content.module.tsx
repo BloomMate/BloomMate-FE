@@ -121,7 +121,7 @@ const PlantChatContent = memo<PlantChatContentModuleProps>(() => {
 });
 
 const PlantChatLoading = () => (
-  <Box flex="fluid">
+  <Box flex="fluid" alignY="center" alignX="center">
     <ActivityIndicator size="large" color={palette['primary']} />
   </Box>
 );

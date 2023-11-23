@@ -30,9 +30,7 @@ export const PlantChatFooterModule = memo<PlantChatFooterModuleProps>(() => {
   };
 
   const isDisableTextInput =
-    isEmpty(text) ||
-    !isTodayPlantChat ||
-    (isTodayPlantChat && isEmptyPlantChat);
+    !isTodayPlantChat || (isTodayPlantChat && isEmptyPlantChat);
 
   return (
     <Box
@@ -57,7 +55,7 @@ export const PlantChatFooterModule = memo<PlantChatFooterModuleProps>(() => {
         placeholderTextColor={palette['primary']}
       />
       <TouchableOpacity
-        disabled={isDisableTextInput}
+        disabled={isDisableTextInput || isEmpty(text)}
         style={{ alignItems: 'center', justifyContent: 'center' }}
         onPress={handleSend}>
         <Icon color={palette['primary']} size={24} name="send-outline" />

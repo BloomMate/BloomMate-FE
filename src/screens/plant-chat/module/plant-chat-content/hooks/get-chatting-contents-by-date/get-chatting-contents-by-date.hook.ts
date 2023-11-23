@@ -1,7 +1,7 @@
 import { useRoute } from '@react-navigation/native';
 import isUndefined from 'lodash/isUndefined';
+import { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
-import { useDidUpdate } from 'rooks';
 
 import { PlantChatScreenNavigationRouteProps } from '../../../../plant-chat.screen';
 import { $plantChatState } from '../../../../plant-chat.state';
@@ -21,7 +21,7 @@ export const useGetChattingContentsByDate = () => {
     date: date.format('YYYY-MM-DD'),
   });
 
-  useDidUpdate(() => {
+  useEffect(() => {
     if (isUndefined(data)) {
       return;
     }

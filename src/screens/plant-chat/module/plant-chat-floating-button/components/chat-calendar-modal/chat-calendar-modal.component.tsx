@@ -1,7 +1,7 @@
 import { Box } from '@mobily/stacks';
 import dayjs from 'dayjs';
 import { memo } from 'react';
-import { Calendar, LocaleConfig } from 'react-native-calendars';
+import { Calendar, DateData, LocaleConfig } from 'react-native-calendars';
 import { useRecoilState } from 'recoil';
 
 import { $plantChatState } from '../../../../plant-chat.state';
@@ -55,7 +55,7 @@ export const ChatCalendarModal = memo<ChatCalendarModalProps>(
     const selectedDate = plantChat.date.format('YYYY.MM.DD');
 
     const handleDatePress = (day: DateData) => {
-      setPlantChat(prev => ({ ...prev, date: dayjs(day) }));
+      setPlantChat(prev => ({ ...prev, date: dayjs(day.dateString) }));
       closeModal();
     };
 
