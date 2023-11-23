@@ -1,1 +1,1 @@
-export * from './about-BloomMate.screen';
+export * from './about-bloommmate.screen';

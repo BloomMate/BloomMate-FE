@@ -1,8 +1,10 @@
 import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { Text } from 'react-native';
 
 import { RootStackParamList } from '../root.navigator';
+
+import { AboutBloomMateContentModule } from './module/about-bloommate-content';
+import { AboutBloomMateHeaderModule } from './module/about-bloommate-header';
 
 import { BasicLayout } from '@/layouts';
 
@@ -21,7 +23,8 @@ export type AboutBloomMateScreenNavigationRouteProps = RouteProp<
 export const AboutBloomMateScreen = ({}: AboutBloomMateScreenProps) => {
   return (
     <BasicLayout backgroundColor="gray-100">
-      <Text>dd</Text>
+      <AboutBloomMateHeaderModule />
+      <AboutBloomMateContentModule />
     </BasicLayout>
   );
 };
