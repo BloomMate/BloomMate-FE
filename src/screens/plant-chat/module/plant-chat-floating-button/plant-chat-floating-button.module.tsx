@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import { memo, useState } from 'react';
 import ActionButton from 'react-native-action-button';
-import { useRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 
 import { $plantChatState } from '../../plant-chat.state';
 
@@ -15,7 +15,7 @@ type PlantChatFloatingButtonProps = {};
 export const PlantChatFloatingButton = memo<PlantChatFloatingButtonProps>(
   () => {
     const [isCalendarModalVisible, setIsCalendarModalVisible] = useState(false);
-    const [plantChat, setPlantChat] = useRecoilState($plantChatState);
+    const setPlantChat = useSetRecoilState($plantChatState);
 
     const handlePressTodayReport = () => {
       setPlantChat(prev => ({ ...prev, date: dayjs() }));

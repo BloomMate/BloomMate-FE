@@ -1,1 +1,1 @@
-export * from './post-plant-chat-mutation.hook';
+export * from './post-plant-chat.hook';
