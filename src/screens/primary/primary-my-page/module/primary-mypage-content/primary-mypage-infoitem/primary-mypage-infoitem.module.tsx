@@ -20,7 +20,7 @@ export const PrimaryMyPageInfoItemModule =
     const handlePressAboutBloomMate = () => {};
 
     return (
-      <Stack paddingTop={64}>
+      <Stack paddingTop={48}>
         <Stack
           paddingY={20}
           paddingX={16}

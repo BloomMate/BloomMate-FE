@@ -30,8 +30,11 @@ export const PrimaryMypageGreetingModule =
             source={{ uri: MYPAGE_IMG }}
           />
         </Box>
-        <Text variants={'bodyLarge'} fontWeight={'Bold'} color={'gray-900'}>
-          {user_name}님 환영합니다 !
+        <Text variants={'titleLarge'} fontWeight={'Bold'} color={'gray-900'}>
+          {user_name}
+        </Text>
+        <Text variants={'bodyLarge'} fontWeight={'Medium'} color={'gray-900'}>
+          님 환영합니다 !
         </Text>
       </Stack>
     );
