@@ -1,50 +1,98 @@
 import { Stack } from '@mobily/stacks';
 import { useNavigation } from '@react-navigation/native';
+import { isUndefined } from 'lodash';
+import LottieView from 'lottie-react-native';
+import React from 'react';
 
 import { PrimaryMyPageScreenNavigatorProp } from '../../../primary-my-page.screen';
 import { InfoItem } from '../components';
 
+import { MYPAGE_GREETING_LOTTIE } from '@/assets';
 import { Text } from '@/atoms';
+import { useGetAccountInfoQuery } from '@/hooks/get-account-info';
 import { palette } from '@/utils';
 
-type PrimaryMyPageInfoItemModuleProps = {};
+type GreetingSectionProps = {
+  userName: string;
+};
 
-export const PrimaryMyPageInfoItemModule =
-  ({}: PrimaryMyPageInfoItemModuleProps) => {
-    const navigation = useNavigation<PrimaryMyPageScreenNavigatorProp>();
+const GreetingSection: React.FC<GreetingSectionProps> = ({ userName }) => (
+  <Stack
+    paddingX={16}
+    style={{
+      borderTopLeftRadius: 8,
+      borderTopRightRadius: 8,
+      backgroundColor: palette['primary'],
+      elevation: 4,
+    }}>
+    <Stack horizontal space={12} style={{ alignItems: 'center' }}>
+      <Text variants={'titleLarge'} fontWeight={'Bold'} color={'white'}>
+        {userName}
+      </Text>
+      <Text variants={'bodyLarge'} fontWeight={'Medium'} color={'white'}>
+        님 환영합니다 !
+      </Text>
+      <LottieView
+        source={MYPAGE_GREETING_LOTTIE}
+        autoPlay
+        loop
+        style={{ width: 150, height: 150 }}
+      />
+    </Stack>
+  </Stack>
+);
 
-    const handlePressLogOut = () => {};
-    const handlePressUserInfoCheck = () => {
-      navigation.navigate('UserInfoScreen');
-    };
-    const handlePressAboutBloomMate = () => {};
+type InfoSectionProps = {
+  handlePressLogOut: () => void;
+  handlePressUserInfoCheck: () => void;
+  handlePressAboutBloomMate: () => void;
+};
 
-    return (
-      <Stack paddingTop={48}>
-        <Stack
-          paddingY={20}
-          paddingX={16}
-          style={{
-            borderRadius: 8,
-            backgroundColor: palette['white'],
-            elevation: 4,
-          }}
-          space={24}>
-          <Stack horizontal>
-            <Text variants={'bodyLarge'} fontWeight={'Bold'} color={'black'}>
-              정보
-            </Text>
-          </Stack>
+const InfoSection: React.FC<InfoSectionProps> = ({
+  handlePressLogOut,
+  handlePressUserInfoCheck,
+  handlePressAboutBloomMate,
+}) => (
+  <Stack
+    style={{
+      backgroundColor: palette['white'],
+      borderBottomLeftRadius: 8,
+      borderBottomRightRadius: 8,
+      elevation: 4,
+    }}
+    paddingX={16}
+    paddingY={24}>
+    <Stack space={30}>
+      <InfoItem text="로그아웃" onPress={handlePressLogOut} />
+      <InfoItem text="회원정보" onPress={handlePressUserInfoCheck} />
+      <InfoItem text="About BloomMate" onPress={handlePressAboutBloomMate} />
+    </Stack>
+  </Stack>
+);
 
-          <Stack space={24}>
-            <InfoItem text="로그아웃" onPress={handlePressLogOut} />
-            <InfoItem text="회원정보" onPress={handlePressUserInfoCheck} />
-            <InfoItem
-              text="About BloomMate"
-              onPress={handlePressAboutBloomMate}
-            />
-          </Stack>
-        </Stack>
-      </Stack>
-    );
+export const PrimaryMyPageInfoItemModule: React.FC = () => {
+  const navigation = useNavigation<PrimaryMyPageScreenNavigatorProp>();
+  const { data } = useGetAccountInfoQuery();
+
+  if (isUndefined(data)) {
+    return null;
+  }
+  const { user_name } = data;
+
+  const handlePressLogOut = () => {};
+  const handlePressUserInfoCheck = () => {
+    navigation.navigate('UserInfoScreen');
   };
+  const handlePressAboutBloomMate = () => {};
+
+  return (
+    <Stack style={{ elevation: 4 }}>
+      <GreetingSection userName={user_name} />
+      <InfoSection
+        handlePressLogOut={handlePressLogOut}
+        handlePressUserInfoCheck={handlePressUserInfoCheck}
+        handlePressAboutBloomMate={handlePressAboutBloomMate}
+      />
+    </Stack>
+  );
+};

@@ -4,7 +4,7 @@ import { memo } from 'react';
 import { Image } from 'react-native';
 
 import { MYPAGE_IMG } from '@/assets';
-import { Skeleton, Text } from '@/atoms';
+import { Skeleton } from '@/atoms';
 import { useGetAccountInfoQuery } from '@/hooks/get-account-info';
 
 type PrimaryMyPageGreetingModuleProps = {};
@@ -20,22 +20,30 @@ export const PrimaryMypageGreetingModule =
 
     return (
       <Stack horizontal space={12} style={{ alignItems: 'center' }}>
-        <Box>
+        {/* <Box>
           <Image
             style={{
-              width: 80,
-              height: 80,
-              borderRadius: 80,
+              width: 60,
+              height: 60,
+              borderRadius: 60,
+              borderWidth: 1,
+              borderColor: palette['primary'],
             }}
             source={{ uri: MYPAGE_IMG }}
           />
-        </Box>
+        </Box> */}
+        {/* <LottieView
+          source={MYPAGE_GREETING_LOTTIE}
+          autoPlay
+          loop
+          style={{ width: 120, height: 120 }}
+        />
         <Text variants={'titleLarge'} fontWeight={'Bold'} color={'gray-900'}>
           {user_name}
         </Text>
         <Text variants={'bodyLarge'} fontWeight={'Medium'} color={'gray-900'}>
           님 환영합니다 !
-        </Text>
+        </Text> */}
       </Stack>
     );
   });
