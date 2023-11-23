@@ -17,7 +17,7 @@ export const PrimaryCommunityQnaScreen =
       <Suspense fallback={<LoadingPage />}>
         <Box
           paddingTop={24}
-          paddingBottom={52}
+          // paddingBottom={52}
           style={{
             backgroundColor: palette['gray-100'],
             height: '100%',
