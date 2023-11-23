@@ -20,7 +20,7 @@ export const GPTChat = memo<GPTChatProps>(({ chatting_content }) => {
 
       <Box
         padding={12}
-        alignSelf={'right'}
+        alignSelf={'left'}
         style={{
           backgroundColor: palette['teal-400'],
           maxWidth: 256,

@@ -13,7 +13,7 @@ export const UserChat = memo<UserChatProps>(({ chatting_content }) => {
     <Stack space={8}>
       <Box
         padding={12}
-        alignSelf={'left'}
+        alignSelf="right"
         style={{
           backgroundColor: palette['white'],
           maxWidth: 256,

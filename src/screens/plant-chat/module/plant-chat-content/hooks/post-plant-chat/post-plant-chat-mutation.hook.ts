@@ -56,19 +56,25 @@ export const usePostPlantChat = () => {
   );
 
   useDidUpdate(() => {
-    if (!isTodayPlantChat) {
+    if (!isTodayPlantChat || isEmptyPlantChat) {
       return;
     }
     const lastChatting = contents[contents.length - 1];
-    const { chatting_content, is_user_chat } = lastChatting;
+    const { is_user_chat, isLoading } = lastChatting;
 
-    if (!is_user_chat) {
-      return;
+    if (isLoading) {
+      const userLastChatting = contents[contents.length - 2];
+      const { chatting_content } = userLastChatting;
+
+      mutate({
+        chatting_content,
+      });
     }
 
-    mutate({
-      chatting_content,
-    });
+    if (!is_user_chat) {
+      // TODO : soil 이 엉망진창일때 넣기
+      return;
+    }
   }, [contents]);
 
   return {

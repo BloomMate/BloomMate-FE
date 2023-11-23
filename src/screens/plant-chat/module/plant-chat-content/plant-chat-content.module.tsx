@@ -51,7 +51,7 @@ const PlantChatContent = memo<PlantChatContentModuleProps>(() => {
   return (
     <FlatList
       data={contents}
-      contentContainerStyle={{ flex: 1 }}
+      contentContainerStyle={{ flexGrow: 1 }}
       ListHeaderComponent={() => (
         <Box paddingBottom={32} alignX="center">
           <Text variants="bodyMedium" fontWeight="Bold" color="black">
