@@ -3,12 +3,12 @@ import { useNavigation } from '@react-navigation/native';
 import { isUndefined } from 'lodash';
 import isEmpty from 'lodash/isEmpty';
 import { memo } from 'react';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import Toast from 'react-native-toast-message';
 
 import { PrimaryPlantListScreenNavigatorProp } from '../../../../primary-plant-list.screen';
 
-import { Icon, PointLinearGradient, Text } from '@/atoms';
+import { Icon } from '@/atoms';
 import { useGetPlantListQuery } from '@/hooks';
 import {
   isFullListByGardenSizeAndNumberOfPlant,
@@ -56,17 +56,12 @@ export const PrimaryPlantCurrentListFloatingModule = memo(
       <Stack
         style={{
           position: 'absolute',
-          bottom: 4,
+          bottom: 16,
           right: 2,
         }}
         align="center"
         horizontal
         space={8}>
-        {!isFullList && (
-          <Text variants="labelLarge" fontWeight="Medium" color="gray-700">
-            식물 추가하기
-          </Text>
-        )}
         <Box style={{ elevation: 4, borderRadius: 50 }}>
           <TouchableOpacity onPress={handlePressButton}>
             {isFullList ? (
@@ -81,15 +76,16 @@ export const PrimaryPlantCurrentListFloatingModule = memo(
                 <Icon name="add" size={24} color={palette['gray-400']} />
               </Box>
             ) : (
-              <PointLinearGradient
+              <View
                 style={{
                   justifyContent: 'center',
                   alignItems: 'center',
                   padding: 10,
                   borderRadius: 50,
+                  backgroundColor: palette['primary'],
                 }}>
-                <Icon name="add" size={24} color={palette['primary']} />
-              </PointLinearGradient>
+                <Icon name="add" size={24} color={palette['white']} />
+              </View>
             )}
           </TouchableOpacity>
         </Box>

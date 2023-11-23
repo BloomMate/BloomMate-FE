@@ -37,6 +37,7 @@ const PlantChatContent = memo<PlantChatContentModuleProps>(() => {
         <Image
           style={{ width: 300, height: 300 }}
           source={{ uri: CHAT_LOGO_IMG }}
+          skeletonStyle={{ width: 300, height: 300 }}
         />
         <Button
           style={{ width: '100%' }}

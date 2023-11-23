@@ -1,9 +1,8 @@
 import { Column, Columns, Stack } from '@mobily/stacks';
 import { memo } from 'react';
-import { Image } from 'react-native';
 
 import { QNA_IMG } from '@/assets';
-import { Divider, PointLinearGradient, Text } from '@/atoms';
+import { Divider, Image, PointLinearGradient, Text } from '@/atoms';
 import { QuestionDetailComment } from '@/hooks';
 
 type CommunityQnaDetailAnswerModuleProps = {

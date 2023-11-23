@@ -1,11 +1,12 @@
 import { Box, Stack, Columns, Column } from '@mobily/stacks';
 import { memo } from 'react';
-import { Image, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
+import FastImage from 'react-native-fast-image';
 
 import { getSeedImgByPlantName } from './gpt-button.util';
 
 import { LOGO_FONT_IMG } from '@/assets';
-import { Text } from '@/atoms';
+import { Image, Text } from '@/atoms';
 import { palette } from '@/utils';
 
 type GPTButtonProps = {
@@ -24,7 +25,8 @@ export const GPTButton = memo<GPTButtonProps>(({ name, onPress }) => {
         <Image
           source={{ uri: LOGO_FONT_IMG }}
           style={{ width: 80, height: 16 }}
-          resizeMode="contain"
+          resizeMode={FastImage.resizeMode.contain}
+          skeletonStyle={{ width: 80, height: 16 }}
         />
         <Columns
           space={12}
@@ -38,7 +40,8 @@ export const GPTButton = memo<GPTButtonProps>(({ name, onPress }) => {
             <Image
               source={{ uri: getSeedImgByPlantName(name) }}
               style={{ width: 80, height: 80, borderRadius: 80 }}
-              resizeMode="contain"
+              resizeMode={FastImage.resizeMode.contain}
+              skeletonStyle={{ width: 80, height: 80, borderRadius: 80 }}
             />
           </Column>
           <Column width="fluid">
