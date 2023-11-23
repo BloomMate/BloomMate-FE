@@ -1,5 +1,7 @@
 import { useRoute } from '@react-navigation/native';
 import dayjs from 'dayjs';
+import { useRef } from 'react';
+import { FlatList } from 'react-native';
 import { useMutation } from 'react-query';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { useDidUpdate } from 'rooks';
@@ -20,6 +22,8 @@ export type PostPlantChatResponseType = {
 };
 
 export const usePostPlantChat = () => {
+  const flatListRef = useRef<FlatList | null>(null);
+
   const {
     params: { id },
   } = useRoute<PlantChatScreenNavigationRouteProps>();
@@ -56,9 +60,12 @@ export const usePostPlantChat = () => {
   );
 
   useDidUpdate(() => {
+    flatListRef?.current?.scrollToEnd();
+
     if (!isTodayPlantChat || isEmptyPlantChat) {
       return;
     }
+
     const lastChatting = contents[contents.length - 1];
     const { is_user_chat, isLoading } = lastChatting;
 
@@ -78,6 +85,7 @@ export const usePostPlantChat = () => {
   }, [contents]);
 
   return {
+    flatListRef,
     contents,
     date,
     isTodayPlantChat,

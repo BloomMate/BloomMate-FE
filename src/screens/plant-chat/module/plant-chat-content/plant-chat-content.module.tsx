@@ -16,7 +16,7 @@ type PlantChatContentModuleProps = {};
 
 const PlantChatContent = memo<PlantChatContentModuleProps>(() => {
   useGetChattingContentsByDate();
-  const { contents, date, isTodayPlantChat, isEmptyPlantChat } =
+  const { flatListRef, contents, date, isTodayPlantChat, isEmptyPlantChat } =
     usePostPlantChat();
 
   const setPlantChat = useSetRecoilState($plantChatState);
@@ -50,6 +50,8 @@ const PlantChatContent = memo<PlantChatContentModuleProps>(() => {
 
   return (
     <FlatList
+      ref={flatListRef}
+      showsVerticalScrollIndicator={false}
       data={contents}
       contentContainerStyle={{ flexGrow: 1 }}
       ListHeaderComponent={() => (
@@ -71,7 +73,7 @@ const PlantChatContent = memo<PlantChatContentModuleProps>(() => {
           <>{is_user_chat ? <UserChat {...item} /> : <GPTChat {...item} />}</>
         );
       }}
-      ListFooterComponent={() => <Box style={{ height: 40 }} />}
+      ListFooterComponent={() => <Box style={{ height: 20 }} />}
       ListEmptyComponent={() => (
         <Box flex="fluid" alignX="center" alignY="center">
           <Text variants="bodyMedium" fontWeight="Medium" color="gray-900">
