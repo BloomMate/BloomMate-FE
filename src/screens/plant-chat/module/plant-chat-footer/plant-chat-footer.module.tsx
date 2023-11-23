@@ -1,4 +1,5 @@
 import { Box } from '@mobily/stacks';
+import isEmpty from 'lodash/isEmpty';
 import { memo, useState } from 'react';
 import { TextInput, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -29,7 +30,9 @@ export const PlantChatFooterModule = memo<PlantChatFooterModuleProps>(() => {
   };
 
   const isDisableTextInput =
-    !isTodayPlantChat || (isTodayPlantChat && isEmptyPlantChat);
+    isEmpty(text) ||
+    !isTodayPlantChat ||
+    (isTodayPlantChat && isEmptyPlantChat);
 
   return (
     <Box

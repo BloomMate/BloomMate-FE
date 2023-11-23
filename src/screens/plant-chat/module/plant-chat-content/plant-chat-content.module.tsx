@@ -6,7 +6,7 @@ import { useDidUpdate } from 'rooks';
 
 import { $plantChatSelector, $plantChatState } from '../../plant-chat.state';
 
-import { usePostPlantChat } from './hooks';
+import { useGetChattingContentsByDate, usePostPlantChat } from './hooks';
 
 import { CHAT_LOGO_IMG, LOGO_FONT_IMG } from '@/assets';
 import { Button, Text } from '@/atoms';
@@ -15,6 +15,8 @@ import { palette } from '@/utils';
 type PlantChatContentModuleProps = {};
 
 export const PlantChatContentModule = memo<PlantChatContentModuleProps>(() => {
+  useGetChattingContentsByDate();
+
   const [plantChat, setPlantChat] = useRecoilState($plantChatState);
 
   const { isEmptyPlantChat, isTodayPlantChat } =

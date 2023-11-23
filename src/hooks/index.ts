@@ -6,3 +6,4 @@ export * from './upload-photo';
 export * from './upload-image-library';
 export * from './get-question-list';
 export * from './get-question-detail';
+export * from './get-plant-chatting';
