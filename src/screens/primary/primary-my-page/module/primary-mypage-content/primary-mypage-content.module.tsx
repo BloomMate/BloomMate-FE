@@ -13,7 +13,7 @@ export const PrimaryMyPageContentModule =
   ({}: PrimaryMyPageContentModuleProps) => {
     return (
       <Stack>
-        <Stack space={48}>
+        <Stack space={60}>
           <PrimaryMyPageHeaderModule />
           <Suspense fallback={<PrimaryMyPageInfoItemSuspenseModule />}>
             <PrimaryMyPageInfoItemModule />
