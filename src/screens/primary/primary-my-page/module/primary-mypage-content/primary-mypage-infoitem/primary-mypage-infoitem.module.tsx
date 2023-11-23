@@ -8,7 +8,7 @@ import { PrimaryMyPageScreenNavigatorProp } from '../../../primary-my-page.scree
 import { InfoItem } from '../components';
 
 import { MYPAGE_GREETING_LOTTIE } from '@/assets';
-import { Text } from '@/atoms';
+import { Skeleton, Text } from '@/atoms';
 import { useGetAccountInfoQuery } from '@/hooks/get-account-info';
 import { palette } from '@/utils';
 
@@ -96,3 +96,15 @@ export const PrimaryMyPageInfoItemModule: React.FC = () => {
     </Stack>
   );
 };
+
+export const PrimaryMyPageInfoItemSuspenseModule = () => (
+  <Stack horizontal space={12} style={{ alignItems: 'center' }}>
+    <LottieView
+      source={MYPAGE_GREETING_LOTTIE}
+      autoPlay
+      loop
+      style={{ width: 150, height: 150 }}
+    />
+    <Skeleton style={{ width: 160, height: 40 }} />
+  </Stack>
+);
