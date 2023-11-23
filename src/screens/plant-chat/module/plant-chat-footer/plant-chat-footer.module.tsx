@@ -19,14 +19,15 @@ export const PlantChatFooterModule = memo<PlantChatFooterModuleProps>(() => {
     useRecoilValue($plantChatSelector);
 
   const handleSend = () => {
-    setText(''); // 텍스트 초기화
     setPlantChat(prev => ({
       ...prev,
       contents: [
         ...prev.contents,
         { is_user_chat: true, chatting_content: text },
+        { chatting_content: '', is_user_chat: false, isLoading: true },
       ],
     }));
+    setText(''); // 텍스트 초기화
   };
 
   const isDisableTextInput =

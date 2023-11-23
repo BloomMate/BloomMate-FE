@@ -1,10 +1,9 @@
 import { Box, Stack } from '@mobily/stacks';
 import { memo } from 'react';
 import { ActivityIndicator, FlatList, Image } from 'react-native';
-import { useRecoilState, useRecoilValue } from 'recoil';
-import { useDidUpdate } from 'rooks';
+import { useSetRecoilState } from 'recoil';
 
-import { $plantChatSelector, $plantChatState } from '../../plant-chat.state';
+import { $plantChatState } from '../../plant-chat.state';
 
 import { useGetChattingContentsByDate, usePostPlantChat } from './hooks';
 
@@ -16,35 +15,18 @@ type PlantChatContentModuleProps = {};
 
 const PlantChatContent = memo<PlantChatContentModuleProps>(() => {
   useGetChattingContentsByDate();
+  const { contents, date, isTodayPlantChat, isEmptyPlantChat } =
+    usePostPlantChat();
 
-  const [plantChat, setPlantChat] = useRecoilState($plantChatState);
-
-  const { isEmptyPlantChat, isTodayPlantChat } =
-    useRecoilValue($plantChatSelector);
-  const { contents, date } = plantChat;
-
-  const { mutate } = usePostPlantChat();
-
-  useDidUpdate(() => {
-    if (!isTodayPlantChat) {
-      return;
-    }
-    const lastChatting = contents[contents.length - 1];
-    const { chatting_content, is_user_chat } = lastChatting;
-
-    if (!is_user_chat) {
-      return;
-    }
-
-    mutate({
-      chatting_content,
-    });
-  }, [contents]);
+  const setPlantChat = useSetRecoilState($plantChatState);
 
   const handlePressTodayReportCheckButton = () => {
     setPlantChat(prev => ({
       ...prev,
-      contents: [{ chatting_content: '오늘 상태는 어때?', is_user_chat: true }],
+      contents: [
+        { chatting_content: '오늘 상태는 어때?', is_user_chat: true },
+        { chatting_content: '', is_user_chat: false, isLoading: true },
+      ],
     }));
   };
 
@@ -68,6 +50,7 @@ const PlantChatContent = memo<PlantChatContentModuleProps>(() => {
   return (
     <FlatList
       data={contents}
+      contentContainerStyle={{ flex: 1 }}
       ListHeaderComponent={() => (
         <Box paddingBottom={32} alignX="center">
           <Text variants="bodyMedium" fontWeight="Bold" color="black">

@@ -1,5 +1,5 @@
 import { Box } from '@mobily/stacks';
-import { RouteProp, useRoute } from '@react-navigation/native';
+import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 
 import { RootStackParamList } from '../root.navigator';
@@ -27,10 +27,6 @@ export type PlantChatScreenNavigationRouteProps = RouteProp<
 >;
 
 export const PlantChatScreen = ({}: PlantChatScreenProps) => {
-  const {
-    params: { id },
-  } = useRoute<PlantChatScreenNavigationRouteProps>();
-
   useResetPlantChatState();
 
   return (
