@@ -17,7 +17,8 @@
       "@/assets/*": ["./src/assets/*"]
     },
     "esModuleInterop": true,
-    "typeRoots": ["./src/types"]
+    "typeRoots": ["node_modules/@types"],
+    "types": ["jest"]
   },
   "extends": "@tsconfig/react-native/tsconfig.json"
 }
