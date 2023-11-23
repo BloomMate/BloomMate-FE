@@ -1,6 +1,6 @@
 import { Dayjs } from 'dayjs';
 
-type ChattingContent = {
+export type ChattingContent = {
   chatting_content: string;
   is_user_chat: boolean;
   soil_condition?: '좋음' | '나쁨';

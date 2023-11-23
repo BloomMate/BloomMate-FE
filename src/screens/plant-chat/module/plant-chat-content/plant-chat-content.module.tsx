@@ -1,13 +1,14 @@
-import { Box, Stack } from '@mobily/stacks';
+import { Box } from '@mobily/stacks';
 import { memo } from 'react';
 import { ActivityIndicator, FlatList, Image } from 'react-native';
 import { useSetRecoilState } from 'recoil';
 
 import { $plantChatState } from '../../plant-chat.state';
 
+import { GPTChat, UserChat } from './components';
 import { useGetChattingContentsByDate, usePostPlantChat } from './hooks';
 
-import { CHAT_LOGO_IMG, LOGO_FONT_IMG } from '@/assets';
+import { CHAT_LOGO_IMG } from '@/assets';
 import { Button, Text } from '@/atoms';
 import { palette, withSuspense } from '@/utils';
 
@@ -60,35 +61,10 @@ const PlantChatContent = memo<PlantChatContentModuleProps>(() => {
       )}
       ItemSeparatorComponent={() => <Box style={{ height: 32 }} />}
       renderItem={({ item }) => {
-        const { is_user_chat, chatting_content } = item;
+        const { is_user_chat } = item;
 
         return (
-          <Stack space={8}>
-            {!item.is_user_chat && (
-              <Image
-                source={{ uri: LOGO_FONT_IMG }}
-                style={{ width: 80, height: 16 }}
-              />
-            )}
-            <Box
-              padding={12}
-              alignSelf={item.is_user_chat ? 'right' : 'left'}
-              style={{
-                backgroundColor: item.is_user_chat
-                  ? palette['white']
-                  : palette['teal-400'],
-                maxWidth: 256,
-                borderRadius: 12,
-                borderTopLeftRadius: 0,
-              }}>
-              <Text
-                variants="labelMedium"
-                fontWeight="Medium"
-                color={item.is_user_chat ? 'gray-900' : 'white'}>
-                {item.chatting_content}
-              </Text>
-            </Box>
-          </Stack>
+          <>{is_user_chat ? <UserChat {...item} /> : <GPTChat {...item} />}</>
         );
       }}
       ListFooterComponent={() => <Box style={{ height: 40 }} />}
