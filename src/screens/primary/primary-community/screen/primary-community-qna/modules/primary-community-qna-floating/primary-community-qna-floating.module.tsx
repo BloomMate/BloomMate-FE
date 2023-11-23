@@ -1,11 +1,11 @@
 import { Box, Stack } from '@mobily/stacks';
 import { useNavigation } from '@react-navigation/native';
 import { memo } from 'react';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 
 import { PrimaryCommunityQnaPostScreenNavigationProps } from '../../primary-community-qna-post.screen';
 
-import { Icon, PointLinearGradient, Text } from '@/atoms';
+import { Icon } from '@/atoms';
 import { palette } from '@/utils';
 
 type PrimaryCommunityQnaFloatingModuleProps = {};
@@ -22,27 +22,24 @@ export const PrimaryCommunityQnaFloatingModule = memo(
       <Stack
         style={{
           position: 'absolute',
-          bottom: 4,
+          bottom: 16,
           right: 2,
         }}
         align="center"
         horizontal
         space={8}>
-        <Text variants="labelLarge" fontWeight="Medium" color="gray-700">
-          질문하기
-        </Text>
-
         <Box style={{ elevation: 4, borderRadius: 50 }}>
           <TouchableOpacity onPress={handlePressButton}>
-            <PointLinearGradient
+            <View
               style={{
                 justifyContent: 'center',
                 alignItems: 'center',
                 padding: 10,
                 borderRadius: 50,
+                backgroundColor: palette['primary'],
               }}>
-              <Icon name="add" size={24} color={palette['primary']} />
-            </PointLinearGradient>
+              <Icon name="edit" size={24} color={palette['white']} />
+            </View>
           </TouchableOpacity>
         </Box>
       </Stack>
