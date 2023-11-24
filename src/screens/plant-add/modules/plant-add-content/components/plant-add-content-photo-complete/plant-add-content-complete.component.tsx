@@ -20,7 +20,6 @@ export const PlantAddContentPhotoCompleteComponent =
 
     return (
       <Image
-        skeletonStyle={{ height: 200, width: '100%', borderRadius: 8 }}
         source={{ uri: field.value }}
         style={{ height: 200, borderRadius: 8 }}
         resizeMode={FastImage.resizeMode.cover}

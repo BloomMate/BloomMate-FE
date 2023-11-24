@@ -35,11 +35,6 @@ export const PrimaryCommuntiyArticleItem =
                   uri: article_thumbnail_url,
                 }}
                 style={{ aspectRatio: 190 / 80, borderRadius: 10 }}
-                skeletonStyle={{
-                  width: '100%',
-                  height: '100%',
-                  borderRadius: 10,
-                }}
                 resizeMode={FastImage.resizeMode.cover}
               />
             </Row>

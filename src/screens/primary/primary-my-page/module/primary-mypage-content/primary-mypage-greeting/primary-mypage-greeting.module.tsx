@@ -27,11 +27,6 @@ export const PrimaryMypageGreetingModule =
               borderRadius: 80,
             }}
             source={{ uri: MYPAGE_IMG }}
-            skeletonStyle={{
-              width: 80,
-              height: 80,
-              borderRadius: 80,
-            }}
           />
         </Box>
         <Text variants={'bodyLarge'} fontWeight={'Bold'} color={'gray-900'}>
@@ -51,11 +46,6 @@ export const PrimaryMyPageGreetingSuspenseModule = () => (
           borderRadius: 80,
         }}
         source={{ uri: MYPAGE_IMG }}
-        skeletonStyle={{
-          width: 80,
-          height: 80,
-          borderRadius: 80,
-        }}
       />
     </Box>
     <Skeleton style={{ width: 160, height: 40 }} />

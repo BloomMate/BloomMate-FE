@@ -26,7 +26,6 @@ export const GPTButton = memo<GPTButtonProps>(({ name, onPress }) => {
           source={{ uri: LOGO_FONT_IMG }}
           style={{ width: 80, height: 16 }}
           resizeMode={FastImage.resizeMode.contain}
-          skeletonStyle={{ width: 80, height: 16 }}
         />
         <Columns
           space={12}
@@ -41,7 +40,6 @@ export const GPTButton = memo<GPTButtonProps>(({ name, onPress }) => {
               source={{ uri: getSeedImgByPlantName(name) }}
               style={{ width: 80, height: 80, borderRadius: 80 }}
               resizeMode={FastImage.resizeMode.contain}
-              skeletonStyle={{ width: 80, height: 80, borderRadius: 80 }}
             />
           </Column>
           <Column width="fluid">

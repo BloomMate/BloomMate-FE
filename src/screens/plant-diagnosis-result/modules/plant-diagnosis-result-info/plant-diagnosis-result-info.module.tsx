@@ -71,7 +71,6 @@ export const PlantDiagnosisResultInfoModule =
             <Image
               source={{ uri: diagnose_photo_url }}
               style={{ width: 80, height: 80, borderRadius: 150 }}
-              skeletonStyle={{ width: 80, height: 80, borderRadius: 150 }}
               resizeMode={FastImage.resizeMode.contain}
             />
             <Stack space={20}>
