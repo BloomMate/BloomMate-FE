@@ -1,6 +1,6 @@
 import { Box } from '@mobily/stacks';
 import { memo } from 'react';
-import { ActivityIndicator, FlatList, Image } from 'react-native';
+import { ActivityIndicator, FlatList } from 'react-native';
 import { useSetRecoilState } from 'recoil';
 
 import { $plantChatState } from '../../plant-chat.state';
@@ -9,7 +9,7 @@ import { GPTChat, GPTLoading, UserChat } from './components';
 import { useGetChattingContentsByDate, usePostPlantChat } from './hooks';
 
 import { CHAT_LOGO_IMG } from '@/assets';
-import { Button, Text } from '@/atoms';
+import { Button, Image, Text } from '@/atoms';
 import { palette, withSuspense } from '@/utils';
 
 type PlantChatContentModuleProps = {};
@@ -76,8 +76,8 @@ const PlantChatContent = memo<PlantChatContentModuleProps>(() => {
       ListFooterComponent={() => <Box style={{ height: 20 }} />}
       ListEmptyComponent={() => (
         <Box flex="fluid" alignX="center" alignY="center">
-          <Text variants="bodyMedium" fontWeight="Medium" color="gray-900">
-            이 날은 진행된 대화가 없어요!
+          <Text variants="bodyMedium" fontWeight="Medium" color="gray-700">
+            선택하신 날짜에 진행된 대화가 없어요!
           </Text>
         </Box>
       )}
