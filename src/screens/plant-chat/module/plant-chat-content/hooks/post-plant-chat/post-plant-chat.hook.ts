@@ -1,4 +1,3 @@
-import { useKeyboard } from '@react-native-community/hooks';
 import { useRoute } from '@react-navigation/native';
 import dayjs from 'dayjs';
 import { useRef } from 'react';
@@ -24,7 +23,6 @@ export type PostPlantChatResponseType = {
 
 export const usePostPlantChat = () => {
   const flatListRef = useRef<FlatList | null>(null);
-  const keyboard = useKeyboard();
 
   const {
     params: { id },
@@ -69,7 +67,7 @@ export const usePostPlantChat = () => {
     }
 
     const lastChatting = contents[contents.length - 1];
-    const { is_user_chat, isLoading } = lastChatting;
+    const { is_user_chat, isLoading, soil_condition } = lastChatting;
 
     if (isLoading) {
       const userLastChatting = contents[contents.length - 2];
@@ -80,8 +78,18 @@ export const usePostPlantChat = () => {
       });
     }
 
-    if (!is_user_chat) {
-      // TODO : soil 이 엉망진창일때 넣기
+    const shouldAddSoilCheck =
+      contents.length === 2 && !is_user_chat && soil_condition === '나쁨';
+
+    if (shouldAddSoilCheck) {
+      setPlantChat(prev => ({
+        ...prev,
+        contents: [
+          ...prev.contents,
+          { is_user_chat: false, chatting_content: '', isButton: true },
+        ],
+      }));
+
       return;
     }
   }, [contents]);
