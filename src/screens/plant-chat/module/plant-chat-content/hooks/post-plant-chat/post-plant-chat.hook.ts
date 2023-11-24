@@ -69,7 +69,7 @@ export const usePostPlantChat = () => {
     }
 
     const lastChatting = contents[contents.length - 1];
-    const { is_user_chat, isLoading } = lastChatting;
+    const { is_user_chat, isLoading, soil_condition } = lastChatting;
 
     if (isLoading) {
       const userLastChatting = contents[contents.length - 2];
@@ -80,7 +80,10 @@ export const usePostPlantChat = () => {
       });
     }
 
-    if (!is_user_chat) {
+    const shouldAddSoilCheck =
+      contents.length === 2 && !is_user_chat && soil_condition === '좋음';
+
+    if (shouldAddSoilCheck) {
       // TODO : soil 이 엉망진창일때 넣기
       return;
     }
