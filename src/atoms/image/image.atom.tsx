@@ -3,13 +3,7 @@ import FastImage, { FastImageProps } from 'react-native-fast-image';
 
 import { Skeleton } from '../skeleton';
 
-export type ImageProps = FastImageProps & {
-  skeletonStyle?: {
-    width?: number | string;
-    height?: number | string;
-    borderRadius?: number;
-  };
-};
+export type ImageProps = FastImageProps;
 
 FastImage.preload([
   {
@@ -62,15 +56,14 @@ FastImage.preload([
   },
 ]);
 
-export const Image = ({ skeletonStyle, ...props }: ImageProps) => {
+export const Image = ({ ...props }: ImageProps) => {
+  const { style } = props;
   const [isLoadingImg, setIsLoadingImg] = useState(true);
 
   return (
     <>
       {isLoadingImg && (
-        <Skeleton
-          style={{ ...skeletonStyle, position: 'absolute', elevation: -1 }}
-        />
+        <Skeleton style={[style, { position: 'absolute', elevation: -1 }]} />
       )}
       <FastImage {...props} onLoadEnd={() => setIsLoadingImg(false)} />
     </>

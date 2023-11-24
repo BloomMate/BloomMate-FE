@@ -104,7 +104,6 @@ export const SignUpTiiunInputModule = () => {
       <Image
         source={{ uri: TIIUN_IMG }}
         style={{ width: 250, height: 250 }}
-        skeletonStyle={{ width: 250, height: 250 }}
         resizeMode={FastImage.resizeMode.contain}
       />
     </Stack>
@@ -175,7 +174,6 @@ export const SignUpAddressInputModule = () => {
             source={{ uri: SMART_COTTAGE_IMG }}
             style={{ width: '100%' }}
             resizeMode={FastImage.resizeMode.contain}
-            skeletonStyle={{ width: '100%' }}
           />
         )}
       </Stack>

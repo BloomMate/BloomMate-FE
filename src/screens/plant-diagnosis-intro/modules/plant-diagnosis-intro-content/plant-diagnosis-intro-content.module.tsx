@@ -36,7 +36,6 @@ export const PlantDiagnosisIntroContentModule =
                 source={{ uri: DIAGNOSIS_IMG }}
                 style={{ width: 200, height: 200, borderRadius: 100 }}
                 resizeMode={FastImage.resizeMode.contain}
-                skeletonStyle={{ width: 200, height: 200, borderRadius: 100 }}
               />
               <Icon
                 style={{ position: 'absolute', bottom: 0, right: 0 }}

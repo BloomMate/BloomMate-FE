@@ -60,7 +60,6 @@ export const PlantDetailPictureModule = memo<PlantDetailPictureModule>(() => {
           source={{ uri: plant_picture_url }}
           style={{ width: '100%', height: '100%', borderRadius: 8 }}
           resizeMode={FastImage.resizeMode.cover}
-          skeletonStyle={{ borderRadius: 8 }}
         />
       </View>
     </Stack>
