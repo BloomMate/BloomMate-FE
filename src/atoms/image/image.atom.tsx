@@ -60,6 +60,8 @@ export const Image = ({ ...props }: ImageProps) => {
   const { style } = props;
   const [isLoadingImg, setIsLoadingImg] = useState(true);
 
+  // return <Skeleton style={[style]} />;
+
   return (
     <>
       {isLoadingImg && (
