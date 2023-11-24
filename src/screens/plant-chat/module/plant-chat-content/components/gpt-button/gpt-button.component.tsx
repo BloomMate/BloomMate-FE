@@ -25,7 +25,7 @@ export const GPTButton = memo<GPTButtonProps>(({}) => {
   };
 
   return (
-    <Stack space={8}>
+    <Stack space={8} marginTop={-24}>
       <Columns
         space={12}
         padding={12}
@@ -33,13 +33,18 @@ export const GPTButton = memo<GPTButtonProps>(({}) => {
           backgroundColor: palette['teal-400'],
           borderRadius: 12,
           borderTopLeftRadius: 0,
-          minHeight: 128,
+          maxWidth: 256,
         }}>
         <Column width="content">
           <Image
             // TODO : 비료 이미지로 바꿀 것
             source={{ uri: TOMATO_SEED_IMG }}
-            style={{ width: 80, height: 80, borderRadius: 80 }}
+            style={{
+              width: 80,
+              height: 80,
+              borderRadius: 80,
+              backgroundColor: palette['white'],
+            }}
             resizeMode={FastImage.resizeMode.contain}
           />
         </Column>
@@ -67,19 +72,21 @@ export const GPTButton = memo<GPTButtonProps>(({}) => {
       {isPressed && (
         <>
           {isCountDownEnd ? (
-            <Box
-              paddingX={12}
-              paddingY={8}
-              alignX="center"
-              alignY="center"
-              style={{
-                backgroundColor: palette['teal-400'],
-                borderRadius: 12,
-                borderTopLeftRadius: 0,
-              }}>
-              <Text variants="bodyMedium" fontWeight="Medium" color="white">
-                구매 완료. 관리사님이 배졍되었습니다
-              </Text>
+            <Box direction="row">
+              <Box
+                paddingX={12}
+                paddingY={8}
+                alignX="center"
+                alignY="center"
+                style={{
+                  backgroundColor: palette['teal-400'],
+                  borderRadius: 12,
+                  borderTopLeftRadius: 0,
+                }}>
+                <Text variants="bodyMedium" fontWeight="Medium" color="white">
+                  구매 완료. 관리사님이 배졍되었습니다
+                </Text>
+              </Box>
             </Box>
           ) : (
             <GPTLoading />
