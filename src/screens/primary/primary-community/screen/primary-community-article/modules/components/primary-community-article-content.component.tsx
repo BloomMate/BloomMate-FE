@@ -1,7 +1,7 @@
 import { Stack } from '@mobily/stacks';
 import { useNavigation } from '@react-navigation/native';
 import { memo } from 'react';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, useWindowDimensions } from 'react-native';
 import FastImage from 'react-native-fast-image';
 
 import { ArticleWebviewScreenNavigationProps } from '../../../../../../article-webview';
@@ -18,6 +18,8 @@ type PrimaryCommunityArticleItemProps = {
 export const PrimaryCommunityArticleItem =
   memo<PrimaryCommunityArticleItemProps>(
     ({ id, article_content, article_thumbnail_url, article_title }) => {
+      const { width: deviceWidth } = useWindowDimensions();
+
       const navigation = useNavigation<ArticleWebviewScreenNavigationProps>();
 
       const handlePressArticle = () => {
@@ -36,7 +38,7 @@ export const PrimaryCommunityArticleItem =
               style={{
                 aspectRatio: 190 / 80,
                 borderRadius: 10,
-                width: '100%',
+                width: deviceWidth - 48,
               }}
               resizeMode={FastImage.resizeMode.cover}
             />

@@ -1,6 +1,7 @@
+import { useKeyboard } from '@react-native-community/hooks';
 import { useRoute } from '@react-navigation/native';
 import dayjs from 'dayjs';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { FlatList } from 'react-native';
 import { useMutation } from 'react-query';
 import { useRecoilState, useRecoilValue } from 'recoil';
@@ -23,6 +24,7 @@ export type PostPlantChatResponseType = {
 
 export const usePostPlantChat = () => {
   const flatListRef = useRef<FlatList | null>(null);
+  const keyboard = useKeyboard();
 
   const {
     params: { id },
@@ -83,6 +85,14 @@ export const usePostPlantChat = () => {
       return;
     }
   }, [contents]);
+
+  useEffect(() => {
+    if (keyboard.keyboardShown) {
+      console.log(flatListRef.current?.scrollToEnd);
+      console.log('여기 ');
+      flatListRef?.current?.scrollToEnd();
+    }
+  }, [keyboard.keyboardShown]);
 
   return {
     flatListRef,
