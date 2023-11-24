@@ -1,23 +1,31 @@
 import { Box, Stack, Columns, Column } from '@mobily/stacks';
-import { memo } from 'react';
+import { memo, useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 import FastImage from 'react-native-fast-image';
+
+import { GPTLoading } from '../gpt-loading';
 
 import { TOMATO_SEED_IMG } from '@/assets';
 import { Image, Text } from '@/atoms';
 import { palette } from '@/utils';
 
-type GPTButtonProps = {
-  onPress: () => void;
-};
+type GPTButtonProps = {};
 
-export const GPTButton = memo<GPTButtonProps>(({ onPress }) => {
+export const GPTButton = memo<GPTButtonProps>(({}) => {
+  const [isPressed, setIsPressed] = useState(false);
+  const [isCountDownEnd, setIsCountDownEnd] = useState(false);
+
   const handlePressButton = () => {
-    onPress();
+    setIsPressed(true);
+
+    // Start a 3-second countdown
+    setTimeout(() => {
+      setIsCountDownEnd(true);
+    }, 3000);
   };
 
   return (
-    <Stack space={8} style={{ minHeight: 128 }}>
+    <Stack space={8}>
       <Columns
         space={12}
         padding={12}
@@ -25,6 +33,7 @@ export const GPTButton = memo<GPTButtonProps>(({ onPress }) => {
           backgroundColor: palette['teal-400'],
           borderRadius: 12,
           borderTopLeftRadius: 0,
+          minHeight: 128,
         }}>
         <Column width="content">
           <Image
@@ -55,6 +64,28 @@ export const GPTButton = memo<GPTButtonProps>(({ onPress }) => {
           </Stack>
         </Column>
       </Columns>
+      {isPressed && (
+        <>
+          {isCountDownEnd ? (
+            <Box
+              paddingX={12}
+              paddingY={8}
+              alignX="center"
+              alignY="center"
+              style={{
+                backgroundColor: palette['teal-400'],
+                borderRadius: 12,
+                borderTopLeftRadius: 0,
+              }}>
+              <Text variants="bodyMedium" fontWeight="Medium" color="white">
+                구매 완료. 관리사님이 배졍되었습니다
+              </Text>
+            </Box>
+          ) : (
+            <GPTLoading />
+          )}
+        </>
+      )}
     </Stack>
   );
 });

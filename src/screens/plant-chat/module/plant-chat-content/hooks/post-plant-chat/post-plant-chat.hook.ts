@@ -1,4 +1,3 @@
-import { useKeyboard } from '@react-native-community/hooks';
 import { useRoute } from '@react-navigation/native';
 import dayjs from 'dayjs';
 import { useRef } from 'react';
@@ -24,7 +23,6 @@ export type PostPlantChatResponseType = {
 
 export const usePostPlantChat = () => {
   const flatListRef = useRef<FlatList | null>(null);
-  const keyboard = useKeyboard();
 
   const {
     params: { id },
@@ -81,10 +79,17 @@ export const usePostPlantChat = () => {
     }
 
     const shouldAddSoilCheck =
-      contents.length === 2 && !is_user_chat && soil_condition === '좋음';
+      contents.length === 2 && !is_user_chat && soil_condition === '나쁨';
 
     if (shouldAddSoilCheck) {
-      // TODO : soil 이 엉망진창일때 넣기
+      setPlantChat(prev => ({
+        ...prev,
+        contents: [
+          ...prev.contents,
+          { is_user_chat: false, chatting_content: '', isButton: true },
+        ],
+      }));
+
       return;
     }
   }, [contents]);
