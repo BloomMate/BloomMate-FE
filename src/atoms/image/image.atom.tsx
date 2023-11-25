@@ -62,7 +62,11 @@ export const Image = ({ skeletonStyle, ...props }: ImageProps) => {
   const { style } = props;
   const [isLoadingImg, setIsLoadingImg] = useState(true);
 
-  // return <Skeleton style={[style]} />;
+  // return (
+  //   <Skeleton
+  //     style={[style, { position: 'absolute', elevation: -1, ...skeletonStyle }]}
+  //   />
+  // );
 
   return (
     <>
