@@ -43,7 +43,6 @@ export const GPTLoading = memo<GPTLoadingProps>(() => {
           source={{ uri: LOGO_FONT_IMG }}
           style={{ width: 80, height: 16 }}
           resizeMode={FastImage.resizeMode.contain}
-          skeletonStyle={{ width: 80, height: 16 }}
         />
         <Box direction="row">
           <Stack

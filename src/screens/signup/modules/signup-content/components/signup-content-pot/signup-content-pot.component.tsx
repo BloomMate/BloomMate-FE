@@ -26,7 +26,6 @@ export const SignUpContentPotComponent = memo<SignUpContentPotComponentProps>(
             key={i}
             resizeMode={FastImage.resizeMode.contain}
             style={{ width: 28, height: 42 }}
-            skeletonStyle={{ width: 28, height: 42 }}
             source={require('./Image/flower_pot.png')}
           />,
         );

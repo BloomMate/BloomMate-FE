@@ -5,7 +5,7 @@ import { useSetRecoilState } from 'recoil';
 
 import { $plantChatState } from '../../plant-chat.state';
 
-import { GPTChat, GPTLoading, UserChat } from './components';
+import { GPTButton, GPTChat, GPTLoading, UserChat } from './components';
 import { useGetChattingContentsByDate, usePostPlantChat } from './hooks';
 
 import { CHAT_LOGO_IMG } from '@/assets';
@@ -37,7 +37,6 @@ const PlantChatContent = memo<PlantChatContentModuleProps>(() => {
         <Image
           style={{ width: 300, height: 300 }}
           source={{ uri: CHAT_LOGO_IMG }}
-          skeletonStyle={{ width: 300, height: 300 }}
         />
         <Button
           style={{ width: '100%' }}
@@ -64,10 +63,14 @@ const PlantChatContent = memo<PlantChatContentModuleProps>(() => {
       )}
       ItemSeparatorComponent={() => <Box style={{ height: 32 }} />}
       renderItem={({ item }) => {
-        const { is_user_chat, isLoading } = item;
+        const { is_user_chat, isLoading, isButton } = item;
 
         if (isLoading) {
           return <GPTLoading />;
+        }
+
+        if (isButton) {
+          return <GPTButton />;
         }
 
         return (

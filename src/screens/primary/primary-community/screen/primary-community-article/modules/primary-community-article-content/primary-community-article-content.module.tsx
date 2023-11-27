@@ -2,7 +2,7 @@ import { Box } from '@mobily/stacks';
 import { memo } from 'react';
 import { FlatList } from 'react-native';
 
-import { PrimaryCommuntiyArticleItem } from '../components';
+import { PrimaryCommunityArticleItem } from '../components';
 import { PRIMARY_COMMUNITY_ARTICLE_DATA } from '../primary-community-article-content.const';
 
 type PrimaryCommunityArticleContentModuleProps = {};
@@ -16,7 +16,7 @@ export const PrimaryCommunityArticleContentModule =
         contentContainerStyle={{ flexGrow: 1 }}
         data={articleList}
         ItemSeparatorComponent={() => <Box style={{ height: 16 }} />}
-        renderItem={({ item }) => <PrimaryCommuntiyArticleItem {...item} />}
+        renderItem={({ item }) => <PrimaryCommunityArticleItem {...item} />}
         ListFooterComponent={<Box style={{ height: 40 }} />}
       />
     );

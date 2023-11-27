@@ -61,7 +61,6 @@ export const PlantDetailEditPictureInputModule =
             source={{ uri: value }}
             style={{ height: '100%', borderRadius: 8 }}
             resizeMode={FastImage.resizeMode.cover}
-            skeletonStyle={{ height: '100%', borderRadius: 8 }}
           />
         </Box>
       </Stack>

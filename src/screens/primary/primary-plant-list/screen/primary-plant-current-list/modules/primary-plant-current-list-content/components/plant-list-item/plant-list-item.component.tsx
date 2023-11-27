@@ -38,6 +38,7 @@ export const PlantListItem = memo<PlantListItemProps>(
         <Columns>
           <Column width="content" padding={10}>
             <Image
+              skeletonStyle={{ padding: 10 }}
               style={{ width: 80, height: 80, borderRadius: 80 }}
               source={{ uri: plant_picture_url }}
               resizeMode={FastImage.resizeMode.cover}

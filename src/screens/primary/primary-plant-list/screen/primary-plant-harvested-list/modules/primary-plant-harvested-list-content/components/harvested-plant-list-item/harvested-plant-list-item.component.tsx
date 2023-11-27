@@ -25,7 +25,6 @@ export const HarvestedPlantListItem =
               style={{ borderRadius: 80, width: 80, height: 80 }}
               source={{ uri: plant_picture_url }}
               resizeMode={FastImage.resizeMode.contain}
-              skeletonStyle={{ borderRadius: 80, width: 80, height: 80 }}
             />
           </Column>
           <Column width="fluid" paddingY={16} paddingLeft={12}>
