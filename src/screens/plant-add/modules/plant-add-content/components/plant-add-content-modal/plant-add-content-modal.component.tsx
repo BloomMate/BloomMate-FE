@@ -360,7 +360,7 @@ export const PlantAddPictureModalComponent =
                   flex: 1,
                 }}>
                 <TouchableOpacity
-                  onPress={handlePressPictureButton}
+                  onPress={handlePressLibraryButton}
                   style={{ alignItems: 'center' }}>
                   <Stack space={10} align="center">
                     <Icon
@@ -384,7 +384,7 @@ export const PlantAddPictureModalComponent =
                   flex: 1,
                 }}>
                 <TouchableOpacity
-                  onPress={handlePressLibraryButton}
+                  onPress={handlePressPictureButton}
                   style={{ alignItems: 'center' }}>
                   <Stack space={10} align="center">
                     <Icon
