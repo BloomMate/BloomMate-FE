@@ -9,22 +9,22 @@ import { ArticleWebviewScreenNavigationProps } from '../../../../../../article-w
 import { Image, Text } from '@/atoms';
 
 type PrimaryCommunityArticleItemProps = {
-  id: string;
+  id: number;
   article_title: string;
-  article_content: string;
+  article_content_url: string;
   article_thumbnail_url: string;
 };
 
 export const PrimaryCommunityArticleItem =
   memo<PrimaryCommunityArticleItemProps>(
-    ({ id, article_content, article_thumbnail_url, article_title }) => {
+    ({ id, article_content_url, article_thumbnail_url, article_title }) => {
       const { width: deviceWidth } = useWindowDimensions();
 
       const navigation = useNavigation<ArticleWebviewScreenNavigationProps>();
 
       const handlePressArticle = () => {
         navigation.navigate('ArticleWebview', {
-          article_content: article_content,
+          article_content: article_content_url,
         });
       };
 
