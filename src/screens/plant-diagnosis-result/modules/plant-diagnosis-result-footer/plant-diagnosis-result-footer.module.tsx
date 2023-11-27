@@ -1,9 +1,10 @@
-import { useNavigation } from '@react-navigation/native';
-import isUndefined from 'lodash/isUndefined';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { memo } from 'react';
-import { launchCamera } from 'react-native-image-picker';
 
-import { PlantDiagnosisResultScreenNavigationProps } from '../../plant-diagnosis-result.screen';
+import {
+  PlantDiagnosisResultScreenNavigationProps,
+  PlantDiagnosisResultScreenNavigationRouteProps,
+} from '../../plant-diagnosis-result.screen';
 
 import { CTASection, SingleButtonProps } from '@/layouts';
 
@@ -13,22 +14,14 @@ export const PlantDiagnosisResultFooterModule =
   memo<PlantDiagnosisResultFooterModuleProps>(() => {
     const navigation =
       useNavigation<PlantDiagnosisResultScreenNavigationProps>();
+    const {
+      params: { plant_id },
+    } = useRoute<PlantDiagnosisResultScreenNavigationRouteProps>();
 
-    const handlePressReTake = async () => {
-      const result = await launchCamera({
-        mediaType: 'photo',
-        saveToPhotos: true,
-      });
+    const id = plant_id;
 
-      if (isUndefined(result.assets) || result.didCancel) {
-        return;
-      }
-
-      // TODO : ADD Plant Diagnosis API
-      navigation.replace('PlantDiagnosisResultScreen', {
-        plant_id: 1,
-        id: 1,
-      });
+    const handlePressDiagnosisRecordButton = () => {
+      navigation.navigate('PlantDiagnosisListScreen', { id });
     };
 
     const handlePressBackButton = () => {
@@ -36,7 +29,11 @@ export const PlantDiagnosisResultFooterModule =
     };
 
     const buttons: SingleButtonProps[] = [
-      { label: '재촬영', mode: 'outlined', onPress: handlePressReTake },
+      {
+        label: '진단 기록',
+        mode: 'outlined',
+        onPress: handlePressDiagnosisRecordButton,
+      },
       { label: '돌아가기', mode: 'contained', onPress: handlePressBackButton },
     ];
 

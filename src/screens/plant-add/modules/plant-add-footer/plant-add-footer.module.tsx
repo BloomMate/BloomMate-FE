@@ -14,7 +14,6 @@ import {
 import { usePostPlantAddMutation } from './hooks';
 
 import { Button } from '@/atoms';
-import { CTASection, SingleButtonProps } from '@/layouts';
 import { useMutationIndicator } from '@/providers';
 
 type PlantAddFooterModuleProps = {};
@@ -55,7 +54,7 @@ export const PlantAddFooterModule = memo<PlantAddFooterModuleProps>(() => {
 
   const isLastStep =
     currentPlantAddScreenStepIndex === plantAddSteps.length - 1;
-  const isPictureCompleteStep = currentPlantAddScreenStepIndex === 1;
+
   const isPictureStep = currentPlantAddScreenStepIndex === 0;
   const copy = isLastStep ? '식물 등록하기' : '계속하기';
 
@@ -79,29 +78,12 @@ export const PlantAddFooterModule = memo<PlantAddFooterModuleProps>(() => {
       });
     }
   };
-  const buttons: SingleButtonProps[] = [
-    {
-      label: '재촬영',
-      mode: 'outlined',
-      onPress: () =>
-        setPlantAddState({
-          screenStep: plantAddSteps[currentPlantAddScreenStepIndex - 1],
-        }),
-    },
-    {
-      label: '확인',
-      mode: 'contained',
-      onPress: handlePressButton,
-    },
-  ];
 
   if (isPictureStep) {
     return null;
   }
 
-  return isPictureCompleteStep ? (
-    <CTASection buttons={buttons} direction="row" />
-  ) : (
+  return (
     <Button
       mode="contained"
       onPress={handlePressButton}
