@@ -65,7 +65,13 @@ const UserInfoItem: React.FC<UserInfoItemProps> = ({ title, content }) => (
         color={'gray-900'}>
         {title}
       </Text>
-      <Text variants={'bodyMedium'} fontWeight={'Medium'} color={'gray-700'}>
+      <Text
+        style={{ minWidth: 95, flex: 1 }}
+        numberOfLines={2}
+        ellipsizeMode="tail"
+        variants={'bodyMedium'}
+        fontWeight={'Medium'}
+        color={'gray-700'}>
         {content}
       </Text>
     </Stack>
