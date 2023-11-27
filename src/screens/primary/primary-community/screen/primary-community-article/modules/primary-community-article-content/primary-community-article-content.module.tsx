@@ -3,18 +3,20 @@ import { memo } from 'react';
 import { FlatList } from 'react-native';
 
 import { PrimaryCommunityArticleItem } from '../components';
-import { PRIMARY_COMMUNITY_ARTICLE_DATA } from '../primary-community-article-content.const';
+
+import { useGetArticleListQuery } from '@/hooks';
 
 type PrimaryCommunityArticleContentModuleProps = {};
 
 export const PrimaryCommunityArticleContentModule =
   memo<PrimaryCommunityArticleContentModuleProps>(({}) => {
-    const articleList = PRIMARY_COMMUNITY_ARTICLE_DATA;
+    const { data } = useGetArticleListQuery();
+    const item = data?.DATA;
 
     return (
       <FlatList
         contentContainerStyle={{ flexGrow: 1 }}
-        data={articleList}
+        data={item}
         ItemSeparatorComponent={() => <Box style={{ height: 16 }} />}
         renderItem={({ item }) => <PrimaryCommunityArticleItem {...item} />}
         ListFooterComponent={<Box style={{ height: 40 }} />}
