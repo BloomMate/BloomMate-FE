@@ -5,7 +5,7 @@ import {
 } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { AboutBloomMateScreen } from './about-BloomMate';
+import { AboutBloomMateScreen } from './about-bloommate';
 import { ArticleWebviewScreen } from './article-webview';
 import { CommunityQnaDetailScreen } from './community-qna-detail';
 import { CommunityQnaPostScreen } from './community-qna-post';

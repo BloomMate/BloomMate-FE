@@ -1,12 +1,8 @@
 import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import WebView from 'react-native-webview';
 
 import { RootStackParamList } from '../root.navigator';
-
-import { AboutBloomMateContentModule } from './module/about-bloommate-content';
-import { AboutBloomMateHeaderModule } from './module/about-bloommate-header';
-
-import { BasicLayout } from '@/layouts';
 
 type AboutBloomMateScreenProps = {};
 
@@ -22,9 +18,9 @@ export type AboutBloomMateScreenNavigationRouteProps = RouteProp<
 
 export const AboutBloomMateScreen = ({}: AboutBloomMateScreenProps) => {
   return (
-    <BasicLayout backgroundColor="gray-100">
-      <AboutBloomMateHeaderModule />
-      <AboutBloomMateContentModule />
-    </BasicLayout>
+    <WebView
+      source={{ uri: 'https://create-react-app.dev/' }}
+      style={{ marginTop: 20 }}
+    />
   );
 };

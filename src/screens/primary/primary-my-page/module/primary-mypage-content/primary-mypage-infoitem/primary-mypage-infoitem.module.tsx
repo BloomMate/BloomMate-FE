@@ -98,6 +98,14 @@ export const PrimaryMyPageInfoItemModule: React.FC = () => {
 
   const handlePressAboutBloomMate = () => {
     navigation.navigate('AboutBloomMateScreen');
+
+    // const url = 'https://github.com/BloomMate/BloomMate-FE'; // 원하는 웹사이트 주소로 변경]
+
+    // if (await Linking.canOpenURL(url)) {
+    //   Linking.openURL(url);
+    // } else {
+    //   console.log('Cannot open this URL');
+    // }
   };
 
   return (
