@@ -1,4 +1,4 @@
-import { Stack } from '@mobily/stacks';
+import { Column, Columns, Stack } from '@mobily/stacks';
 import { isUndefined } from 'lodash';
 import { memo } from 'react';
 
@@ -56,24 +56,16 @@ interface UserInfoItemProps {
 }
 
 const UserInfoItem: React.FC<UserInfoItemProps> = ({ title, content }) => (
-  <Stack>
-    <Stack horizontal>
-      <Text
-        style={{ minWidth: 95 }}
-        variants={'bodyMedium'}
-        fontWeight={'Medium'}
-        color={'gray-900'}>
+  <Columns>
+    <Column width="2/5">
+      <Text variants={'bodyMedium'} fontWeight={'Medium'} color={'gray-900'}>
         {title}
       </Text>
-      <Text
-        style={{ minWidth: 95, flex: 1 }}
-        numberOfLines={2}
-        ellipsizeMode="tail"
-        variants={'bodyMedium'}
-        fontWeight={'Medium'}
-        color={'gray-700'}>
+    </Column>
+    <Column>
+      <Text variants={'bodyMedium'} fontWeight={'Medium'} color={'gray-700'}>
         {content}
       </Text>
-    </Stack>
-  </Stack>
+    </Column>
+  </Columns>
 );
