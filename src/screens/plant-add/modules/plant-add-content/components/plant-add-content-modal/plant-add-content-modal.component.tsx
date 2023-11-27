@@ -372,7 +372,7 @@ export const PlantAddPictureModalComponent =
                       variants={'bodyLarge'}
                       fontWeight={'Medium'}
                       color={'primary'}>
-                      직접 촬영하기
+                      갤러리에서 선택
                     </Text>
                   </Stack>
                 </TouchableOpacity>
