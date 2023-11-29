@@ -1,6 +1,7 @@
 import { Box } from '@mobily/stacks';
 import { memo } from 'react';
 import { ActivityIndicator, FlatList } from 'react-native';
+import FastImage from 'react-native-fast-image';
 import { useSetRecoilState } from 'recoil';
 
 import { $plantChatState } from '../../plant-chat.state';
@@ -36,7 +37,7 @@ const PlantChatContent = memo<PlantChatContentModuleProps>(() => {
       <Box flex="fluid" alignX="center" style={{ width: '100%' }}>
         <Image
           style={{ width: 300, height: 300 }}
-          source={{ uri: CHAT_LOGO_IMG }}
+          source={{ uri: CHAT_LOGO_IMG, priority: FastImage.priority.high }}
         />
         <Button
           style={{ width: '100%' }}

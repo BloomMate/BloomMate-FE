@@ -1,11 +1,11 @@
 import { Box, Stack } from '@mobily/stacks';
 import { memo } from 'react';
-import { Image } from 'react-native';
+import FastImage from 'react-native-fast-image';
 
 import { ChattingContent } from '../../../../plant-chat.type';
 
 import { LOGO_FONT_IMG } from '@/assets';
-import { Text } from '@/atoms';
+import { Image, Text } from '@/atoms';
 import { palette } from '@/utils';
 
 type GPTChatProps = ChattingContent & {};
@@ -14,7 +14,7 @@ export const GPTChat = memo<GPTChatProps>(({ chatting_content }) => {
   return (
     <Stack space={8}>
       <Image
-        source={{ uri: LOGO_FONT_IMG }}
+        source={{ uri: LOGO_FONT_IMG, priority: FastImage.priority.high }}
         style={{ width: 80, height: 16 }}
       />
 
