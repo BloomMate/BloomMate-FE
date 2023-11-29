@@ -78,12 +78,18 @@ export const Image = ({ skeletonStyle, ...props }: ImageProps) => {
   const { style } = props;
   const [isLoadingImg, setIsLoadingImg] = useState(true);
 
-  // return <Skeleton style={[style, { elevation: -1, ...skeletonStyle }]} />;
+  // return (
+  //   <Skeleton
+  //     style={[style, { position: 'absolute', elevation: -1, ...skeletonStyle }]}
+  //   />
+  // );
 
   return (
     <>
       {isLoadingImg && (
-        <Skeleton style={[style, { elevation: -1, ...skeletonStyle }]} />
+        <Skeleton
+          style={[style, { zIndex: -1, elevation: -1, ...skeletonStyle }]}
+        />
       )}
       <FastImage {...props} onLoadEnd={() => setIsLoadingImg(false)} />
     </>

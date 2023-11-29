@@ -24,7 +24,12 @@ export const CommunityQnaDetailAnswerModule =
               <Image
                 source={{ uri: QNA_IMG, priority: FastImage.priority.high }}
                 style={{ aspectRatio: 1, minWidth: 50 }}
-                skeletonStyle={{ width: 50, height: 50, borderRadius: 100 }}
+                skeletonStyle={{
+                  width: 50,
+                  height: 50,
+                  borderRadius: 100,
+                  margin: 4,
+                }}
               />
             </PointLinearGradient>
           </Column>
