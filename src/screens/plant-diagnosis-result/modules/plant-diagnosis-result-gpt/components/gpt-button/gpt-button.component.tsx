@@ -23,7 +23,7 @@ export const GPTButton = memo<GPTButtonProps>(({ name, onPress }) => {
     <Box flex="fluid" alignY="center">
       <Stack space={8} style={{ minHeight: 128 }}>
         <Image
-          source={{ uri: LOGO_FONT_IMG }}
+          source={{ uri: LOGO_FONT_IMG, priority: FastImage.priority.high }}
           style={{ width: 80, height: 16 }}
           resizeMode={FastImage.resizeMode.contain}
         />

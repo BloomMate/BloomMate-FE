@@ -41,6 +41,7 @@ export const PrimaryCommunityArticleItem =
                 width: deviceWidth - 48,
               }}
               resizeMode={FastImage.resizeMode.cover}
+              skeletonStyle={{ height: (deviceWidth - 48) / 2 }}
             />
           </TouchableOpacity>
           <Text variants="labelMedium" fontWeight="Medium" color="gray-900">

@@ -1,6 +1,7 @@
 import { Box, Stack } from '@mobily/stacks';
 import { isUndefined } from 'lodash';
 import { memo } from 'react';
+import FastImage from 'react-native-fast-image';
 
 import { MYPAGE_IMG } from '@/assets';
 import { Image, Skeleton, Text } from '@/atoms';
@@ -26,7 +27,7 @@ export const PrimaryMypageGreetingModule =
               height: 80,
               borderRadius: 80,
             }}
-            source={{ uri: MYPAGE_IMG }}
+            source={{ uri: MYPAGE_IMG, priority: FastImage.priority.high }}
           />
         </Box>
         <Text variants={'bodyLarge'} fontWeight={'Bold'} color={'gray-900'}>
@@ -45,7 +46,7 @@ export const PrimaryMyPageGreetingSuspenseModule = () => (
           height: 80,
           borderRadius: 80,
         }}
-        source={{ uri: MYPAGE_IMG }}
+        source={{ uri: MYPAGE_IMG, priority: FastImage.priority.high }}
       />
     </Box>
     <Skeleton style={{ width: 160, height: 40 }} />

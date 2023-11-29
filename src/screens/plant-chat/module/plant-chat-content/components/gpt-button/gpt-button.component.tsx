@@ -38,7 +38,7 @@ export const GPTButton = memo<GPTButtonProps>(({}) => {
         <Column width="content">
           <Image
             // TODO : 비료 이미지로 바꿀 것
-            source={{ uri: TOMATO_SEED_IMG }}
+            source={{ uri: TOMATO_SEED_IMG, priority: FastImage.priority.high }}
             style={{
               width: 80,
               height: 80,

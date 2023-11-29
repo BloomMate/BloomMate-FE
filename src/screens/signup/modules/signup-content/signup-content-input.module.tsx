@@ -102,7 +102,7 @@ export const SignUpTiiunInputModule = () => {
         fieldState={fieldState}
       />
       <Image
-        source={{ uri: TIIUN_IMG }}
+        source={{ uri: TIIUN_IMG, priority: FastImage.priority.high }}
         style={{ width: 250, height: 250 }}
         resizeMode={FastImage.resizeMode.contain}
       />
@@ -171,7 +171,10 @@ export const SignUpAddressInputModule = () => {
         </TouchableOpacity>
         {value && (
           <Image
-            source={{ uri: SMART_COTTAGE_IMG }}
+            source={{
+              uri: SMART_COTTAGE_IMG,
+              priority: FastImage.priority.high,
+            }}
             style={{ width: '100%' }}
             resizeMode={FastImage.resizeMode.contain}
           />

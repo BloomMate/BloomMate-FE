@@ -1,6 +1,6 @@
 import { Box, Stack } from '@mobily/stacks';
 import { useController, useFormContext } from 'react-hook-form';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, useWindowDimensions } from 'react-native';
 import FastImage from 'react-native-fast-image';
 
 import { PlantEditForm } from '../../hooks';
@@ -14,6 +14,7 @@ type PlantDetailEditPictureInputModuleProps = {};
 
 export const PlantDetailEditPictureInputModule =
   ({}: PlantDetailEditPictureInputModuleProps) => {
+    const { width: deviceWidth } = useWindowDimensions();
     const { control } = useFormContext<PlantEditForm>();
     const {
       field: { onChange, value },
@@ -61,6 +62,7 @@ export const PlantDetailEditPictureInputModule =
             source={{ uri: value }}
             style={{ height: '100%', borderRadius: 8 }}
             resizeMode={FastImage.resizeMode.cover}
+            skeletonStyle={{ width: deviceWidth - 48 }}
           />
         </Box>
       </Stack>
