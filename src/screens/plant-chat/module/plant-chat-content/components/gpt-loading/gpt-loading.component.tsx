@@ -1,10 +1,11 @@
 import { Box, Stack } from '@mobily/stacks';
 import { MotiView } from 'moti';
 import { memo, useState } from 'react';
-import { Image } from 'react-native';
+import FastImage from 'react-native-fast-image';
 import { useIntervalWhen } from 'rooks';
 
 import { LOGO_FONT_IMG } from '@/assets';
+import { Image } from '@/atoms';
 import { palette } from '@/utils';
 
 type GPTLoadingProps = {};
@@ -38,9 +39,9 @@ export const GPTLoading = memo<GPTLoadingProps>(() => {
   return (
     <Stack space={8}>
       <Image
-        source={{ uri: LOGO_FONT_IMG }}
+        source={{ uri: LOGO_FONT_IMG, priority: FastImage.priority.high }}
         style={{ width: 80, height: 16 }}
-        resizeMode="contain"
+        resizeMode={FastImage.resizeMode.contain}
       />
       <Box direction="row">
         <Stack

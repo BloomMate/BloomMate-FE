@@ -33,7 +33,10 @@ export const PlantDiagnosisIntroContentModule =
           <Stack space={36} align="center">
             <Box>
               <Image
-                source={{ uri: DIAGNOSIS_IMG }}
+                source={{
+                  uri: DIAGNOSIS_IMG,
+                  priority: FastImage.priority.high,
+                }}
                 style={{ width: 200, height: 200, borderRadius: 100 }}
                 resizeMode={FastImage.resizeMode.contain}
               />

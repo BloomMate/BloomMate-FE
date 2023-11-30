@@ -26,33 +26,31 @@ export type LandingScreenNavigationRouteProps = RouteProp<
 >;
 export const LandingScreen = ({}: LandingScreenProps) => {
   return (
-    <>
-      <Rows
-        paddingX={32}
-        paddingY={32}
-        style={{ backgroundColor: 'rgba(255, 255, 255, 0.6)' }}>
-        <Row height="fluid" style={{ justifyContent: 'center' }}>
-          <Stack space={80} align={'center'}>
-            <Image
-              source={require('./const/Image/LogoImage.png')}
-              style={{ height: 56, width: 320 }}
-              resizeMode={FastImage.resizeMode.contain}
-            />
-            <Image
-              source={require('./const/Image/LandingImage.jpg')}
-              style={{ width: 148, height: 120 }}
-              resizeMode={FastImage.resizeMode.contain}
-            />
-            <LandingTextModule />
-          </Stack>
-        </Row>
-        <Row height="content">
-          <Stack space={16}>
-            <LandingSignUpModule />
-            <LandingLoginModule />
-          </Stack>
-        </Row>
-      </Rows>
-    </>
+    <Rows
+      paddingX={32}
+      paddingY={32}
+      style={{ backgroundColor: 'rgba(255, 255, 255, 0.6)' }}>
+      <Row height="fluid" style={{ justifyContent: 'center' }}>
+        <Stack space={80} align={'center'}>
+          <Image
+            source={require('./const/Image/LogoImage.png')}
+            style={{ height: 56, width: 320 }}
+            resizeMode={FastImage.resizeMode.contain}
+          />
+          <Image
+            source={require('./const/Image/LandingImage.jpg')}
+            style={{ width: 148, height: 120 }}
+            resizeMode={FastImage.resizeMode.contain}
+          />
+          <LandingTextModule />
+        </Stack>
+      </Row>
+      <Row height="content">
+        <Stack space={16}>
+          <LandingSignUpModule />
+          <LandingLoginModule />
+        </Stack>
+      </Row>
+    </Rows>
   );
 };

@@ -1,5 +1,6 @@
 import { Column, Columns, Stack } from '@mobily/stacks';
 import { memo } from 'react';
+import FastImage from 'react-native-fast-image';
 
 import { QNA_IMG } from '@/assets';
 import { Divider, Image, PointLinearGradient, Text } from '@/atoms';
@@ -21,8 +22,14 @@ export const CommunityQnaDetailAnswerModule =
           <Column width="content">
             <PointLinearGradient style={{ borderRadius: 8, padding: 4 }}>
               <Image
-                source={{ uri: QNA_IMG }}
+                source={{ uri: QNA_IMG, priority: FastImage.priority.high }}
                 style={{ aspectRatio: 1, minWidth: 50 }}
+                skeletonStyle={{
+                  width: 50,
+                  height: 50,
+                  borderRadius: 100,
+                  margin: 4,
+                }}
               />
             </PointLinearGradient>
           </Column>
