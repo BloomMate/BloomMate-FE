@@ -351,7 +351,7 @@ export const PlantAddPictureModalComponent =
                 }}
               />
             </Stack>
-            <Box direction={'row'}>
+            <Box direction={'row'} style={{ alignItems: 'center' }}>
               <Box
                 style={{
                   paddingHorizontal: 24,
@@ -360,7 +360,7 @@ export const PlantAddPictureModalComponent =
                   flex: 1,
                 }}>
                 <TouchableOpacity
-                  onPress={handlePressPictureButton}
+                  onPress={handlePressLibraryButton}
                   style={{ alignItems: 'center' }}>
                   <Stack space={10} align="center">
                     <Icon
@@ -377,6 +377,15 @@ export const PlantAddPictureModalComponent =
                   </Stack>
                 </TouchableOpacity>
               </Box>
+              <Box>
+                <View
+                  style={{
+                    width: 3,
+                    height: 70,
+                    backgroundColor: palette['primary'],
+                    borderRadius: 100,
+                  }}></View>
+              </Box>
               <Box
                 style={{
                   paddingHorizontal: 24,
@@ -384,7 +393,7 @@ export const PlantAddPictureModalComponent =
                   flex: 1,
                 }}>
                 <TouchableOpacity
-                  onPress={handlePressLibraryButton}
+                  onPress={handlePressPictureButton}
                   style={{ alignItems: 'center' }}>
                   <Stack space={10} align="center">
                     <Icon

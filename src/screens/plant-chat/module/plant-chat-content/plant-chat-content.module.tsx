@@ -34,9 +34,13 @@ const PlantChatContent = memo<PlantChatContentModuleProps>(() => {
 
   if (isTodayPlantChat && isEmptyPlantChat) {
     return (
-      <Box flex="fluid" alignX="center" style={{ width: '100%' }}>
+      <Box
+        paddingTop={100}
+        flex="fluid"
+        alignX="center"
+        style={{ width: '100%' }}>
         <Image
-          style={{ width: 300, height: 300 }}
+          style={{ width: 250, height: 250 }}
           source={{ uri: CHAT_LOGO_IMG, priority: FastImage.priority.high }}
         />
         <Button

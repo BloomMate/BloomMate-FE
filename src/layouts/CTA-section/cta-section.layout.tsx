@@ -28,6 +28,10 @@ export const CTASection = ({
           <Column
             key={index}
             style={[
+              mode === 'outlined' && {
+                backgroundColor: 'white',
+                borderRadius: 11,
+              },
               mode === 'contained' &&
                 !disabled && {
                   borderColor: palette['primary'],

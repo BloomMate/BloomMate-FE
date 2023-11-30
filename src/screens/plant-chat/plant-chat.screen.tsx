@@ -31,7 +31,7 @@ export const PlantChatScreen = ({}: PlantChatScreenProps) => {
 
   return (
     <PointLinearGradient style={{ width: '100%', height: '100%' }}>
-      <Box paddingX={24} paddingY={24} flex="fluid">
+      <Box paddingX={24} paddingY={32} flex="fluid">
         <PlantChatHeaderModule />
         <PlantChatContentModule />
         <PlantChatFooterModule />

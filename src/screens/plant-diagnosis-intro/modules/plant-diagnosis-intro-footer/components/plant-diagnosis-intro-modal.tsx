@@ -1,6 +1,7 @@
-import { Stack } from '@mobily/stacks';
+import { Box, Stack } from '@mobily/stacks';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { memo } from 'react';
+import { View, TouchableOpacity } from 'react-native';
 
 import {
   PlantDiagnosisIntroScreenNavigationProps,
@@ -8,7 +9,7 @@ import {
 } from '../../../plant-diagnosis-intro.screen';
 import { usePostPlantDiagnosis } from '../hooks';
 
-import { Button, Modal } from '@/atoms';
+import { Icon, Modal, Text } from '@/atoms';
 import { useUploadImageLibraryMutation, useUploadPhotoMutation } from '@/hooks';
 import { useMutationIndicator } from '@/providers';
 import { palette } from '@/utils';
@@ -83,20 +84,96 @@ export const PlantDiagnosisIntroModalComponent =
     };
 
     return (
-      <Modal isVisible={isVisible} onBackdropPress={handlePressBackdrop}>
-        <Stack space={16}>
-          <Button
-            onPress={handlePressPictureButton}
-            mode="outlined"
-            style={{ backgroundColor: palette['white'] }}>
-            직접 촬영하기
-          </Button>
-          <Button
-            onPress={handlePressLibraryButton}
-            mode="outlined"
-            style={{ backgroundColor: palette['white'] }}>
-            갤러리에서 선택하기
-          </Button>
+      <Modal
+        isVisible={isVisible}
+        isBottomSheet={true}
+        onBackdropPress={handlePressBackdrop}>
+        <Stack
+          space={12}
+          paddingX={4}
+          paddingTop={12}
+          paddingBottom={30}
+          style={{
+            borderTopLeftRadius: 24,
+            borderTopRightRadius: 24,
+            backgroundColor: palette['white'],
+            justifyContent: 'center',
+          }}>
+          <Stack space={30}>
+            <Stack
+              style={{
+                alignItems: 'center',
+              }}>
+              <View
+                style={{
+                  width: 50,
+                  height: 3,
+                  backgroundColor: palette['gray-400'],
+                  borderRadius: 8,
+                }}
+              />
+            </Stack>
+            <Box direction={'row'} style={{ alignItems: 'center' }}>
+              <Box
+                style={{
+                  paddingHorizontal: 24,
+                  paddingVertical: 16,
+                  borderColor: palette['primary'],
+                  flex: 1,
+                }}>
+                <TouchableOpacity
+                  onPress={handlePressLibraryButton}
+                  style={{ alignItems: 'center' }}>
+                  <Stack space={10} align="center">
+                    <Icon
+                      name={'photo-library'}
+                      size={40}
+                      color={palette['primary']}
+                    />
+                    <Text
+                      variants={'bodyLarge'}
+                      fontWeight={'Medium'}
+                      color={'primary'}>
+                      갤러리에서 선택
+                    </Text>
+                  </Stack>
+                </TouchableOpacity>
+              </Box>
+              <Box>
+                <View
+                  style={{
+                    width: 3,
+                    height: 70,
+                    backgroundColor: palette['primary'],
+                    borderRadius: 100,
+                  }}></View>
+              </Box>
+              <Box
+                style={{
+                  paddingHorizontal: 24,
+                  paddingVertical: 16,
+                  flex: 1,
+                }}>
+                <TouchableOpacity
+                  onPress={handlePressPictureButton}
+                  style={{ alignItems: 'center' }}>
+                  <Stack space={10} align="center">
+                    <Icon
+                      name={'photo-camera'}
+                      size={40}
+                      color={palette['primary']}
+                    />
+                    <Text
+                      variants={'bodyLarge'}
+                      fontWeight={'Medium'}
+                      color={'primary'}>
+                      직접 촬영하기
+                    </Text>
+                  </Stack>
+                </TouchableOpacity>
+              </Box>
+            </Box>
+          </Stack>
         </Stack>
       </Modal>
     );
