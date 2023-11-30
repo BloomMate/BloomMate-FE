@@ -47,8 +47,8 @@ export const LandingScreen = ({}: LandingScreenProps) => {
       </Row>
       <Row height="content">
         <Stack space={16}>
-          <LandingSignUpModule />
           <LandingLoginModule />
+          <LandingSignUpModule />
         </Stack>
       </Row>
     </Rows>
