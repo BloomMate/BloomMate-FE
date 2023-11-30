@@ -4,6 +4,7 @@ import dayjs from 'dayjs';
 import { isUndefined } from 'lodash';
 import { memo } from 'react';
 
+import { getPlantListItemCopyByGrowthLevel } from '../../../../primary/primary-plant-list/screen/primary-plant-current-list/modules/primary-plant-current-list-content/components/plant-list-item/plant-list-item.util';
 import { PlantDetailScreenNavigationRouteProps } from '../../../plant-detail.screen';
 
 import { Icon, Text } from '@/atoms';
@@ -22,7 +23,8 @@ export const PlantDetailGrowthModule = memo<PlantDetailGrowthModule>(() => {
     return null;
   }
 
-  const { planted_at, harvest_period_start, harvest_period_end } = data;
+  const { planted_at, harvest_period_start, harvest_period_end, growth_level } =
+    data;
 
   return (
     <Stack space={12}>
@@ -55,7 +57,7 @@ export const PlantDetailGrowthModule = memo<PlantDetailGrowthModule>(() => {
           </Text>
         </Stack>
         <Text variants={'bodyMedium'} fontWeight={'Medium'} color={'primary'}>
-          수확기입니다. 상태를 확인 후 수확해주세요.
+          {getPlantListItemCopyByGrowthLevel(growth_level)}
         </Text>
       </Stack>
     </Stack>
