@@ -13,7 +13,7 @@ import {
 } from './modules';
 
 import { PointLinearGradient } from '@/atoms';
-import { BasicLayout } from '@/layouts';
+import { BasicLayout, ScrollView } from '@/layouts';
 import { palette } from '@/utils';
 
 type PlantDiagnosisIntroScreenProps = {};
@@ -34,19 +34,21 @@ export const PlantDiagnosisIntroScreen =
       <PointLinearGradient style={{ width: '100%', height: '100%' }}>
         <BasicLayout backgroundColor="transparent">
           <PlantDiagnosisIntroHeaderModule />
-          <Suspense
-            fallback={
-              <Box
-                flex="fluid"
-                style={{ backgroundColor: palette['transparent'] }}
-                alignX="center"
-                alignY="center">
-                <ActivityIndicator animating={true} size="large" />
-              </Box>
-            }>
-            <PlantDiagnosisIntroContentModule />
-            <PlantDiagnosisIntroFooterModule />
-          </Suspense>
+          <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+            <Suspense
+              fallback={
+                <Box
+                  flex="fluid"
+                  style={{ backgroundColor: palette['transparent'] }}
+                  alignX="center"
+                  alignY="center">
+                  <ActivityIndicator animating={true} size="large" />
+                </Box>
+              }>
+              <PlantDiagnosisIntroContentModule />
+              <PlantDiagnosisIntroFooterModule />
+            </Suspense>
+          </ScrollView>
         </BasicLayout>
       </PointLinearGradient>
     );
