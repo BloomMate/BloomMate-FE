@@ -113,7 +113,7 @@ export const PlantDiagnosisIntroModalComponent =
                 }}
               />
             </Stack>
-            <Box direction={'row'}>
+            <Box direction={'row'} style={{ alignItems: 'center' }}>
               <Box
                 style={{
                   paddingHorizontal: 24,
@@ -138,6 +138,15 @@ export const PlantDiagnosisIntroModalComponent =
                     </Text>
                   </Stack>
                 </TouchableOpacity>
+              </Box>
+              <Box>
+                <View
+                  style={{
+                    width: 3,
+                    height: 70,
+                    backgroundColor: palette['primary'],
+                    borderRadius: 100,
+                  }}></View>
               </Box>
               <Box
                 style={{
