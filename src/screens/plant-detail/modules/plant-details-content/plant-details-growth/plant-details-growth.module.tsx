@@ -6,6 +6,8 @@ import { memo } from 'react';
 
 import { PlantDetailScreenNavigationRouteProps } from '../../../plant-detail.screen';
 
+import { getPlantDetailCopyByGrowthLevel } from './plant-details-growth.util';
+
 import { Icon, Text } from '@/atoms';
 import { useGetPlantDetailQuery } from '@/hooks';
 import { calculateDaysDifference, palette } from '@/utils';
@@ -22,7 +24,8 @@ export const PlantDetailGrowthModule = memo<PlantDetailGrowthModule>(() => {
     return null;
   }
 
-  const { planted_at, harvest_period_start, harvest_period_end } = data;
+  const { planted_at, harvest_period_start, harvest_period_end, growth_level } =
+    data;
 
   return (
     <Stack space={12}>
@@ -55,7 +58,7 @@ export const PlantDetailGrowthModule = memo<PlantDetailGrowthModule>(() => {
           </Text>
         </Stack>
         <Text variants={'bodyMedium'} fontWeight={'Medium'} color={'primary'}>
-          수확기입니다. 상태를 확인 후 수확해주세요.
+          {getPlantDetailCopyByGrowthLevel(growth_level)}
         </Text>
       </Stack>
     </Stack>
