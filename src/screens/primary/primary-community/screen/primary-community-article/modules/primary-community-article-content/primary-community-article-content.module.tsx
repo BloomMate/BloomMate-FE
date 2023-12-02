@@ -17,7 +17,7 @@ export const PrimaryCommunityArticleContentModule =
       <FlatList
         contentContainerStyle={{ flexGrow: 1 }}
         data={item}
-        ItemSeparatorComponent={() => <Box style={{ height: 16 }} />}
+        ItemSeparatorComponent={() => <Box style={{ height: 24 }} />}
         renderItem={({ item }) => <PrimaryCommunityArticleItem {...item} />}
         ListFooterComponent={<Box style={{ height: 40 }} />}
       />

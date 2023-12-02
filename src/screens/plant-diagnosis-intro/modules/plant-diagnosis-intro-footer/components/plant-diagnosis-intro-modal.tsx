@@ -50,7 +50,7 @@ export const PlantDiagnosisIntroModalComponent =
     const handlePressPictureButton = async () => {
       const response = await uploadPhoto();
 
-      if (response != null) {
+      if (response !== null) {
         const diagnosisData = await postPlantDiagnosis({
           diagnose_photo_url: response.data.url,
           plant_id: id.toString(),
@@ -66,15 +66,18 @@ export const PlantDiagnosisIntroModalComponent =
 
     const handlePressLibraryButton = async () => {
       const response = await uploadImageLibrary();
-      const diagnosisData = await postPlantDiagnosis({
-        diagnose_photo_url: response?.data.url,
-        plant_id: id.toString(),
-      });
 
-      navigation.navigate('PlantDiagnosisResultScreen', {
-        plant_id: id,
-        id: diagnosisData.id,
-      });
+      if (response !== null) {
+        const diagnosisData = await postPlantDiagnosis({
+          diagnose_photo_url: response?.data.url,
+          plant_id: id.toString(),
+        });
+
+        navigation.navigate('PlantDiagnosisResultScreen', {
+          plant_id: id,
+          id: diagnosisData.id,
+        });
+      }
 
       setModal(false);
     };
