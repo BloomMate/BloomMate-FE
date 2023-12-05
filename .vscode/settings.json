@@ -25,5 +25,6 @@
     "TIIUN",
     "Togglebutton",
     "wonka"
-  ]
+  ],
+  "java.compile.nullAnalysis.mode": "disabled"
 }
