@@ -1,79 +1,44 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# BloomMate - Frontend
 
-# Getting Started
+> This software is part of a project for a software engineering class at **Hanyang University Information Systems Dept.**
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+> The class is in collaboration with **LG Electronics.**
 
-## Step 1: Start the Metro Server
+## ① Intro
+This is a repository that implements the mobile application part of BloomMate. We have tried to implement the MVC pattern separately between View and Controller, and we have tried to write as clean code as possible by utilizing various libraries. You can check the key features directly by install the application
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+## ② Key Tech Stacks
 
-To start Metro, run the following command from the _root_ of your React Native project:
+|Name|Description|
+|----|-----------|
+|![React Native](https://img.shields.io/badge/react_native-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)| Main FrameWork|
+|![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)| Main Language|
+|![React Query](https://img.shields.io/badge/-React%20Query-FF4154?style=for-the-badge&logo=react%20query&logoColor=white)|Asynchronous state management|
+|![React Hook Form](https://img.shields.io/badge/React%20Hook%20Form-%23EC5990.svg?style=for-the-badge&logo=reacthookform&logoColor=white)|Performant, flexible and extensible forms with easy-to-use validation|
+|![Recoil](https://img.shields.io/badge/Recoil-3578E5.svg?style=for-the-badge&logo=recoil&logoColor=white)|A global state management
 
-```bash
-# using npm
-npm start
+## ③ Installation Guide
 
-# OR using Yarn
-yarn start
-```
+**A. Android Installation**
 
-## Step 2: Start your Application
+To install the Android application, follow these simple steps:
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+1. Go to the Google Drive link provided below:
+    - Link: https://drive.google.com/drive/folders/1misbKdk9KiIgrsmARhBsaBBLhtyIzM-k?usp=drive_link
 
-### For Android
+Please take note of the following:
 
-```bash
-# using npm
-npm run android
+1. Starting from September 2024, the application may not function properly. This is due to the possibility of the server operation being discontinued when the free plan of AWS EC2 ends.
+2. Since the application was not downloaded from the Play Store, you may encounter a message indicating a potential presence of malicious software. Rest assured that BloomMate does not contain any malicious code. You can safely ignore the message and proceed with the installation.
 
-# OR using Yarn
-yarn android
-```
+**B. IOS Installation**
 
-### For iOS
+For iOS, the only way to install the app is through the official App Store. Therefore, you need to install it directly via source code. Please note that the following steps can only be performed on macOS, as it is not possible to install iOS on Windows without xCode. Follow these steps:
 
-```bash
-# using npm
-npm run ios
+1. Configure iOS by referring to the official react-native website's iOS setup page.
+2. Download the source code from the this repository.
+3. Open the terminal and enter the command "yarn" to download the required libraries.
+4. Create a .env file in the root directory. Contact our team for the contents to include in the .env file, and we will respond within 3 business days.
+5. Enter "yarn start" in the terminal and use "yarn ios" to install BloomMate on your iOS device.
 
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
-
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
-
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+Similar to Android, there is a possibility that the application may not function properly after September 2024.
