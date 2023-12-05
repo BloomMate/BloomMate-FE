@@ -29,7 +29,7 @@ export const PrimaryCommunityArticleItem =
       };
 
       return (
-        <Stack space={12}>
+        <Stack space={8}>
           <TouchableOpacity onPress={handlePressArticle}>
             <Image
               source={{
@@ -44,7 +44,7 @@ export const PrimaryCommunityArticleItem =
               skeletonStyle={{ height: (deviceWidth - 48) / 2 }}
             />
           </TouchableOpacity>
-          <Text variants="labelMedium" fontWeight="Medium" color="gray-900">
+          <Text variants="bodyLarge" fontWeight="Medium" color="gray-900">
             {article_title}
           </Text>
         </Stack>

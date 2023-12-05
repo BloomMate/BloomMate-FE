@@ -58,7 +58,7 @@ export const PrimaryCommunityQnaListItem =
                     </Column>
                     <Column width="content">
                       <Text
-                        variants="labelSmall"
+                        variants="labelLarge"
                         fontWeight="Medium"
                         color={is_answered ? 'primary' : 'gray-400'}>
                         {is_answered ? '답변 완료' : '답변 필요'}
@@ -68,18 +68,18 @@ export const PrimaryCommunityQnaListItem =
                 </Column>
                 <Column width="content">
                   <Text
-                    variants="labelSmall"
+                    variants="labelMedium"
                     fontWeight="Light"
                     color="gray-900">
                     {question_date}
                   </Text>
                 </Column>
               </Columns>
-              <Text variants="bodyMedium" fontWeight="Medium" color="gray-900">
+              <Text variants="bodyLarge" fontWeight="Medium" color="gray-900">
                 {question_title}
               </Text>
               <Text
-                variants="bodySmall"
+                variants="labelLarge"
                 fontWeight="Light"
                 color="gray-900"
                 numberOfLines={2}>

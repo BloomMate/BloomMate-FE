@@ -4,8 +4,9 @@ import dayjs from 'dayjs';
 import { isUndefined } from 'lodash';
 import { memo } from 'react';
 
-import { getPlantListItemCopyByGrowthLevel } from '../../../../primary/primary-plant-list/screen/primary-plant-current-list/modules/primary-plant-current-list-content/components/plant-list-item/plant-list-item.util';
 import { PlantDetailScreenNavigationRouteProps } from '../../../plant-detail.screen';
+
+import { getPlantDetailCopyByGrowthLevel } from './plant-details-growth.util';
 
 import { Icon, Text } from '@/atoms';
 import { useGetPlantDetailQuery } from '@/hooks';
@@ -57,7 +58,7 @@ export const PlantDetailGrowthModule = memo<PlantDetailGrowthModule>(() => {
           </Text>
         </Stack>
         <Text variants={'bodyMedium'} fontWeight={'Medium'} color={'primary'}>
-          {getPlantListItemCopyByGrowthLevel(growth_level)}
+          {getPlantDetailCopyByGrowthLevel(growth_level)}
         </Text>
       </Stack>
     </Stack>
