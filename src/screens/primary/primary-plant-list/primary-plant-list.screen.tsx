@@ -51,7 +51,7 @@ export const PrimaryPlantListScreen = ({}: PrimaryPlantListScreenProps) => {
         }
       />
       <Tab.Navigator
-        style={{ marginTop: 24 }}
+        style={{ marginTop: 32 }}
         initialRouteName="PrimaryPlantCurrentList"
         screenOptions={MATERIAL_TOP_TAB_NAVIGATOR_SCREEN_OPTIONS}
         tabBar={PrimaryPlantListTab}>

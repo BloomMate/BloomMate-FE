@@ -7,7 +7,7 @@ export const DiagnosisListEmpty = () => (
     <Text
       variants="labelLarge"
       fontWeight="Medium"
-      color="gray-900"
+      color="gray-700"
       textAlignment="center">
       진단 기록이 없습니다.
     </Text>

@@ -29,10 +29,10 @@ export const HarvestedPlantListItem =
           </Column>
           <Column width="fluid" paddingY={16} paddingLeft={12}>
             <Stack space={16}>
-              <Text variants="bodyMedium" fontWeight="Medium" color="black">
+              <Text variants="bodyLarge" fontWeight="Bold" color="black">
                 {plant_nickname}
               </Text>
-              <Text variants="labelSmall" fontWeight="Medium" color="black">
+              <Text variants="bodyMedium" fontWeight="Medium" color="gray-700">
                 {`${dayjs(planted_at).format('YYYY-MM-DD')} ~ ${dayjs(
                   harvested_at,
                 ).format('YYYY-MM-DD')}`}

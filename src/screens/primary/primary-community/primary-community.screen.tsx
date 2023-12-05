@@ -52,7 +52,7 @@ export const PrimaryCommunityScreen = ({}: PrimaryCommunityScreenProps) => {
         onPressExit={handlePressExit}
       />
       <Tab.Navigator
-        style={{ marginTop: 24 }}
+        style={{ marginTop: 32 }}
         initialRouteName="PrimaryCommunityQna"
         screenOptions={MATERIAL_TOP_TAB_NAVIGATOR_SCREEN_OPTIONS}
         tabBar={PrimaryCommunityTabLabel}>
