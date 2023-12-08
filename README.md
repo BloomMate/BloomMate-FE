@@ -7,6 +7,8 @@
 ## ① Intro
 This is a repository that implements the mobile application part of BloomMate. We have tried to implement the MVC pattern separately between View and Controller, and we have tried to write as clean code as possible by utilizing various libraries. You can check the key features directly by install the application
 
+![소웨공 Architecutre](https://github.com/BloomMate/BloomMate-FE/assets/60422588/c9a148ca-a23a-4f10-88e3-ed4ea0f91589)
+
 ## ② Key Tech Stacks
 
 |Name|Description|
